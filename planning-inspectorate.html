@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Planning Inspectorate — Zena Zerai</title>
+  <meta name="description" content="Case study: overhauling a legacy case management system for The Planning Inspectorate, by Zena Zerai." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="kicker">Side A · 2026</span>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ─── Case Study: The Planning Inspectorate ─────────────────────── -->
+  <article class="csd">
+
+    <!-- Back link -->
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="case-studies.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Case Studies
+      </a>
+    </div>
+
+    <!-- ── BLOCK: Hero ──────────────────────────────────────────────── -->
+    <section class="csd-hero">
+      <div class="csd-hero__inner">
+
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">B2B Web &nbsp;·&nbsp; Gov / Public Sector</span>
+        </div>
+
+        <h1 class="csd-hero__title">
+          The Planning<br>
+          <em class="italic">Inspectorate.</em>
+        </h1>
+
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary">
+            The Planning Inspectorate oversees applications for major UK infrastructure projects, like wind farms and airport expansions.
+          </p>
+          <p class="csd-hero__summary">
+            As Lead UX Designer, I led the end-to-end design process to help overhaul their legacy case management system to make it faster, simpler, and ready to scale.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Cover image placeholder — swap for real asset -->
+      <div class="csd-hero__cover" aria-hidden="true">
+        <div class="csd-hero__cover-inner">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <rect x="4" y="6" width="40" height="32" rx="3"/>
+            <path d="M4 20h40M14 6v32"/>
+            <circle cx="36" cy="13" r="3"/>
+          </svg>
+          <span>Project cover</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BLOCK: Project meta ─────────────────────────────────────── -->
+    <section class="csd-meta" aria-label="Project details">
+      <dl class="csd-meta__grid">
+
+        <!-- Row 1: 4 even items -->
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Category</dt>
+          <dd class="csd-meta__value">B2B Web</dd>
+        </div>
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Sector</dt>
+          <dd class="csd-meta__value">Government / Public Sector</dd>
+        </div>
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Date</dt>
+          <dd class="csd-meta__value">2023 – 2024</dd>
+        </div>
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Team</dt>
+          <dd class="csd-meta__value">6 engineers, 5 designers (inc. myself), 1 PM + more</dd>
+        </div>
+
+        <!-- Row 2: Role spans full width -->
+        <div class="csd-meta__item csd-meta__item--full">
+          <dt class="csd-meta__label">Role</dt>
+          <dd class="csd-meta__value csd-meta__pills">
+            <span>User Research</span>
+            <span>Wireframing</span>
+            <span>Prototyping</span>
+            <span>Product Design</span>
+            <span>Strategy</span>
+            <span>Responsive Web</span>
+            <span>Dev Handover</span>
+          </dd>
+        </div>
+
+      </dl>
+    </section>
+
+    <!-- ── BLOCK: Impact — list variant ───────────────────────────── -->
+    <!--
+      Two variants available:
+        1. <div class="csd-impact__stats">  — big number grid (for quantitative outcomes)
+        2. <ul class="csd-impact__list">    — statement list (for qualitative outcomes)
+      Use one or both per project.
+    -->
+    <section class="csd-impact">
+
+      <div class="csd-impact__header">
+        <span class="kicker">Impact</span>
+        <h2 class="csd-impact__title">What we <em class="italic">shipped.</em></h2>
+      </div>
+
+      <ul class="csd-impact__list">
+        <li>Re-designed and shipped the full case management system from discovery to delivery</li>
+        <li>Cut case admin time from <strong>days to minutes</strong></li>
+        <li>Boosted user satisfaction by <strong>35%</strong></li>
+        <li>Helped secure a <strong>£9M contract renewal</strong></li>
+        <li>Led <strong>100+ hours</strong> of research and testing</li>
+        <li><strong>First case live</strong> in March 2024</li>
+      </ul>
+
+    </section>
+
+    <!-- ── BLOCK: Background / Context ────────────────────────────── -->
+    <section class="csd-context">
+
+      <div class="csd-context__text">
+        <span class="kicker">Background</span>
+        <h2 class="csd-context__title">A system built for a different era.</h2>
+        <div class="csd-context__body">
+          <p>
+            The Planning Inspectorate's case management system had been running for over 15 years. It was built at a time when infrastructure applications were far simpler — fewer stakeholders, smaller datasets, and nothing like the volume of public consultation responses seen today.
+          </p>
+          <p>
+            By the time we came on board, case officers were spending hours each week navigating workarounds, manually copying data between screens, and chasing updates across disconnected inboxes. The system wasn't just slow — it was actively getting in the way of good decisions being made on time.
+          </p>
+          <p>
+            Our brief was to understand the real pain points before touching anything, then rebuild with clarity and scale in mind.
+          </p>
+        </div>
+      </div>
+
+      <!-- Optional image — remove this div entirely if not needed -->
+      <div class="csd-context__image" aria-hidden="true">
+        <div class="csd-context__image-placeholder">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <rect x="4" y="6" width="40" height="32" rx="3"/>
+            <path d="M16 22l6 6 10-10"/>
+          </svg>
+          <span>Context image</span>
+        </div>
+        <p class="csd-context__caption">Caption text goes here — e.g. "The legacy interface, circa 2008."</p>
+      </div>
+
+    </section>
+
+    <!-- ── BLOCK: Key Findings ───────────────────────────────────── -->
+    <section class="csd-findings">
+
+      <div class="csd-findings__header">
+        <span class="kicker">Core pain points</span>
+        <h2 class="csd-findings__title">Inefficient and time&#8209;consuming <em class="italic">processes.</em></h2>
+        <p class="csd-findings__intro">Working within a complex system and tight deadline, I focused on high-impact decisions, what to keep, and what to redesign. By mapping workflows and pain points and prioritising key opportunities, the Case Admin team emerged as the most critical group to improve.</p>
+      </div>
+
+      <div class="csd-findings__grid">
+
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">01</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Buried Actions</h3>
+            <p class="csd-finding__desc">Actions such as editing and publishing were buried behind multiple clicks, with high interaction costs.</p>
+          </div>
+        </article>
+
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">02</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Lack of status visibility</h3>
+            <p class="csd-finding__desc">Documents had to be manually checked and renamed, with no clear view of their status before redaction.</p>
+          </div>
+        </article>
+
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">03</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Inability to bulk edit</h3>
+            <p class="csd-finding__desc">Every task had to be done one file at a time, adding to the workload and timeframe for completing the work.</p>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ── BLOCK: Hypothesis / Statement ────────────────────────── -->
+    <section class="csd-statement">
+      <span class="kicker">Hypothesis</span>
+      <p class="csd-statement__text">
+        If we enable the ability to edit and publish documents in bulk it will make it quicker to upload and publish files and&nbsp;<span class="csd-statement__fade">speed up the planning application process.</span>
+      </p>
+    </section>
+
+    <!-- ── BLOCK: Before / After ─────────────────────────────────── -->
+    <section class="csd-beforeafter">
+
+      <div class="csd-beforeafter__intro">
+        <span class="kicker">The redesign</span>
+        <p class="csd-statement__text">
+          A simpler, faster system — <span class="csd-statement__fade">built around how people actually work.</span>
+        </p>
+      </div>
+
+      <div class="csd-beforeafter__grid">
+
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <span class="csd-beforeafter__badge">Before</span>
+            <!-- swap src for real screenshot -->
+            <div class="csd-beforeafter__placeholder" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
+              <span>Before screenshot</span>
+            </div>
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Legacy interface</strong>
+            <p>Case officers had to navigate five separate screens to update a single document status, with no way to act on multiple files at once.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+            <!-- swap src for real screenshot -->
+            <div class="csd-beforeafter__placeholder" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
+              <span>After screenshot</span>
+            </div>
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Redesigned system</strong>
+            <p>A single consolidated view lets admins select, edit, and publish in bulk — reducing a multi-step process to a single action.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </section>
+
+    <!-- ── BLOCK: Single pull-quote ──────────────────────────────── -->
+    <!-- Use this for one quote. For 2–3 quotes use .csd-quotes below. -->
+    <section class="csd-pullquote">
+      <span class="kicker csd-pullquote__kicker">User testing feedback</span>
+      <figure class="csd-pullquote__inner">
+        <blockquote class="csd-pullquote__text">
+          "That's straightforward — and much easier than what we're doing now."
+        </blockquote>
+        <figcaption class="csd-pullquote__attr">
+          <span class="csd-pullquote__name">Case Admin Worker</span>
+          <span class="csd-pullquote__role">The Planning Inspectorate</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ── BLOCK: Multiple quote cards ───────────────────────────── -->
+    <!-- Use this for 2–3 quotes. For a single quote use .csd-pullquote above. -->
+    <section class="csd-quotes">
+      <span class="kicker csd-quotes__kicker">In their words</span>
+      <div class="csd-quotes__grid">
+        <figure class="csd-quote">
+          <blockquote class="csd-quote__text">
+            "Working with this team transformed the way we think about our casework. We didn't realise how much time we were losing until we saw the new system."
+          </blockquote>
+          <figcaption class="csd-quote__attr">
+            <span class="csd-quote__name">Sarah Malone</span>
+            <span class="csd-quote__role">Case Officer, The Planning Inspectorate</span>
+          </figcaption>
+        </figure>
+        <figure class="csd-quote">
+          <blockquote class="csd-quote__text">
+            "The research phase was thorough and respectful of our time. The team clearly understood our world before they started designing anything."
+          </blockquote>
+          <figcaption class="csd-quote__attr">
+            <span class="csd-quote__name">James Okafor</span>
+            <span class="csd-quote__role">Senior Inspector</span>
+          </figcaption>
+        </figure>
+        <figure class="csd-quote">
+          <blockquote class="csd-quote__text">
+            "It finally feels like a tool built for us, not against us."
+          </blockquote>
+          <figcaption class="csd-quote__attr">
+            <span class="csd-quote__name">Priya Nair</span>
+            <span class="csd-quote__role">Admin Lead, Regional Office</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── BLOCK: Full image (flip-in on scroll) ──────────────────── -->
+    <!--
+      Swap .csd-fullimg__placeholder for a real <img> or <video> when ready.
+      The flip is scroll-linked — driven by JS, no class needed.
+    -->
+    <section class="csd-fullimg">
+
+      <div class="csd-fullimg__scene">
+        <div class="csd-fullimg__inner">
+
+          <!-- Placeholder — replace with <img src="..." alt="..."> -->
+          <div class="csd-fullimg__placeholder" aria-hidden="true">
+            <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+              <rect x="2" y="2" width="60" height="44" rx="4"/>
+              <circle cx="20" cy="16" r="5"/>
+              <path d="M2 34l16-12 12 10 10-8 22 14"/>
+            </svg>
+            <span>Full project image</span>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="csd-fullimg__caption">The redesigned case management dashboard — pre-launch review, February 2024.</p>
+
+    </section>
+
+    <!-- ── BLOCK: Two-panel image grid (no before/after tags) ───────── -->
+    <section class="csd-beforeafter">
+
+      <div class="csd-beforeafter__intro">
+        <span class="kicker">The process</span>
+        <p class="csd-statement__text">
+          From research to&nbsp;<span class="csd-statement__fade">production-ready screens.</span>
+        </p>
+      </div>
+
+      <div class="csd-beforeafter__grid">
+
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <!-- swap for real screenshot -->
+            <div class="csd-beforeafter__placeholder" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
+              <span>Screenshot one</span>
+            </div>
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Panel title</strong>
+            <p>Caption text goes here — describe what this screen shows and why it matters.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <!-- swap for real screenshot -->
+            <div class="csd-beforeafter__placeholder" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
+              <span>Screenshot two</span>
+            </div>
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Panel title</strong>
+            <p>Caption text goes here — describe what this screen shows and why it matters.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </section>
+
+    <!-- ── BLOCK: Outcome statements ────────────────────────────────── -->
+    <section class="csd-outcome">
+
+      <div class="csd-outcome__header">
+        <span class="kicker">Outcome</span>
+        <h2 class="csd-outcome__title">Clear uplift from <em class="italic">experimentation.</em></h2>
+      </div>
+
+      <ol class="csd-outcome__list">
+        <li class="csd-outcome__item">
+          <span class="csd-outcome__stat">+31%</span>
+          <span class="csd-outcome__desc">increase in case page views</span>
+        </li>
+        <li class="csd-outcome__item">
+          <span class="csd-outcome__stat">+20%</span>
+          <span class="csd-outcome__desc">increase in case progression <span class="csd-outcome__note">(low sample, directional)</span></span>
+        </li>
+        <li class="csd-outcome__item">
+          <span class="csd-outcome__stat">↑</span>
+          <span class="csd-outcome__desc">Increased engagement with navigation across devices</span>
+        </li>
+      </ol>
+
+    </section>
+
+    <!-- ── BLOCK: Video embed ─────────────────────────────────────── -->
+    <!--
+      Paste any iframe src below (YouTube, Vimeo, Loom, etc.)
+      The block is responsive 16:9 and works with any embed URL.
+      Optional: add a caption and/or a kicker.
+    -->
+    <section class="csd-video">
+
+      <div class="csd-video__header">
+        <span class="kicker">Prototype walkthrough</span>
+      </div>
+
+      <div class="csd-video__frame">
+        <!-- Replace the src with your embed URL -->
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Prototype walkthrough — The Planning Inspectorate"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <p class="csd-video__caption">A run-through of the redesigned case management flow, recorded during the final round of user testing.</p>
+
+    </section>
+
+    <!-- ── Future blocks go here ───────────────────────────────────── -->
+
+  </article>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GWI — Zena Zerai</title>
+  <meta name="description" content="Case study: reimagining user management for an AI-driven platform at GWI, by Zena Zerai." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="kicker">Side A · 2026</span>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ─── Case Study: GWI ─────────────────────────────────────────── -->
+  <article class="csd">
+
+    <!-- Back link -->
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="case-studies.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Case Studies
+      </a>
+    </div>
+
+    <!-- ── BLOCK: Hero ──────────────────────────────────────────────── -->
+    <section class="csd-hero">
+      <div class="csd-hero__inner">
+
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">B2B SaaS &nbsp;·&nbsp; AI Platform</span>
+        </div>
+
+        <h1 class="csd-hero__title">
+          GWI —<br>
+          <em class="italic">User Management.</em>
+        </h1>
+
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary">
+            Content coming soon.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="csd-hero__cover" aria-hidden="true">
+        <div class="csd-hero__cover-inner">
+          <img src="assets/gwi.png" alt="GWI admin portal" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BLOCK: Project meta ─────────────────────────────────────── -->
+    <section class="csd-meta" aria-label="Project details">
+      <dl class="csd-meta__grid">
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Category</dt>
+          <dd class="csd-meta__value">B2B SaaS</dd>
+        </div>
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Sector</dt>
+          <dd class="csd-meta__value">AI Platform / Data & Insights</dd>
+        </div>
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Date</dt>
+          <dd class="csd-meta__value">2025</dd>
+        </div>
+
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Team</dt>
+          <dd class="csd-meta__value">To be added</dd>
+        </div>
+
+        <div class="csd-meta__item csd-meta__item--full">
+          <dt class="csd-meta__label">Role</dt>
+          <dd class="csd-meta__value csd-meta__pills">
+            <span>User Research</span>
+            <span>Internal Tools</span>
+            <span>System Design</span>
+          </dd>
+        </div>
+
+      </dl>
+    </section>
+
+    <!-- ── Content to be added ────────────────────────────────────── -->
+
+  </article>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>

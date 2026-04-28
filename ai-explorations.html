@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Raleway:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -27,93 +27,117 @@
       <a href="ai-explorations.html" aria-current="page">AI Explorations</a>
     </nav>
     <div class="nav__meta">
-      <span class="kicker">B-Side · 2026</span>
+      <button class="nav__cta" id="nav-copy-email" type="button" aria-label="Copy email address">
+        <span class="nav__cta-label">Get in touch</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
     </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
   </header>
 
-  <!-- AI EXPLORATIONS -->
-  <section class="ai-explore">
-    <div class="section__head">
-      <span class="kicker">The B-Sides</span>
-      <h1 class="section__title">
-        <span>AI </span>
-        <span class="italic">explorations.</span>
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html" aria-current="page">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Page header -->
+  <section class="cs-page-hero">
+    <div class="cs-page-hero__inner">
+      <span class="kicker">04 · The B-Sides</span>
+      <h1 class="cs-page-hero__title">
+        <span>AI </span><span class="italic">explorations.</span>
       </h1>
-      <p class="section__lede">Personal experiments at the intersection of design thinking and machine intelligence — the odd tracks that don't fit neatly on any album.</p>
+      <p class="cs-page-hero__lede">Personal experiments at the intersection of design thinking and machine intelligence — the odd tracks that don't fit neatly on any album.</p>
     </div>
+  </section>
 
-    <ul class="ai-explore__grid" role="list">
+  <!-- CD rack -->
+  <section class="ai-shelf ai-shelf--page">
+    <ul class="cd-rack" role="list">
 
-      <li class="ai-card">
-        <div class="ai-card__inner">
-          <div class="ai-card__badge">
-            <span class="kicker">Exp. 01</span>
-          </div>
-          <h2 class="ai-card__title">Prompt-driven wireframing workflows</h2>
-          <p class="ai-card__body">Testing how far structured prompts can go in scaffolding early-stage product concepts — and where the designer still needs to step in.</p>
-          <div class="ai-card__foot">
-            <div class="record__pills">
-              <span>Prompting</span>
-              <span>Wireframing</span>
-              <span>Workflow</span>
+      <li>
+        <a class="cd-case" href="#" aria-label="BA & Financial Ombudsman — Designing for AI (pitchwork)">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#b05490;--cd-b:#e07050;--cd-c:#801860;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">BA &amp; FO</strong>
+                <span class="cd-case__label-title">Designing for AI</span>
+              </div>
             </div>
-            <span class="ai-card__status">Coming soon</span>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-        </div>
+          <div class="cd-case__info">
+            <p class="cd-case__project">BA &amp; Financial Ombudsman</p>
+            <p class="cd-case__desc">Designing for AI (pitchwork)</p>
+            <p class="cd-case__detail">Exploring AI-assisted triage for regulated financial complaint handling — balancing automation with trust and human oversight.</p>
+          </div>
+        </a>
       </li>
 
-      <li class="ai-card">
-        <div class="ai-card__inner">
-          <div class="ai-card__badge">
-            <span class="kicker">Exp. 02</span>
-          </div>
-          <h2 class="ai-card__title">AI-assisted usability test synthesis</h2>
-          <p class="ai-card__body">Exploring LLM pipelines that help distil hours of user research transcripts into actionable insight clusters — without losing the nuance.</p>
-          <div class="ai-card__foot">
-            <div class="record__pills">
-              <span>User Research</span>
-              <span>LLMs</span>
-              <span>Synthesis</span>
+      <li>
+        <a class="cd-case" href="#" aria-label="Valtech Hackathon — Designing a dashboard with AI tools">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#1c1814;--cd-b:#2e2418;--cd-c:#100e0a;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">Valtech</strong>
+                <span class="cd-case__label-title">Hackathon</span>
+              </div>
             </div>
-            <span class="ai-card__status">Coming soon</span>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-        </div>
+          <div class="cd-case__info">
+            <p class="cd-case__project">Valtech Hackathon</p>
+            <p class="cd-case__desc">Designing a dashboard with AI tools</p>
+            <p class="cd-case__detail">48-hour sprint using Copilot and Cursor — mapping where AI tools accelerate design and where human judgment stays essential.</p>
+          </div>
+        </a>
       </li>
 
-      <li class="ai-card">
-        <div class="ai-card__inner">
-          <div class="ai-card__badge">
-            <span class="kicker">Exp. 03</span>
-          </div>
-          <h2 class="ai-card__title">Voice and tone guardrails for generative copy</h2>
-          <p class="ai-card__body">Building lightweight brand-voice constraints that keep AI-generated microcopy on-brief — exploring the gap between style guides and live outputs.</p>
-          <div class="ai-card__foot">
-            <div class="record__pills">
-              <span>Copywriting</span>
-              <span>Brand Voice</span>
-              <span>Guardrails</span>
+      <li>
+        <a class="cd-case" href="#" aria-label="Google & Tide — Conversational UX and CCAI for finance">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#1a1870;--cd-b:#3535b8;--cd-c:#5555e8;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">Google &amp; Tide</strong>
+                <span class="cd-case__label-title">Conversational UX</span>
+              </div>
             </div>
-            <span class="ai-card__status">Coming soon</span>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-        </div>
-      </li>
-
-      <li class="ai-card">
-        <div class="ai-card__inner">
-          <div class="ai-card__badge">
-            <span class="kicker">Exp. 04</span>
+          <div class="cd-case__info">
+            <p class="cd-case__project">Google &amp; Tide</p>
+            <p class="cd-case__desc">Conversational UX and CCAI for finance</p>
+            <p class="cd-case__detail">Conversational flows for Google's CCAI platform — enabling SMB banking customers to resolve queries end-to-end without human handoff.</p>
           </div>
-          <h2 class="ai-card__title">Designing for AI trust and legibility</h2>
-          <p class="ai-card__body">A thinking piece on why transparency patterns, confidence signals, and escape hatches are the new microcopy — and what they mean for interaction design.</p>
-          <div class="ai-card__foot">
-            <div class="record__pills">
-              <span>Trust UX</span>
-              <span>AI Patterns</span>
-              <span>Writing</span>
-            </div>
-            <span class="ai-card__status">Coming soon</span>
-          </div>
-        </div>
+        </a>
       </li>
 
     </ul>
@@ -137,18 +161,21 @@
       <div class="foot__row">
         <div class="foot__links">
           <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="#">Read.cv</a>
-          <a href="#">Dribbble</a>
-          <a href="#">Are.na</a>
         </div>
         <div class="foot__meta">
           <span class="kicker">© Zena Zerai · MMXXVI</span>
           <span class="kicker">London ↔ Remote</span>
         </div>
       </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
 </body>
 </html>

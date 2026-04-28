@@ -14,6 +14,7 @@
   ────────────────────────────────────────────────────────────────── */
   function initRecordStack() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 820px)').matches) return;
 
     const section = document.getElementById('works');
     const crate   = section && section.querySelector('.crate');
@@ -89,7 +90,10 @@
         position:   'absolute',
         top:        '50%',
         left:       '50%',
-        width:      'min(1060px, 92vw)',
+        /* Width drives height via aspect-ratio 16/10.
+           The third term caps height at (100svh − 120px) so there's
+           always at least 60 px breathing room top and bottom. */
+        width:      'min(1060px, 92vw, calc((100svh - 120px) * 1.6))',
         margin:     '0',
         willChange: 'transform, opacity',
       });
@@ -162,6 +166,40 @@
 
 
   /* ──────────────────────────────────────────────────────────────────
+     SCROLL-LINKED CARD FLIP — .csd-fullimg__inner elements
+     Maps scroll position to a rotateX angle so the image physically
+     tracks with the scroll. Starts tilted back, lands flat.
+  ────────────────────────────────────────────────────────────────── */
+  function initFlipImages() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const panels = document.querySelectorAll('.csd-fullimg__inner');
+    if (!panels.length) return;
+
+    const MAX_ANGLE = 14; /* degrees tilted at rest */
+
+    function update() {
+      const vh = window.innerHeight;
+      panels.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        /* progress 0 → top of el at bottom of viewport (just entering)
+                   1 → top of el at 30% from top of viewport (solidly in view) */
+        const raw = (vh - rect.top) / (vh * 0.7);
+        const progress = Math.max(0, Math.min(1, raw));
+        const angle = MAX_ANGLE * (1 - progress);
+        el.style.transform = `perspective(1400px) rotateX(${angle.toFixed(2)}deg)`;
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  }
+
+  initFlipImages();
+
+
+  /* ──────────────────────────────────────────────────────────────────
      2. TAP-TO-FLIP on touch devices (hover handles desktop)
   ────────────────────────────────────────────────────────────────── */
   const records = document.querySelectorAll('.record');
@@ -183,19 +221,26 @@
 
   /* ──────────────────────────────────────────────────────────────────
      3. "GET IN TOUCH" — copy email + toast
+     Both the hero button and the nav CTA share the same toast.
   ────────────────────────────────────────────────────────────────── */
-  const copyBtn = document.getElementById('copy-email');
-  const toast   = document.getElementById('email-toast');
+  const toast = document.getElementById('email-toast');
   let toastTimer;
-  if (copyBtn && toast) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('zenazerai@gmail.com').then(() => {
-        clearTimeout(toastTimer);
-        toast.classList.add('is-visible');
-        toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
-      });
+
+  function copyEmail() {
+    navigator.clipboard.writeText('zenazerai@gmail.com').then(() => {
+      if (!toast) return;
+      clearTimeout(toastTimer);
+      toast.classList.add('is-visible');
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
     });
   }
+
+  const copyBtn    = document.getElementById('copy-email');
+  const navCopyBtn = document.getElementById('nav-copy-email');
+  const footCopyBtn = document.getElementById('foot-copy-email');
+  if (copyBtn)    copyBtn.addEventListener('click',    copyEmail);
+  if (navCopyBtn) navCopyBtn.addEventListener('click', copyEmail);
+  if (footCopyBtn) footCopyBtn.addEventListener('click', copyEmail);
 
 
   /* ──────────────────────────────────────────────────────────────────
@@ -210,13 +255,60 @@
 
 
   /* ──────────────────────────────────────────────────────────────────
+     5a. HAMBURGER MENU toggle
+  ────────────────────────────────────────────────────────────────── */
+  const hamburgerBtn = document.getElementById('nav-hamburger');
+  const mobileNav    = document.getElementById('mobile-nav');
+
+  if (hamburgerBtn && mobileNav) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('is-open');
+      hamburgerBtn.classList.toggle('is-open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+      mobileNav.setAttribute('aria-hidden',     String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    /* Close on link click */
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('is-open');
+        hamburgerBtn.classList.remove('is-open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+        mobileNav.classList.remove('is-open');
+        hamburgerBtn.classList.remove('is-open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        hamburgerBtn.focus();
+      }
+    });
+  }
+
+  /* Wire up mobile "Get in touch" button */
+  const mobileCopyBtn = document.getElementById('mobile-copy-email');
+  if (mobileCopyBtn) mobileCopyBtn.addEventListener('click', copyEmail);
+
+
+  /* ──────────────────────────────────────────────────────────────────
      5. REVEAL ON SCROLL — gentle fade-up for section elements
      .record is excluded: its opacity is driven by initRecordStack()
   ────────────────────────────────────────────────────────────────── */
   const reveal = document.querySelectorAll(
-    '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner'
+    '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials'
   );
   reveal.forEach(el => el.classList.add('reveal'));
+
+  /* Observe all .reveal elements (including ones marked up in HTML directly) */
+  const allReveal = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
@@ -227,9 +319,47 @@
         }
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    reveal.forEach(el => io.observe(el));
+    allReveal.forEach(el => io.observe(el));
   } else {
-    reveal.forEach(el => el.classList.add('is-in'));
+    allReveal.forEach(el => el.classList.add('is-in'));
   }
+
+
+  /* ──────────────────────────────────────────────────────────────────
+     6. ANIMATED TRACK-CARD ACCORDION
+     <details> opens instantly; we intercept to animate both directions.
+  ────────────────────────────────────────────────────────────────── */
+  function initTrackCards() {
+    const cards = document.querySelectorAll('.track-card');
+    if (!cards.length) return;
+
+    cards.forEach(details => {
+      const summary = details.querySelector('summary');
+      const body    = details.querySelector('.track-card__body');
+      if (!summary || !body) return;
+
+      summary.addEventListener('click', e => {
+        e.preventDefault();
+
+        if (details.open) {
+          /* ── Closing: animate to 0, then remove [open] ── */
+          body.style.gridTemplateRows = '0fr';
+          const onEnd = () => {
+            details.removeAttribute('open');
+            body.removeEventListener('transitionend', onEnd);
+          };
+          body.addEventListener('transitionend', onEnd, { once: true });
+        } else {
+          /* ── Opening: set [open] first, then animate in ── */
+          details.setAttribute('open', '');
+          /* Force reflow so the transition fires */
+          body.getBoundingClientRect();
+          body.style.gridTemplateRows = '1fr';
+        }
+      });
+    });
+  }
+
+  initTrackCards();
 
 })();

@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=Josefin+Sans:wght@300;400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Raleway:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -29,9 +29,38 @@
       <a href="ai-explorations.html">AI Explorations</a>
     </nav>
     <div class="nav__meta">
-      <span class="kicker">Side A · 2026</span>
+      <button class="nav__cta" id="nav-copy-email" type="button" aria-label="Copy email address">
+        <span class="nav__cta-label">Get in touch</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
     </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
   </header>
+
+  <!-- Mobile nav drawer -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
 
   <!-- HERO -->
   <section id="top" class="hero">
@@ -97,17 +126,15 @@
 
       <!-- CTAs sit below the card -->
       <div class="hero__ctas">
-        <a class="hero__cta-btn hero__cta-btn--primary" href="case-studies.html">View my work</a>
-        <button class="hero__cta-btn hero__cta-btn--ghost" id="copy-email" type="button">Get in touch</button>
+        <a class="hero__cta-btn hero__cta-btn--primary" href="#works">View my work</a>
       </div>
     </div>
 
     <div class="hero__top">
       <span class="kicker">★ Now Playing</span>
-      <span class="kicker kicker--right">Portfolio · Vol. 01</span>
     </div>
 
-    <a class="hero__scroll" href="case-studies.html" aria-label="Go to case studies">
+    <a class="hero__scroll" href="#works" aria-label="Scroll to works">
       <span>Flip the record</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M12 5v14M5 12l7 7 7-7"/>
@@ -115,98 +142,500 @@
     </a>
   </section>
 
+  <!-- CASE STUDIES -->
+  <section id="works" class="works">
+    <div class="section__head">
+      <span class="kicker">02 · The Catalogue</span>
+      <h2 class="section__title">
+        <span>Selected </span>
+        <span class="italic">case studies.</span>
+      </h2>
+      <p class="section__lede">A handful of records I'm proud to have spun. Each sleeve hides a story — flip one to read the liner notes.</p>
+      <p class="section__note">Some projects are subject to NDA.</p>
+    </div>
+
+    <ul class="crate" role="list">
+
+      <!-- A1 · GWI -->
+      <li class="record" data-genre="SaaS">
+        <div class="record__inner">
+          <div class="record__front">
+            <div class="record__face" style="--accent: #B8446A;">
+              <div class="record__info">
+                <span class="record__cat">A1 &nbsp;·&nbsp; SaaS AI Platform &nbsp;|&nbsp; B2B</span>
+                <h3 class="record__title">Reimagining user management for an AI-driven platform</h3>
+              </div>
+              <div class="record__face-foot">
+                <div class="record__pills">
+                  <span>User Research</span>
+                  <span>Internal Tools</span>
+                  <span>System Design</span>
+                </div>
+                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
+              </div>
+              <div class="record__media">
+                <div class="record__image">
+                  <img src="assets/gwi.png" alt="GWI admin portal design" />
+                  <div class="record__face-vinyl" aria-hidden="true">
+                    <div class="record__vinyl-label"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="record__back" style="--accent: #B8446A;">
+            <header class="record__back-head">
+              <span class="kicker">Liner notes · A1</span>
+              <h3>GWI</h3>
+              <p>Led foundational discovery and early design for user management across a complex, multi-system platform, shaping scalable foundations for an upcoming agentic product launch.</p>
+            </header>
+            <div class="record__back-tracks">
+              <span class="kicker">Tracklist</span>
+              <ul class="tracklist">
+                <li><span>01</span><span>Discovery & stakeholder alignment</span><span>—</span></li>
+                <li><span>02</span><span>User research</span><span>—</span></li>
+                <li><span>03</span><span>System design</span><span>—</span></li>
+                <li><span>04</span><span>Prototype & validation</span><span>—</span></li>
+              </ul>
+              <div class="record__pills">
+                <span>User Research</span>
+                <span>Internal Tools</span>
+                <span>System Design</span>
+              </div>
+            </div>
+            <footer class="record__back-foot">
+              <div class="record__stats">
+                <div class="record__stat">
+                  <span class="record__stat-num">£36m</span>
+                  <span class="record__stat-label">Misalignment uncovered</span>
+                </div>
+                <div class="record__stat">
+                  <span class="record__stat-num">5</span>
+                  <span class="record__stat-label">Teams aligned</span>
+                </div>
+              </div>
+              <a class="record__cta" href="gwi.html">
+                View case study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+              </a>
+            </footer>
+          </div>
+        </div>
+      </li>
+
+      <!-- A2 · Planning Inspectorate -->
+      <li class="record" data-genre="Public Sector">
+        <div class="record__inner">
+          <div class="record__front">
+            <div class="record__face" style="--accent: #3D8A72;">
+              <div class="record__info">
+                <span class="record__cat">A2 &nbsp;·&nbsp; Public Sector &nbsp;|&nbsp; B2B</span>
+                <h3 class="record__title">Reducing file processing from days to minutes</h3>
+              </div>
+              <div class="record__face-foot">
+                <div class="record__pills">
+                  <span>Research</span>
+                  <span>Redesign</span>
+                  <span>Strategy</span>
+                </div>
+                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
+              </div>
+              <div class="record__media">
+                <div class="record__image">
+                  <img src="assets/planning-inspectorate.png" alt="Planning Inspectorate case management system" />
+                  <div class="record__face-vinyl" aria-hidden="true">
+                    <div class="record__vinyl-label"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="record__back" style="--accent: #3D8A72;">
+            <header class="record__back-head">
+              <span class="kicker">Liner notes · A2</span>
+              <h3>Planning Inspectorate</h3>
+              <p>Led the research and redesign of a case management system for a government client. Transforming the document management process, a critical bottleneck in the planning application process.</p>
+            </header>
+            <div class="record__back-tracks">
+              <span class="kicker">Tracklist</span>
+              <ul class="tracklist">
+                <li><span>01</span><span>Discovery & research</span><span>—</span></li>
+                <li><span>02</span><span>Workflow mapping</span><span>—</span></li>
+                <li><span>03</span><span>Redesign & prototyping</span><span>—</span></li>
+                <li><span>04</span><span>Testing & delivery</span><span>—</span></li>
+              </ul>
+              <div class="record__pills">
+                <span>Research</span>
+                <span>Redesign</span>
+                <span>Strategy</span>
+              </div>
+            </div>
+            <footer class="record__back-foot">
+              <div class="record__stats">
+                <div class="record__stat">
+                  <span class="record__stat-num">+35%</span>
+                  <span class="record__stat-label">SUS improvement</span>
+                </div>
+                <div class="record__stat">
+                  <span class="record__stat-num">Mar '24</span>
+                  <span class="record__stat-label">First case live</span>
+                </div>
+              </div>
+              <a class="record__cta" href="planning-inspectorate.html">
+                View case study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+              </a>
+            </footer>
+          </div>
+        </div>
+      </li>
+
+      <!-- B1 · Toyota -->
+      <li class="record" data-genre="Automotive">
+        <div class="record__inner">
+          <div class="record__front">
+            <div class="record__face" style="--accent: #8B6240;">
+              <div class="record__info">
+                <span class="record__cat">B1 &nbsp;·&nbsp; Automotive &nbsp;|&nbsp; B2C</span>
+                <h3 class="record__title">Improving conversion through rapid experimentation</h3>
+              </div>
+              <div class="record__face-foot">
+                <div class="record__pills">
+                  <span>UI Design</span>
+                  <span>A/B Testing</span>
+                  <span>Experimentation</span>
+                </div>
+                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
+              </div>
+              <div class="record__media">
+                <div class="record__image">
+                  <img src="assets/toyota.png" alt="Toyota product page design" />
+                  <div class="record__face-vinyl" aria-hidden="true">
+                    <div class="record__vinyl-label"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="record__back" style="--accent: #8B6240;">
+            <header class="record__back-head">
+              <span class="kicker">Liner notes · B1</span>
+              <h3>Toyota</h3>
+              <p>Identified and prioritised conversion opportunities across Toyota's product journeys, designing and validating UX changes through live experimentation.</p>
+            </header>
+            <div class="record__back-tracks">
+              <span class="kicker">Tracklist</span>
+              <ul class="tracklist">
+                <li><span>01</span><span>Conversion audit</span><span>—</span></li>
+                <li><span>02</span><span>Hypothesis sprint</span><span>—</span></li>
+                <li><span>03</span><span>A/B experiment design</span><span>—</span></li>
+                <li><span>04</span><span>Analysis & iteration</span><span>—</span></li>
+              </ul>
+              <div class="record__pills">
+                <span>UI Design</span>
+                <span>A/B Testing</span>
+                <span>Experimentation</span>
+              </div>
+            </div>
+            <footer class="record__back-foot">
+              <div class="record__stats">
+                <div class="record__stat">
+                  <span class="record__stat-num">+31%</span>
+                  <span class="record__stat-label">PLP views</span>
+                </div>
+                <div class="record__stat">
+                  <span class="record__stat-num">+20%</span>
+                  <span class="record__stat-label">Enquiry progression</span>
+                </div>
+              </div>
+              <a class="record__cta" href="toyota.html">
+                View case study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+              </a>
+            </footer>
+          </div>
+        </div>
+      </li>
+
+      <!-- B2 · Hyundai Finance -->
+      <li class="record" data-genre="Auto Finance">
+        <div class="record__inner">
+          <div class="record__front">
+            <div class="record__face" style="--accent: #5B7BA8;">
+              <div class="record__info">
+                <span class="record__cat">B2 &nbsp;·&nbsp; Auto Finance &nbsp;|&nbsp; B2B2C</span>
+                <h3 class="record__title">Enabling car dealers to do soft credit checks</h3>
+              </div>
+              <div class="record__face-foot">
+                <div class="record__pills">
+                  <span>SaaS</span>
+                  <span>Research</span>
+                  <span>Design System</span>
+                </div>
+                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
+              </div>
+              <div class="record__media">
+                <div class="record__image">
+                  <img src="assets/hyundai-finance.png" alt="Hyundai Finance dealer portal design" />
+                  <div class="record__face-vinyl" aria-hidden="true">
+                    <div class="record__vinyl-label"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="record__back" style="--accent: #5B7BA8;">
+            <header class="record__back-head">
+              <span class="kicker">Liner notes · B2</span>
+              <h3>Hyundai Finance</h3>
+              <p>Led the design and delivery of a dealer-led soft search MVP to help dealers save time and improve customer conversion for car finance.</p>
+            </header>
+            <div class="record__back-tracks">
+              <span class="kicker">Tracklist</span>
+              <ul class="tracklist">
+                <li><span>01</span><span>Discovery & research</span><span>—</span></li>
+                <li><span>02</span><span>Responsive prototype</span><span>—</span></li>
+                <li><span>03</span><span>Design system</span><span>—</span></li>
+                <li><span>04</span><span>MVP launch</span><span>—</span></li>
+              </ul>
+              <div class="record__pills">
+                <span>SaaS</span>
+                <span>Research</span>
+                <span>Design System</span>
+              </div>
+            </div>
+            <footer class="record__back-foot">
+              <div class="record__stats">
+                <div class="record__stat">
+                  <span class="record__stat-num">↑</span>
+                  <span class="record__stat-label">Informed finance decisions</span>
+                </div>
+                <div class="record__stat">
+                  <span class="record__stat-num">Jul '25</span>
+                  <span class="record__stat-label">Pilot MVP launch</span>
+                </div>
+              </div>
+              <a class="record__cta" href="hyundai-finance.html">
+                View case study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+              </a>
+            </footer>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
   <!-- CLIENTS / FRAMED PORTRAIT POSTER -->
   <section id="clients" class="lineup">
+    <div class="lineup__layout">
+
     <div class="section__head">
       <span class="kicker">03 · The Lineup</span>
       <h2 class="section__title">
         <span>Clients </span>
         <span class="italic">I've worked with.</span>
       </h2>
-      <p class="section__lede">Proud to have teamed up with some amazing companies. A pressing of the lineup — one print, one studio, one designer.</p>
+      <p class="section__lede">Ten years of shows, across sectors and scales. Here's who's been on the bill.</p>
     </div>
 
     <div class="lineup__floor">
-      <article class="frame frame--lineup" aria-label="Client lineup poster">
-        <div class="frame__mat">
+      <figure class="frame frame--lineup">
+        <img
+          src="assets/lineup-poster.png"
+          alt="Client lineup poster — Zena Zerai, Digital Product Designer. Headliners: Google, Barclays, Toyota. Featured acts: Compare the Market, Department for Education, Hyundai Finance. Supporting acts: GWI, Planning Inspectorate, Cazoo, Not on the High Street, RBSI."
+          class="frame__img"
+        />
+      </figure>
+    </div>
 
-          <!-- Concentric rings — classic '60s/'70s festival poster motif -->
-          <div class="lp__rings" aria-hidden="true"></div>
+    </div><!-- /.lineup__layout -->
+  </section>
 
-          <!-- Inner ruled border -->
-          <div class="lp__inset" aria-hidden="true">
+  <!-- AI EXPLORATIONS — B-Side shelf -->
+  <section id="ai-explorations" class="ai-shelf">
+    <div class="ai-shelf__head">
+      <span class="kicker">04 · The B-Sides</span>
+      <h2 class="section__title">
+        <span>AI </span>
+        <span class="italic">explorations.</span>
+      </h2>
+      <p class="section__lede">Personal experiments at the intersection of design thinking and machine intelligence — odd tracks that don't fit neatly on any album.</p>
+    </div>
 
-            <header class="lp__head">
-              <p class="lp__eyebrow">★ &nbsp; Product Design &nbsp;·&nbsp; 2016 – 2026 &nbsp;·&nbsp; London &amp; Remote &nbsp; ★</p>
-              <h3 class="lp__title">The<br>Lineup</h3>
-              <p class="lp__rule" aria-hidden="true"></p>
-              <p class="lp__sub">B2B SaaS &nbsp;·&nbsp; Fintech &nbsp;·&nbsp; Public Sector &nbsp;·&nbsp; Automotive &nbsp;·&nbsp; Ecom</p>
-            </header>
+    <ul class="cd-rack" role="list">
 
-            <div class="lp__acts">
-
-              <div class="lp__tier lp__tier--h1">
-                <p class="lp__names">Barclays</p>
-                <p class="lp__names">Google</p>
+      <li>
+        <a class="cd-case" href="ai-explorations.html" aria-label="BA & Financial Ombudsman — Designing for AI (pitchwork)">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#b05490;--cd-b:#e07050;--cd-c:#801860;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">BA &amp; FO</strong>
+                <span class="cd-case__label-title">Designing for AI</span>
               </div>
-
-              <div class="lp__ornament" aria-hidden="true">
-                <span></span><span>✦ &nbsp; ✦ &nbsp; ✦</span><span></span>
-              </div>
-
-              <div class="lp__tier lp__tier--h2">
-                <p class="lp__names">Toyota &nbsp;·&nbsp; GWI &nbsp;·&nbsp; Cazoo &nbsp;·&nbsp; Compare the Market</p>
-              </div>
-
-              <div class="lp__ornament lp__ornament--faint" aria-hidden="true">
-                <span></span><span>· · · · · · · · · · ·</span><span></span>
-              </div>
-
-              <div class="lp__tier lp__tier--h3">
-                <p class="lp__names">RBS &nbsp;·&nbsp; Not on the High Street &nbsp;·&nbsp; Hyundai Finance</p>
-                <p class="lp__names">The Planning Inspectorate &nbsp;·&nbsp; Department for Education</p>
-              </div>
-
-              <div class="lp__more">+ Much more to be announced</div>
-
             </div>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="cd-case__info">
+            <p class="cd-case__project">BA &amp; Financial Ombudsman</p>
+            <p class="cd-case__desc">Designing for AI (pitchwork)</p>
+          </div>
+        </a>
+      </li>
 
-            <footer class="lp__foot">
-              <span>Senior Product Designer &nbsp;·&nbsp; zenazerai@gmail.com</span>
-            </footer>
+      <li>
+        <a class="cd-case" href="ai-explorations.html" aria-label="Valtech Hackathon — Designing a dashboard with AI tools">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#1c1814;--cd-b:#2e2418;--cd-c:#100e0a;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">Valtech</strong>
+                <span class="cd-case__label-title">Hackathon</span>
+              </div>
+            </div>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="cd-case__info">
+            <p class="cd-case__project">Valtech Hackathon</p>
+            <p class="cd-case__desc">Designing a dashboard with AI tools</p>
+          </div>
+        </a>
+      </li>
 
-          </div><!-- /.lp__inset -->
-        </div>
+      <li>
+        <a class="cd-case" href="ai-explorations.html" aria-label="Google & Tide — Conversational UX and CCAI for finance">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#1a1870;--cd-b:#3535b8;--cd-c:#5555e8;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">Google &amp; Tide</strong>
+                <span class="cd-case__label-title">Conversational UX</span>
+              </div>
+            </div>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="cd-case__info">
+            <p class="cd-case__project">Google &amp; Tide</p>
+            <p class="cd-case__desc">Conversational UX and CCAI for finance</p>
+          </div>
+        </a>
+      </li>
+
+    </ul>
+
+    <div class="ai-shelf__more-wrap">
+      <a href="ai-explorations.html" class="ai-shelf__more">
+        View all explorations
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H8M17 7v9"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials">
+    <div class="testimonials__header">
+      <span class="kicker">05 · B-Side Reviews</span>
+      <h2 class="testimonials__title">
+        <span>What people </span><span class="italic">say.</span>
+      </h2>
+    </div>
+
+    <div class="t-fan">
+
+      <article class="t-card t-card--1">
+        <blockquote class="t-card__quote">
+          Zena is a joy to work with – she's hardworking, constructive in her feedback, and brings such a positive energy to teams. Wish I could work with her on every project.
+        </blockquote>
+        <footer class="t-card__foot">
+          <div class="t-card__avatar" aria-hidden="true">CB</div>
+          <div class="t-card__meta">
+            <p class="t-card__name">Charlotte Bonser</p>
+            <p class="t-card__role">Senior CX Strategist</p>
+          </div>
+        </footer>
       </article>
+
+      <article class="t-card t-card--2">
+        <blockquote class="t-card__quote">
+          We've worked closely together on developing a KPI framework and exploring data-driven UX, where Zena has been incredibly supportive and generous with her time and knowledge.
+        </blockquote>
+        <footer class="t-card__foot">
+          <div class="t-card__avatar" aria-hidden="true">LS</div>
+          <div class="t-card__meta">
+            <p class="t-card__name">Louise Scott</p>
+            <p class="t-card__role">Lead Product Manager</p>
+          </div>
+        </footer>
+      </article>
+
+      <article class="t-card t-card--3">
+        <blockquote class="t-card__quote">
+          It's always a pleasure to work with Zena — she is determined, a born and natural leader, and someone whose opinion and feedback I value and constantly seek.
+        </blockquote>
+        <footer class="t-card__foot">
+          <div class="t-card__avatar" aria-hidden="true">FD</div>
+          <div class="t-card__meta">
+            <p class="t-card__name">Frederike De Zutter</p>
+            <p class="t-card__role">Lead UX Designer</p>
+          </div>
+        </footer>
+      </article>
+
+      <article class="t-card t-card--4">
+        <blockquote class="t-card__quote">
+          Since joining the HCUK account, Zena has quickly established herself as an invaluable member of the team. Her ability to rapidly grasp the domain and apply her UX expertise in a meaningful and relevant way has been hugely impressive.
+        </blockquote>
+        <footer class="t-card__foot">
+          <div class="t-card__avatar" aria-hidden="true">TD</div>
+          <div class="t-card__meta">
+            <p class="t-card__name">Tom Dickie</p>
+            <p class="t-card__role">Tech Lead</p>
+          </div>
+        </footer>
+      </article>
+
     </div>
   </section>
 
   <!-- CONTACT / FOOTER -->
   <footer id="contact" class="foot">
     <div class="foot__inner">
-      <span class="kicker">05 · End of Side B</span>
+      <span class="kicker">06 · End of Side A</span>
       <h2 class="foot__title">
         <span>Got a record </span>
         <span class="italic">worth pressing?</span>
       </h2>
-      <a class="foot__cta" href="mailto:zenazerai@gmail.com">
-        <span>zenazerai@gmail.com</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M7 17L17 7M17 7H8M17 7v9"/>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
         </svg>
-      </a>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
 
       <div class="foot__row">
         <div class="foot__links">
           <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="#">Read.cv</a>
-          <a href="#">Dribbble</a>
-          <a href="#">Are.na</a>
         </div>
         <div class="foot__meta">
           <span class="kicker">© Zena Zerai · MMXXVI</span>
           <span class="kicker">London ↔ Remote</span>
         </div>
+      </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
       </div>
     </div>
   </footer>

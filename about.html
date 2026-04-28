@@ -29,44 +29,280 @@
     <div class="nav__meta">
       <span class="kicker">Side B · 2026</span>
     </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
   </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
 
   <!-- ABOUT -->
   <section id="about" class="about about--page">
     <div class="about__grid">
-      <div class="about__visual" aria-hidden="true">
-        <div class="vinyl">
-          <div class="vinyl__disc">
-            <div class="vinyl__grooves"></div>
-            <div class="vinyl__label">
-              <span class="kicker">Side B</span>
-              <span class="vinyl__title">Zena Zerai</span>
-              <span class="kicker">33⅓ RPM</span>
-            </div>
-          </div>
-          <div class="vinyl__shine"></div>
+      <div class="about__visual">
+        <div class="about__photo-wrap">
+          <img
+            class="about__photo"
+            src="assets/zena-about.png"
+            alt="Zena Zerai — arms up, full energy, big smile"
+          />
+          <span class="about__photo-caption">Zena Zerai · London</span>
         </div>
       </div>
 
       <div class="about__copy">
         <span class="kicker">Liner Notes</span>
         <h1 class="section__title">
-          <span>About </span>
-          <span class="italic">the artist.</span>
+          <span>The full </span>
+          <span class="italic">story.</span>
         </h1>
-        <p>I'm Zena, a Senior Product Designer who treats every interface like a record I'd want to listen to twice. Twelve years in, I'm still chasing that warm, considered feeling — products that hum instead of shout.</p>
-        <p>I've helped early-stage founders find their first design language, and walked enterprise teams through quiet, careful redesigns. Most days you'll find me trading sticky notes for systems, and arguing kindly about whitespace.</p>
+        <p class="about__lede">I'm Zena — a Senior Product Designer in London, currently shipping things that actually work at <span class="about__highlight">GWI</span>. Seven-plus years across agencies, scale-ups, and enterprises. I get up to speed fast, cut through the noise, and come out the other side with something clear.</p>
+        <p>I work end-to-end — from the messy, who-even-owns-this phase all the way to production-ready handoff. Before design, I spent time in law and music PR. That combination left me with a love of rigour, a feel for a good story, and a pun habit my colleagues have learned to live with.</p>
 
         <div class="tracks">
           <span class="kicker">Track listing — what I do</span>
-          <ul class="tracklist tracklist--lg">
-            <li><span>01</span><span>Product strategy</span><span>4:12</span></li>
-            <li><span>02</span><span>Design systems</span><span>5:33</span></li>
-            <li><span>03</span><span>UX research</span><span>3:48</span></li>
-            <li><span>04</span><span>Interaction design</span><span>4:02</span></li>
-            <li><span>05</span><span>Brand & tone of voice</span><span>3:21</span></li>
-            <li><span>06</span><span>Mentoring & critique</span><span>5:15</span></li>
-          </ul>
+          <div class="tracklist-cards">
+
+            <details class="track-card">
+              <summary class="track-card__trigger">
+                <span class="track-card__num">01</span>
+                <span class="track-card__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </span>
+                <span class="track-card__title">UX / Product Design</span>
+                <svg class="track-card__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="track-card__body">
+                <div class="track-card__body-inner">
+                  <ul class="track-card__list">
+                    <li>Design IA, user flows, wireframes, and high-fidelity prototypes</li>
+                    <li>Create accessible, responsive, and consistent interfaces</li>
+                    <li>Apply and evolve design systems at scale</li>
+                    <li>Partner with engineers for smooth handoff and delivery</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="track-card">
+              <summary class="track-card__trigger">
+                <span class="track-card__num">02</span>
+                <span class="track-card__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </span>
+                <span class="track-card__title">User Research</span>
+                <svg class="track-card__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="track-card__body">
+                <div class="track-card__body-inner">
+                  <ul class="track-card__list">
+                    <li>Lead generative and evaluative research across stages</li>
+                    <li>Combine qual + quant to uncover user needs and behaviours</li>
+                    <li>Translate insights into clear design direction</li>
+                    <li>Build alignment through findings and storytelling</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="track-card">
+              <summary class="track-card__trigger">
+                <span class="track-card__num">03</span>
+                <span class="track-card__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </span>
+                <span class="track-card__title">UX Strategy</span>
+                <svg class="track-card__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="track-card__body">
+                <div class="track-card__body-inner">
+                  <ul class="track-card__list">
+                    <li>Align design vision with business goals and user outcomes</li>
+                    <li>Facilitate workshops to drive product and team alignment</li>
+                    <li>Prioritise features and roadmap decisions with evidence</li>
+                    <li>Define and track UX metrics to measure impact</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER HISTORY -->
+  <section class="career">
+    <div class="career__inner">
+      <div class="career__head">
+        <span class="kicker">[02] Experience</span>
+      </div>
+      <ol class="career__list" role="list">
+        <li class="career__item">
+          <div class="career__role">
+            <span class="career__title">Senior Product Designer</span>
+            <span class="career__company">GWI</span>
+          </div>
+          <span class="career__dates">2026–present</span>
+        </li>
+        <li class="career__item">
+          <div class="career__role">
+            <span class="career__title">Senior Experience Designer</span>
+            <span class="career__company">Valtech</span>
+          </div>
+          <span class="career__dates">2024–2025</span>
+        </li>
+        <li class="career__item">
+          <div class="career__role">
+            <span class="career__title">Senior Experience Designer</span>
+            <span class="career__company">Kin + Carta</span>
+          </div>
+          <span class="career__dates">2020–24</span>
+        </li>
+        <li class="career__item">
+          <div class="career__role">
+            <span class="career__title">Volunteer UX Designer</span>
+            <span class="career__company">Action for Children</span>
+          </div>
+          <span class="career__dates">2019</span>
+        </li>
+        <li class="career__item">
+          <div class="career__role">
+            <span class="career__title">Radio &amp; Streaming Manager</span>
+            <span class="career__company">Universal Music</span>
+          </div>
+          <span class="career__dates">2014–2018</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SIDE ACTIVITIES -->
+  <section class="side-acts">
+    <div class="side-acts__inner">
+      <span class="kicker">[04] Side activities</span>
+      <ul class="side-acts__row" role="list">
+
+        <li class="sa-card">
+          <div class="sa-card__jewel">
+            <div class="sa-card__spine" aria-hidden="true"></div>
+            <div class="sa-card__img-wrap">
+              <img class="sa-card__img" src="assets/side-teaching.jpg" alt="Teaching & Mentoring" />
+              <div class="sa-card__img-fallback" aria-hidden="true">01</div>
+            </div>
+            <div class="sa-card__glare" aria-hidden="true"></div>
+            <div class="sa-card__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="sa-card__body">
+            <h3 class="sa-card__title">Teaching &amp; Mentoring</h3>
+            <p class="sa-card__desc">Created lessons and taught UX at Ravensbourne Uni and for underpressed groups at Code Untapped. Helping K+C win BCorp status.</p>
+            <a class="sa-card__link" href="#">Link to 3-part seminars
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+            </a>
+          </div>
+        </li>
+
+        <li class="sa-card">
+          <div class="sa-card__jewel">
+            <div class="sa-card__spine" aria-hidden="true"></div>
+            <div class="sa-card__img-wrap">
+              <img class="sa-card__img" src="assets/side-speaking.jpg" alt="Speaking and Hosting" />
+              <div class="sa-card__img-fallback" aria-hidden="true">02</div>
+            </div>
+            <div class="sa-card__glare" aria-hidden="true"></div>
+            <div class="sa-card__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="sa-card__body">
+            <h3 class="sa-card__title">Speaking and Hosting</h3>
+            <p class="sa-card__desc">Organised and compered Tech Circus event and spoke on International Women's Day Panel for K+C.</p>
+            <a class="sa-card__link" href="#">Watch back the event
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+            </a>
+          </div>
+        </li>
+
+        <li class="sa-card">
+          <div class="sa-card__jewel">
+            <div class="sa-card__spine" aria-hidden="true"></div>
+            <div class="sa-card__img-wrap">
+              <img class="sa-card__img" src="assets/side-writing.jpg" alt="Design Writing" />
+              <div class="sa-card__img-fallback" aria-hidden="true">03</div>
+            </div>
+            <div class="sa-card__glare" aria-hidden="true"></div>
+            <div class="sa-card__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="sa-card__body">
+            <h3 class="sa-card__title">Design Writing</h3>
+            <p class="sa-card__desc">Chief Editor of Valtech's Design Blog 'Design Assets'. Interviewed Luis Ouirach from Figma and featured a visit to Google's offices.</p>
+            <a class="sa-card__link" href="#">Check out the blog
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+            </a>
+          </div>
+        </li>
+
+        <li class="sa-card">
+          <div class="sa-card__jewel">
+            <div class="sa-card__spine" aria-hidden="true"></div>
+            <div class="sa-card__img-wrap">
+              <img class="sa-card__img" src="assets/side-mhfa.jpg" alt="Mental Health First Aider" />
+              <div class="sa-card__img-fallback" aria-hidden="true">04</div>
+            </div>
+            <div class="sa-card__glare" aria-hidden="true"></div>
+            <div class="sa-card__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="sa-card__body">
+            <h3 class="sa-card__title">Mental Health First Aider</h3>
+            <p class="sa-card__desc">Trained as an employee Mental Health first aider, to support colleagues experiencing poor mental health.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- OUTSIDE OF DESIGN -->
+  <section class="outside-design">
+    <div class="outside-design__inner">
+      <div class="outside-design__head">
+        <span class="kicker">[05] Outside of design</span>
+      </div>
+      <div class="outside-design__body">
+        <p class="outside-design__desc">When I'm not working I love to write songs, play the guitar and dabble with music production on Logic Pro. My music is inspired by Radiohead, Deftones and Sharon Van Etten to name a few.</p>
+        <div class="outside-design__media">
+          <div class="outside-design__photo-wrap">
+            <img class="outside-design__photo" src="assets/zena-guitar.jpg" alt="Zena playing guitar on stage" />
+          </div>
+          <div class="outside-design__release">
+            <div class="outside-design__album-wrap">
+              <img class="outside-design__album" src="assets/hoian-album.jpg" alt="The Jester — Hoian album cover" />
+            </div>
+            <div class="outside-design__album-info">
+              <h3 class="outside-design__album-title">Hoian</h3>
+              <p class="outside-design__album-sub">My solo music</p>
+              <a class="outside-design__album-link sa-card__link" href="https://open.spotify.com/artist/hoian" target="_blank" rel="noopener noreferrer">
+                Check it out Spotify
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -90,18 +326,21 @@
       <div class="foot__row">
         <div class="foot__links">
           <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="#">Read.cv</a>
-          <a href="#">Dribbble</a>
-          <a href="#">Are.na</a>
         </div>
         <div class="foot__meta">
           <span class="kicker">© Zena Zerai · MMXXVI</span>
           <span class="kicker">London ↔ Remote</span>
         </div>
       </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
 </body>
 </html>
