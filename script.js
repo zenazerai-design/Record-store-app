@@ -362,4 +362,48 @@
 
   initTrackCards();
 
+
+  /* ──────────────────────────────────────────────────────────────────
+     7. SPOTIFY FAB — corner playlist popover
+  ────────────────────────────────────────────────────────────────── */
+  const spotifyFab = document.getElementById('spotify-fab');
+  const spotifyTrigger = document.getElementById('spotify-fab-trigger');
+  const spotifyPanel = document.getElementById('spotify-fab-panel');
+  const spotifyIframe = spotifyFab?.querySelector('.spotify-fab__embed iframe');
+  const spotifyClose = spotifyFab?.querySelector('.spotify-fab__panel-close');
+
+  function setSpotifyOpen(open) {
+    if (!spotifyFab || !spotifyTrigger || !spotifyPanel) return;
+    spotifyFab.classList.toggle('spotify-fab--open', open);
+    spotifyTrigger.setAttribute('aria-expanded', String(open));
+    spotifyPanel.setAttribute('aria-hidden', String(!open));
+    if (open && spotifyIframe && spotifyIframe.dataset.src && !spotifyIframe.getAttribute('src')) {
+      spotifyIframe.setAttribute('src', spotifyIframe.dataset.src);
+    }
+  }
+
+  if (spotifyFab && spotifyTrigger && spotifyPanel) {
+    spotifyFab.addEventListener('click', e => e.stopPropagation());
+
+    spotifyTrigger.addEventListener('click', () => {
+      setSpotifyOpen(!spotifyFab.classList.contains('spotify-fab--open'));
+    });
+
+    spotifyClose?.addEventListener('click', () => {
+      setSpotifyOpen(false);
+      spotifyTrigger.focus();
+    });
+
+    document.addEventListener('click', () => {
+      if (spotifyFab.classList.contains('spotify-fab--open')) setSpotifyOpen(false);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && spotifyFab.classList.contains('spotify-fab--open')) {
+        setSpotifyOpen(false);
+        spotifyTrigger.focus();
+      }
+    });
+  }
+
 })();

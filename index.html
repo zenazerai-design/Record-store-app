@@ -660,6 +660,68 @@
     </div>
   </footer>
 
+  <!-- ─── Spotify playlist (FAB) — replace PLAYLIST_ID with your playlist ID ─── -->
+  <div class="spotify-fab" id="spotify-fab">
+    <div
+      class="spotify-fab__panel"
+      id="spotify-fab-panel"
+      role="region"
+      aria-label="Spotify playlist player"
+      aria-hidden="true"
+    >
+      <div class="spotify-fab__panel-head">
+        <span class="spotify-fab__panel-title">Now spinning</span>
+        <button type="button" class="spotify-fab__panel-close" aria-label="Close playlist">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="spotify-fab__embed">
+        <iframe
+          data-src="https://open.spotify.com/embed/playlist/PLAYLIST_ID?utm_source=generator&theme=0"
+          src=""
+          width="100%"
+          height="232"
+          style="border:0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify playlist"
+        ></iframe>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="spotify-fab__trigger"
+      id="spotify-fab-trigger"
+      aria-expanded="false"
+      aria-controls="spotify-fab-panel"
+      title="Open playlist player"
+    >
+      <span class="spotify-fab__glow" aria-hidden="true"></span>
+      <span class="spotify-fab__art" aria-hidden="true">
+        <svg class="spotify-fab__turntable" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <rect x="3" y="13" width="42" height="29" rx="4" fill="#241C15" stroke="#3D3228" stroke-width="1"/>
+          <rect x="6" y="16" width="36" height="23" rx="2" fill="#1B140E" opacity="0.85"/>
+          <circle cx="21" cy="27.5" r="11.5" fill="#14110E" stroke="#4A3C30" stroke-width="0.75"/>
+          <circle cx="21" cy="27.5" r="8.5" stroke="#E9A05B" stroke-opacity="0.28" stroke-width="0.5"/>
+          <circle cx="21" cy="27.5" r="5.5" stroke="#8A7A66" stroke-opacity="0.35" stroke-width="0.35"/>
+          <circle cx="21" cy="27.5" r="2" fill="#C9BEAB"/>
+          <circle cx="36" cy="19" r="2.8" fill="#5C5145" stroke="#8A7A66" stroke-width="0.35"/>
+          <path d="M35.6 18.8L23.2 31.2" stroke="#C9BEAB" stroke-width="1.25" stroke-linecap="round"/>
+          <circle cx="23.2" cy="31.2" r="1.15" fill="#D67B3D"/>
+        </svg>
+      </span>
+      <span class="spotify-fab__play-ring" aria-hidden="true">
+        <svg class="spotify-fab__play" viewBox="0 0 24 24" width="12" height="12" focusable="false">
+          <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
+        </svg>
+      </span>
+      <span class="spotify-fab__hint">Tap to play</span>
+    </button>
+  </div>
+
   <script src="script.js"></script>
   <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
 </body>
