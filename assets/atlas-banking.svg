@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Atlas Banking dashboard mockup">
+  <defs>
+    <linearGradient id="ab-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4E2CC"/>
+      <stop offset="1" stop-color="#E5C9A4"/>
+    </linearGradient>
+    <linearGradient id="ab-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A1410"/>
+      <stop offset="1" stop-color="#2A1F16"/>
+    </linearGradient>
+    <linearGradient id="ab-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D67B3D"/>
+      <stop offset="1" stop-color="#E9A05B"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#ab-bg)"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="0" width="160" height="800" fill="#1A1410"/>
+  <circle cx="40" cy="40" r="10" fill="#D67B3D"/>
+  <rect x="60" y="34" width="60" height="12" rx="3" fill="#F5EFE3"/>
+  <rect x="20" y="100" width="120" height="10" rx="3" fill="#3A2C20"/>
+  <rect x="20" y="124" width="100" height="8" rx="2" fill="#2A1F16"/>
+  <rect x="20" y="146" width="110" height="8" rx="2" fill="#2A1F16"/>
+  <rect x="20" y="168" width="80" height="8" rx="2" fill="#2A1F16"/>
+  <rect x="20" y="200" width="120" height="32" rx="6" fill="#D67B3D"/>
+  <rect x="32" y="212" width="60" height="8" rx="2" fill="#1A1410"/>
+
+  <!-- top bar -->
+  <rect x="160" y="0" width="640" height="64" fill="#FFFFFF"/>
+  <rect x="186" y="24" width="200" height="16" rx="4" fill="#1A1410"/>
+  <rect x="700" y="22" width="80" height="20" rx="10" fill="#EFE4CB"/>
+
+  <!-- KPI tiles -->
+  <g>
+    <rect x="186" y="92" width="180" height="110" rx="10" fill="#FFFFFF"/>
+    <rect x="202" y="108" width="80" height="8" rx="2" fill="#8A7A66"/>
+    <rect x="202" y="128" width="120" height="22" rx="3" fill="#1A1410"/>
+    <rect x="202" y="162" width="60" height="8" rx="2" fill="#D67B3D"/>
+
+    <rect x="376" y="92" width="180" height="110" rx="10" fill="#FFFFFF"/>
+    <rect x="392" y="108" width="70" height="8" rx="2" fill="#8A7A66"/>
+    <rect x="392" y="128" width="100" height="22" rx="3" fill="#1A1410"/>
+    <rect x="392" y="162" width="40" height="8" rx="2" fill="#D67B3D"/>
+
+    <rect x="566" y="92" width="180" height="110" rx="10" fill="#FFFFFF"/>
+    <rect x="582" y="108" width="90" height="8" rx="2" fill="#8A7A66"/>
+    <rect x="582" y="128" width="80" height="22" rx="3" fill="#1A1410"/>
+    <rect x="582" y="162" width="50" height="8" rx="2" fill="#D67B3D"/>
+  </g>
+
+  <!-- big chart card -->
+  <rect x="186" y="222" width="560" height="280" rx="12" fill="url(#ab-card)"/>
+  <rect x="206" y="244" width="120" height="10" rx="3" fill="#F5EFE3"/>
+  <rect x="206" y="264" width="80" height="8" rx="2" fill="#8A7A66"/>
+
+  <!-- chart line -->
+  <path d="M210 460 L260 420 L310 432 L360 380 L410 392 L460 340 L510 360 L560 304 L610 330 L660 280 L710 300"
+        fill="none" stroke="url(#ab-line)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M210 460 L260 420 L310 432 L360 380 L410 392 L460 340 L510 360 L560 304 L610 330 L660 280 L710 300 L710 488 L210 488 Z"
+        fill="#D67B3D" opacity="0.18"/>
+
+  <!-- gridlines -->
+  <g stroke="#3A2C20" stroke-width="1" opacity="0.4">
+    <line x1="206" y1="320" x2="726" y2="320"/>
+    <line x1="206" y1="380" x2="726" y2="380"/>
+    <line x1="206" y1="440" x2="726" y2="440"/>
+  </g>
+
+  <!-- transaction list -->
+  <g>
+    <rect x="186" y="522" width="560" height="252" rx="12" fill="#FFFFFF"/>
+    <rect x="206" y="544" width="120" height="10" rx="3" fill="#1A1410"/>
+    <g>
+      <rect x="206" y="580" width="520" height="40" rx="6" fill="#F4E2CC"/>
+      <circle cx="226" cy="600" r="10" fill="#D67B3D"/>
+      <rect x="248" y="592" width="120" height="8" rx="2" fill="#1A1410"/>
+      <rect x="248" y="606" width="80" height="6" rx="2" fill="#8A7A66"/>
+      <rect x="640" y="594" width="70" height="12" rx="2" fill="#1A1410"/>
+
+      <rect x="206" y="630" width="520" height="40" rx="6" fill="#FFFFFF" stroke="#EFE4CB" stroke-width="1"/>
+      <circle cx="226" cy="650" r="10" fill="#2E4A3A"/>
+      <rect x="248" y="642" width="100" height="8" rx="2" fill="#1A1410"/>
+      <rect x="248" y="656" width="60" height="6" rx="2" fill="#8A7A66"/>
+      <rect x="640" y="644" width="70" height="12" rx="2" fill="#1A1410"/>
+
+      <rect x="206" y="680" width="520" height="40" rx="6" fill="#F4E2CC"/>
+      <circle cx="226" cy="700" r="10" fill="#6E4F8F"/>
+      <rect x="248" y="692" width="160" height="8" rx="2" fill="#1A1410"/>
+      <rect x="248" y="706" width="90" height="6" rx="2" fill="#8A7A66"/>
+      <rect x="640" y="694" width="70" height="12" rx="2" fill="#1A1410"/>
+
+      <rect x="206" y="730" width="520" height="36" rx="6" fill="#FFFFFF" stroke="#EFE4CB" stroke-width="1"/>
+      <circle cx="226" cy="748" r="10" fill="#C5A572"/>
+      <rect x="248" y="740" width="120" height="8" rx="2" fill="#1A1410"/>
+      <rect x="640" y="742" width="70" height="12" rx="2" fill="#1A1410"/>
+    </g>
+  </g>
+</svg>

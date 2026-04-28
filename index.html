@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zena Zerai — Senior Product Designer</title>
+  <meta name="description" content="The portfolio of Zena Zerai, Senior Product Designer. A small, warm record store of selected work." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=Josefin+Sans:wght@300;400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Soft film grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Top nav: styled like a record sticker / track listing -->
+  <header class="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="kicker">Side A · 2026</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/record-store.png" alt="" />
+      <div class="hero__vignette"></div>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__line">Zena <span class="hero__line--italic">Zerai</span></span>
+      </h1>
+
+      <div class="hero__copy">
+        <p class="hero__subtitle">Senior Product Designer</p>
+        <p class="hero__tagline">Helping products evolve from 0 → 1 through research, iterative design, and strategic UX thinking.</p>
+      </div>
+
+      <div class="hero__bottom">
+        <span class="kicker kicker--center">Designing for: B2B SaaS · Fintech · Public Sector · Automotive · Ecom</span>
+      </div>
+    </div>
+
+    <!-- Right side: artist card + CTAs stacked below -->
+    <div class="hero__right">
+      <!-- Artist card — small mid-century poster, links to LinkedIn -->
+      <a class="artist-card"
+         href="https://www.linkedin.com/in/zenazerai"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Zena Zerai on LinkedIn">
+        <div class="artist-card__paper">
+          <span class="artist-card__bars" aria-hidden="true">
+            <span class="artist-card__bar artist-card__bar--ink"></span>
+            <span class="artist-card__bar artist-card__bar--peach"></span>
+            <span class="artist-card__bar artist-card__bar--ochre"></span>
+          </span>
+
+          <div class="artist-card__frame">
+            <span class="artist-card__circle" aria-hidden="true"></span>
+            <span class="artist-card__square" aria-hidden="true"></span>
+            <div class="artist-card__photo-wrap">
+              <img class="artist-card__photo"
+                   src="assets/zena-profile.png"
+                   alt="Portrait of Zena Zerai" />
+            </div>
+          </div>
+
+          <div class="artist-card__foot">
+            <span class="artist-card__sub">
+              Senior<br>Product<br>Designer
+            </span>
+            <span class="artist-card__num">/26</span>
+          </div>
+        </div>
+        <span class="artist-card__hint" aria-hidden="true">
+          Say hi on LinkedIn
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H8M17 7v9"/>
+          </svg>
+        </span>
+      </a>
+
+      <!-- CTAs sit below the card -->
+      <div class="hero__ctas">
+        <a class="hero__cta-btn hero__cta-btn--primary" href="case-studies.html">View my work</a>
+        <button class="hero__cta-btn hero__cta-btn--ghost" id="copy-email" type="button">Get in touch</button>
+      </div>
+    </div>
+
+    <div class="hero__top">
+      <span class="kicker">★ Now Playing</span>
+      <span class="kicker kicker--right">Portfolio · Vol. 01</span>
+    </div>
+
+    <a class="hero__scroll" href="case-studies.html" aria-label="Go to case studies">
+      <span>Flip the record</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- CLIENTS / FRAMED PORTRAIT POSTER -->
+  <section id="clients" class="lineup">
+    <div class="section__head">
+      <span class="kicker">03 · The Lineup</span>
+      <h2 class="section__title">
+        <span>Clients </span>
+        <span class="italic">I've worked with.</span>
+      </h2>
+      <p class="section__lede">Proud to have teamed up with some amazing companies. A pressing of the lineup — one print, one studio, one designer.</p>
+    </div>
+
+    <div class="lineup__floor">
+      <article class="frame frame--lineup" aria-label="Client lineup poster">
+        <div class="frame__mat">
+
+          <!-- Concentric rings — classic '60s/'70s festival poster motif -->
+          <div class="lp__rings" aria-hidden="true"></div>
+
+          <!-- Inner ruled border -->
+          <div class="lp__inset" aria-hidden="true">
+
+            <header class="lp__head">
+              <p class="lp__eyebrow">★ &nbsp; Product Design &nbsp;·&nbsp; 2016 – 2026 &nbsp;·&nbsp; London &amp; Remote &nbsp; ★</p>
+              <h3 class="lp__title">The<br>Lineup</h3>
+              <p class="lp__rule" aria-hidden="true"></p>
+              <p class="lp__sub">B2B SaaS &nbsp;·&nbsp; Fintech &nbsp;·&nbsp; Public Sector &nbsp;·&nbsp; Automotive &nbsp;·&nbsp; Ecom</p>
+            </header>
+
+            <div class="lp__acts">
+
+              <div class="lp__tier lp__tier--h1">
+                <p class="lp__names">Barclays</p>
+                <p class="lp__names">Google</p>
+              </div>
+
+              <div class="lp__ornament" aria-hidden="true">
+                <span></span><span>✦ &nbsp; ✦ &nbsp; ✦</span><span></span>
+              </div>
+
+              <div class="lp__tier lp__tier--h2">
+                <p class="lp__names">Toyota &nbsp;·&nbsp; GWI &nbsp;·&nbsp; Cazoo &nbsp;·&nbsp; Compare the Market</p>
+              </div>
+
+              <div class="lp__ornament lp__ornament--faint" aria-hidden="true">
+                <span></span><span>· · · · · · · · · · ·</span><span></span>
+              </div>
+
+              <div class="lp__tier lp__tier--h3">
+                <p class="lp__names">RBS &nbsp;·&nbsp; Not on the High Street &nbsp;·&nbsp; Hyundai Finance</p>
+                <p class="lp__names">The Planning Inspectorate &nbsp;·&nbsp; Department for Education</p>
+              </div>
+
+              <div class="lp__more">+ Much more to be announced</div>
+
+            </div>
+
+            <footer class="lp__foot">
+              <span>Senior Product Designer &nbsp;·&nbsp; zenazerai@gmail.com</span>
+            </footer>
+
+          </div><!-- /.lp__inset -->
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="foot">
+    <div class="foot__inner">
+      <span class="kicker">05 · End of Side B</span>
+      <h2 class="foot__title">
+        <span>Got a record </span>
+        <span class="italic">worth pressing?</span>
+      </h2>
+      <a class="foot__cta" href="mailto:zenazerai@gmail.com">
+        <span>zenazerai@gmail.com</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M7 17L17 7M17 7H8M17 7v9"/>
+        </svg>
+      </a>
+
+      <div class="foot__row">
+        <div class="foot__links">
+          <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="#">Read.cv</a>
+          <a href="#">Dribbble</a>
+          <a href="#">Are.na</a>
+        </div>
+        <div class="foot__meta">
+          <span class="kicker">© Zena Zerai · MMXXVI</span>
+          <span class="kicker">London ↔ Remote</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>

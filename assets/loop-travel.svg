@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Loop Travel app mockup">
+  <defs>
+    <linearGradient id="lt-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFE0BF"/>
+      <stop offset="1" stop-color="#D6BC85"/>
+    </linearGradient>
+    <linearGradient id="lt-water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C5D5C7"/>
+      <stop offset="1" stop-color="#A2B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#lt-bg)"/>
+
+  <!-- map background -->
+  <g>
+    <path d="M0 220 Q 200 160 380 220 T 800 200 L 800 380 Q 600 340 420 380 T 0 360 Z" fill="url(#lt-water)" opacity="0.85"/>
+    <path d="M0 460 Q 240 420 460 480 T 800 460 L 800 800 L 0 800 Z" fill="#A99466" opacity="0.65"/>
+    <!-- roads -->
+    <path d="M40 380 Q 220 340 380 420 T 760 400" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-dasharray="10 8" opacity="0.7"/>
+    <path d="M120 540 Q 320 500 520 560 T 780 540" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-dasharray="10 8" opacity="0.7"/>
+  </g>
+
+  <!-- top bar -->
+  <rect x="40" y="40" width="720" height="56" rx="28" fill="#FFFFFF"/>
+  <circle cx="68" cy="68" r="10" fill="#443319"/>
+  <rect x="86" y="62" width="160" height="12" rx="3" fill="#1A1410"/>
+  <rect x="660" y="58" width="80" height="20" rx="10" fill="#C5A572"/>
+
+  <!-- pin markers -->
+  <g>
+    <circle cx="200" cy="320" r="20" fill="#C5A572" stroke="#1A1410" stroke-width="3"/>
+    <text x="200" y="326" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#1A1410" text-anchor="middle">1</text>
+
+    <circle cx="430" cy="380" r="20" fill="#C5A572" stroke="#1A1410" stroke-width="3"/>
+    <text x="430" y="386" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#1A1410" text-anchor="middle">2</text>
+
+    <circle cx="640" cy="300" r="20" fill="#1A1410" stroke="#C5A572" stroke-width="3"/>
+    <text x="640" y="306" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#C5A572" text-anchor="middle">3</text>
+  </g>
+
+  <!-- itinerary card stack at bottom -->
+  <g>
+    <rect x="40" y="540" width="720" height="220" rx="20" fill="#FFFFFF"/>
+    <rect x="60" y="560" width="160" height="14" rx="3" fill="#1A1410"/>
+    <rect x="60" y="582" width="100" height="8" rx="2" fill="#8A7A66"/>
+
+    <rect x="60" y="612" width="220" height="128" rx="12" fill="#EFE0BF"/>
+    <rect x="76" y="628" width="40" height="40" rx="20" fill="#C5A572"/>
+    <text x="96" y="654" font-family="Inter, sans-serif" font-weight="700" font-size="16" fill="#1A1410" text-anchor="middle">1</text>
+    <rect x="76" y="684" width="120" height="10" rx="2" fill="#1A1410"/>
+    <rect x="76" y="700" width="80" height="8" rx="2" fill="#8A7A66"/>
+    <rect x="76" y="716" width="100" height="8" rx="2" fill="#443319"/>
+
+    <rect x="290" y="612" width="220" height="128" rx="12" fill="#1A1410"/>
+    <rect x="306" y="628" width="40" height="40" rx="20" fill="#C5A572"/>
+    <text x="326" y="654" font-family="Inter, sans-serif" font-weight="700" font-size="16" fill="#1A1410" text-anchor="middle">2</text>
+    <rect x="306" y="684" width="120" height="10" rx="2" fill="#F5EFE3"/>
+    <rect x="306" y="700" width="80" height="8" rx="2" fill="#8A7A66"/>
+    <rect x="306" y="716" width="100" height="8" rx="2" fill="#C5A572"/>
+
+    <rect x="520" y="612" width="220" height="128" rx="12" fill="#EFE0BF"/>
+    <rect x="536" y="628" width="40" height="40" rx="20" fill="#C5A572"/>
+    <text x="556" y="654" font-family="Inter, sans-serif" font-weight="700" font-size="16" fill="#1A1410" text-anchor="middle">3</text>
+    <rect x="536" y="684" width="120" height="10" rx="2" fill="#1A1410"/>
+    <rect x="536" y="700" width="80" height="8" rx="2" fill="#8A7A66"/>
+    <rect x="536" y="716" width="100" height="8" rx="2" fill="#443319"/>
+  </g>
+</svg>

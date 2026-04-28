@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ember Health app mockup">
+  <defs>
+    <linearGradient id="eh-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8EFE8"/>
+      <stop offset="1" stop-color="#C5D5C7"/>
+    </linearGradient>
+    <linearGradient id="eh-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F1F5F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#eh-bg)"/>
+
+  <!-- phone-style frame, centered -->
+  <rect x="240" y="60" width="320" height="680" rx="44" fill="#0E1F17"/>
+  <rect x="252" y="72" width="296" height="656" rx="36" fill="#FFFFFF"/>
+  <rect x="356" y="80" width="88" height="14" rx="7" fill="#0E1F17"/>
+
+  <!-- status -->
+  <rect x="270" y="120" width="40" height="6" rx="2" fill="#8A7A66"/>
+  <rect x="490" y="120" width="40" height="6" rx="2" fill="#8A7A66"/>
+
+  <!-- greeting -->
+  <rect x="270" y="148" width="160" height="14" rx="3" fill="#0E1F17"/>
+  <rect x="270" y="170" width="100" height="8" rx="2" fill="#2E4A3A" opacity="0.6"/>
+
+  <!-- progress ring + stat -->
+  <g transform="translate(400 280)">
+    <circle r="80" fill="none" stroke="#E8EFE8" stroke-width="14"/>
+    <circle r="80" fill="none" stroke="#2E4A3A" stroke-width="14"
+            stroke-dasharray="380 502" stroke-linecap="round" transform="rotate(-90)"/>
+    <text x="0" y="6" font-family="Inter, sans-serif" font-weight="600" font-size="34" fill="#0E1F17" text-anchor="middle">76%</text>
+    <text x="0" y="32" font-family="Inter, sans-serif" font-size="11" fill="#5C6E60" text-anchor="middle">on track</text>
+  </g>
+
+  <!-- mini stats -->
+  <g>
+    <rect x="270" y="400" width="120" height="60" rx="10" fill="url(#eh-card)" stroke="#E8EFE8"/>
+    <circle cx="290" cy="430" r="8" fill="#2E4A3A"/>
+    <rect x="306" y="416" width="40" height="6" rx="2" fill="#5C6E60"/>
+    <rect x="306" y="430" width="60" height="10" rx="2" fill="#0E1F17"/>
+
+    <rect x="410" y="400" width="120" height="60" rx="10" fill="url(#eh-card)" stroke="#E8EFE8"/>
+    <circle cx="430" cy="430" r="8" fill="#D67B3D"/>
+    <rect x="446" y="416" width="40" height="6" rx="2" fill="#5C6E60"/>
+    <rect x="446" y="430" width="60" height="10" rx="2" fill="#0E1F17"/>
+  </g>
+
+  <!-- today's plan -->
+  <rect x="270" y="488" width="260" height="14" rx="3" fill="#0E1F17"/>
+  <rect x="270" y="510" width="100" height="8" rx="2" fill="#5C6E60"/>
+
+  <g>
+    <rect x="270" y="536" width="260" height="46" rx="10" fill="url(#eh-card)" stroke="#E8EFE8"/>
+    <rect x="282" y="552" width="6" height="14" rx="2" fill="#2E4A3A"/>
+    <rect x="298" y="548" width="120" height="9" rx="2" fill="#0E1F17"/>
+    <rect x="298" y="562" width="80" height="6" rx="2" fill="#5C6E60"/>
+    <rect x="490" y="554" width="28" height="10" rx="3" fill="#2E4A3A"/>
+
+    <rect x="270" y="592" width="260" height="46" rx="10" fill="url(#eh-card)" stroke="#E8EFE8"/>
+    <rect x="282" y="608" width="6" height="14" rx="2" fill="#D67B3D"/>
+    <rect x="298" y="604" width="100" height="9" rx="2" fill="#0E1F17"/>
+    <rect x="298" y="618" width="60" height="6" rx="2" fill="#5C6E60"/>
+    <rect x="490" y="610" width="28" height="10" rx="3" fill="#EFE4CB"/>
+
+    <rect x="270" y="648" width="260" height="46" rx="10" fill="url(#eh-card)" stroke="#E8EFE8"/>
+    <rect x="282" y="664" width="6" height="14" rx="2" fill="#6E4F8F"/>
+    <rect x="298" y="660" width="140" height="9" rx="2" fill="#0E1F17"/>
+    <rect x="298" y="674" width="70" height="6" rx="2" fill="#5C6E60"/>
+    <rect x="490" y="666" width="28" height="10" rx="3" fill="#EFE4CB"/>
+  </g>
+</svg>
