@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Explorations — Zena Zerai</title>
-  <meta name="description" content="Personal AI explorations by Zena Zerai — experiments at the intersection of design thinking and artificial intelligence." />
+  <meta name="description" content="AI explorations by Zena Zerai — dabbling in AI by using it and designing for it, including this portfolio built in Cursor." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,85 +59,237 @@
     </button>
   </div>
 
+  <main id="spa-main" class="spa-main" tabindex="-1">
   <!-- Page header -->
-  <section class="cs-page-hero">
+  <section class="cs-page-hero cs-page-hero--ai-explore">
     <div class="cs-page-hero__inner">
       <span class="kicker">04 · The B-Sides</span>
       <h1 class="cs-page-hero__title">
         <span>AI </span><span class="italic">explorations.</span>
       </h1>
-      <p class="cs-page-hero__lede">Personal experiments at the intersection of design thinking and machine intelligence — the odd tracks that don't fit neatly on any album.</p>
+      <p class="cs-page-hero__lede">A space to see how I’ve been dabbling in AI — using it and designing for it.</p>
+      <p class="cs-page-hero__lede">Including this portfolio, built in Cursor.</p>
     </div>
   </section>
 
-  <!-- CD rack -->
+  <!-- CD rack (BA/FOS pitches live on their own URLs; hidden here temporarily) -->
   <section class="ai-shelf ai-shelf--page">
-    <ul class="cd-rack" role="list">
+    <ul class="cd-rack cd-rack--ai-row" role="list">
 
-      <li>
-        <a class="cd-case" href="#" aria-label="BA & Financial Ombudsman — Designing for AI (pitchwork)">
-          <div class="cd-case__jewel">
-            <div class="cd-case__spine" aria-hidden="true"></div>
-            <div class="cd-case__front" style="--cd-a:#b05490;--cd-b:#e07050;--cd-c:#801860;">
-              <div class="cd-case__art" aria-hidden="true"></div>
-              <div class="cd-case__label">
-                <strong class="cd-case__label-artist">BA &amp; FO</strong>
-                <span class="cd-case__label-title">Designing for AI</span>
+      <li id="cd-sleeve-gwi" class="cd-rack__item cd-rack__item--sleeve-wide">
+        <div class="cd-sleeve">
+          <button type="button" class="cd-case cd-case__toggle cd-case--no-link" aria-expanded="false" aria-controls="panel-gwi" id="toggle-gwi" aria-label="GWI — collaborative workshop for self-serve AI. Tap to expand a short summary and scrollable notes.">
+            <div class="cd-case__jewel">
+              <div class="cd-case__spine" aria-hidden="true"></div>
+              <div class="cd-case__front" style="--cd-a:#4a1a2e;--cd-b:#8B3052;--cd-c:#B8446A;">
+                <div class="cd-case__art" aria-hidden="true"></div>
+                <div class="cd-case__label">
+                  <strong class="cd-case__label-artist">GWI</strong>
+                  <span class="cd-case__label-title">Workshop</span>
+                </div>
+              </div>
+              <div class="cd-case__glare" aria-hidden="true"></div>
+              <div class="cd-case__edge-r" aria-hidden="true"></div>
+            </div>
+            <span class="cd-case__toggle-chevron" aria-hidden="true"></span>
+            <span class="cd-case__info">
+              <span class="cd-case__project">GWI</span>
+              <span class="cd-case__desc">Self-serve AI · vibe coding</span>
+            </span>
+            <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
+          </button>
+          <div id="panel-gwi" class="cd-sleeve__panel" hidden>
+            <div class="cd-sleeve__featured">
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">GWI &mdash; collaborative workshop to shape self-serve AI</h3>
+                <p class="cd-sleeve__lede">Ran a cross-functional &ldquo;vibe coding&rdquo; workshop with developers, using Figma designs as a starting point to define and prototype a self-serve experience.</p>
+                <div class="cd-sleeve__pills">
+                  <span>Figma Make</span>
+                  <span>Cursor</span>
+                  <span>Engineer collaboration</span>
+                </div>
+                <h4 class="cd-sleeve__detail-lead">What we did</h4>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p><strong class="cd-sleeve__label">Foundation</strong> Design system (tokens, variants, Storybook components).</p>
+                  <p><strong class="cd-sleeve__label">UX + Dev</strong> Built and aligned on user stories collaboratively in Cursor.</p>
+                  <p><strong class="cd-sleeve__label">Feasibility</strong> Scoped front-end vs backend dependencies.</p>
+                  <p><strong class="cd-sleeve__label">Build</strong> Rapid prototyping and repo integration via Cursor.</p>
+                  <p><strong class="cd-sleeve__label">Insight</strong> Surfaced gaps in access, ownership, and flows.</p>
+                </div>
+              </div>
+              <div class="cd-sleeve__media-shell">
+                <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid" aria-hidden="true">
+                  <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="Prototype frames. Scroll sideways for more screenshots or clips.">
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#4a1a2e;--cd-b:#8B3052;--cd-c:#B8446A;">
+                        <div class="cd-sleeve__cover-stack">
+                          <!-- Looping muted preview — suited to desktop screen-recordings (letterboxed inside 16:10) -->
+                          <video class="cd-sleeve__cover-video" muted playsinline loop preload="metadata" tabindex="-1" aria-hidden="true">
+                            <!-- <source src="assets/..." type="video/mp4" /> -->
+                          </video>
+                          <div class="cd-sleeve__cover-surface cd-sleeve__cover-surface--fallback">
+                            <div class="cd-sleeve__cover-disc"></div>
+                            <div class="cd-sleeve__cover-glare"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__media-slot" role="group" aria-label="Optional second frame">
+                        <!-- Duplicate .cd-sleeve__media-pane blocks or add <img src="…" alt="…"/> inside -->
+                        <p class="cd-sleeve__media-slot-hint"><span>Add screens</span> — images or short clips scroll with the rail.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="cd-sleeve__media-strip-hint">Scroll or swipe sideways — more frames in the strip</p>
+                  <p class="cd-sleeve__cover-mat-caption">GWI · Workshop</p>
+                </div>
               </div>
             </div>
-            <div class="cd-case__glare" aria-hidden="true"></div>
-            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-          <div class="cd-case__info">
-            <p class="cd-case__project">BA &amp; Financial Ombudsman</p>
-            <p class="cd-case__desc">Designing for AI (pitchwork)</p>
-            <p class="cd-case__detail">Exploring AI-assisted triage for regulated financial complaint handling — balancing automation with trust and human oversight.</p>
-          </div>
-        </a>
+        </div>
       </li>
 
-      <li>
-        <a class="cd-case" href="#" aria-label="Valtech Hackathon — Designing a dashboard with AI tools">
-          <div class="cd-case__jewel">
-            <div class="cd-case__spine" aria-hidden="true"></div>
-            <div class="cd-case__front" style="--cd-a:#1c1814;--cd-b:#2e2418;--cd-c:#100e0a;">
-              <div class="cd-case__art" aria-hidden="true"></div>
-              <div class="cd-case__label">
-                <strong class="cd-case__label-artist">Valtech</strong>
-                <span class="cd-case__label-title">Hackathon</span>
+      <li id="cd-sleeve-valtech" class="cd-rack__item cd-rack__item--sleeve-wide">
+        <div class="cd-sleeve">
+          <button type="button" class="cd-case cd-case__toggle cd-case--no-link" aria-expanded="false" aria-controls="panel-valtech" id="toggle-valtech" aria-label="Valtech Hackathon, AI workflow tool. Tap to expand a short summary and scrollable notes.">
+            <div class="cd-case__jewel">
+              <div class="cd-case__spine" aria-hidden="true"></div>
+              <div class="cd-case__front" style="--cd-a:#1c1814;--cd-b:#2e2418;--cd-c:#100e0a;">
+                <div class="cd-case__art" aria-hidden="true"></div>
+                <div class="cd-case__label">
+                  <strong class="cd-case__label-artist">Valtech</strong>
+                  <span class="cd-case__label-title">Hackathon</span>
+                </div>
+              </div>
+              <div class="cd-case__glare" aria-hidden="true"></div>
+              <div class="cd-case__edge-r" aria-hidden="true"></div>
+            </div>
+            <span class="cd-case__toggle-chevron" aria-hidden="true"></span>
+            <span class="cd-case__info">
+              <span class="cd-case__project">Valtech Hackathon</span>
+              <span class="cd-case__desc">AI workflows · narrative</span>
+            </span>
+            <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
+          </button>
+          <div id="panel-valtech" class="cd-sleeve__panel" hidden>
+            <div class="cd-sleeve__featured">
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">AI Workflow Tool — designing the idea and how it lands</h3>
+                <p class="cd-sleeve__lede">A hackathon concept built with a newly formed team, focused on making AI genuinely useful in day-to-day workflows. Alongside the product, the work explored how storytelling can help early ideas feel clear, tangible, and believable.</p>
+                <div class="cd-sleeve__pills">
+                  <span>Designing for AI</span>
+                  <span>Lovable</span>
+                  <span>Perplexity</span>
+                </div>
+                <h4 class="cd-sleeve__detail-lead">What we did</h4>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p><strong class="cd-sleeve__label">Usefulness</strong> Turned prompts into structured, actionable workflows.</p>
+                  <p><strong class="cd-sleeve__label">Speed</strong> Shaped and prototyped side-of-desk using AI tools.</p>
+                  <p><strong class="cd-sleeve__label">Experience</strong> Combined conversational input with clear UI outputs.</p>
+                  <p><strong class="cd-sleeve__label">Narrative</strong> Created a short, trailer-style video to communicate the idea quickly.</p>
+                </div>
+              </div>
+              <div class="cd-sleeve__media-shell">
+                <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid" aria-hidden="true">
+                  <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="Prototype frames. Scroll sideways for more screenshots or clips.">
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#1c1814;--cd-b:#2e2418;--cd-c:#100e0a;">
+                        <div class="cd-sleeve__cover-stack">
+                          <video class="cd-sleeve__cover-video" muted playsinline loop preload="metadata" tabindex="-1" aria-hidden="true">
+                            <!-- <source src="assets/..." type="video/mp4" /> -->
+                          </video>
+                          <div class="cd-sleeve__cover-surface cd-sleeve__cover-surface--fallback">
+                            <div class="cd-sleeve__cover-disc"></div>
+                            <div class="cd-sleeve__cover-glare"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__media-slot" role="group" aria-label="Optional second frame">
+                        <p class="cd-sleeve__media-slot-hint"><span>Add screens</span> — images or short clips scroll with the rail.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="cd-sleeve__media-strip-hint">Scroll or swipe sideways — more frames in the strip</p>
+                  <p class="cd-sleeve__cover-mat-caption">Valtech · Hackathon</p>
+                </div>
               </div>
             </div>
-            <div class="cd-case__glare" aria-hidden="true"></div>
-            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-          <div class="cd-case__info">
-            <p class="cd-case__project">Valtech Hackathon</p>
-            <p class="cd-case__desc">Designing a dashboard with AI tools</p>
-            <p class="cd-case__detail">48-hour sprint using Copilot and Cursor — mapping where AI tools accelerate design and where human judgment stays essential.</p>
-          </div>
-        </a>
+        </div>
       </li>
 
-      <li>
-        <a class="cd-case" href="#" aria-label="Google & Tide — Conversational UX and CCAI for finance">
-          <div class="cd-case__jewel">
-            <div class="cd-case__spine" aria-hidden="true"></div>
-            <div class="cd-case__front" style="--cd-a:#1a1870;--cd-b:#3535b8;--cd-c:#5555e8;">
-              <div class="cd-case__art" aria-hidden="true"></div>
-              <div class="cd-case__label">
-                <strong class="cd-case__label-artist">Google &amp; Tide</strong>
-                <span class="cd-case__label-title">Conversational UX</span>
+      <li id="google-ccai-cd" class="cd-rack__item cd-rack__item--sleeve-wide">
+        <div class="cd-sleeve">
+          <button type="button" class="cd-case cd-case__toggle cd-case--no-link" aria-expanded="false" aria-controls="panel-google-ccai" id="toggle-google-ccai" aria-label="Google CCAI and Tide — conversational UX. Tap to expand a short summary and scrollable notes.">
+            <div class="cd-case__jewel">
+              <div class="cd-case__spine" aria-hidden="true"></div>
+              <div class="cd-case__front" style="--cd-a:#1a1870;--cd-b:#3535b8;--cd-c:#5555e8;">
+                <div class="cd-case__art" aria-hidden="true"></div>
+                <div class="cd-case__label">
+                  <strong class="cd-case__label-artist">Google &amp; Tide</strong>
+                  <span class="cd-case__label-title">Conversational UX</span>
+                </div>
+              </div>
+              <div class="cd-case__glare" aria-hidden="true"></div>
+              <div class="cd-case__edge-r" aria-hidden="true"></div>
+            </div>
+            <span class="cd-case__toggle-chevron" aria-hidden="true"></span>
+            <span class="cd-case__info">
+              <span class="cd-case__project">Google &amp; Tide</span>
+              <span class="cd-case__desc">CCAI · journeys in-channel</span>
+            </span>
+            <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
+          </button>
+          <div id="panel-google-ccai" class="cd-sleeve__panel" hidden>
+            <div class="cd-sleeve__featured">
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">Google CCAI &times; Tide &mdash; conversational UX that completes journeys</h3>
+                <p class="cd-sleeve__lede">Designed a conversational UX for SMB banking using Google CCAI, focused on helping users resolve tasks end-to-end in-channel. Built on structured, intent-led flows to ensure clarity, reliability, and control.</p>
+                <div class="cd-sleeve__pills">
+                  <span>Conversational UX</span>
+                  <span>Dialogflow</span>
+                  <span>CCAI</span>
+                </div>
+                <h4 class="cd-sleeve__detail-lead">What we did</h4>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p><strong class="cd-sleeve__label">Context</strong> Intent-based (pre-LLM) conversational AI.</p>
+                  <p><strong class="cd-sleeve__label">UX</strong> Designed dialogue patterns, prompts, and system responses.</p>
+                  <p><strong class="cd-sleeve__label">Flows</strong> Structured journeys aligned to Tide&rsquo;s product experience.</p>
+                  <p><strong class="cd-sleeve__label">Trust</strong> Made intent, next steps, and escalation explicit.</p>
+                </div>
+              </div>
+              <div class="cd-sleeve__media-shell">
+                <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid" aria-hidden="true">
+                  <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="Prototype frames. Scroll sideways for more screenshots or clips.">
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#1a1870;--cd-b:#3535b8;--cd-c:#5555e8;">
+                        <div class="cd-sleeve__cover-stack">
+                          <video class="cd-sleeve__cover-video" muted playsinline loop preload="metadata" tabindex="-1" aria-hidden="true">
+                            <!-- <source src="assets/..." type="video/mp4" /> -->
+                          </video>
+                          <div class="cd-sleeve__cover-surface cd-sleeve__cover-surface--fallback">
+                            <div class="cd-sleeve__cover-disc"></div>
+                            <div class="cd-sleeve__cover-glare"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__media-slot" role="group" aria-label="Optional second frame">
+                        <p class="cd-sleeve__media-slot-hint"><span>Add screens</span> — images or short clips scroll with the rail.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="cd-sleeve__media-strip-hint">Scroll or swipe sideways — more frames in the strip</p>
+                  <p class="cd-sleeve__cover-mat-caption">Google &amp; Tide · Conversational UX</p>
+                </div>
               </div>
             </div>
-            <div class="cd-case__glare" aria-hidden="true"></div>
-            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-          <div class="cd-case__info">
-            <p class="cd-case__project">Google &amp; Tide</p>
-            <p class="cd-case__desc">Conversational UX and CCAI for finance</p>
-            <p class="cd-case__detail">Conversational flows for Google's CCAI platform — enabling SMB banking customers to resolve queries end-to-end without human handoff.</p>
-          </div>
-        </a>
+        </div>
       </li>
 
     </ul>
@@ -146,25 +298,26 @@
   <!-- CONTACT / FOOTER -->
   <footer id="contact" class="foot">
     <div class="foot__inner">
-      <span class="kicker">End of the B-Sides</span>
+      <span class="kicker">06 · End of Side A</span>
       <h2 class="foot__title">
         <span>Got a record </span>
         <span class="italic">worth pressing?</span>
       </h2>
-      <a class="foot__cta" href="mailto:zenazerai@gmail.com">
-        <span>zenazerai@gmail.com</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M7 17L17 7M17 7H8M17 7v9"/>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
         </svg>
-      </a>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
 
       <div class="foot__row">
         <div class="foot__links">
           <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot__meta">
-          <span class="kicker">© Zena Zerai · MMXXVI</span>
-          <span class="kicker">London ↔ Remote</span>
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
         </div>
       </div>
       <div class="foot__cursor">
@@ -174,6 +327,8 @@
       </div>
     </div>
   </footer>
+
+  </main>
 
   <script src="script.js"></script>
   <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>

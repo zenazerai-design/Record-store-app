@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Ombudsman Service — Designing for AI | Zena Zerai</title>
+  <meta name="description" content="Pitch work: FOS case summarisation and intelligent search for investigators. Design decisions only, not shipped." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html" aria-current="page">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="kicker">Side A · 2026</span>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html" aria-current="page">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+  <article class="csd">
+
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="ai-explorations.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        AI Explorations
+      </a>
+    </div>
+
+    <section class="csd-hero csd-hero--text-only">
+      <div class="csd-hero__inner">
+
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">AI explorations &nbsp;·&nbsp; Pitch work only</span>
+        </div>
+
+        <h1 class="csd-hero__title">
+          Financial Ombudsman Service
+          <em class="italic">&mdash; designing for AI.</em>
+        </h1>
+
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary">
+            <strong>Nothing here shipped.</strong> Pitch exploration for <strong>regulated case work</strong>: where AI earns space on the screen, how uncertainty reads without wrecking trust, and how every claim stays inspectable — with annotated tablet mocks below.
+          </p>
+          <p class="csd-hero__summary">
+            A separate write-up covers <strong><a href="british-airways.html">British Airways mobile booking</a></strong>. For more experiments, <a href="ai-explorations.html">AI explorations</a>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="csd-context csd-context--fos-mock">
+      <div class="csd-context__text">
+        <span class="kicker">01 · Financial Ombudsman Service</span>
+        <h2 class="csd-context__title">Case summarisation for investigators: two interface bets.</h2>
+        <div class="csd-context__body">
+          <p>
+            This pitch stays close to <strong>people doing case work</strong>: high volume, dense evidence, and the need to move between “what happened here” and “what does precedent look like.” The design work was not to slap a chat window on a legacy grid. It was to decide <strong>where AI earns space on the screen</strong>, how to <strong>signal uncertainty without undermining trust</strong>, and how to keep <strong>every claim inspectable</strong>.
+          </p>
+          <p>
+            <strong>Intelligent case search</strong> explores natural language across historic cases and the knowledge base, with a <strong>search result analysis</strong> block placed deliberately above the raw list so synthesis is the headline act, not an afterthought. <strong>Live summary</strong> splits the investigator view between a running summary, suggested next steps, and suggested outcome, each labeled as AI output with the same <strong>explainability pattern</strong> (“How this summary was generated”) and calibrated <strong>confidence</strong> states. Pitch only: nothing here shipped.
+          </p>
+        </div>
+      </div>
+      <div class="csd-context__image">
+        <img src="assets/fos-case-overview-case-summarisation.png" width="1024" height="732" alt="Financial Ombudsman Service case summarisation dashboard on a laptop: Case Overview tab with case details, AI-generated case summary with explainability link, timeline progress, and activity feed." loading="lazy" decoding="async" />
+        <p class="csd-context__caption">Case overview: investigator view with AI summary, timeline, and activity.</p>
+      </div>
+    </section>
+
+    <section class="fos-concepts" aria-labelledby="fos-concepts-heading">
+      <header class="fos-concepts__head">
+        <span class="kicker">Financial Ombudsman · Annotated mocks</span>
+        <h2 id="fos-concepts-heading" class="fos-concepts__heading">Design decisions, pinned to the UI</h2>
+        <p class="fos-concepts__lede">
+          Tablet exports from the pitch. Width is capped around 1024px so low-resolution PNGs are not stretched full-width on big monitors. For real sharpness on Retina, replace files with ~2048px-wide exports from Figma and keep the same cap: the browser will downscale and use the extra pixels. Hover or tap a marker for crit notes.
+        </p>
+      </header>
+
+      <div class="fos-concept">
+        <h3 class="fos-concept__label">Semantic search across cases</h3>
+        <div class="fos-concept__frame fos-concept__frame--full">
+          <div class="fos-concept__asset-wrap">
+            <img class="fos-concept__img" src="assets/fos-intelligent-case-search.png" alt="Financial Ombudsman case summarisation UI: natural language search, search result analysis with high confidence, filters, and listed historic sources with links to files." loading="lazy" decoding="async" />
+            <div class="fos-concept__hotspots" role="group" aria-label="Semantic search screen callouts">
+              <div class="fos-hotspot" style="left: 50%; top: 24%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: question-shaped search"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Question-shaped search</strong>
+                  <p>The field carries a full interrogative (“what has prevented claims from progressing?”), not just keywords. The decision is to match how investigators already talk and to signal semantic retrieval rather than a dumb index.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 52%; top: 40%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: synthesis before the list"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Synthesis before the list</strong>
+                  <p>The “Search result analysis” card sits above the sources. That ordering states priority: read the distilled view first, then open PDFs. It is the clearest retrieval-augmented layout bet in the pitch.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 72%; top: 35%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: confidence and provenance"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Confidence and provenance</strong>
+                  <p>“High confidence,” “Based on 4 historic cases,” the sparkle plus “AI generated summary,” and “How this summary was generated” share one band. Nothing in that band is decorative: it is the minimum viable trust kit next to a bold summary.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 22%; top: 48%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: filters stay manual"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Filters stay manual</strong>
+                  <p>Source type and sector stay visible rather than folded into model-only behaviour. Investigators keep an explicit contract about scope instead of guessing what the system silently excluded.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 52%; top: 76%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: every row cites a source"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Every row cites a source</strong>
+                  <p>Decision reference, metadata, and “go to source document in efile” ground the analysis in artifacts people can open. That is the anti-hallucination pattern for this domain.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fos-concept__caption">Historic search: hierarchy, trust band, grounding.</p>
+      </div>
+
+      <div class="fos-concept">
+        <h3 class="fos-concept__label">Live summary workspace</h3>
+        <div class="fos-concept__frame fos-concept__frame--full">
+          <div class="fos-concept__asset-wrap">
+            <img class="fos-concept__img" src="assets/fos-live-summary-tool.png" alt="Financial Ombudsman live summarisation: live summary column, suggested next steps and outcome, medium confidence, Simplify and Go Deeper actions, chat input with suggested chips, usefulness feedback." loading="lazy" decoding="async" />
+            <div class="fos-concept__hotspots" role="group" aria-label="Live summary screen callouts">
+              <div class="fos-hotspot" style="left: 30%; top: 30%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: two modes of help"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Two modes of help</strong>
+                  <p>“Live summary” versus “Suggestions” keeps reading the file separate from accepting proposed moves. Collapsing those modes would force investigators to trust one undifferentiated block.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 42%; top: 52%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: calibrated uncertainty"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Calibrated uncertainty</strong>
+                  <p>“Medium confidence” pairs with a rationale such as thin evidence or possible mischaracterisation. The UI treats doubt as a prompt to act, not as fine print to ignore.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 42%; top: 62%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: depth and inspectability"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Depth and inspectability</strong>
+                  <p>Simplify, Go Deeper, View Sources, and Select text expose depth as a control surface. View Sources is the same grounding instinct as the efile links on the search screen.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 50%; top: 86%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: dialogue not monologue"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Dialogue, not a monologue</strong>
+                  <p>The chat field and suggested chips phrase follow-ups as investigation questions. The flow assumes another turn, which mirrors real case work.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 18%; top: 72%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: usefulness feedback"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Usefulness as interface grammar</strong>
+                  <p>“Was this summary useful?” lives in the canvas, not only in a post-intercept survey. For the pitch it signals intent to close the loop between investigators and model quality.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fos-concept__caption">Live summary: split columns, uncertainty, depth controls, feedback.</p>
+      </div>
+    </section>
+
+    <section class="csd-context csd-context--full pitch-reflections" aria-labelledby="pitch-reflections-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Pitch reflections</span>
+        <h2 class="csd-context__title" id="pitch-reflections-heading">Pitch takeaways — case intelligence</h2>
+        <div class="csd-context__body">
+          <p>
+            This FOS direction stayed at <strong>pitch stage</strong>, but it’s a sharp place to practise <strong>trust in AI</strong>, <strong>explainability</strong>, and <strong>balancing automation with human agency</strong> in regulated workflows. For a consumer booking exploration in the same series, see <a href="british-airways.html">British Airways</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-impact" aria-label="Final thoughts on designing for AI">
+      <div class="csd-impact__header">
+        <span class="kicker">Designing for AI</span>
+        <h2 class="csd-impact__title">Final thoughts on <em class="italic">designing for AI.</em></h2>
+      </div>
+      <ul class="csd-impact__list">
+        <li><strong>Automation with transparency.</strong> If the product summarizes, ranks, or shortcuts work, the UI should show what happened in plain language — provenance, scope, confidence where it matters — not hide it behind a sparkle and a paragraph nobody can check.</li>
+        <li><strong>Let people choose AI — and choose out.</strong> The non-AI path stays visible: full lists, manual filters, investigator-first layouts. Switching to “recommended” or assistive modes should feel like a deliberate toggle, not the only door in.</li>
+        <li><strong>Don’t be pushy.</strong> Nudge quietly: confirm intent before personalization, avoid piling “smart” defaults on every step, and treat assistance as something the user can ignore without penalty. Pushy AI reads as a funnel, not a partner.</li>
+      </ul>
+    </section>
+
+    <section class="csd-context csd-context--full">
+      <div class="csd-context__text">
+        <span class="kicker">Shipped work</span>
+        <h2 class="csd-context__title">Looking for things that <em class="italic">went live?</em></h2>
+        <div class="csd-context__body">
+          <p>
+            This page is pitch work; for shipped projects see <a href="case-studies.html">Case Studies</a>. The explorations above are where I pressure-test how AI shows up in the interface — and what I’d want to see before trusting it in production.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-explore" aria-labelledby="cs-explore-heading">
+      <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
+      <ul class="cs-explore__grid" role="list">
+        <li>
+          <a class="cs-explore__card" href="gwi.html" aria-label="GWI: Reimagining user management for an AI-driven platform">
+            <img class="cs-explore__img" src="assets/GWIcover.png" alt="" />
+            <span class="cs-explore__title">Reimagining user management for an AI-driven platform</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate: Reducing file processing from days to minutes">
+            <img class="cs-explore__img" src="assets/PINS/PINS cover.png" alt="" />
+            <span class="cs-explore__title">Reducing file processing from days to minutes</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="hyundai-finance.html" aria-label="Hyundai Finance: Enabling car dealers to do soft credit checks">
+            <img class="cs-explore__img" src="assets/HCUK covr.png" alt="" />
+            <span class="cs-explore__title">Enabling car dealers to do soft credit checks</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="foot">
+    <div class="foot__inner">
+      <span class="kicker">06 · End of Side A</span>
+      <h2 class="foot__title">
+        <span>Got a record </span>
+        <span class="italic">worth pressing?</span>
+      </h2>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
+
+      <div class="foot__row">
+        <div class="foot__links">
+          <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="foot__meta">
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
+        </div>
+      </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>

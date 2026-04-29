@@ -1,0 +1,3 @@
+# Local Python environments
+.venv-pdf/
+.venv/

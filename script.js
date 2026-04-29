@@ -3,32 +3,488 @@
    - Case study records: whole card navigates (nested links unchanged)
    - Reveal on scroll for sections
    - Header style on scroll
+   - SPA-style navigation so the Spotify embed keeps playing across internal pages
 */
 
+/* Injected once — replace PLAYLIST_ID with your playlist ID */
+const SPOTIFY_FAB_HTML = `
+  <div class="spotify-fab" id="spotify-fab">
+    <div class="spotify-fab__panel" id="spotify-fab-panel" role="region" aria-label="Spotify playlist player" aria-hidden="true">
+      <div class="spotify-fab__panel-head">
+        <span class="spotify-fab__panel-title">Now spinning</span>
+        <button type="button" class="spotify-fab__panel-close" aria-label="Close playlist">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="spotify-fab__embed">
+        <iframe data-src="https://open.spotify.com/embed/playlist/PLAYLIST_ID?utm_source=generator&theme=0" src="" width="100%" height="232" style="border:0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist"></iframe>
+      </div>
+    </div>
+    <button type="button" class="spotify-fab__trigger" id="spotify-fab-trigger" aria-expanded="false" aria-controls="spotify-fab-panel" title="Open playlist player">
+      <span class="spotify-fab__art" aria-hidden="true">
+        <svg class="spotify-fab__turntable" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <rect x="3" y="13" width="42" height="29" rx="4" fill="#241C15" stroke="#3D3228" stroke-width="1"/>
+          <rect x="6" y="16" width="36" height="23" rx="2" fill="#1B140E" opacity="0.85"/>
+          <circle cx="21" cy="27.5" r="11.5" fill="#14110E" stroke="#4A3C30" stroke-width="0.75"/>
+          <circle cx="21" cy="27.5" r="8.5" stroke="#E9A05B" stroke-opacity="0.28" stroke-width="0.5"/>
+          <circle cx="21" cy="27.5" r="5.5" stroke="#8A7A66" stroke-opacity="0.35" stroke-width="0.35"/>
+          <circle cx="21" cy="27.5" r="2" fill="#C9BEAB"/>
+          <circle cx="36" cy="19" r="2.8" fill="#5C5145" stroke="#8A7A66" stroke-width="0.35"/>
+          <path d="M35.6 18.8L23.2 31.2" stroke="#C9BEAB" stroke-width="1.25" stroke-linecap="round"/>
+          <circle cx="23.2" cy="31.2" r="1.15" fill="#D67B3D"/>
+        </svg>
+      </span>
+      <span class="spotify-fab__play-ring" aria-hidden="true">
+        <svg class="spotify-fab__play" viewBox="0 0 24 24" width="16" height="16" focusable="false">
+          <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
+        </svg>
+      </span>
+    </button>
+  </div>
+`;
+
+function mountSpotifyFab() {
+  if (document.getElementById('spotify-fab')) return;
+  const toast = document.getElementById('email-toast');
+  const tpl = document.createElement('template');
+  tpl.innerHTML = SPOTIFY_FAB_HTML.trim();
+  const fab      = tpl.content.firstElementChild;
+  const curScr   = document.currentScript;
+  if (toast && toast.parentNode) toast.parentNode.insertBefore(fab, toast);
+  else if (curScr && curScr.parentNode) curScr.parentNode.insertBefore(fab, curScr);
+  else document.body.appendChild(fab);
+}
+
 (() => {
+  mountSpotifyFab();
+
+  let recordStackCleanup = () => {};
+  let flipImagesCleanup  = () => {};
+  let fosHotspotCleanup  = () => {};
+  let aiSleeveCleanup    = () => {};
+  let revealObserver     = null;
+
+  function teardownDynamicPage() {
+    recordStackCleanup();
+    recordStackCleanup = () => {};
+    flipImagesCleanup();
+    flipImagesCleanup = () => {};
+    fosHotspotCleanup();
+    fosHotspotCleanup = () => {};
+    aiSleeveCleanup();
+    aiSleeveCleanup = () => {};
+    if (revealObserver) {
+      revealObserver.disconnect();
+      revealObserver = null;
+    }
+  }
+
+  /** Expand/collapse summaries on ai-explorations.html CD sleeves */
+  function initAISleeves() {
+    const main = document.getElementById('spa-main');
+    if (!main) return () => {};
+
+    function prefersReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function clearSleeveFlipTimers(btn) {
+      if (btn._aiFlipTimer) {
+        clearTimeout(btn._aiFlipTimer);
+        btn._aiFlipTimer = null;
+      }
+    }
+
+    function sleeveCoverVideoHasPlayableSrc(video) {
+      if (!video || video.tagName !== 'VIDEO') return false;
+      const vsrc = video.getAttribute('src');
+      if (vsrc && vsrc.trim() !== '') return true;
+      return [...video.querySelectorAll('source')].some(s => {
+        const hs = s.getAttribute('src');
+        return !!(hs && hs.trim() !== '');
+      });
+    }
+
+    function kickSleeveCoverVideos(panel, play) {
+      if (!panel) return;
+      panel.querySelectorAll('video.cd-sleeve__cover-video').forEach(v => {
+        if (!sleeveCoverVideoHasPlayableSrc(v)) return;
+        if (play) v.play().catch(() => {});
+        else v.pause();
+      });
+    }
+
+    const aiRack = main.querySelector('.cd-rack.cd-rack--ai-row');
+    let aiDockRaf = 0;
+
+    /** AI row: clear legacy inline panel metrics (layout is flex in CSS) */
+    function alignAiExploreDockedPanel() {
+      if (!aiRack) return;
+      cancelAnimationFrame(aiDockRaf);
+      aiDockRaf = requestAnimationFrame(() => {
+        aiDockRaf = 0;
+        dockAiExplorePanelFrame();
+      });
+    }
+
+    function dockAiExplorePanelFrame() {
+      if (!aiRack) return;
+
+      /* Clear legacy absolute-position vars if present (layout is flex in CSS) */
+      aiRack.querySelectorAll('.cd-sleeve__panel').forEach(p => {
+        p.style.removeProperty('--ai-panel-left');
+        p.style.removeProperty('--ai-panel-width');
+        p.style.removeProperty('--ai-panel-top');
+      });
+    }
+
+    function runSleeveFlipOpen(btn, panel, sleeve, coverVisual) {
+      return new Promise((resolve) => {
+        const jewel = btn.querySelector('.cd-case__jewel');
+        if (!jewel || !coverVisual) {
+          resolve();
+          return;
+        }
+
+        const from = jewel.getBoundingClientRect();
+        sleeve.classList.add('cd-sleeve--flip-opening');
+        panel.hidden = false;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const to = coverVisual.getBoundingClientRect();
+            if (!to.width || !to.height) {
+              sleeve.classList.remove('cd-sleeve--flip-opening');
+              if (btn.getAttribute('aria-expanded') === 'true') {
+                sleeve?.classList.add('cd-sleeve--expanded');
+              }
+              resolve();
+              return;
+            }
+
+            const jcx = from.left + from.width / 2;
+            const jcy = from.top + from.height / 2;
+            const tcx = to.left + to.width / 2;
+            const tcy = to.top + to.height / 2;
+            const dx = jcx - tcx;
+            const dy = jcy - tcy;
+            const sx = from.width / to.width;
+            const sy = from.height / to.height;
+
+            let animEnded = false;
+            const finish = () => {
+              if (animEnded) return;
+              animEnded = true;
+              clearSleeveFlipTimers(btn);
+              if (coverVisual._flipEndHandler) {
+                coverVisual.removeEventListener('transitionend', coverVisual._flipEndHandler);
+                coverVisual._flipEndHandler = null;
+              }
+              coverVisual.style.transition = '';
+              coverVisual.style.transform = '';
+              coverVisual.style.opacity = '';
+              coverVisual.style.willChange = '';
+              sleeve.classList.remove('cd-sleeve--flip-opening');
+              resolve();
+            };
+
+            coverVisual.style.willChange = 'transform, opacity';
+            coverVisual.style.transition = 'none';
+            coverVisual.style.opacity = '0';
+            coverVisual.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+
+            requestAnimationFrame(() => {
+              coverVisual.style.transition =
+                'transform 0.52s cubic-bezier(0.2, 0.82, 0.12, 1), opacity 0.32s ease';
+              coverVisual.style.opacity = '1';
+              coverVisual.style.transform = 'translate(0, 0) scale(1, 1)';
+
+              function onEnd(e) {
+                if (e.propertyName !== 'transform') return;
+                coverVisual.removeEventListener('transitionend', onEnd);
+                coverVisual._flipEndHandler = null;
+                finish();
+              }
+              coverVisual._flipEndHandler = onEnd;
+              coverVisual.addEventListener('transitionend', onEnd);
+              btn._aiFlipTimer = setTimeout(finish, 640);
+            });
+          });
+        });
+      });
+    }
+
+    function setOpen(btn, open, opts = {}) {
+      const id = btn.getAttribute('aria-controls');
+      if (!id) return Promise.resolve();
+      const panel = document.getElementById(id);
+      if (!panel) return Promise.resolve();
+      const sleeve = panel.closest('.cd-sleeve');
+      const coverVisual = panel.querySelector('.cd-sleeve__cover-visual');
+      const instant = !!opts.instant;
+
+      /* AI rack: side-by-side layout uses CSS flex; skip FLIP (jewel stays visible) */
+      const openDockedAiRackInstantly =
+        !instant && aiRack && sleeve && aiRack.contains(sleeve);
+
+      if (!open) {
+        clearSleeveFlipTimers(btn);
+        if (coverVisual && coverVisual._flipEndHandler) {
+          coverVisual.removeEventListener('transitionend', coverVisual._flipEndHandler);
+          coverVisual._flipEndHandler = null;
+        }
+        const jewel = btn.querySelector('.cd-case__jewel');
+        if (jewel) {
+          jewel.style.removeProperty('transition');
+          jewel.style.removeProperty('opacity');
+        }
+        if (coverVisual) {
+          coverVisual.style.transition = '';
+          coverVisual.style.transform = '';
+          coverVisual.style.opacity = '';
+          coverVisual.style.willChange = '';
+        }
+        btn.setAttribute('aria-expanded', 'false');
+        btn.classList.remove('cd-case__toggle--open');
+        panel.hidden = true;
+        panel.classList.remove('cd-sleeve__panel--open');
+        sleeve?.classList.remove('cd-sleeve--expanded', 'cd-sleeve--flip-opening');
+        kickSleeveCoverVideos(panel, false);
+        alignAiExploreDockedPanel();
+        return Promise.resolve();
+      }
+
+      btn.setAttribute('aria-expanded', 'true');
+      btn.classList.add('cd-case__toggle--open');
+      panel.classList.add('cd-sleeve__panel--open');
+
+      if (instant || prefersReducedMotion() || openDockedAiRackInstantly) {
+        panel.hidden = false;
+        sleeve?.classList.add('cd-sleeve--expanded');
+        kickSleeveCoverVideos(panel, true);
+        alignAiExploreDockedPanel();
+        return Promise.resolve();
+      }
+
+      return runSleeveFlipOpen(btn, panel, sleeve, coverVisual).then(() => {
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          sleeve?.classList.add('cd-sleeve--expanded');
+        }
+        kickSleeveCoverVideos(panel, true);
+        alignAiExploreDockedPanel();
+      });
+    }
+
+    function closeOther(btn) {
+      main.querySelectorAll('.cd-case__toggle[aria-expanded="true"]').forEach(other => {
+        if (other !== btn) setOpen(other, false, { instant: true });
+      });
+    }
+
+    function onClick(e) {
+      const btn = e.target.closest('.cd-case__toggle');
+      if (!btn || !main.contains(btn)) return;
+      e.preventDefault();
+
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      const id = btn.getAttribute('aria-controls');
+      const panel = id ? document.getElementById(id) : null;
+
+      if (!isOpen) {
+        closeOther(btn);
+        setOpen(btn, true).then(() => {
+          panel?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+        });
+      } else {
+        setOpen(btn, false);
+      }
+    }
+
+    const onAiRackRelayout = () => alignAiExploreDockedPanel();
+
+    main.addEventListener('click', onClick);
+
+    if (aiRack) {
+      window.addEventListener('resize', onAiRackRelayout);
+    }
+
+    const hash = window.location.hash.slice(1);
+    if (hash && hash.startsWith('cd-sleeve')) {
+      requestAnimationFrame(() => {
+        const row = document.getElementById(hash);
+        const innerBtn = row?.querySelector('.cd-case__toggle');
+        if (!innerBtn) return;
+        closeOther(innerBtn);
+        setOpen(innerBtn, true, { instant: true });
+      });
+    }
+
+    return () => {
+      main.removeEventListener('click', onClick);
+      window.removeEventListener('resize', onAiRackRelayout);
+      cancelAnimationFrame(aiDockRaf);
+    };
+  }
+
+  function sameOriginForSpa(a, b) {
+    if (a.origin === b.origin) return true;
+    if (a.protocol === 'file:' && b.protocol === 'file:') return true;
+    return false;
+  }
+
+  function filenameKey(pathname) {
+    if (!pathname) return '';
+    const seg = pathname.split('/').pop() || pathname;
+    return seg.replace(/#.*/, '').toLowerCase();
+  }
+
+  /** Keeps typography correct when SPA-swapping shell is still index.html vs other pages */
+  function syncBodyHomeClass(resolvedHref) {
+    let url;
+    try {
+      url = new URL(resolvedHref, window.location.href);
+    } catch {
+      return;
+    }
+    let key = filenameKey(url.pathname);
+    if (!key) key = 'index.html';
+    document.body.classList.toggle('page-home', key === 'index.html');
+  }
+
+  const CASE_STUDY_DETAIL_PAGES = new Set([
+    'gwi.html',
+    'toyota.html',
+    'hyundai-finance.html',
+    'planning-inspectorate.html',
+  ]);
+
+  const AI_EXPLORATION_DETAIL_PAGES = new Set([
+    'british-airways.html',
+    'fos-ai.html',
+    'ba-fo.html',
+  ]);
+
+  function updateNavAriaCurrent(resolvedUrl) {
+    let activeFile = filenameKey(new URL(resolvedUrl, window.location.href).pathname);
+    if (CASE_STUDY_DETAIL_PAGES.has(activeFile)) activeFile = 'case-studies.html';
+    else if (AI_EXPLORATION_DETAIL_PAGES.has(activeFile)) activeFile = 'ai-explorations.html';
+
+    document.querySelectorAll('.nav__links a[href], .mobile-nav__links a[href]').forEach(a => {
+      const h = a.getAttribute('href');
+      if (!h || h.startsWith('#')) return;
+      const linkFile = filenameKey(new URL(h, window.location.href).pathname);
+      if (linkFile === activeFile) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function isInternalHtmlPageUrl(url) {
+    if (url.protocol === 'javascript:') return false;
+    const path = url.pathname.toLowerCase();
+    return /\.html(\/|$)/i.test(path);
+  }
+
+  async function spaNavigate(rawUrl, { replace = false } = {}) {
+    const spaMain = document.getElementById('spa-main');
+    let url;
+    try {
+      url = new URL(rawUrl, window.location.href);
+    } catch {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    const here = new URL(window.location.href);
+
+    if (!sameOriginForSpa(url, here)) {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    if (!spaMain || !isInternalHtmlPageUrl(url)) {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    let fetchUrl = url.href;
+    if (window.location.protocol !== 'file:') fetchUrl = url.pathname + url.search;
+
+    let res;
+    try {
+      res = await fetch(fetchUrl, {
+        credentials: 'same-origin',
+        cache: 'no-store',
+      });
+    } catch {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    if (!res.ok) {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    const html = await res.text();
+    const doc  = new DOMParser().parseFromString(html, 'text/html');
+    const next = doc.getElementById('spa-main');
+    if (!next) {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    teardownDynamicPage();
+
+    spaMain.innerHTML = next.innerHTML;
+    document.title = doc.title;
+    const nextDesc = doc.querySelector('meta[name="description"]');
+    const curDesc  = document.querySelector('meta[name="description"]');
+    if (nextDesc && curDesc) curDesc.setAttribute('content', nextDesc.getAttribute('content') || '');
+
+    let historyPath = url.pathname + url.search + url.hash;
+    if (window.location.protocol === 'file:') {
+      const file = url.pathname.split('/').pop() || 'index.html';
+      historyPath = file + url.search + url.hash;
+    }
+    try {
+      if (replace) history.replaceState({ spa: 1 }, '', historyPath);
+      else history.pushState({ spa: 1 }, '', historyPath);
+    } catch {
+      window.location.href = rawUrl;
+      return;
+    }
+
+    updateNavAriaCurrent(url.href);
+    syncBodyHomeClass(url.href);
+    window.scrollTo(0, 0);
+
+    const hid = url.hash.slice(1);
+    if (hid) {
+      requestAnimationFrame(() => {
+        document.getElementById(hid)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    initDynamicPage();
+  }
 
   /* ──────────────────────────────────────────────────────────────────
      1. STACKED-RECORD SCROLL EFFECT
-     Cards are stacked like records in a crate. As the user scrolls,
-     each card peels away upward, revealing the next one beneath it.
   ────────────────────────────────────────────────────────────────── */
   function initRecordStack() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(max-width: 820px)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
+    if (window.matchMedia('(max-width: 820px)').matches) return () => {};
 
     const section = document.getElementById('works');
     const crate   = section && section.querySelector('.crate');
-    if (!crate) return;
+    if (!crate) return () => {};
 
-    /* Reverse so the last card in the DOM sits on top of the stack
-       (front / first to fly away) and the first card is at the bottom. */
-    const cards = Array.from(crate.querySelectorAll(':scope > .record')).reverse();
+    const cards = Array.from(crate.querySelectorAll(':scope > .record'));
     const N = cards.length;
-    if (N < 2) return;
+    if (N < 2) return () => {};
 
-    /* Visual stack frames — index 0 is the front (active) card.
-       ty: offset in px below the viewport centre.
-       All cards are fully opaque — depth conveyed through scale only. */
     const STACK = [
       { ty:  0,  sc: 1.000 },
       { ty: 26,  sc: 0.965 },
@@ -49,7 +505,6 @@
     }
 
     const lerp = (a, b, t) => a + (b - a) * t;
-    /* easeInOutQuad — snappy start, smooth arrival */
     const eio  = t => t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
 
     let PER = 0, animStart = 0;
@@ -60,18 +515,13 @@
       const head  = section.querySelector('.section__head');
       const headH = head ? head.offsetHeight : 0;
 
-      /* animStart = document-Y where the card animation begins
-         (once the section heading has scrolled out of view) */
       animStart =
         section.getBoundingClientRect().top + window.scrollY + headH;
 
-      /* Section must be tall enough for all transitions:
-         heading + full-height viewport + (N-1) card transitions + buffer */
       section.style.minHeight =
         `${headH + window.innerHeight + (N - 1) * PER + 120}px`;
     }
 
-    /* ── Sticky full-viewport stage ── */
     Object.assign(crate.style, {
       position:    'sticky',
       top:         '0',
@@ -81,35 +531,27 @@
       maxWidth:    '100%',
       margin:      '0',
       overflow:    'visible',
-      perspective: '2200px',   /* preserve 3-D flip on record__inner */
+      perspective: '2200px',
     });
 
-    /* ── Absolutely centred cards ── */
     cards.forEach(card => {
       Object.assign(card.style, {
         position:   'absolute',
         top:        '50%',
         left:       '50%',
-        /* Width drives height via aspect-ratio 16/10.
-           The third term caps height at (100svh − 120px) so there's
-           always at least 60 px breathing room top and bottom. */
         width:      'min(1060px, 92vw, calc((100svh - 120px) * 1.6))',
         margin:     '0',
         willChange: 'transform, opacity',
       });
-      /* Pre-flag as revealed so the fade-in observer doesn't fight us */
       card.classList.add('is-in');
     });
 
-    /* ── Per-frame update ── */
     function draw() {
       const scrolled = Math.max(0, window.scrollY - animStart);
-      const sp    = scrolled / PER;                  /* float segments elapsed */
-      const front = Math.min(Math.floor(sp), N - 2); /* last card always stays */
-      const rawT  = sp - front;                      /* 0→1 within this segment */
+      const sp    = scrolled / PER;
+      const front = Math.min(Math.floor(sp), N - 2);
+      const rawT  = sp - front;
 
-      /* DWELL: the first 45 % of each scroll segment the card just sits
-         there fully readable. The fly-away only starts after that. */
       const DWELL = 0.45;
       const animT = rawT < DWELL ? 0 : (rawT - DWELL) / (1 - DWELL);
       const t  = Math.min(Math.max(animT, 0), 1);
@@ -121,31 +563,27 @@
         let ty, sc, op = 1, ro = 0, zi, pe;
 
         if (i < front) {
-          /* ── Already gone ── */
           ty = GONE_Y; sc = 0.88; op = 0; ro = -2;
           zi = N - i;  pe = 'none';
 
         } else if (i === front) {
-          /* ── Front card: peeling away upward, stays fully opaque ── */
           const from = stackAt(0);
           ty = lerp(from.ty, GONE_Y, te);
           sc = lerp(from.sc, 0.88,   te);
           ro = lerp(0,       -2,     te);
-          /* Only fade in the final 15 % of the animation so there's
-             no ghosting when the next card is already in position */
           op = te > 0.85 ? lerp(1, 0, (te - 0.85) / 0.15) : 1;
           zi = N + 1;
           pe = t > 0.75 ? 'none' : 'auto';
 
         } else {
-          /* ── Waiting in the stack: shift forward as front leaves ── */
           const sPos = i - front;
           const from = stackAt(sPos);
           const to   = stackAt(sPos - 1);
           ty = lerp(from.ty, to.ty, te);
           sc = lerp(from.sc, to.sc, te);
           zi = N - sPos;
-          pe = 'none';
+          /* Let peeking sleeves receive clicks on exposed areas; z-index keeps the front card on top where they overlap. */
+          pe = 'auto';
         }
 
         card.style.transform =
@@ -158,32 +596,32 @@
 
     measure();
     draw();
-    window.addEventListener('scroll', draw,   { passive: true });
-    window.addEventListener('resize', () => { measure(); draw(); }, { passive: true });
+    const onScroll = draw;
+    const onResize = () => { measure(); draw(); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }
 
-  initRecordStack();
-
-
   /* ──────────────────────────────────────────────────────────────────
-     SCROLL-LINKED CARD FLIP — .csd-fullimg__inner elements
-     Maps scroll position to a rotateX angle so the image physically
-     tracks with the scroll. Starts tilted back, lands flat.
+     SCROLL-LINKED CARD FLIP — .csd-fullimg__inner
   ────────────────────────────────────────────────────────────────── */
   function initFlipImages() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
 
     const panels = document.querySelectorAll('.csd-fullimg__inner');
-    if (!panels.length) return;
+    if (!panels.length) return () => {};
 
-    const MAX_ANGLE = 14; /* degrees tilted at rest */
+    const MAX_ANGLE = 14;
 
     function update() {
       const vh = window.innerHeight;
       panels.forEach(el => {
         const rect = el.getBoundingClientRect();
-        /* progress 0 → top of el at bottom of viewport (just entering)
-                   1 → top of el at 30% from top of viewport (solidly in view) */
         const raw = (vh - rect.top) / (vh * 0.7);
         const progress = Math.max(0, Math.min(1, raw));
         const angle = MAX_ANGLE * (1 - progress);
@@ -194,84 +632,91 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update, { passive: true });
     update();
+
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }
 
-  initFlipImages();
-
-
   /* ──────────────────────────────────────────────────────────────────
-     2. Case study records — whole card navigates unless a nested link
-        was clicked; hover still flips on pointer devices via CSS.
+     2. Case study records — whole card navigates (SPA when possible)
   ────────────────────────────────────────────────────────────────── */
-  const records = document.querySelectorAll('.crate > .record');
+  function initCaseStudyRecordClicks() {
+    document.querySelectorAll('.crate > .record').forEach(rec => {
+      if (rec.dataset.spaWired === '1') return;
+      rec.dataset.spaWired = '1';
 
-  records.forEach(rec => {
-    const href = rec.dataset.caseHref;
-    if (!href) return;
+      const href = rec.dataset.caseHref;
+      if (!href) return;
 
-    rec.setAttribute('tabindex', '0');
+      rec.setAttribute('tabindex', '0');
 
-    rec.addEventListener('click', e => {
-      if (e.target.closest('a[href]')) return;
-      if (e.metaKey || e.ctrlKey || e.shiftKey) {
+      rec.addEventListener('click', e => {
+        if (e.target.closest('a[href]')) return;
+
+        if (e.metaKey || e.ctrlKey || e.shiftKey) {
+          e.preventDefault();
+          window.open(href, '_blank');
+          return;
+        }
+        if (e.button !== 0) return;
+        spaNavigate(href);
+      });
+
+      rec.addEventListener('auxclick', e => {
+        if (e.button !== 1) return;
+        if (e.target.closest('a[href]')) return;
         e.preventDefault();
         window.open(href, '_blank');
-        return;
-      }
-      if (e.button !== 0) return;
-      window.location.href = href;
-    });
+      });
 
-    rec.addEventListener('auxclick', e => {
-      if (e.button !== 1) return;
-      if (e.target.closest('a[href]')) return;
-      e.preventDefault();
-      window.open(href, '_blank');
-    });
+      rec.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        if (e.target.closest && e.target.closest('a[href]')) return;
 
-    rec.addEventListener('keydown', e => {
-      if (e.key !== 'Enter' && e.key !== ' ') return;
-      if (e.target.closest && e.target.closest('a[href]')) return;
-      e.preventDefault();
-      window.location.href = href;
-    });
-  });
-
-
-  /* ──────────────────────────────────────────────────────────────────
-     3. "GET IN TOUCH" — copy email + toast
-     Both the hero button and the nav CTA share the same toast.
-  ────────────────────────────────────────────────────────────────── */
-  const toast = document.getElementById('email-toast');
-  let toastTimer;
-
-  function copyEmail() {
-    navigator.clipboard.writeText('zenazerai@gmail.com').then(() => {
-      if (!toast) return;
-      clearTimeout(toastTimer);
-      toast.classList.add('is-visible');
-      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
+        e.preventDefault();
+        spaNavigate(href);
+      });
     });
   }
 
-  const copyBtn    = document.getElementById('copy-email');
-  const navCopyBtn = document.getElementById('nav-copy-email');
-  const footCopyBtn = document.getElementById('foot-copy-email');
-  if (copyBtn)    copyBtn.addEventListener('click',    copyEmail);
-  if (navCopyBtn) navCopyBtn.addEventListener('click', copyEmail);
-  if (footCopyBtn) footCopyBtn.addEventListener('click', copyEmail);
+  /* ──────────────────────────────────────────────────────────────────
+     3. "GET IN TOUCH" — copy email + toast (delegated for SPA swaps)
+     Toast is resolved at click time — markup often lives after this script.
+  ────────────────────────────────────────────────────────────────── */
+  let toastTimer;
 
+  function showCopiedToast() {
+    const el = document.getElementById('email-toast');
+    if (!el) return;
+    el.textContent = 'Copied to clipboard';
+    clearTimeout(toastTimer);
+    el.classList.add('is-visible');
+    toastTimer = setTimeout(() => el.classList.remove('is-visible'), 2400);
+  }
+
+  function copyEmail() {
+    navigator.clipboard.writeText('zenazerai@gmail.com').then(showCopiedToast);
+  }
+
+  document.addEventListener('click', e => {
+    const t = e.target.closest('#nav-copy-email, #foot-copy-email, #mobile-copy-email, #copy-email');
+    if (!t) return;
+    if (t.tagName !== 'BUTTON') return;
+    e.preventDefault();
+    copyEmail();
+  });
 
   /* ──────────────────────────────────────────────────────────────────
      4. NAV elevation on scroll
   ────────────────────────────────────────────────────────────────── */
   const nav = document.querySelector('.nav');
-  const onScroll = () => {
-    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  const onNavScroll = () => {
+    nav?.classList.toggle('is-scrolled', window.scrollY > 12);
   };
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
+  document.addEventListener('scroll', onNavScroll, { passive: true });
+  onNavScroll();
 
   /* ──────────────────────────────────────────────────────────────────
      5a. HAMBURGER MENU toggle
@@ -288,7 +733,6 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    /* Close on link click */
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('is-open');
@@ -299,7 +743,6 @@
       });
     });
 
-    /* Close on Escape */
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
         mobileNav.classList.remove('is-open');
@@ -312,42 +755,29 @@
     });
   }
 
-  /* Wire up mobile "Get in touch" button */
-  const mobileCopyBtn = document.getElementById('mobile-copy-email');
-  if (mobileCopyBtn) mobileCopyBtn.addEventListener('click', copyEmail);
+  function setupRevealOnScroll() {
+    const reveal = document.querySelectorAll(
+      '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials'
+    );
+    reveal.forEach(el => el.classList.add('reveal'));
 
+    const allReveal = document.querySelectorAll('.reveal');
 
-  /* ──────────────────────────────────────────────────────────────────
-     5. REVEAL ON SCROLL — gentle fade-up for section elements
-     .record is excluded: its opacity is driven by initRecordStack()
-  ────────────────────────────────────────────────────────────────── */
-  const reveal = document.querySelectorAll(
-    '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials'
-  );
-  reveal.forEach(el => el.classList.add('reveal'));
-
-  /* Observe all .reveal elements (including ones marked up in HTML directly) */
-  const allReveal = document.querySelectorAll('.reveal');
-
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    allReveal.forEach(el => io.observe(el));
-  } else {
-    allReveal.forEach(el => el.classList.add('is-in'));
+    if ('IntersectionObserver' in window) {
+      revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      allReveal.forEach(el => revealObserver.observe(el));
+    } else {
+      allReveal.forEach(el => el.classList.add('is-in'));
+    }
   }
 
-
-  /* ──────────────────────────────────────────────────────────────────
-     6. ANIMATED TRACK-CARD ACCORDION
-     <details> opens instantly; we intercept to animate both directions.
-  ────────────────────────────────────────────────────────────────── */
   function initTrackCards() {
     const cards = document.querySelectorAll('.track-card');
     if (!cards.length) return;
@@ -361,7 +791,6 @@
         e.preventDefault();
 
         if (details.open) {
-          /* ── Closing: animate to 0, then remove [open] ── */
           body.style.gridTemplateRows = '0fr';
           const onEnd = () => {
             details.removeAttribute('open');
@@ -369,9 +798,7 @@
           };
           body.addEventListener('transitionend', onEnd, { once: true });
         } else {
-          /* ── Opening: set [open] first, then animate in ── */
           details.setAttribute('open', '');
-          /* Force reflow so the transition fires */
           body.getBoundingClientRect();
           body.style.gridTemplateRows = '1fr';
         }
@@ -379,50 +806,157 @@
     });
   }
 
-  initTrackCards();
+  function initFosConceptHotspots() {
+    const roots = document.querySelectorAll('.fos-concepts');
+    if (!roots.length) return () => {};
 
+    function closeAll() {
+      roots.forEach(root => {
+        root.querySelectorAll('.fos-hotspot--open').forEach(h => {
+          h.classList.remove('fos-hotspot--open');
+          const b = h.querySelector('.fos-hotspot__btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
-  /* ──────────────────────────────────────────────────────────────────
-     7. SPOTIFY FAB — corner playlist popover
-  ────────────────────────────────────────────────────────────────── */
-  const spotifyFab = document.getElementById('spotify-fab');
-  const spotifyTrigger = document.getElementById('spotify-fab-trigger');
-  const spotifyPanel = document.getElementById('spotify-fab-panel');
-  const spotifyIframe = spotifyFab?.querySelector('.spotify-fab__embed iframe');
-  const spotifyClose = spotifyFab?.querySelector('.spotify-fab__panel-close');
+    const removers = [];
+    roots.forEach(root => {
+      root.querySelectorAll('.fos-hotspot__popup').forEach(popup => {
+        const stop = e => e.stopPropagation();
+        popup.addEventListener('click', stop);
+        removers.push(() => popup.removeEventListener('click', stop));
+      });
+      root.querySelectorAll('.fos-hotspot').forEach(hotspot => {
+        const btn = hotspot.querySelector('.fos-hotspot__btn');
+        if (!btn) return;
+        const onBtnClick = e => {
+          e.stopPropagation();
+          const wasOpen = hotspot.classList.contains('fos-hotspot--open');
+          closeAll();
+          if (!wasOpen) {
+            hotspot.classList.add('fos-hotspot--open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        };
+        btn.addEventListener('click', onBtnClick);
+        removers.push(() => btn.removeEventListener('click', onBtnClick));
+      });
+    });
 
-  function setSpotifyOpen(open) {
-    if (!spotifyFab || !spotifyTrigger || !spotifyPanel) return;
-    spotifyFab.classList.toggle('spotify-fab--open', open);
-    spotifyTrigger.setAttribute('aria-expanded', String(open));
-    spotifyPanel.setAttribute('aria-hidden', String(!open));
-    if (open && spotifyIframe && spotifyIframe.dataset.src && !spotifyIframe.getAttribute('src')) {
-      spotifyIframe.setAttribute('src', spotifyIframe.dataset.src);
+    const onDocClick = () => closeAll();
+    document.addEventListener('click', onDocClick);
+    removers.push(() => document.removeEventListener('click', onDocClick));
+
+    return () => removers.forEach(fn => fn());
+  }
+
+  function initDynamicPage() {
+    recordStackCleanup = initRecordStack();
+    flipImagesCleanup  = initFlipImages();
+    fosHotspotCleanup  = initFosConceptHotspots();
+    aiSleeveCleanup    = initAISleeves();
+    initCaseStudyRecordClicks();
+    setupRevealOnScroll();
+    initTrackCards();
+  }
+
+  initDynamicPage();
+
+  function initSpotifyFabListeners() {
+    const spotifyFab     = document.getElementById('spotify-fab');
+    const spotifyTrigger = document.getElementById('spotify-fab-trigger');
+    const spotifyPanel   = document.getElementById('spotify-fab-panel');
+    const spotifyIframe  = spotifyFab?.querySelector('.spotify-fab__embed iframe');
+    const spotifyClose   = spotifyFab?.querySelector('.spotify-fab__panel-close');
+
+    function setSpotifyOpen(open) {
+      if (!spotifyFab || !spotifyTrigger || !spotifyPanel) return;
+      spotifyFab.classList.toggle('spotify-fab--open', open);
+      spotifyTrigger.setAttribute('aria-expanded', String(open));
+      spotifyPanel.setAttribute('aria-hidden', String(!open));
+      if (open && spotifyIframe && spotifyIframe.dataset.src && !spotifyIframe.getAttribute('src')) {
+        spotifyIframe.setAttribute('src', spotifyIframe.dataset.src);
+      }
+    }
+
+    if (!document.body.dataset.spotifyFabBound) {
+      document.body.dataset.spotifyFabBound = '1';
+
+      document.addEventListener('click', () => {
+        const fab = document.getElementById('spotify-fab');
+        if (fab && fab.classList.contains('spotify-fab--open')) {
+          fab.classList.remove('spotify-fab--open');
+          const tr = document.getElementById('spotify-fab-trigger');
+          const pa = document.getElementById('spotify-fab-panel');
+          if (tr) tr.setAttribute('aria-expanded', 'false');
+          if (pa) pa.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key !== 'Escape') return;
+        const fab = document.getElementById('spotify-fab');
+        if (fab && fab.classList.contains('spotify-fab--open')) {
+          fab.classList.remove('spotify-fab--open');
+          document.getElementById('spotify-fab-trigger')?.setAttribute('aria-expanded', 'false');
+          document.getElementById('spotify-fab-panel')?.setAttribute('aria-hidden', 'true');
+          document.getElementById('spotify-fab-trigger')?.focus();
+        }
+      });
+    }
+
+    if (spotifyFab && spotifyTrigger && spotifyPanel && !spotifyFab.dataset.listenersBound) {
+      spotifyFab.dataset.listenersBound = '1';
+      spotifyFab.addEventListener('click', e => e.stopPropagation());
+
+      spotifyTrigger.addEventListener('click', () => {
+        const open = !spotifyFab.classList.contains('spotify-fab--open');
+        setSpotifyOpen(open);
+      });
+
+      spotifyClose?.addEventListener('click', () => {
+        setSpotifyOpen(false);
+        spotifyTrigger.focus();
+      });
     }
   }
 
-  if (spotifyFab && spotifyTrigger && spotifyPanel) {
-    spotifyFab.addEventListener('click', e => e.stopPropagation());
+  initSpotifyFabListeners();
 
-    spotifyTrigger.addEventListener('click', () => {
-      setSpotifyOpen(!spotifyFab.classList.contains('spotify-fab--open'));
-    });
+  document.addEventListener('click', e => {
+    if (e.button !== 0) return;
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    if (a.target === '_blank' || a.hasAttribute('download')) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.hasAttribute('data-no-spa')) return;
 
-    spotifyClose?.addEventListener('click', () => {
-      setSpotifyOpen(false);
-      spotifyTrigger.focus();
-    });
+    const hrefAttr = a.getAttribute('href');
+    if (!hrefAttr) return;
 
-    document.addEventListener('click', () => {
-      if (spotifyFab.classList.contains('spotify-fab--open')) setSpotifyOpen(false);
-    });
+    if (hrefAttr.startsWith('#') && !hrefAttr.includes('.html')) return;
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && spotifyFab.classList.contains('spotify-fab--open')) {
-        setSpotifyOpen(false);
-        spotifyTrigger.focus();
-      }
-    });
-  }
+    let url;
+    try {
+      url = new URL(a.href);
+    } catch {
+      return;
+    }
+
+    if (!sameOriginForSpa(url, new URL(window.location.href))) return;
+    if (!isInternalHtmlPageUrl(url)) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    spaNavigate(a.href);
+  }, true);
+
+  window.addEventListener('popstate', () => {
+    spaNavigate(window.location.href, { replace: true });
+  });
+
+  updateNavAriaCurrent(window.location.href);
+  syncBodyHomeClass(window.location.href);
 
 })();

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- EDIT: Page title & description for each case study -->
+  <title>Case Study Title — Zena Zerai</title>
+  <meta name="description" content="Case study: short one-line summary for SEO/social." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       OPTIONAL COPY START — Site shell (header + mobile nav)
+       Copy only if this page needs the full standalone shell; otherwise keep one shell per HTML file.
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <header class="nav">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="kicker">Side A · 2026</span>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       OPTIONAL COPY END — Site shell (header + mobile nav)
+       ═══════════════════════════════════════════════════════════════════════════ -->
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         COPY START — Outer case study wrapper (<article>)
+         Paste after <main …> when building a full page: opens the article.
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <!--
+      TEMPLATE — Case study blocks for pasting into other pages
+      ─────────────────────────────────────────────────────────
+      Each block is wrapped with:
+        COPY START — …   → first line to INCLUDE in the selection is the line *after* this comment
+        COPY END — …     → last line to INCLUDE is the line *before* this comment
+      (Do not paste the COPY START / COPY END comment lines unless you want them in the target file.)
+      Reorder or delete whole blocks as needed; keep one <article class="csd"> wrapper per page.
+
+      NOTES — Background / Context layout (later reference)
+      ─────────────────────────────────────────────────────
+      One HTML block; only the <section> class changes where the image sits:
+        • Text left, image right   → class="csd-context"
+        • Image left, text right   → class="csd-context csd-context--reverse"
+      Always keep the same order in the file: .csd-context__text first, then .csd-context__image.
+      Narrow screens: stacks with text above image either way.
+    -->
+    <article class="csd">
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Back link (case studies navigation)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <div class="csd-back-wrap">
+        <a class="csd-back" href="case-studies.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Case Studies
+        </a>
+      </div>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Back link
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Hero (kicker, title, summary paragraphs, cover)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-hero">
+        <div class="csd-hero__inner">
+
+          <div class="csd-hero__top">
+            <span class="kicker csd-hero__kicker">Category &nbsp;·&nbsp; Sector</span>
+          </div>
+
+          <h1 class="csd-hero__title">
+            Project<br>
+            <em class="italic">Name.</em>
+          </h1>
+
+          <div class="csd-hero__body">
+            <p class="csd-hero__summary">
+              First paragraph — context or client one-liner.
+            </p>
+            <p class="csd-hero__summary">
+              Second paragraph — your role and scope (lead line).
+            </p>
+          </div>
+
+        </div>
+
+        <div class="csd-hero__cover" aria-hidden="true">
+          <div class="csd-hero__cover-inner">
+            <!-- Live case studies: replace placeholder with <img src="assets/your-cover.png" alt="…" /> -->
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+              <rect x="4" y="6" width="40" height="32" rx="3"/>
+              <path d="M4 20h40M14 6v32"/>
+              <circle cx="36" cy="13" r="3"/>
+            </svg>
+            <span>Project cover</span>
+          </div>
+        </div>
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Hero
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Project meta (Category, Sector, Date, Team + Role pills)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-meta" aria-label="Project details">
+        <dl class="csd-meta__grid">
+
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Category</dt>
+            <dd class="csd-meta__value">…</dd>
+          </div>
+
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Sector</dt>
+            <dd class="csd-meta__value">…</dd>
+          </div>
+
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Date</dt>
+            <dd class="csd-meta__value">YYYY – YYYY</dd>
+          </div>
+
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Team</dt>
+            <dd class="csd-meta__value">…</dd>
+          </div>
+
+          <div class="csd-meta__item csd-meta__item--full">
+            <dt class="csd-meta__label">Role</dt>
+            <dd class="csd-meta__value csd-meta__pills">
+              <!-- Tip: duplicate/remove <span> tags as needed -->
+              <span>Skill one</span>
+              <span>Skill two</span>
+              <span>Skill three</span>
+            </dd>
+          </div>
+
+        </dl>
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Project meta
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Impact — list variant (<ul class="csd-impact__list">)
+           Omit if unused. Alternative: stats grid inside .csd-impact (see HTML comment in planning-inspectorate.html).
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-impact">
+
+        <div class="csd-impact__header">
+          <span class="kicker">Impact</span>
+          <h2 class="csd-impact__title">Section title <em class="italic">emphasis.</em></h2>
+        </div>
+
+        <ul class="csd-impact__list">
+          <li>Outcome bullet one</li>
+          <li>Outcome bullet two — use <strong>bold</strong> for emphasis</li>
+          <li>Outcome bullet three</li>
+        </ul>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Impact (list variant)
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Background / Context (text + image + caption)
+
+           Pick which side the image is on — change only the <section> class:
+
+           • Words left, picture right →  class="csd-context"
+           • Picture left, words right → class="csd-context csd-context--reverse"
+
+           (Leave the HTML order as-is: text block first, then image.)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-context">
+
+        <div class="csd-context__text">
+          <span class="kicker">Background</span>
+          <h2 class="csd-context__title">Section headline.</h2>
+          <div class="csd-context__body">
+            <p>Paragraph one.</p>
+            <p>Paragraph two.</p>
+            <p>Paragraph three.</p>
+          </div>
+        </div>
+
+        <!-- Delete entire .csd-context__image block if no image -->
+        <div class="csd-context__image" aria-hidden="true">
+          <div class="csd-context__image-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+              <rect x="4" y="6" width="40" height="32" rx="3"/>
+              <path d="M16 22l6 6 10-10"/>
+            </svg>
+            <span>Context image</span>
+          </div>
+          <p class="csd-context__caption">Caption — e.g. image description or source.</p>
+        </div>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Background / Context
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Editorial / body copy (typography stripes + highlights)
+           Stack multiple .csd-editorial__chunk blocks inside .csd-editorial__inner.
+           Highlights: <strong class="csd-editorial__takeaway">…</strong>,
+           <p class="csd-editorial__callout">…</p>, or <span class="csd-editorial__hl">…</span>.
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-editorial" aria-label="Research narrative">
+
+        <div class="csd-editorial__inner">
+
+          <div class="csd-editorial__chunk">
+            <span class="kicker">Research scope</span>
+            <h2 class="csd-editorial__title">Working across teams</h2>
+            <div class="csd-editorial__body">
+              <p>This wasn’t a single-team problem. I worked across:</p>
+              <ul class="csd-editorial__list">
+                <li>Engineering</li>
+                <li>Customer Success</li>
+                <li>Product</li>
+                <li>Data</li>
+                <li>Design</li>
+              </ul>
+              <p class="csd-editorial__bridge">Through:</p>
+              <ul class="csd-editorial__list">
+                <li>Stakeholder interviews</li>
+                <li>Workshops</li>
+              </ul>
+              <p>
+                This helped build a
+                <strong class="csd-editorial__takeaway">shared understanding of how the system actually operates behind the scenes.</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="csd-editorial__chunk">
+            <span class="kicker">Another stripe</span>
+            <h2 class="csd-editorial__title">Optional second section</h2>
+            <div class="csd-editorial__body">
+              <p>
+                Body copy only — use a
+                <span class="csd-editorial__hl">soft underline highlight</span>
+                for a phrase that deserves attention without full bold.
+              </p>
+              <p class="csd-editorial__callout">
+                <strong>Callout strip.</strong> Use this for a principle, constraint, or quote that should stand apart from the paragraph flow.
+              </p>
+              <p>Follow with more paragraphs as needed.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Editorial / body copy
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Key findings (header + numbered finding cards)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-findings">
+
+        <div class="csd-findings__header">
+          <span class="kicker">Kicker label</span>
+          <h2 class="csd-findings__title">Findings headline <em class="italic">emphasis.</em></h2>
+          <p class="csd-findings__intro">Intro paragraph — optional bridge before the grid.</p>
+        </div>
+
+        <div class="csd-findings__grid">
+
+          <article class="csd-finding">
+            <span class="csd-finding__num" aria-hidden="true">01</span>
+            <div class="csd-finding__content">
+              <h3 class="csd-finding__title">Finding title</h3>
+              <p class="csd-finding__desc">Short description.</p>
+            </div>
+          </article>
+
+          <article class="csd-finding">
+            <span class="csd-finding__num" aria-hidden="true">02</span>
+            <div class="csd-finding__content">
+              <h3 class="csd-finding__title">Finding title</h3>
+              <p class="csd-finding__desc">Short description.</p>
+            </div>
+          </article>
+
+          <article class="csd-finding">
+            <span class="csd-finding__num" aria-hidden="true">03</span>
+            <div class="csd-finding__content">
+              <h3 class="csd-finding__title">Finding title</h3>
+              <p class="csd-finding__desc">Short description.</p>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Key findings
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Hypothesis / Statement (single bold line strip)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-statement">
+        <span class="kicker">Hypothesis</span>
+        <p class="csd-statement__text">
+          Main statement&nbsp;<span class="csd-statement__fade">Faded continuation line.</span>
+        </p>
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Hypothesis / Statement
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Before / After (two panels with badges)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-beforeafter">
+
+        <div class="csd-beforeafter__intro">
+          <span class="kicker">Section kicker</span>
+          <p class="csd-statement__text">
+            Intro line — <span class="csd-statement__fade">optional fade segment.</span>
+          </p>
+        </div>
+
+        <div class="csd-beforeafter__grid">
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge">Before</span>
+              <div class="csd-beforeafter__placeholder" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
+                <span>Before screenshot</span>
+              </div>
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">Caption title</strong>
+              <p>Supporting caption.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+              <div class="csd-beforeafter__placeholder" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
+                <span>After screenshot</span>
+              </div>
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">Caption title</strong>
+              <p>Supporting caption.</p>
+            </figcaption>
+          </figure>
+
+        </div>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Before / After
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Single pull-quote (use ONE of pull-quote OR quotes grid)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-pullquote">
+        <span class="kicker csd-pullquote__kicker">Quote kicker</span>
+        <figure class="csd-pullquote__inner">
+          <blockquote class="csd-pullquote__text">
+            “Quote text.”
+          </blockquote>
+          <figcaption class="csd-pullquote__attr">
+            <span class="csd-pullquote__name">Name</span>
+            <span class="csd-pullquote__role">Role, Organisation</span>
+          </figcaption>
+        </figure>
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Single pull-quote
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Multiple quote cards (2–3 quotes)
+           Omit if you used single pull-quote only.
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-quotes">
+        <span class="kicker csd-quotes__kicker">In their words</span>
+        <div class="csd-quotes__grid">
+          <figure class="csd-quote">
+            <blockquote class="csd-quote__text">
+              “Quote one.”
+            </blockquote>
+            <figcaption class="csd-quote__attr">
+              <span class="csd-quote__name">Name</span>
+              <span class="csd-quote__role">Role</span>
+            </figcaption>
+          </figure>
+          <figure class="csd-quote">
+            <blockquote class="csd-quote__text">
+              “Quote two.”
+            </blockquote>
+            <figcaption class="csd-quote__attr">
+              <span class="csd-quote__name">Name</span>
+              <span class="csd-quote__role">Role</span>
+            </figcaption>
+          </figure>
+          <figure class="csd-quote">
+            <blockquote class="csd-quote__text">
+              “Quote three.”
+            </blockquote>
+            <figcaption class="csd-quote__attr">
+              <span class="csd-quote__name">Name</span>
+              <span class="csd-quote__role">Role</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Multiple quote cards
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Full-width image (scroll-linked flip — replace placeholder with <img>)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-fullimg">
+
+        <div class="csd-fullimg__scene">
+          <div class="csd-fullimg__inner">
+
+            <div class="csd-fullimg__placeholder" aria-hidden="true">
+              <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+                <rect x="2" y="2" width="60" height="44" rx="4"/>
+                <circle cx="20" cy="16" r="5"/>
+                <path d="M2 34l16-12 12 10 10-8 22 14"/>
+              </svg>
+              <span>Full project image</span>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="csd-fullimg__caption">Caption below full-width asset.</p>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Full-width image
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Two-panel grid (same layout as before/after, no badges)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-beforeafter">
+
+        <div class="csd-beforeafter__intro">
+          <span class="kicker">Section kicker</span>
+          <p class="csd-statement__text">
+            Intro&nbsp;<span class="csd-statement__fade">optional fade.</span>
+          </p>
+        </div>
+
+        <div class="csd-beforeafter__grid">
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <div class="csd-beforeafter__placeholder" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
+                <span>Panel one</span>
+              </div>
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">Title</strong>
+              <p>Caption.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <div class="csd-beforeafter__placeholder" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
+                <span>Panel two</span>
+              </div>
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">Title</strong>
+              <p>Caption.</p>
+            </figcaption>
+          </figure>
+
+        </div>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Two-panel grid
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Outcome statements (stats list)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-outcome">
+
+        <div class="csd-outcome__header">
+          <span class="kicker">Outcome</span>
+          <h2 class="csd-outcome__title">Headline <em class="italic">emphasis.</em></h2>
+        </div>
+
+        <ol class="csd-outcome__list">
+          <li class="csd-outcome__item">
+            <span class="csd-outcome__stat">+00%</span>
+            <span class="csd-outcome__desc">Metric description</span>
+          </li>
+          <li class="csd-outcome__item">
+            <span class="csd-outcome__stat">↑</span>
+            <span class="csd-outcome__desc">Metric description <span class="csd-outcome__note">(optional note)</span></span>
+          </li>
+          <li class="csd-outcome__item">
+            <span class="csd-outcome__stat">—</span>
+            <span class="csd-outcome__desc">Metric description</span>
+          </li>
+        </ol>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Outcome statements
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY START — Block: Video embed (responsive iframe)
+           ───────────────────────────────────────────────────────────────────────── -->
+      <section class="csd-video">
+
+        <div class="csd-video__header">
+          <span class="kicker">Video kicker</span>
+        </div>
+
+        <div class="csd-video__frame">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            title="Descriptive title for accessibility"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <p class="csd-video__caption">Optional caption under the video.</p>
+
+      </section>
+      <!-- ─────────────────────────────────────────────────────────────────────────
+           COPY END — Block: Video embed
+           ───────────────────────────────────────────────────────────────────────── -->
+
+      <!-- Paste additional blocks above closing </article> -->
+
+    </article>
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         COPY END — Outer case study wrapper (closes </article>)
+         ═══════════════════════════════════════════════════════════════════════════ -->
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="foot">
+    <div class="foot__inner">
+      <span class="kicker">06 · End of Side A</span>
+      <h2 class="foot__title">
+        <span>Got a record </span>
+        <span class="italic">worth pressing?</span>
+      </h2>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
+
+      <div class="foot__row">
+        <div class="foot__links">
+          <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="foot__meta">
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
+        </div>
+      </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       OPTIONAL COPY START — Footer scripts + email toast (matches other pages)
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       OPTIONAL COPY END — Footer scripts + email toast
+       ═══════════════════════════════════════════════════════════════════════════ -->
+</body>
+</html>

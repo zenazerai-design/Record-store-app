@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="page-home">
   <!-- Soft film grain overlay -->
   <div class="grain" aria-hidden="true"></div>
 
@@ -62,6 +62,7 @@
     </button>
   </div>
 
+  <main id="spa-main" class="spa-main" tabindex="-1">
   <!-- HERO -->
   <section id="top" class="hero">
     <div class="hero__bg" aria-hidden="true">
@@ -84,7 +85,7 @@
       </div>
     </div>
 
-    <!-- Right side: artist card + CTAs stacked below -->
+    <!-- Right side: artist card -->
     <div class="hero__right">
       <!-- Artist card — small mid-century poster, links to LinkedIn -->
       <a class="artist-card"
@@ -123,19 +124,14 @@
           </svg>
         </span>
       </a>
-
-      <!-- CTAs sit below the card -->
-      <div class="hero__ctas">
-        <a class="hero__cta-btn hero__cta-btn--primary" href="#works">View my work</a>
-      </div>
     </div>
 
     <div class="hero__top">
       <span class="kicker">★ Now Playing</span>
     </div>
 
-    <a class="hero__scroll" href="#works" aria-label="Scroll to works">
-      <span>Flip the record</span>
+    <a class="hero__scroll" href="#works" aria-label="View my work">
+      <span>View my work</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M12 5v14M5 12l7 7 7-7"/>
       </svg>
@@ -150,7 +146,7 @@
         <span>Selected </span>
         <span class="italic">case studies.</span>
       </h2>
-      <p class="section__lede">A handful of records I'm proud to have spun. Each sleeve hides a story — flip one to read the liner notes.</p>
+      <p class="section__lede">A handful of projects I'm proud to have shipped — summary and highlights on each card; open a case study for the full story.</p>
       <p class="section__note">Some projects are subject to NDA.</p>
     </div>
 
@@ -161,69 +157,52 @@
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #B8446A;">
-              <div class="record__info">
+              <div class="record__top-bar">
                 <span class="record__cat">A1 &nbsp;·&nbsp; SaaS AI Platform &nbsp;|&nbsp; B2B</span>
-                <span class="record__client">GWI</span>
-                <h3 class="record__title">Reimagining user management for an AI-driven platform</h3>
               </div>
-              <div class="record__face-foot">
-                <div class="record__pills">
-                  <span>User Research</span>
-                  <span>Internal Tools</span>
-                  <span>System Design</span>
-                </div>
-                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
-                <a class="record__face-cta" href="gwi.html">
-                  View case study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-                </a>
-              </div>
-              <div class="record__media">
-                <div class="record__image">
-                  <img src="assets/gwi.png" alt="GWI admin portal design" />
-                  <div class="record__face-vinyl" aria-hidden="true">
-                    <div class="record__vinyl-label"></div>
+              <div class="record__body">
+                <div class="record__title-row">
+                  <div class="record__copy-col">
+                    <div class="record__copy-stack">
+                      <h3 class="record__title">Reimagining user management for an AI-driven platform</h3>
+                      <span class="record__client">GWI</span>
+                    </div>
+                    <p class="record__summary">Led foundational discovery and early design for user management across a complex, multi-system platform, shaping scalable foundations for an upcoming agentic product launch.</p>
+                    <div class="record__pills record__pills--hero">
+                      <span>User Research</span>
+                      <span>Internal Tools</span>
+                      <span>System Design</span>
+                    </div>
+                  </div>
+                  <div class="record__media">
+                    <div class="record__image">
+                      <img src="assets/GWIcover.png" alt="GWI admin portal design" />
+                      <div class="record__face-vinyl" aria-hidden="true">
+                        <div class="record__vinyl-label"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="record__back" style="--accent: #B8446A;">
-            <header class="record__back-head">
-              <span class="kicker">Liner notes · A1</span>
-              <h3>GWI</h3>
-              <p>Led foundational discovery and early design for user management across a complex, multi-system platform, shaping scalable foundations for an upcoming agentic product launch.</p>
-            </header>
-            <div class="record__back-tracks">
-              <span class="kicker">Tracklist</span>
-              <ul class="tracklist">
-                <li><span>01</span><span>Discovery & stakeholder alignment</span><span>—</span></li>
-                <li><span>02</span><span>User research</span><span>—</span></li>
-                <li><span>03</span><span>System design</span><span>—</span></li>
-                <li><span>04</span><span>Prototype & validation</span><span>—</span></li>
-              </ul>
-              <div class="record__pills">
-                <span>User Research</span>
-                <span>Internal Tools</span>
-                <span>System Design</span>
-              </div>
-            </div>
-            <footer class="record__back-foot">
-              <div class="record__stats">
-                <div class="record__stat">
-                  <span class="record__stat-num">£36m</span>
-                  <span class="record__stat-label">Misalignment uncovered</span>
+              <div class="record__face-foot">
+                <div class="record__stats">
+                  <div class="record__stat">
+                    <span class="record__stat-num">£36m</span>
+                    <span class="record__stat-label">Misalignment uncovered</span>
+                  </div>
+                  <div class="record__stat">
+                    <span class="record__stat-num">5</span>
+                    <span class="record__stat-label">Teams aligned</span>
+                  </div>
                 </div>
-                <div class="record__stat">
-                  <span class="record__stat-num">5</span>
-                  <span class="record__stat-label">Teams aligned</span>
+                <div class="record__face-foot-actions">
+                  <a class="record__face-cta" href="gwi.html">
+                    View case study
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+                  </a>
                 </div>
               </div>
-              <a class="record__cta" href="gwi.html">
-                View case study
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-              </a>
-            </footer>
+            </div>
           </div>
         </div>
       </li>
@@ -233,69 +212,52 @@
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #3D8A72;">
-              <div class="record__info">
+              <div class="record__top-bar">
                 <span class="record__cat">A2 &nbsp;·&nbsp; Public Sector &nbsp;|&nbsp; B2B</span>
-                <span class="record__client">Planning Inspectorate</span>
-                <h3 class="record__title">Reducing file processing from days to minutes</h3>
               </div>
-              <div class="record__face-foot">
-                <div class="record__pills">
-                  <span>Research</span>
-                  <span>Redesign</span>
-                  <span>Strategy</span>
-                </div>
-                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
-                <a class="record__face-cta" href="planning-inspectorate.html">
-                  View case study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-                </a>
-              </div>
-              <div class="record__media">
-                <div class="record__image">
-                  <img src="assets/planning-inspectorate.png" alt="Planning Inspectorate case management system" />
-                  <div class="record__face-vinyl" aria-hidden="true">
-                    <div class="record__vinyl-label"></div>
+              <div class="record__body">
+                <div class="record__title-row">
+                  <div class="record__copy-col">
+                    <div class="record__copy-stack">
+                      <h3 class="record__title">Reducing file processing from days to minutes</h3>
+                      <span class="record__client">Planning Inspectorate</span>
+                    </div>
+                    <p class="record__summary">Led the research and redesign of a case management system for a government client. Transforming the document management process, a critical bottleneck in the planning application process.</p>
+                    <div class="record__pills record__pills--hero">
+                      <span>Research</span>
+                      <span>Redesign</span>
+                      <span>Strategy</span>
+                    </div>
+                  </div>
+                  <div class="record__media">
+                    <div class="record__image">
+                      <img src="assets/PINS/PINS cover.png" alt="Planning Inspectorate case management system" />
+                      <div class="record__face-vinyl" aria-hidden="true">
+                        <div class="record__vinyl-label"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="record__back" style="--accent: #3D8A72;">
-            <header class="record__back-head">
-              <span class="kicker">Liner notes · A2</span>
-              <h3>Planning Inspectorate</h3>
-              <p>Led the research and redesign of a case management system for a government client. Transforming the document management process, a critical bottleneck in the planning application process.</p>
-            </header>
-            <div class="record__back-tracks">
-              <span class="kicker">Tracklist</span>
-              <ul class="tracklist">
-                <li><span>01</span><span>Discovery & research</span><span>—</span></li>
-                <li><span>02</span><span>Workflow mapping</span><span>—</span></li>
-                <li><span>03</span><span>Redesign & prototyping</span><span>—</span></li>
-                <li><span>04</span><span>Testing & delivery</span><span>—</span></li>
-              </ul>
-              <div class="record__pills">
-                <span>Research</span>
-                <span>Redesign</span>
-                <span>Strategy</span>
-              </div>
-            </div>
-            <footer class="record__back-foot">
-              <div class="record__stats">
-                <div class="record__stat">
-                  <span class="record__stat-num">+35%</span>
-                  <span class="record__stat-label">SUS improvement</span>
+              <div class="record__face-foot">
+                <div class="record__stats">
+                  <div class="record__stat">
+                    <span class="record__stat-num">+35%</span>
+                    <span class="record__stat-label">SUS improvement</span>
+                  </div>
+                  <div class="record__stat">
+                    <span class="record__stat-num">Mar '24</span>
+                    <span class="record__stat-label">First case live</span>
+                  </div>
                 </div>
-                <div class="record__stat">
-                  <span class="record__stat-num">Mar '24</span>
-                  <span class="record__stat-label">First case live</span>
+                <div class="record__face-foot-actions">
+                  <a class="record__face-cta" href="planning-inspectorate.html">
+                    View case study
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+                  </a>
                 </div>
               </div>
-              <a class="record__cta" href="planning-inspectorate.html">
-                View case study
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-              </a>
-            </footer>
+            </div>
           </div>
         </div>
       </li>
@@ -305,69 +267,52 @@
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #8B6240;">
-              <div class="record__info">
+              <div class="record__top-bar">
                 <span class="record__cat">B1 &nbsp;·&nbsp; Automotive &nbsp;|&nbsp; B2C</span>
-                <span class="record__client">Toyota</span>
-                <h3 class="record__title">Improving conversion through rapid experimentation</h3>
               </div>
-              <div class="record__face-foot">
-                <div class="record__pills">
-                  <span>UI Design</span>
-                  <span>A/B Testing</span>
-                  <span>Experimentation</span>
-                </div>
-                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
-                <a class="record__face-cta" href="toyota.html">
-                  View case study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-                </a>
-              </div>
-              <div class="record__media">
-                <div class="record__image">
-                  <img src="assets/toyota.png" alt="Toyota product page design" />
-                  <div class="record__face-vinyl" aria-hidden="true">
-                    <div class="record__vinyl-label"></div>
+              <div class="record__body">
+                <div class="record__title-row">
+                  <div class="record__copy-col">
+                    <div class="record__copy-stack">
+                      <h3 class="record__title">Improving conversion through rapid experimentation</h3>
+                      <span class="record__client">Toyota</span>
+                    </div>
+                    <p class="record__summary">Identified and prioritised conversion opportunities across Toyota's product journeys, designing and validating UX changes through live experimentation.</p>
+                    <div class="record__pills record__pills--hero">
+                      <span>UI Design</span>
+                      <span>A/B Testing</span>
+                      <span>Experimentation</span>
+                    </div>
+                  </div>
+                  <div class="record__media">
+                    <div class="record__image">
+                      <img src="assets/Toyota/343shots_so.png" alt="Toyota product page design" />
+                      <div class="record__face-vinyl" aria-hidden="true">
+                        <div class="record__vinyl-label"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="record__back" style="--accent: #8B6240;">
-            <header class="record__back-head">
-              <span class="kicker">Liner notes · B1</span>
-              <h3>Toyota</h3>
-              <p>Identified and prioritised conversion opportunities across Toyota's product journeys, designing and validating UX changes through live experimentation.</p>
-            </header>
-            <div class="record__back-tracks">
-              <span class="kicker">Tracklist</span>
-              <ul class="tracklist">
-                <li><span>01</span><span>Conversion audit</span><span>—</span></li>
-                <li><span>02</span><span>Hypothesis sprint</span><span>—</span></li>
-                <li><span>03</span><span>A/B experiment design</span><span>—</span></li>
-                <li><span>04</span><span>Analysis & iteration</span><span>—</span></li>
-              </ul>
-              <div class="record__pills">
-                <span>UI Design</span>
-                <span>A/B Testing</span>
-                <span>Experimentation</span>
-              </div>
-            </div>
-            <footer class="record__back-foot">
-              <div class="record__stats">
-                <div class="record__stat">
-                  <span class="record__stat-num">+31%</span>
-                  <span class="record__stat-label">PLP views</span>
+              <div class="record__face-foot">
+                <div class="record__stats">
+                  <div class="record__stat">
+                    <span class="record__stat-num">+31%</span>
+                    <span class="record__stat-label">PLP views</span>
+                  </div>
+                  <div class="record__stat">
+                    <span class="record__stat-num">+20%</span>
+                    <span class="record__stat-label">Enquiry progression</span>
+                  </div>
                 </div>
-                <div class="record__stat">
-                  <span class="record__stat-num">+20%</span>
-                  <span class="record__stat-label">Enquiry progression</span>
+                <div class="record__face-foot-actions">
+                  <a class="record__face-cta" href="toyota.html">
+                    View case study
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+                  </a>
                 </div>
               </div>
-              <a class="record__cta" href="toyota.html">
-                View case study
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-              </a>
-            </footer>
+            </div>
           </div>
         </div>
       </li>
@@ -377,69 +322,52 @@
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #5B7BA8;">
-              <div class="record__info">
+              <div class="record__top-bar">
                 <span class="record__cat">B2 &nbsp;·&nbsp; Auto Finance &nbsp;|&nbsp; B2B2C</span>
-                <span class="record__client">Hyundai Finance</span>
-                <h3 class="record__title">Enabling car dealers to do soft credit checks</h3>
               </div>
-              <div class="record__face-foot">
-                <div class="record__pills">
-                  <span>SaaS</span>
-                  <span>Research</span>
-                  <span>Design System</span>
-                </div>
-                <span class="record__hint" aria-hidden="true">Flip for liner notes ↻</span>
-                <a class="record__face-cta" href="hyundai-finance.html">
-                  View case study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-                </a>
-              </div>
-              <div class="record__media">
-                <div class="record__image">
-                  <img src="assets/hyundai-finance.png" alt="Hyundai Finance dealer portal design" />
-                  <div class="record__face-vinyl" aria-hidden="true">
-                    <div class="record__vinyl-label"></div>
+              <div class="record__body">
+                <div class="record__title-row">
+                  <div class="record__copy-col">
+                    <div class="record__copy-stack">
+                      <h3 class="record__title">Enabling car dealers to do soft credit checks</h3>
+                      <span class="record__client">Hyundai Finance</span>
+                    </div>
+                    <p class="record__summary">Led the design and delivery of a dealer-led soft search MVP to help dealers save time and improve customer conversion for car finance.</p>
+                    <div class="record__pills record__pills--hero">
+                      <span>SaaS</span>
+                      <span>Research</span>
+                      <span>Design System</span>
+                    </div>
+                  </div>
+                  <div class="record__media">
+                    <div class="record__image">
+                      <img src="assets/HCUK covr.png" alt="Hyundai Finance dealer portal design" />
+                      <div class="record__face-vinyl" aria-hidden="true">
+                        <div class="record__vinyl-label"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="record__back" style="--accent: #5B7BA8;">
-            <header class="record__back-head">
-              <span class="kicker">Liner notes · B2</span>
-              <h3>Hyundai Finance</h3>
-              <p>Led the design and delivery of a dealer-led soft search MVP to help dealers save time and improve customer conversion for car finance.</p>
-            </header>
-            <div class="record__back-tracks">
-              <span class="kicker">Tracklist</span>
-              <ul class="tracklist">
-                <li><span>01</span><span>Discovery & research</span><span>—</span></li>
-                <li><span>02</span><span>Responsive prototype</span><span>—</span></li>
-                <li><span>03</span><span>Design system</span><span>—</span></li>
-                <li><span>04</span><span>MVP launch</span><span>—</span></li>
-              </ul>
-              <div class="record__pills">
-                <span>SaaS</span>
-                <span>Research</span>
-                <span>Design System</span>
-              </div>
-            </div>
-            <footer class="record__back-foot">
-              <div class="record__stats">
-                <div class="record__stat">
-                  <span class="record__stat-num">↑</span>
-                  <span class="record__stat-label">Informed finance decisions</span>
+              <div class="record__face-foot">
+                <div class="record__stats">
+                  <div class="record__stat">
+                    <span class="record__stat-num">↑</span>
+                    <span class="record__stat-label">Informed finance decisions</span>
+                  </div>
+                  <div class="record__stat">
+                    <span class="record__stat-num">Jul '25</span>
+                    <span class="record__stat-label">Pilot MVP launch</span>
+                  </div>
                 </div>
-                <div class="record__stat">
-                  <span class="record__stat-num">Jul '25</span>
-                  <span class="record__stat-label">Pilot MVP launch</span>
+                <div class="record__face-foot-actions">
+                  <a class="record__face-cta" href="hyundai-finance.html">
+                    View case study
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
+                  </a>
                 </div>
               </div>
-              <a class="record__cta" href="hyundai-finance.html">
-                View case study
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9 8l5 4-5 4"/></svg>
-              </a>
-            </footer>
+            </div>
           </div>
         </div>
       </li>
@@ -487,13 +415,13 @@
     <ul class="cd-rack" role="list">
 
       <li>
-        <a class="cd-case" href="ai-explorations.html" aria-label="BA & Financial Ombudsman — Designing for AI (pitchwork)">
+        <a class="cd-case" href="british-airways.html" aria-label="British Airways — Designing for AI pitch">
           <div class="cd-case__jewel">
             <div class="cd-case__spine" aria-hidden="true"></div>
-            <div class="cd-case__front" style="--cd-a:#b05490;--cd-b:#e07050;--cd-c:#801860;">
+            <div class="cd-case__front" style="--cd-a:#073590;--cd-b:#1e4fa3;--cd-c:#4a74c9;">
               <div class="cd-case__art" aria-hidden="true"></div>
               <div class="cd-case__label">
-                <strong class="cd-case__label-artist">BA &amp; FO</strong>
+                <strong class="cd-case__label-artist">British Airways</strong>
                 <span class="cd-case__label-title">Designing for AI</span>
               </div>
             </div>
@@ -501,14 +429,34 @@
             <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
           <div class="cd-case__info">
-            <p class="cd-case__project">BA &amp; Financial Ombudsman</p>
-            <p class="cd-case__desc">Designing for AI (pitchwork)</p>
+            <p class="cd-case__project">British Airways pitch</p>
+            <p class="cd-case__desc">Full write-up</p>
           </div>
         </a>
       </li>
 
       <li>
-        <a class="cd-case" href="ai-explorations.html" aria-label="Valtech Hackathon — Designing a dashboard with AI tools">
+        <a class="cd-case" href="fos-ai.html" aria-label="Financial Ombudsman — Designing for AI pitch">
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front" style="--cd-a:#00247D;--cd-b:#4a6fa5;--cd-c:#8e4a6b;">
+              <div class="cd-case__art" aria-hidden="true"></div>
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">Fin. Ombudsman</strong>
+                <span class="cd-case__label-title">Designing for AI</span>
+              </div>
+            </div>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
+          </div>
+          <div class="cd-case__info">
+            <p class="cd-case__project">Financial Ombudsman pitch</p>
+            <p class="cd-case__desc">Annotated mocks</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="cd-case" href="ai-explorations.html#cd-sleeve-valtech" aria-label="Valtech Hackathon — details on AI explorations">
           <div class="cd-case__jewel">
             <div class="cd-case__spine" aria-hidden="true"></div>
             <div class="cd-case__front" style="--cd-a:#1c1814;--cd-b:#2e2418;--cd-c:#100e0a;">
@@ -529,7 +477,7 @@
       </li>
 
       <li>
-        <a class="cd-case" href="ai-explorations.html" aria-label="Google & Tide — Conversational UX and CCAI for finance">
+        <a class="cd-case" href="ai-explorations.html#google-ccai-cd" aria-label="Google & Tide — Conversational UX and CCAI for finance (details on AI explorations)">
           <div class="cd-case__jewel">
             <div class="cd-case__spine" aria-hidden="true"></div>
             <div class="cd-case__front" style="--cd-a:#1a1870;--cd-b:#3535b8;--cd-c:#5555e8;">
@@ -648,8 +596,8 @@
           <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot__meta">
-          <span class="kicker">© Zena Zerai · MMXXVI</span>
-          <span class="kicker">London ↔ Remote</span>
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
         </div>
       </div>
       <div class="foot__cursor">
@@ -660,67 +608,7 @@
     </div>
   </footer>
 
-  <!-- ─── Spotify playlist (FAB) — replace PLAYLIST_ID with your playlist ID ─── -->
-  <div class="spotify-fab" id="spotify-fab">
-    <div
-      class="spotify-fab__panel"
-      id="spotify-fab-panel"
-      role="region"
-      aria-label="Spotify playlist player"
-      aria-hidden="true"
-    >
-      <div class="spotify-fab__panel-head">
-        <span class="spotify-fab__panel-title">Now spinning</span>
-        <button type="button" class="spotify-fab__panel-close" aria-label="Close playlist">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M18 6L6 18M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-      <div class="spotify-fab__embed">
-        <iframe
-          data-src="https://open.spotify.com/embed/playlist/PLAYLIST_ID?utm_source=generator&theme=0"
-          src=""
-          width="100%"
-          height="232"
-          style="border:0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          title="Spotify playlist"
-        ></iframe>
-      </div>
-    </div>
-
-    <button
-      type="button"
-      class="spotify-fab__trigger"
-      id="spotify-fab-trigger"
-      aria-expanded="false"
-      aria-controls="spotify-fab-panel"
-      title="Open playlist player"
-    >
-      <span class="spotify-fab__glow" aria-hidden="true"></span>
-      <span class="spotify-fab__art" aria-hidden="true">
-        <svg class="spotify-fab__turntable" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
-          <rect x="3" y="13" width="42" height="29" rx="4" fill="#241C15" stroke="#3D3228" stroke-width="1"/>
-          <rect x="6" y="16" width="36" height="23" rx="2" fill="#1B140E" opacity="0.85"/>
-          <circle cx="21" cy="27.5" r="11.5" fill="#14110E" stroke="#4A3C30" stroke-width="0.75"/>
-          <circle cx="21" cy="27.5" r="8.5" stroke="#E9A05B" stroke-opacity="0.28" stroke-width="0.5"/>
-          <circle cx="21" cy="27.5" r="5.5" stroke="#8A7A66" stroke-opacity="0.35" stroke-width="0.35"/>
-          <circle cx="21" cy="27.5" r="2" fill="#C9BEAB"/>
-          <circle cx="36" cy="19" r="2.8" fill="#5C5145" stroke="#8A7A66" stroke-width="0.35"/>
-          <path d="M35.6 18.8L23.2 31.2" stroke="#C9BEAB" stroke-width="1.25" stroke-linecap="round"/>
-          <circle cx="23.2" cy="31.2" r="1.15" fill="#D67B3D"/>
-        </svg>
-      </span>
-      <span class="spotify-fab__play-ring" aria-hidden="true">
-        <svg class="spotify-fab__play" viewBox="0 0 24 24" width="12" height="12" focusable="false">
-          <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
-        </svg>
-      </span>
-      <span class="spotify-fab__hint">Tap to play</span>
-    </button>
-  </div>
+  </main>
 
   <script src="script.js"></script>
   <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
