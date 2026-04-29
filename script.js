@@ -1,6 +1,6 @@
 /* Enhancements:
    - Stacked-record scroll effect for case studies
-   - Tap-to-flip on mobile (hover handles desktop already)
+   - Case study records: whole card navigates (nested links unchanged)
    - Reveal on scroll for sections
    - Header style on scroll
 */
@@ -200,21 +200,40 @@
 
 
   /* ──────────────────────────────────────────────────────────────────
-     2. TAP-TO-FLIP on touch devices (hover handles desktop)
+     2. Case study records — whole card navigates unless a nested link
+        was clicked; hover still flips on pointer devices via CSS.
   ────────────────────────────────────────────────────────────────── */
-  const records = document.querySelectorAll('.record');
-  const isTouch = matchMedia('(hover: none)').matches;
+  const records = document.querySelectorAll('.crate > .record');
 
   records.forEach(rec => {
+    const href = rec.dataset.caseHref;
+    if (!href) return;
+
     rec.setAttribute('tabindex', '0');
-    rec.addEventListener('click', () => {
-      if (isTouch) rec.classList.toggle('is-flipped');
-    });
-    rec.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
+
+    rec.addEventListener('click', e => {
+      if (e.target.closest('a[href]')) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey) {
         e.preventDefault();
-        rec.classList.toggle('is-flipped');
+        window.open(href, '_blank');
+        return;
       }
+      if (e.button !== 0) return;
+      window.location.href = href;
+    });
+
+    rec.addEventListener('auxclick', e => {
+      if (e.button !== 1) return;
+      if (e.target.closest('a[href]')) return;
+      e.preventDefault();
+      window.open(href, '_blank');
+    });
+
+    rec.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      if (e.target.closest && e.target.closest('a[href]')) return;
+      e.preventDefault();
+      window.location.href = href;
     });
   });
 
