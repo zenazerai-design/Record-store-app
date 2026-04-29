@@ -3,29 +3,515 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moved — British Airways &amp; Financial Ombudsman | Zena Zerai</title>
-  <meta name="description" content="This write-up is now on two separate pages: Financial Ombudsman Service and British Airways." />
+  <title>British Airways &amp; Financial Ombudsman — Designing for AI | Zena Zerai</title>
+  <meta name="description" content="Combined pitch work: FOS case intelligence and BA smart-assisted booking. Design explorations only, not shipped." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
-  <main id="spa-main" class="spa-main csd" style="padding-top: 100px; max-width: 640px; margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad);" tabindex="-1">
-    <span class="kicker">Update</span>
-    <h1 class="csd-hero__title" style="margin-top: 16px;">This pitch write-up <em class="italic">split in two.</em></h1>
-    <p class="csd-hero__summary" style="margin-top: 24px;">
-      The combined page is now separate so each context can sit on its own URL.
-    </p>
-    <ul style="margin: 28px 0 0; padding-left: 1.2em; line-height: 1.7; color: var(--ink-soft);">
-      <li style="margin-bottom: 14px;"><a href="fos-ai.html">Financial Ombudsman Service — Designing for AI pitch</a></li>
-      <li style="margin-bottom: 14px;"><a href="british-airways.html">British Airways — Designing for AI pitch</a></li>
-    </ul>
-    <p style="margin-top: 28px;">
-      <a class="cs-explore__heading" href="ai-explorations.html" style="display: inline-block; font-size: 15px; text-decoration: none; color: var(--amber);">← AI explorations index</a>
-    </p>
 
+  <header class="nav">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html" aria-current="page">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="kicker">Side A · 2026</span>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html" aria-current="page">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+  <article class="csd">
+
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="ai-explorations.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        AI Explorations
+      </a>
+    </div>
+
+    <section class="csd-hero csd-hero--text-only">
+      <div class="csd-hero__inner">
+
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">AI explorations &nbsp;·&nbsp; Pitch work only</span>
+        </div>
+
+        <h1 class="csd-hero__title">
+          British Airways &amp; Financial Ombudsman Service
+          <em class="italic">&mdash; designing for AI.</em>
+        </h1>
+
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary">
+            <strong>Nothing here shipped.</strong> One combined write-up for two pitch contexts: <strong>regulated case intelligence</strong> for the Financial Ombudsman (summarisation, search, annotated mocks) and <strong>consumer mobile booking</strong> for British Airways (baseline flow and Smart match). Exploratory work, not commissioned product.
+          </p>
+          <p class="csd-hero__summary">
+            Prefer a single context? Open <a href="fos-ai.html">Financial Ombudsman only</a> or <a href="british-airways.html">British Airways only</a>. More experiments on <a href="ai-explorations.html">AI explorations</a>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="csd-context csd-context--fos-mock">
+      <div class="csd-context__text">
+        <span class="kicker">01 · Financial Ombudsman Service</span>
+        <h2 class="csd-context__title">Case summarisation for investigators: two interface bets.</h2>
+        <div class="csd-context__body">
+          <p>
+            This pitch stays close to <strong>people doing case work</strong>: high volume, dense evidence, and the need to move between “what happened here” and “what does precedent look like.” The design work was not to slap a chat window on a legacy grid. It was to decide <strong>where AI earns space on the screen</strong>, how to <strong>signal uncertainty without undermining trust</strong>, and how to keep <strong>every claim inspectable</strong>.
+          </p>
+          <p>
+            <strong>Intelligent case search</strong> explores natural language across historic cases and the knowledge base, with a <strong>search result analysis</strong> block placed deliberately above the raw list so synthesis is the headline act, not an afterthought. <strong>Live summary</strong> splits the investigator view between a running summary, suggested next steps, and suggested outcome, each labeled as AI output with the same <strong>explainability pattern</strong> (“How this summary was generated”) and calibrated <strong>confidence</strong> states. Pitch only: nothing here shipped.
+          </p>
+        </div>
+      </div>
+      <div class="csd-context__image">
+        <img src="assets/fos-case-overview-case-summarisation.png" width="1024" height="732" alt="Financial Ombudsman Service case summarisation dashboard on a laptop: Case Overview tab with case details, AI-generated case summary with explainability link, timeline progress, and activity feed." loading="lazy" decoding="async" />
+        <p class="csd-context__caption">Case overview: investigator view with AI summary, timeline, and activity.</p>
+      </div>
+    </section>
+
+    <section class="fos-concepts" aria-labelledby="fos-concepts-heading">
+      <header class="fos-concepts__head">
+        <span class="kicker">Financial Ombudsman · Annotated mocks</span>
+        <h2 id="fos-concepts-heading" class="fos-concepts__heading">Design decisions, pinned to the UI</h2>
+        <p class="fos-concepts__lede">
+          Tablet exports from the pitch. Width is capped around 1024px so low-resolution PNGs are not stretched full-width on big monitors. For real sharpness on Retina, replace files with ~2048px-wide exports from Figma and keep the same cap: the browser will downscale and use the extra pixels. Hover or tap a marker for crit notes.
+        </p>
+      </header>
+
+      <div class="fos-concept">
+        <h3 class="fos-concept__label">Semantic search across cases</h3>
+        <div class="fos-concept__frame fos-concept__frame--full">
+          <div class="fos-concept__asset-wrap">
+            <img class="fos-concept__img" src="assets/fos-intelligent-case-search.png" alt="Financial Ombudsman case summarisation UI: natural language search, search result analysis with high confidence, filters, and listed historic sources with links to files." loading="lazy" decoding="async" />
+            <div class="fos-concept__hotspots" role="group" aria-label="Semantic search screen callouts">
+              <div class="fos-hotspot" style="left: 50%; top: 24%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: question-shaped search"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Question-shaped search</strong>
+                  <p>The field carries a full interrogative (“what has prevented claims from progressing?”), not just keywords. The decision is to match how investigators already talk and to signal semantic retrieval rather than a dumb index.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 52%; top: 40%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: synthesis before the list"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Synthesis before the list</strong>
+                  <p>The “Search result analysis” card sits above the sources. That ordering states priority: read the distilled view first, then open PDFs. It is the clearest retrieval-augmented layout bet in the pitch.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 72%; top: 35%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: confidence and provenance"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Confidence and provenance</strong>
+                  <p>“High confidence,” “Based on 4 historic cases,” the sparkle plus “AI generated summary,” and “How this summary was generated” share one band. Nothing in that band is decorative: it is the minimum viable trust kit next to a bold summary.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 22%; top: 48%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: filters stay manual"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Filters stay manual</strong>
+                  <p>Source type and sector stay visible rather than folded into model-only behaviour. Investigators keep an explicit contract about scope instead of guessing what the system silently excluded.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 52%; top: 76%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: every row cites a source"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Every row cites a source</strong>
+                  <p>Decision reference, metadata, and “go to source document in efile” ground the analysis in artifacts people can open. That is the anti-hallucination pattern for this domain.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fos-concept__caption">Historic search: hierarchy, trust band, grounding.</p>
+      </div>
+
+      <div class="fos-concept">
+        <h3 class="fos-concept__label">Live summary workspace</h3>
+        <div class="fos-concept__frame fos-concept__frame--full">
+          <div class="fos-concept__asset-wrap">
+            <img class="fos-concept__img" src="assets/fos-live-summary-tool.png" alt="Financial Ombudsman live summarisation: live summary column, suggested next steps and outcome, medium confidence, Simplify and Go Deeper actions, chat input with suggested chips, usefulness feedback." loading="lazy" decoding="async" />
+            <div class="fos-concept__hotspots" role="group" aria-label="Live summary screen callouts">
+              <div class="fos-hotspot" style="left: 30%; top: 30%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: two modes of help"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Two modes of help</strong>
+                  <p>“Live summary” versus “Suggestions” keeps reading the file separate from accepting proposed moves. Collapsing those modes would force investigators to trust one undifferentiated block.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 42%; top: 52%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: calibrated uncertainty"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Calibrated uncertainty</strong>
+                  <p>“Medium confidence” pairs with a rationale such as thin evidence or possible mischaracterisation. The UI treats doubt as a prompt to act, not as fine print to ignore.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 42%; top: 62%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: depth and inspectability"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Depth and inspectability</strong>
+                  <p>Simplify, Go Deeper, View Sources, and Select text expose depth as a control surface. View Sources is the same grounding instinct as the efile links on the search screen.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot" style="left: 50%; top: 86%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: dialogue not monologue"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Dialogue, not a monologue</strong>
+                  <p>The chat field and suggested chips phrase follow-ups as investigation questions. The flow assumes another turn, which mirrors real case work.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below" style="left: 18%; top: 72%;">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: usefulness feedback"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Usefulness as interface grammar</strong>
+                  <p>“Was this summary useful?” lives in the canvas, not only in a post-intercept survey. For the pitch it signals intent to close the loop between investigators and model quality.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fos-concept__caption">Live summary: split columns, uncertainty, depth controls, feedback.</p>
+      </div>
+    </section>
+
+    <section class="csd-context csd-context--full ba-case-study" id="british-airways-pitch" aria-labelledby="ba-case-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Case study · British Airways pitch</span>
+        <h2 class="csd-context__title" id="ba-case-heading">Mobile booking: a calmer baseline, then a <em class="italic">Smart match</em> layer.</h2>
+        <div class="csd-context__body">
+          <p>
+            Airlines live in a crowded surface: hooks, date math, fare tables, and upsells all fight for attention. For a BA travel pitch I worked in <strong>two passes</strong>. First, a <strong>baseline refresh</strong> — same jobs (find flights, compare, commit), clearer scaffolding. Second, a <strong>Smart match</strong> concept: infer who is travelling, <strong>confirm intent</strong>, then rank and explain options while keeping the <strong>full catalog</strong> one tap away.
+          </p>
+          <p>
+            This is <strong>exploratory work</strong>, not commissioned product. I’m presenting it as a case study because the arc matters: anchor on familiar booking patterns, <em>then</em> ask where assistance helps without stripping control.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-meta ba-booking-meta" aria-label="British Airways project details">
+      <dl class="csd-meta__grid">
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Context</dt>
+          <dd class="csd-meta__value">Pitch / portfolio exploration</dd>
+        </div>
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Sector</dt>
+          <dd class="csd-meta__value">Consumer airlines / booking</dd>
+        </div>
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Output</dt>
+          <dd class="csd-meta__value">UI direction + clickable prototype</dd>
+        </div>
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Constraint</dt>
+          <dd class="csd-meta__value">Not official BA — no live backend or payments</dd>
+        </div>
+        <div class="csd-meta__item csd-meta__item--full">
+          <dt class="csd-meta__label">Role</dt>
+          <dd class="csd-meta__value csd-meta__pills">
+            <span>UX / UI</span>
+            <span>Interaction</span>
+            <span>Visual</span>
+            <span>Prototyping</span>
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="csd-editorial ba-case-p1" aria-label="Part 1 baseline booking">
+      <div class="csd-editorial__inner">
+        <div class="csd-editorial__chunk">
+          <span class="kicker">Part 1</span>
+          <h2 class="csd-editorial__title" id="ba-baseline-heading">Baseline booking — same flow, clearer scaffolding</h2>
+          <div class="csd-editorial__body">
+            <p>
+              Before personalization, I tightened the <strong>line from discovery to confirmation</strong>: a credible entry, date-led results you can scan, and a review step that reads as a pause, not another wall of chrome. The goal was <strong>legibility</strong> inside familiar patterns — badges, sort, cabins, rewards — not a new booking paradigm.
+            </p>
+            <p>
+              The screens below are <strong>directional placeholders</strong> for that baseline only (lighter, campaign-led layouts versus a darker app shell). Underneath, it’s still a normal catalog — no Smart match story yet.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-beforeafter ba-booking-beforeafter" aria-labelledby="ba-beforeafter-heading">
+      <div class="csd-beforeafter__intro">
+        <span class="kicker">Visual direction</span>
+        <p class="csd-statement__text" id="ba-beforeafter-heading">
+          Earlier web density ↔ calmer navy system&nbsp;<span class="csd-statement__fade">same tasks: search, compare, review.</span>
+        </p>
+      </div>
+
+      <div class="csd-beforeafter__grid">
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <span class="csd-beforeafter__badge">Before</span>
+            <img src="assets/BA/ba-booking-before-placeholder.png" width="1200" height="750" alt="Three mobile screens: BA promotional London deals hero, LHR to JFK outbound flight list with off-peak badges, and London to Istanbul results with date price ribbon." loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Campaign-led entry, date carousels, stacked fare cards</strong>
+            <p>Classic web-mobile density: hero deal, sort, off-peak labels, class buttons — familiar but busy.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+            <img src="assets/BA/ba-booking-after-placeholder.png" width="1200" height="750" alt="Three mobile screens: dark home with recent searches and reward flight cards, LGW to Singapore results with filters, and Singapore trip review with hero image and flight accordion." loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Dark home, structured results, review with hero + accordion</strong>
+            <p>Navy shell, pills, rewards cues, and a clearer review step — still a standard catalog, not assisted ranking.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="csd-editorial ba-case-p2" aria-label="Part 2 Smart match prototype">
+      <div class="csd-editorial__inner">
+        <div class="csd-editorial__chunk">
+          <span class="kicker">Part 2</span>
+          <h2 class="csd-editorial__title" id="ba-booking-heading">Smart match — where assistance is allowed to show up</h2>
+          <div class="csd-editorial__body">
+            <p>
+              With the baseline readable, I asked a narrower question: when the party mix <strong>implies</strong> a kind of trip — family, business, leisure — could the product <strong>reduce sorting work</strong> without hiding the full list? The hypothesis was that ranking and copy could help <em>if</em> the UI stayed <strong>inspectable</strong> (short rationale, collapsible signals) and <strong>reversible</strong> (explicit trip-type confirmation, manual override, <em>All</em> beside <em>Recommended</em>).
+            </p>
+            <p>
+              I prototyped that as <strong>Smart match</strong>: infer intent from who is travelling, check it with a light confirmation step, then carry “why this works for you” hints into results and add-ons. The visual language reused BA navy and ribbon cues but added a distinct treatment for AI-tagged content so assistance reads as a <span class="csd-editorial__hl">layer</span>, not the whole interface.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-findings ba-booking-findings" aria-labelledby="ba-journey-heading">
+      <div class="csd-findings__header">
+        <span class="kicker">The flow</span>
+        <h2 id="ba-journey-heading" class="csd-findings__title">Four screens I <em class="italic">wired together.</em></h2>
+        <p class="csd-findings__intro">Search through summary: party and inferred trip type drive copy, banners, and a lightweight trip score — all in front-end state, so reviewers can click the whole story.</p>
+      </div>
+
+      <div class="ba-flow-diagram" aria-label="Smart match booking prototype user flow">
+        <p class="ba-flow-diagram__label" id="ba-flow-label">End-to-end path in the prototype</p>
+        <div class="ba-flow-diagram__track" role="list" aria-describedby="ba-flow-label">
+          <div class="ba-flow-diagram__segment" role="listitem">
+            <div class="ba-flow-diagram__step">
+              <span class="ba-flow-diagram__num" aria-hidden="true">1</span>
+              <div class="ba-flow-diagram__body">
+                <strong class="ba-flow-diagram__title">Search</strong>
+                <ul class="ba-flow-diagram__list">
+                  <li>Route, dates, party (adults / children / infants)</li>
+                  <li>Optional Smart match card + “Learn how we guessed”</li>
+                  <li>Light confirmation or manual trip type if they adjust</li>
+                </ul>
+              </div>
+            </div>
+            <span class="ba-flow-diagram__arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="ba-flow-diagram__segment" role="listitem">
+            <div class="ba-flow-diagram__step">
+              <span class="ba-flow-diagram__num" aria-hidden="true">2</span>
+              <div class="ba-flow-diagram__body">
+                <strong class="ba-flow-diagram__title">Results</strong>
+                <ul class="ba-flow-diagram__list">
+                  <li>Toggle <em>All flights</em> / <em>Recommended</em></li>
+                  <li>Compare cards · pick cabin / fare</li>
+                  <li>“Why this works for you” on matched options</li>
+                </ul>
+              </div>
+            </div>
+            <span class="ba-flow-diagram__arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="ba-flow-diagram__segment" role="listitem">
+            <div class="ba-flow-diagram__step">
+              <span class="ba-flow-diagram__num" aria-hidden="true">3</span>
+              <div class="ba-flow-diagram__body">
+                <strong class="ba-flow-diagram__title">Add-ons</strong>
+                <ul class="ba-flow-diagram__list">
+                  <li>Banner reflects inferred trip type</li>
+                  <li>Same All / Recommended pattern for extras</li>
+                  <li>Bullets on AI-suggested add-ons</li>
+                </ul>
+              </div>
+            </div>
+            <span class="ba-flow-diagram__arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="ba-flow-diagram__segment" role="listitem">
+            <div class="ba-flow-diagram__step">
+              <span class="ba-flow-diagram__num" aria-hidden="true">4</span>
+              <div class="ba-flow-diagram__body">
+                <strong class="ba-flow-diagram__title">Summary</strong>
+                <ul class="ba-flow-diagram__list">
+                  <li>AI trip score + short narrative</li>
+                  <li>Price breakdown + flight recap</li>
+                  <li>Prototype-only “Continue to pay” cue</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="csd-findings__grid">
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">01</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Search</h3>
+            <p class="csd-finding__desc">Route and dates, party steppers, optional Smart match card with confidence and “Learn how we guessed”; “Adjust recommendation” opens manual trip type.</p>
+          </div>
+        </article>
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">02</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Results</h3>
+            <p class="csd-finding__desc">Segment control: <em>All flights</em> vs <em>Recommended</em>. Cards pair plain options with “Why this works for you” hints.</p>
+          </div>
+        </article>
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">03</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Add-ons</h3>
+            <p class="csd-finding__desc">Contextual banner by match type; same All / Recommended pattern; bullet “why we recommend this” on AI-tagged extras.</p>
+          </div>
+        </article>
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">04</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Summary</h3>
+            <p class="csd-finding__desc">AI trip score with short narrative, price breakdown, flight recap — plus a prototype-only payment cue.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="csd-outcome ba-booking-outcome" aria-labelledby="ba-outcome-heading">
+      <div class="csd-outcome__header">
+        <span class="kicker">In short</span>
+        <h2 id="ba-outcome-heading" class="csd-outcome__title">What the prototype <em class="italic">shows.</em></h2>
+      </div>
+      <ol class="csd-outcome__list">
+        <li class="csd-outcome__item">
+          <span class="csd-outcome__stat">4</span>
+          <span class="csd-outcome__desc">Click-through screens from search to summary, with copy that follows party and trip type. It also previews how recommended could sit next to the full list, with short “why” lines and a check-in before personalization.</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="csd-video" aria-labelledby="ba-prototype-video-heading">
+      <div class="csd-video__header">
+        <span class="kicker" id="ba-prototype-video-heading">Walkthrough</span>
+      </div>
+      <div class="csd-video__frame">
+        <iframe
+          src="about:blank"
+          title="British Airways smart-assisted booking prototype walkthrough"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="csd-video__caption">Paste your Loom, Vimeo, or YouTube embed URL into the iframe <code>src</code>. For a self-hosted MP4, swap the iframe for a <code>video</code> element inside this frame.</p>
+    </section>
+    <section class="csd-context csd-context--full pitch-reflections" aria-labelledby="pitch-reflections-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Pitch reflections</span>
+        <h2 class="csd-context__title" id="pitch-reflections-heading">Two domains, same design-for-AI questions</h2>
+        <div class="csd-context__body">
+          <p>
+            Both directions stayed at <strong>pitch stage</strong> — FOS for <strong>trust</strong>, <strong>explainability</strong>, and <strong>human agency</strong> in regulated case work; BA for <strong>confirming intent</strong> and <strong>reversible assistance</strong> in booking. Together they bookend how I pressure-test AI in the interface before I'd trust it in production.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-impact" aria-label="Final thoughts on designing for AI">
+      <div class="csd-impact__header">
+        <span class="kicker">Designing for AI</span>
+        <h2 class="csd-impact__title">Final thoughts on <em class="italic">designing for AI.</em></h2>
+      </div>
+      <ul class="csd-impact__list">
+        <li><strong>Automation with transparency.</strong> If the product summarizes, ranks, or shortcuts work, the UI should show what happened in plain language — provenance, scope, confidence where it matters — not hide it behind a sparkle and a paragraph nobody can check.</li>
+        <li><strong>Let people choose AI — and choose out.</strong> The baseline path stays intact: full lists, manual filters, and investigator-first layouts remain visible — recommended or assistive modes land as deliberate toggles, never the only path.</li>
+        <li><strong>Don’t be pushy.</strong> Nudge quietly: confirm intent before personalization, avoid piling “smart” defaults on every step, and treat assistance as something the user can ignore without penalty. Pushy AI reads as a funnel, not a partner.</li>
+      </ul>
+    </section>
+
+<section class="csd-context csd-context--full">
+      <div class="csd-context__text">
+        <span class="kicker">Shipped work</span>
+        <h2 class="csd-context__title">Looking for things that <em class="italic">went live?</em></h2>
+        <div class="csd-context__body">
+          <p>
+            This page is pitch work; for shipped projects see <a href="case-studies.html">Case Studies</a>. The explorations above are where I pressure-test how AI shows up in the interface — and what I’d want to see before trusting it in production.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-explore" aria-labelledby="cs-explore-heading">
+      <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
+      <ul class="cs-explore__grid" role="list">
+        <li>
+          <a class="cs-explore__card" href="gwi.html" aria-label="GWI: Reimagining user management for an AI-driven platform">
+            <img class="cs-explore__img" src="assets/GWIcover.png" alt="" />
+            <span class="cs-explore__title">Reimagining user management for an AI-driven platform</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate: Reducing file processing from days to minutes">
+            <img class="cs-explore__img" src="assets/PINS/PINS cover.png" alt="" />
+            <span class="cs-explore__title">Reducing file processing from days to minutes</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="hyundai-finance.html" aria-label="Hyundai Finance: Enabling car dealers to do soft credit checks">
+            <img class="cs-explore__img" src="assets/HCUK covr.png" alt="" />
+            <span class="cs-explore__title">Enabling car dealers to do soft credit checks</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
   <!-- CONTACT / FOOTER -->
   <footer id="contact" class="foot">
     <div class="foot__inner">
@@ -58,7 +544,9 @@
       </div>
     </div>
   </footer>
+
   </main>
+
   <script src="script.js"></script>
   <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
 </body>
