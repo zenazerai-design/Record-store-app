@@ -6,7 +6,7 @@
    - SPA-style navigation so the Spotify embed keeps playing across internal pages
 */
 
-/* Injected once — replace PLAYLIST_ID with your playlist ID */
+/* Injected once: replace PLAYLIST_ID with your playlist ID */
 const SPOTIFY_FAB_HTML = `
   <div class="spotify-fab" id="spotify-fab">
     <div class="spotify-fab__panel" id="spotify-fab-panel" role="region" aria-label="Spotify playlist player" aria-hidden="true">
@@ -608,7 +608,7 @@ function mountSpotifyFab() {
   }
 
   /* ──────────────────────────────────────────────────────────────────
-     SCROLL-LINKED CARD FLIP — .csd-fullimg__inner
+     SCROLL-LINKED CARD FLIP (.csd-fullimg__inner)
   ────────────────────────────────────────────────────────────────── */
   function initFlipImages() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
@@ -640,7 +640,7 @@ function mountSpotifyFab() {
   }
 
   /* ──────────────────────────────────────────────────────────────────
-     2. Case study records — whole card navigates (SPA when possible)
+     2. Case study records: whole card navigates (SPA when possible)
   ────────────────────────────────────────────────────────────────── */
   function initCaseStudyRecordClicks() {
     document.querySelectorAll('.crate > .record').forEach(rec => {
@@ -682,8 +682,8 @@ function mountSpotifyFab() {
   }
 
   /* ──────────────────────────────────────────────────────────────────
-     3. "GET IN TOUCH" — copy email + toast (delegated for SPA swaps)
-     Toast is resolved at click time — markup often lives after this script.
+     3. "GET IN TOUCH": copy email + toast (delegated for SPA swaps)
+     Toast is resolved at click time; markup often lives after this script.
   ────────────────────────────────────────────────────────────────── */
   let toastTimer;
 
@@ -757,7 +757,7 @@ function mountSpotifyFab() {
 
   function setupRevealOnScroll() {
     const reveal = document.querySelectorAll(
-      '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials'
+      '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials, .csd-case--gwi > .csd-back-wrap, .csd-case--gwi > section'
     );
     reveal.forEach(el => el.classList.add('reveal'));
 

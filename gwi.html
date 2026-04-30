@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GWI — Zena Zerai</title>
-  <meta name="description" content="Case study: reimagining user management for an AI-driven platform at GWI, by Zena Zerai." />
+  <title>GWI | Zena Zerai</title>
+  <meta name="description" content="Case study: discovery, system modelling, and self-serve foundations for GWI’s Agentic Alpha, by Zena Zerai." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@
 
   <main id="spa-main" class="spa-main" tabindex="-1">
   <!-- ─── Case Study: GWI ─────────────────────────────────────────── -->
-  <article class="csd">
+  <article class="csd csd-case--gwi">
 
     <!-- Back link -->
     <div class="csd-back-wrap">
@@ -80,9 +80,13 @@
 
         <div class="csd-hero__body">
           <p class="csd-hero__summary">
-            GWI is a global consumer insights platform used by enterprises including Meta, Amazon, Netflix, and Spotify. As more customers use APIs and automation, everyone needs reliability and clarity—not just dashboards, but answering <strong>who’s on an account</strong>, <strong>what they can access</strong>, and <strong>who can change it when something goes wrong.</strong></p>
+            GWI is a scale-up providing human data insights, increasingly serving complex enterprise clients such as Meta, Amazon, and Omnicom.
+          </p>
           <p class="csd-hero__summary">
-            I led foundational discovery and system definition for user management, and contributed to a <strong>self-serve MVP</strong> for a new agentic product, Agent Octopus.
+            As the business began shifting towards AI-powered SaaS products, I joined to help shape the foundations of a <strong>self-serve experience</strong>.
+          </p>
+          <p class="csd-hero__summary">
+            During the work priorities evolved, leading to a pivot towards delivering an <strong>Agentic Alpha product</strong>, which is still in progress.
           </p>
         </div>
 
@@ -136,80 +140,97 @@
     <section class="csd-impact">
 
       <div class="csd-impact__header">
-        <span class="kicker">Impact</span>
-        <h2 class="csd-impact__title">A shared picture of the system—and a path to <em class="italic">scale.</em></h2>
+        <span class="kicker">Overview</span>
+        <h2 class="csd-impact__title">Impact <em class="italic">snapshot</em></h2>
       </div>
 
       <ul class="csd-impact__list">
-        <li><strong>Grounded discovery</strong> across CS, engineering, product, data, and design so the organisation could see how user management actually worked—not only how it looked in UI.</li>
-        <li><strong>Shift from features to system modelling</strong>: OOUX and cross-functional workshops moved the conversation toward orgs, access, entitlements, and platform boundaries.</li>
-        <li><strong>Delivery against a hard deadline</strong>: aligned alpha scope with engineers and API/MCP collaborators, contributed to a self-serve MVP for Agent Octopus while naming what had to ship later.</li>
+        <li>Aligned Product, Engineering, and AI leadership on a fragmented system landscape</li>
+        <li>Influenced roadmap to prioritise organisational hierarchy and access foundations</li>
+        <li>Defined a scalable model for self-serve and user management</li>
+        <li>Delivered a working prototype for Alpha MVP</li>
       </ul>
-
-    </section>
-
-    <section class="csd-context csd-context--full">
-
-      <div class="csd-context__text">
-        <span class="kicker">Strategic pull</span>
-        <h2 class="csd-context__title">Agent Octopus—and a bet on self-serve</h2>
-        <div class="csd-context__body">
-          <p>The business aimed to ship a new agentic product—<strong>Agent Octopus</strong>—with a strong emphasis on <strong>self-serve</strong>. That timetable made dependable user lifecycle, access, and visibility non-negotiable: not parallel “admin projects,” but part of the same roadmap as API-first and agent workflows.</p>
-          <p>I treated that launch as leverage to push user management toward something <em>built for where GWI is going</em>, not only where it started. Alongside engineers, the API/MCP team, and designers on the public product, we aligned on what the alpha could prove in the time available.</p>
-        </div>
-      </div>
 
     </section>
 
     <section class="csd-context">
 
       <div class="csd-context__text">
-        <span class="kicker">Background</span>
-        <h2 class="csd-context__title">The legacy stack couldn’t carry enterprise—or the next platform leap</h2>
+        <span class="kicker">The challenge</span>
+        <h2 class="csd-context__title">A fragmented system with no clear model</h2>
         <div class="csd-context__body">
-          <p>As GWI scaled into enterprise, user management—grown across multiple codebases—began to show its limits.</p>
-          <p>Built for simpler organisational models, it struggled with complex contracts, structures, and access rules. Nobody intended fragility; the system hadn’t been designed as a single coherent layer.</p>
-          <p>There was limited shared understanding of how it behaved end-to-end, or which teams carried which operational workflows day to day.</p>
-          <p>I led <em>foundational discovery</em> to establish a collective view of reality and inform decisions that could survive API-first growth and enterprise complexity.</p>
+          <p>It quickly became clear that <strong>user management and access were not well understood</strong>.</p>
+          <p><strong>GWI Admin’s Organisations</strong> page is a good snapshot of that reality: filters for IDs, Salesforce, bundles, and tiers; a wide results table; and row-level actions like attributes, bundles, and delete. Teams could work the list, but there was <strong>no shared mental model</strong> of what an organisation was or how it should relate to users and access across the rest of the stack.</p>
+          <ul class="csd-context__list">
+            <li>No <strong>clear model</strong> of users or organisations</li>
+            <li><strong>Systems fragmented</strong> across tools</li>
+            <li>Processes heavily <strong>manual and inconsistent</strong></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Delete entire .csd-context__image block if no image -->
-      <div class="csd-context__image" aria-hidden="true">
-        <div class="csd-context__image-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <rect x="4" y="6" width="40" height="32" rx="3"/>
-            <path d="M16 22l6 6 10-10"/>
-          </svg>
-          <span>Context image</span>
-        </div>
-        <p class="csd-context__caption">Caption — e.g. image description or source.</p>
+      <div class="csd-context__image">
+        <img src="assets/GWI/Current GWI.png" alt="GWI Admin Organisations screen: sidebar navigation, filter panel for id, name, Salesforce ID, bundles, tier, and a table of organisations with row actions." width="2644" height="1560" loading="lazy" decoding="async" />
+        <p class="csd-context__caption">Current Organisations management in GWI Admin—the operational surface before hierarchy and access foundations were prioritised.</p>
       </div>
 
     </section>
 
-    <section class="csd-editorial" aria-label="Cross-functional discovery">
-
-      <div class="csd-editorial__inner">
-
-        <div class="csd-editorial__chunk">
-          <span class="kicker">Research scope</span>
-          <h2 class="csd-editorial__title">Working across teams</h2>
-          <div class="csd-editorial__body">
-            <p>This wasn’t a single-team problem. I worked across engineering, customer success, product, data, and design.</p>
-            <p>Through stakeholder interviews and workshops we built a <strong class="csd-editorial__takeaway">shared understanding of how the system actually operates behind the scenes</strong>—including the workflows that never made it into diagrams.</p>
-          </div>
-        </div>
-
-      </div>
-
+    <section class="csd-statement" aria-label="Design priority">
+      <p class="csd-statement__text">Before designing anything, the priority was to create <span class="csd-statement__accent">clarity.</span></p>
     </section>
 
-
-    
+    <section class="csd-iterate gwi-discovery-visuals" aria-labelledby="gwi-discovery-heading">
+      <div class="csd-iterate__intro gwi-discovery-visuals__intro">
+        <span class="kicker">Discovery</span>
+        <h2 id="gwi-discovery-heading" class="csd-iterate__title">Building a shared understanding</h2>
+        <p class="gwi-discovery-visuals__body">I led discovery across multiple teams to understand how the business actually operated.</p>
+        <p class="csd-iterate__lead gwi-discovery-visuals__artefacts-label">Discovery artefacts</p>
+      </div>
+      <div class="csd-iterate__scroll-wrap gwi-discovery-visuals__scroll-wrap">
+        <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Discovery artefacts, horizontal scroll">
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="assets/GWI/Key player mapping.png" alt="Stakeholder map: key players and ownership across teams." width="1666" height="1392" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Stakeholder mapping</h3>
+              <p class="csd-iterate__card-desc">Who owned which workflows, who needed to be involved and who needed to be informed.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="assets/GWI/Proto persona workshop.png" alt="Workshop board mapping direct and indirect users of admin across teams." width="1698" height="1144" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Proto-persona workshop</h3>
+              <p class="csd-iterate__card-desc">Lightweight profiles to give us direction on information to validate with users.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="assets/GWI/Service mapping.png" alt="Service map: tools, teams, and handoffs across admin and operations." width="2734" height="1352" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Service mapping</h3>
+              <p class="csd-iterate__card-desc">How work moved between systems and owners.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo csd-iterate__thumb--photo-anchor-right">
+              <img src="assets/GWI/User interview.png" alt="Discovery workshop whiteboard: org setup flow with team collaboration." width="1954" height="1082" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Teams &amp; interviews</h3>
+              <p class="csd-iterate__card-desc">13 interviews across RevOps, Enterprise CS, Product, Engineering, AI, and Legal.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section class="csd-pullquote">
-      <span class="kicker csd-pullquote__kicker">User Research</span>
+      <span class="kicker csd-pullquote__kicker">User feedback</span>
       <figure class="csd-pullquote__inner">
         <blockquote class="csd-pullquote__text">
           “A lot of it lives in our heads.”
@@ -221,12 +242,35 @@
       </figure>
     </section>
 
+    <section class="csd-context">
+
+      <div class="csd-context__text">
+        <span class="kicker">System</span>
+        <h2 class="csd-context__title">Mapping a fragmented ecosystem</h2>
+        <div class="csd-context__body">
+          <p>The tool landscape didn’t line up as one system, which set the stage for what discovery surfaced next.</p>
+        </div>
+      </div>
+
+      <div class="csd-context__image">
+        <img
+          src="assets/GWI/gwi-fragmented-systems.png"
+          alt="Diagram of four isolated tool silos with large gaps between them and broken dashed lines in the middle: Salesforce (contracts and billing), GWI admin (users and access), Mixpanel (usage data), spreadsheets (everything in between). Nothing connects the four systems."
+          width="1536"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="csd-context__caption">Four silos with empty space between — no integration, only manual handoffs.</p>
+      </div>
+
+    </section>
+
     <section class="csd-findings">
 
       <div class="csd-findings__header">
-        <span class="kicker">The problems</span>
-        <h2 class="csd-findings__title">A system held together by  <em class="italic">people.</em></h2>
-        <p class="csd-findings__intro">User management wasn't a single system—it was a set of disconnected workflows.</p>
+        <span class="kicker">Findings</span>
+        <h2 class="csd-findings__title">Uncovering gaps across <em class="italic">systems, structure, and process</em></h2>
       </div>
 
       <div class="csd-findings__grid">
@@ -234,49 +278,88 @@
         <article class="csd-finding">
           <span class="csd-finding__num" aria-hidden="true">01</span>
           <div class="csd-finding__content">
-            <h3 class="csd-finding__title">No system of truth</h3>
-            <p class="csd-finding__desc">Multiple systems to manage customers but none spoke to each other.</p>
+            <h3 class="csd-finding__title">No single source of truth</h3>
+            <p class="csd-finding__desc">Systems didn’t connect. Data was spread across Salesforce, Asana, Intercom, admin tools, and analytics platforms. Much of the operational logic lived in spreadsheets.</p>
           </div>
         </article>
 
         <article class="csd-finding">
           <span class="csd-finding__num" aria-hidden="true">02</span>
           <div class="csd-finding__content">
-            <h3 class="csd-finding__title">System structure inaccurate</h3>
-            <p class="csd-finding__desc">Organisation structures didn’t reflect the reality of enterprise clients.</p>
+            <h3 class="csd-finding__title">Not reflective of enterprise reality</h3>
+            <p class="csd-finding__desc">Enterprise clients had complex organisational structures and hierarchies, but access was managed through fragmented workarounds, such as duplicating organisations.</p>
           </div>
         </article>
 
         <article class="csd-finding">
           <span class="csd-finding__num" aria-hidden="true">03</span>
           <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Access unclear and ungoverned</h3>
-            <p class="csd-finding__desc">Heavy reliance on memory for provisioning access.</p>
+            <h3 class="csd-finding__title">Manual and invisible processes</h3>
+            <p class="csd-finding__desc">Customer lifecycle and access rules were inconsistent, undocumented, and reliant on human memory, which created risk and inefficiency.</p>
           </div>
         </article>
 
       </div>
 
     </section>
+
+    <section class="csd-impact csd-gwi-impact-narrative">
+
+      <div class="csd-gwi-impact-narrative__layout">
+        <span class="kicker csd-gwi-impact-narrative__kicker">Impact</span>
+        <h2 class="csd-impact__title csd-gwi-impact-narrative__title">Operational and commercial consequences</h2>
+        <div class="csd-gwi-impact-narrative__lede">
+          <p>This wasn’t just a UX issue. It had clear operational and commercial impact:</p>
+        </div>
+        <ul class="csd-gwi-impact-narrative__cards" role="list">
+          <li class="csd-gwi-impact-narrative__card csd-gwi-impact-narrative__card--effort">
+            <span class="csd-gwi-impact-narrative__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span class="csd-gwi-impact-narrative__card-text">Significant manual effort managing users and access</span>
+          </li>
+          <li class="csd-gwi-impact-narrative__card csd-gwi-impact-narrative__card--risk">
+            <span class="csd-gwi-impact-narrative__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            <span class="csd-gwi-impact-narrative__card-text">High risk of over-provisioning and data exposure</span>
+          </li>
+          <li class="csd-gwi-impact-narrative__card csd-gwi-impact-narrative__card--experience">
+            <span class="csd-gwi-impact-narrative__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="5" height="7" rx="1"/><rect x="9.5" y="8" width="5" height="13" rx="1"/><rect x="16" y="11" width="5" height="10" rx="1"/></svg>
+            </span>
+            <span class="csd-gwi-impact-narrative__card-text">Inconsistent customer experience across enterprise clients</span>
+          </li>
+          <li class="csd-gwi-impact-narrative__card csd-gwi-impact-narrative__card--gap">
+            <span class="csd-gwi-impact-narrative__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 1 0-7l1.5-1.5a5 5 0 0 1 7 7L17 14"/><path d="M14 10a5 5 0 0 1 0 7l-1.5 1.5a5 5 0 0 1-7-7l1.5-1.5"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+            </span>
+            <span class="csd-gwi-impact-narrative__card-text">Misalignment between product capability and enterprise needs</span>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
     <section class="csd-outcome">
 
       <div class="csd-outcome__header">
-        <span class="kicker">Business impact</span>
-        <h2 class="csd-outcome__title">The downstream impact to the business was <em class="italic">significant.</em></h2>
+        <span class="kicker">By the numbers</span>
+        <h2 class="csd-outcome__title">Where the cost showed up <em class="italic">in the business.</em></h2>
       </div>
 
       <ol class="csd-outcome__list">
         <li class="csd-outcome__item">
           <span class="csd-outcome__stat">~500</span>
-          <span class="csd-outcome__desc">Hours spent on admin support in 6 months</span>
+          <span class="csd-outcome__desc">Hours spent on admin support in six months</span>
         </li>
         <li class="csd-outcome__item">
           <span class="csd-outcome__stat">£36m</span>
-          <span class="csd-outcome__desc">Where commercial records were misaligned or invisible across systems</span>
+          <span class="csd-outcome__desc">Commercial records where misalignment or invisibility across systems created exposure</span>
         </li>
         <li class="csd-outcome__item">
           <span class="csd-outcome__stat">100%</span>
-          <span class="csd-outcome__desc"> Reliance on internal teams for all user management changes</span>
+          <span class="csd-outcome__desc">Reliance on internal teams for user management changes before self-serve</span>
         </li>
       </ol>
 
@@ -284,236 +367,335 @@
     <section class="csd-context">
 
       <div class="csd-context__text">
-        <span class="kicker">Defining the model</span>
-        <h2 class="csd-context__title">OOUX—and a deliberate platform ecosystem</h2>
+        <span class="kicker">Framing</span>
+        <h2 class="csd-context__title">Making complexity visible <span class="csd-editorial__takeaway">to drive alignment</span></h2>
         <div class="csd-context__body">
-          <p>I ran cross-functional <strong>OOUX</strong> workshops to map objects, relationships, and responsibilities. That shifted the conversation from isolated features and screens to a <strong>coherent model</strong> we could iterate on together: organisations, membership, roles, access, and entitlements.</p>
-          <p><strong>User management and API usage weren’t isolated problems</strong>—they sit inside a wider platform ecosystem. Alongside core product work, I collaborated with engineers and external vendors to understand where we could <strong>leverage existing solutions</strong> versus <strong>build internally</strong>.</p>
-          <p><strong>WorkOS</strong> is confirmed for authentication, identity, sign-in, and user lifecycle.</p>
-          <p>For API metering and usage tracking we’re still comparing vendors—Metronome and Orb are among the options—and nothing there is signed yet.</p>
-          <p>That helped us:</p>
-          <ul class="csd-impact__list">
-            <li><strong>Spend less time rebuilding commodity plumbing</strong> so we could concentrate on problems only GWI can solve</li>
-            <li><strong>Put design effort into the messy middle</strong>—orgs, roles, access, and what customers are entitled to</li>
-            <li><strong>Keep the roadmap honest</strong> for API-heavy and agent-assisted use cases without multiplying one-off internal systems</li>
+          <p>To align the business, I translated these findings into a clear system narrative. This helped:</p>
+          <ul class="csd-context__list">
+            <li>Make complexity visible</li>
+            <li>Quantify impact</li>
+            <li>Align stakeholders across teams</li>
           </ul>
           <p class="csd-editorial__callout">
-            <strong>Boundaries, not box-ticking.</strong> The work clarified what the platform should own end to end versus what should be delegated to external services—so trade-offs in the alpha (and beyond) could be explicit.
+            <strong>Outcome:</strong> → Influenced roadmap direction, including prioritising organisational hierarchy and access foundations.
           </p>
         </div>
       </div>
 
-      <!-- Delete entire .csd-context__image block if no image -->
+      <div class="csd-context__image gwi-framing-visuals">
+        <p class="csd-iterate__hint">Swipe or scroll</p>
+        <div class="csd-iterate__scroll-wrap gwi-iterate__scroll-wrap--nested">
+          <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Framing visuals, carousel, two slides">
+            <article class="csd-iterate__card">
+              <div class="csd-iterate__thumb csd-iterate__thumb--photo csd-iterate__thumb--photo-framing-px">
+                <img src="assets/GWI/PX Cartoon.png" alt="Illustration: employee at a multi-screen desk managing GWI Admin, Salesforce, Asana, and incoming messages—framing product experience workload." width="1694" height="954" loading="lazy" decoding="async" />
+              </div>
+              <div class="csd-iterate__card-body">
+                <h3 class="csd-iterate__card-title">The Product Experience story</h3>
+                <p class="csd-iterate__card-desc">Framing the workload of employees in a way that is tangible.</p>
+              </div>
+            </article>
+            <article class="csd-iterate__card">
+              <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+                <img src="assets/GWI/Enterprise client cartoon.png" alt="Illustration: analyst at three monitors showing a tangled enterprise client org chart across regions, access tracking, and customer-support chats—complexity of large client structures." width="1684" height="948" loading="lazy" decoding="async" />
+              </div>
+              <div class="csd-iterate__card-body">
+                <h3 class="csd-iterate__card-title">Enterprise client story</h3>
+                <p class="csd-iterate__card-desc">Highlighting the complexity of our Enterprise clients' structures.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <p class="csd-context__caption">Stakeholder-facing visuals</p>
+      </div>
+
+    </section>
+
+    <section class="csd-context">
+
+      <div class="csd-context__text">
+        <span class="kicker">Foundation</span>
+        <h2 class="csd-context__title">Defining core entities and relationships (OOUX)</h2>
+        <div class="csd-context__body">
+          <p>Before moving into interface design, I led Object-Oriented UX work to define:</p>
+          <ul class="csd-context__list">
+            <li>Core entities (users, organisations, access)</li>
+            <li>Relationships between systems</li>
+            <li>A scalable structure for self-serve</li>
+          </ul>
+          <p>Aligning teams on how the system should work before deciding how it should look.</p>
+        </div>
+      </div>
+
       <div class="csd-context__image" aria-hidden="true">
         <div class="csd-context__image-placeholder">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
             <rect x="4" y="6" width="40" height="32" rx="3"/>
             <path d="M16 22l6 6 10-10"/>
           </svg>
-          <span>Context image</span>
+          <span>OOUX / object map</span>
         </div>
-        <p class="csd-context__caption">Caption — e.g. image description or source.</p>
+        <p class="csd-context__caption">Object model or relationship sketch: paste image when ready.</p>
       </div>
 
     </section>
 
-    <section class="csd-editorial" aria-label="Reflections and trade-offs">
+    <section class="csd-context csd-context--full">
+
+      <div class="csd-context__text">
+        <span class="kicker">Pivot</span>
+        <h2 class="csd-context__title">Adapting to a faster path to Agentic Alpha</h2>
+        <div class="csd-context__body">
+          <p>As discovery progressed, the business shifted focus towards launching an <strong>Agentic Alpha product within ~two months</strong>, including self-serve functionality.</p>
+          <p>It wasn’t feasible to resolve all foundational challenges in that timeframe.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="csd-context csd-context--full">
+
+      <div class="csd-context__text">
+        <span class="kicker">The approach</span>
+        <h2 class="csd-context__title">Balancing <span class="csd-editorial__takeaway">long-term structure</span> with <span class="csd-editorial__takeaway">short-term delivery</span></h2>
+        <div class="csd-context__body">
+          <p>With a tight timeline, we couldn’t solve the underlying system challenges in full.</p>
+          <p>Working closely with Product and Engineering, we reframed the approach:</p>
+          <ul class="csd-context__list">
+            <li>Use existing systems, despite known limitations</li>
+            <li>Define a realistic MVP for Alpha</li>
+            <li>Separate immediate delivery from longer-term architectural changes</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="csd-editorial" aria-label="MVP scope">
       <div class="csd-editorial__inner csd-editorial__inner--split">
+        <div class="csd-editorial__chunk">
+          <span class="kicker">MVP scope</span>
+          <h2 class="csd-editorial__title">Focusing on what could be delivered now</h2>
+          <div class="csd-gwi-scope-panels">
+            <div class="csd-gwi-scope-panels__panel csd-gwi-scope-panels__panel--in">
+              <h3 class="csd-gwi-scope-panels__title">In scope</h3>
+              <ul class="csd-editorial__list csd-editorial__list--prioritised">
+                <li>Self-serve for the new product</li>
+                <li>Role-based access</li>
+                <li>User access management</li>
+                <li>API / MCP usage and metering</li>
+              </ul>
+            </div>
+            <div class="csd-gwi-scope-panels__panel csd-gwi-scope-panels__panel--out">
+              <h3 class="csd-gwi-scope-panels__title">Out of scope</h3>
+              <ul class="csd-editorial__list csd-editorial__list--deferred">
+                <li>Full system redesign</li>
+                <li>Enterprise-grade organisational modelling</li>
+                <li>Backend-heavy dependencies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="csd-context">
+
+      <div class="csd-context__text">
+        <span class="kicker">Design</span>
+        <h2 class="csd-context__title">Shaping a practical, constrained experience</h2>
+        <div class="csd-context__body">
+          <p>I moved from idealised models to a <strong>practical, shippable experience</strong>:</p>
+          <ul class="csd-context__list">
+            <li>Mapped end-to-end user flows</li>
+            <li>Reused existing patterns where possible</li>
+            <li>Simplified interactions to match constraints</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="csd-context__image" aria-hidden="true">
+        <div class="csd-context__image-placeholder">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <rect x="4" y="6" width="40" height="32" rx="3"/>
+            <path d="M4 20h40M14 6v32"/>
+          </svg>
+          <span>Flows / UI</span>
+        </div>
+        <p class="csd-context__caption">Screens or flow map (side column asset).</p>
+      </div>
+
+    </section>
+
+    <section class="csd-fullimg" aria-label="Full-width design asset">
+
+      <div class="csd-fullimg__scene">
+        <div class="csd-fullimg__inner">
+
+          <div class="csd-fullimg__placeholder" aria-hidden="true">
+            <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
+              <rect x="2" y="2" width="60" height="44" rx="4"/>
+              <circle cx="20" cy="16" r="5"/>
+              <path d="M2 34l16-12 12 10 10-8 22 14"/>
+            </svg>
+            <span>Full-width design</span>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="csd-fullimg__caption">Full-bleed artefact: journey, key screen, or annotated prototype.</p>
+
+    </section>
+
+    <section class="csd-editorial" aria-label="Build process">
+      <div class="csd-editorial__inner csd-editorial__inner--split">
+        <div class="csd-editorial__chunk">
+          <span class="kicker">Build</span>
+          <h2 class="csd-editorial__title">Working collaboratively <span class="csd-editorial__title-accent">from design to code</span></h2>
+          <div class="csd-editorial__split csd-editorial__split--stacked">
+            <div class="csd-editorial__body">
+              <p>To accelerate delivery and alignment, we worked in a <strong class="csd-editorial__takeaway">hands-on, collaborative build process with developers</strong>, shipping increments from the same vocabulary as design, rather than tossing specs over the wall.</p>
+            </div>
+            <div class="csd-editorial__body csd-gwi-build-rail">
+              <p class="csd-editorial__bridge">How we operated</p>
+              <div class="csd-gwi-build-rail__scroll" tabindex="0">
+                <ul class="csd-gwi-build-rail__list">
+                  <li><span class="csd-gwi-build-rail__label">Tooling</span> Cursor + Figma Make MCP</li>
+                  <li><span class="csd-gwi-build-rail__label">Source</span> Shared repo</li>
+                  <li><span class="csd-gwi-build-rail__label">Rituals</span> User stories refined together</li>
+                  <li><span class="csd-gwi-build-rail__label">Speed</span> Prototyped directly in Cursor</li>
+                  <li><span class="csd-gwi-build-rail__label">Integration</span> Pushed to a shared repository</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-video" aria-labelledby="gwi-video-self-serve-heading">
+      <div class="csd-video__header">
+        <span class="kicker" id="gwi-video-self-serve-heading">Prototype · Self-serve</span>
+      </div>
+      <div class="csd-video__frame">
+        <iframe
+          src="about:blank"
+          title="GWI self-serve prototype walkthrough"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="csd-video__caption">Paste Loom, Vimeo, or YouTube embed URL into the iframe <code>src</code>.</p>
+    </section>
+
+    <section class="csd-video" aria-labelledby="gwi-video-api-heading">
+      <div class="csd-video__header">
+        <span class="kicker" id="gwi-video-api-heading">Prototype · API / metering</span>
+      </div>
+      <div class="csd-video__frame">
+        <iframe
+          src="about:blank"
+          title="GWI API or metering walkthrough"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="csd-video__caption">Second recording: API usage, MCP, or meeting clip.</p>
+    </section>
+
+    <section class="csd-context">
+
+      <div class="csd-context__text">
+        <span class="kicker">Acceleration</span>
+        <h2 class="csd-context__title">Using AI to move faster</h2>
+        <div class="csd-context__body">
+          <p>AI tools were used to support speed and understanding:</p>
+          <ul class="csd-context__list csd-context__list--cards">
+            <li>Synthesising research</li>
+            <li>Exploring system logic</li>
+            <li>Accelerating prototyping</li>
+          </ul>
+          <p>To make this sustainable, I collaborate on evolving our existing design system by defining foundations for structure, tokens, and components to support scalable, consistent development.</p>
+        </div>
+      </div>
+
+      <div class="csd-context__image">
+        <figure class="csd-gwi-ds-placeholder">
+          <div class="csd-gwi-ds-placeholder__frame">
+            <!-- When the asset is ready, add e.g.:
+            <img class="csd-gwi-ds-placeholder__img" src="assets/GWI/design-system.png" alt="GWI design system: components and tokens" />
+            -->
+            <div class="csd-gwi-ds-placeholder__empty" aria-hidden="true">
+              <svg class="csd-gwi-ds-placeholder__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="4" y="6" width="40" height="32" rx="3"/>
+                <path d="M12 14h8v8h-8zM28 14h8v8h-8M20 26h8v8h-8"/>
+              </svg>
+              <span class="csd-gwi-ds-placeholder__empty-label">Image</span>
+            </div>
+          </div>
+          <figcaption class="csd-gwi-ds-placeholder__meta">
+            <span class="kicker">Design system</span>
+            <p class="csd-gwi-ds-placeholder__title">Tokens · variants · components</p>
+            <p class="csd-gwi-ds-placeholder__desc">Structured for reuse in Figma, Cursor, and handoff to engineering.</p>
+          </figcaption>
+        </figure>
+        <p class="csd-context__caption">Placeholder: swap the frame above for a component grid or token table screenshot.</p>
+      </div>
+
+    </section>
+
+    <section class="csd-impact">
+
+      <div class="csd-impact__header">
+        <span class="kicker">Outcome</span>
+        <h2 class="csd-impact__title">Establishing a foundation for scalable <em class="italic">self-serve</em></h2>
+      </div>
+
+      <ul class="csd-impact__list">
+        <li>Turned a fragmented system into a shared, actionable model</li>
+        <li>Shifted roadmap towards access and organisational structure</li>
+        <li>Assessed tools like WorkOS to balance speed vs flexibility</li>
+        <li>Established the foundations for scalable self-serve</li>
+        <li>Shipped a working Alpha to bring the approach to life</li>
+      </ul>
+
+    </section>
+
+    <section class="csd-editorial" aria-label="Reflection">
+
+      <div class="csd-editorial__inner">
 
         <div class="csd-editorial__chunk">
-          <span class="kicker">Reflections &amp; next steps</span>
-          <h2 class="csd-context__title">What we shipped for alpha, and what we parked on purpose</h2>
-
-          <div class="csd-editorial__split">
-            <div class="csd-editorial__body">
-              <p>
-                <span class="csd-editorial__hl">Alpha had to ship in June.</span>
-                That narrowed the aperture: rather than reinvent identity or org modelling, we had to compose on top of
-                <strong class="csd-editorial__takeaway">the organisation structures and user records already in our admin system</strong>.
-              </p>
-              <p class="csd-editorial__callout">
-                <strong>Constraint, not a shortcut.</strong> Any new experience had to respect those existing trees and user objects. The design job was to make self-serve admin feel inevitable within guardrails we did not own end to end.
-              </p>
-              <p>With that frame, the trade-off was explicit: deliver clear value fast, and name the bigger system build as a later chapter.</p>
-            </div>
-            <div class="csd-editorial__body csd-editorial__body--tradeoffs">
-              <p class="csd-editorial__bridge">We prioritised</p>
-              <ul class="csd-editorial__list csd-editorial__list--prioritised">
-                <li>Self-serve user management (add, remove, and swap users without chasing support)</li>
-                <li>Enough visibility into access and usage for admins to run a controlled rollout</li>
-                <li>Admin-only controls where actions had to stay gated</li>
-              </ul>
-              <p class="csd-editorial__bridge">We deferred</p>
-              <ul class="csd-editorial__list csd-editorial__list--deferred">
-                <li>Full organisation hierarchy modelling bespoke to every client shape</li>
-                <li>A complete entitlement system covering every product edge case</li>
-                <li>Deep lifecycle automation spanning the whole user journey</li>
-              </ul>
-              <p>
-                Net result: the alpha stayed useful for the agentic launch, without pretending the entitlement and org layers were solved in one sprint.
-              </p>
-            </div>
+          <span class="kicker">Reflection</span>
+          <h2 class="csd-editorial__title">Designing systems, not just interfaces</h2>
+          <div class="csd-editorial__body">
+            <p>This project went beyond designing screens. It focused on:</p>
+            <ul class="csd-editorial__list">
+              <li>Creating clarity in a complex system</li>
+              <li>Balancing long-term architecture with short-term delivery</li>
+              <li>Aligning teams with different priorities</li>
+            </ul>
+            <p>The work is ongoing, but it established a strong foundation for scaling GWI’s platform.</p>
           </div>
         </div>
 
       </div>
+
     </section>
-
-    
-
-    <section class="csd-beforeafter">
-
-        <div class="csd-beforeafter__intro">
-          <span class="kicker">User flows</span>
-          <p class="csd-statement__text">
-           Mapping out journeys and <span class="csd-statement__fade">edge cases.</span>
-          </p>
-        </div>
-
-        <div class="csd-beforeafter__grid">
-
-          <figure class="csd-beforeafter__panel">
-            <div class="csd-beforeafter__img-wrap">
-              <div class="csd-beforeafter__placeholder" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
-                <span>SUSI</span>
-              </div>
-            </div>
-            <figcaption class="csd-beforeafter__caption">
-              <strong class="csd-beforeafter__caption-title">Sign-up &amp; invite</strong>
-              <p>Placeholder — swap for flow screen or diagram.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="csd-beforeafter__panel">
-            <div class="csd-beforeafter__img-wrap">
-              <div class="csd-beforeafter__placeholder" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
-                <span>Changing Roles</span>
-              </div>
-            </div>
-            <figcaption class="csd-beforeafter__caption">
-              <strong class="csd-beforeafter__caption-title">Changing roles</strong>
-              <p>Placeholder — swap for flow screen or diagram.</p>
-            </figcaption>
-          </figure>
-
-        </div>
-
-      </section>
-
-      <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY START — Background / Context (text + image + caption)
-
-           Pick which side the image is on — change only the <section> class:
-
-           • Words left, picture right →  class="csd-context"
-           • Picture left, words right → class="csd-context csd-context--reverse"
-
-           (Leave the HTML order as-is: text block first, then image.)
-           ───────────────────────────────────────────────────────────────────────── -->
-           <section class="csd-context">
-
-            <div class="csd-context__text">
-              <span class="kicker">AI to move fast</span>
-              <h2 class="csd-context__title">Collaborative Prototyping With Cursor</h2>
-              <div class="csd-context__body">
-                <p>Throughout the project I used AI tooling to move faster—from Rovo in Jira to surface buried system knowledge, to a custom ChatGPT agent as a lightweight research repo for synthesis.</p>
-                <p>An offsite in Athens raised the bar: build real, testable prototypes. We used Cursor to pair design with code quickly.</p>
-                <p>I started in Figma (including Figma Make for exploration), brought the design system into Cursor as structured context, and prototyped the self-serve MVP from there.</p>
-                <p>After review we pushed incremental updates through GitHub to a live environment.</p>
-              </div>
-            </div>
-    
-            <!-- Replace iframe src: paste embed link (full URL from YouTube, Vimeo, Loom, …). Swap about:blank for src="YOUR_EMBED". -->
-            <div class="csd-context__image">
-              <div class="csd-video__frame">
-                <iframe
-                  src="about:blank"
-                  title="Collaborative prototyping with Cursor, video walkthrough"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                  loading="lazy"
-                ></iframe>
-              </div>
-              <p class="csd-context__caption">Optional caption for the recording (tooling, sprint, venue).</p>
-            </div>
-    
-          </section>
-          <!-- ─────────────────────────────────────────────────────────────────────────
-               COPY END — Background / Context
-               ───────────────────────────────────────────────────────────────────────── -->
-      <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY START — Block: Full-width image (scroll-linked flip — replace placeholder with <img>)
-           ───────────────────────────────────────────────────────────────────────── -->
-           <section class="csd-fullimg">
-
-            <div class="csd-fullimg__scene">
-              <div class="csd-fullimg__inner">
-    
-                <div class="csd-fullimg__placeholder" aria-hidden="true">
-                  <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
-                    <rect x="2" y="2" width="60" height="44" rx="4"/>
-                    <circle cx="20" cy="16" r="5"/>
-                    <path d="M2 34l16-12 12 10 10-8 22 14"/>
-                  </svg>
-                  <span>Full project image</span>
-                </div>
-    
-              </div>
-            </div>
-    
-            <p class="csd-fullimg__caption">Caption below full-width asset.</p>
-    
-          </section>
-          <!-- ─────────────────────────────────────────────────────────────────────────
-               COPY END — Block: Full-width image
-               ───────────────────────────────────────────────────────────────────────── -->
-          <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY START — Block: Editorial / body copy (typography stripes + highlights)
-           Stack multiple .csd-editorial__chunk blocks inside .csd-editorial__inner.
-           Highlights: <strong class="csd-editorial__takeaway">…</strong>,
-           <p class="csd-editorial__callout">…</p>, or <span class="csd-editorial__hl">…</span>.
-           ───────────────────────────────────────────────────────────────────────── -->
-      <section class="csd-editorial" aria-label="Outcome and next steps">
-
-        <div class="csd-editorial__inner">
-
-          <div class="csd-editorial__chunk">
-            <span class="kicker">The path continues</span>
-            <h2 class="csd-editorial__title">The outcome (so far)</h2>
-            <div class="csd-editorial__body">
-              <p>The work is ongoing, but we’re aligned on the problems, the cost of the status quo, and what “good” looks like next.</p>
-              <ul class="csd-impact__list">
-                <li><strong>Stronger steer toward self-serve</strong> and a scalable access story</li>
-                <li><strong>Shared groundwork</strong> for user management as APIs and automation grow</li>
-                <li><strong>Hands-on contribution</strong> to the first self-serve MVP around Agent Octopus</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="csd-editorial__chunk">
-            <span class="kicker">What’s next</span>
-            <h2 class="csd-editorial__title">New org model, clearer entitlements, WorkOS wired in</h2>
-            <div class="csd-editorial__body">
-              <p>Next up is deliberately simple: ship a refreshed <strong>organisation structure</strong> so accounts match how enterprise customers actually work, get collective agreement on <strong>who gets what product access</strong> (entitlements), and plug those decisions into our <strong>WorkOS integration</strong> so sign-in and user lifecycle behave consistently.</p>
-              <p class="csd-editorial__callout">
-                <strong>Still open.</strong> Metering for APIs is on the roadmap; Metronome, Orb, and others stay in the mix until we pick a path—separate from the WorkOS decision.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
 
     <!-- More case studies -->
     <section class="cs-explore" aria-labelledby="cs-explore-heading">
       <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
       <ul class="cs-explore__grid" role="list">
         <li>
-          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate — Reducing file processing from days to minutes">
+          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate: Reducing file processing from days to minutes">
             <img class="cs-explore__img" src="assets/PINS/PINS cover.png" alt="" />
             <span class="cs-explore__title">Reducing file processing from days to minutes</span>
           </a>
@@ -525,7 +707,7 @@
           </a>
         </li>
         <li>
-          <a class="cs-explore__card" href="hyundai-finance.html" aria-label="Hyundai Finance — Enabling car dealers to do soft credit checks">
+          <a class="cs-explore__card" href="hyundai-finance.html" aria-label="Hyundai Finance: Enabling car dealers to do soft credit checks">
             <img class="cs-explore__img" src="assets/HCUK covr.png" alt="" />
             <span class="cs-explore__title">Enabling car dealers to do soft credit checks</span>
           </a>
