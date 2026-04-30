@@ -65,6 +65,7 @@ function mountSpotifyFab() {
   let fosHotspotCleanup  = () => {};
   let aiSleeveCleanup    = () => {};
   let pivotDropCleanup  = () => {};
+  let pinsFlowCleanup   = () => {};
   let revealObserver     = null;
 
   function teardownDynamicPage() {
@@ -78,6 +79,8 @@ function mountSpotifyFab() {
     aiSleeveCleanup = () => {};
     pivotDropCleanup();
     pivotDropCleanup = () => {};
+    pinsFlowCleanup();
+    pinsFlowCleanup = () => {};
     if (revealObserver) {
       revealObserver.disconnect();
       revealObserver = null;
@@ -810,7 +813,7 @@ function mountSpotifyFab() {
   }
 
   function initFosConceptHotspots() {
-    const roots = document.querySelectorAll('.fos-concepts');
+    const roots = document.querySelectorAll('.fos-concepts, .pins-queue-hotspots-root');
     if (!roots.length) return () => {};
 
     function closeAll() {
@@ -854,6 +857,27 @@ function mountSpotifyFab() {
     return () => removers.forEach(fn => fn());
   }
 
+  /** planning-inspectorate.html: publish flow before/after checkbox */
+  function initPinsPublishFlow() {
+    const cb = document.getElementById('pins-publish-flow-toggle');
+    if (!cb) return () => {};
+
+    const root = cb.closest('.pins-flow');
+    const before = root?.querySelector('.pins-flow__track--before');
+    const after = root?.querySelector('.pins-flow__track--after');
+    if (!before || !after) return () => {};
+
+    function sync() {
+      const on = cb.checked;
+      before.setAttribute('aria-hidden', on ? 'true' : 'false');
+      after.setAttribute('aria-hidden', on ? 'false' : 'true');
+    }
+
+    sync();
+    cb.addEventListener('change', sync);
+    return () => cb.removeEventListener('change', sync);
+  }
+
   function initGwiPivotDrop() {
     const el = document.querySelector('[data-gwi-pivot-drop]');
     if (!el) return () => {};
@@ -891,6 +915,7 @@ function mountSpotifyFab() {
     fosHotspotCleanup  = initFosConceptHotspots();
     aiSleeveCleanup    = initAISleeves();
     pivotDropCleanup   = initGwiPivotDrop();
+    pinsFlowCleanup    = initPinsPublishFlow();
     initCaseStudyRecordClicks();
     setupRevealOnScroll();
     initTrackCards();

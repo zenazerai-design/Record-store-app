@@ -91,7 +91,7 @@
 
       <div class="csd-hero__cover" aria-hidden="true">
         <div class="csd-hero__cover-inner">
-          <img src="assets/planning-inspectorate.png" alt="The Planning Inspectorate, case management work" />
+          <img src="assets/PINS/PINS cover.png" alt="The Planning Inspectorate, case management work" />
         </div>
       </div>
     </section>
@@ -137,21 +137,35 @@
     </section>
 
     <!-- ── BLOCK: Impact ───────────────────────────────────────────── -->
-    <section class="csd-impact">
+    <section class="csd-impact csd-impact--with-side">
 
-      <div class="csd-impact__header">
-        <span class="kicker">Impact</span>
-        <h2 class="csd-impact__title">What we <em class="italic">shipped.</em></h2>
+      <div class="csd-impact__main">
+        <div class="csd-impact__header">
+          <span class="kicker">Impact</span>
+          <h2 class="csd-impact__title">What we <em class="italic">shipped.</em></h2>
+        </div>
+
+        <ul class="csd-impact__list">
+          <li>Re-designed and shipped the full case management system from discovery to delivery</li>
+          <li>Cut case admin time from <strong>days to minutes</strong></li>
+          <li>Boosted user satisfaction by <strong>35%</strong> (SUS)</li>
+          <li>Helped secure a <strong>£9M contract renewal</strong></li>
+          <li>Led <strong>100+ hours</strong> of research and testing</li>
+          <li><strong>First case live</strong> in March 2024</li>
+        </ul>
       </div>
 
-      <ul class="csd-impact__list">
-        <li>Re-designed and shipped the full case management system from discovery to delivery</li>
-        <li>Cut case admin time from <strong>days to minutes</strong></li>
-        <li>Boosted user satisfaction by <strong>35%</strong> (SUS)</li>
-        <li>Helped secure a <strong>£9M contract renewal</strong></li>
-        <li>Led <strong>100+ hours</strong> of research and testing</li>
-        <li><strong>First case live</strong> in March 2024</li>
-      </ul>
+      <div class="csd-context__image">
+        <div class="csd-impact__embed">
+          <iframe
+            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&public_id=713_720x30_shots_so_iwbrat"
+            title="Planning Inspectorate case management — shipped experience (video)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
     </section>
 
     <!-- Background -->
@@ -168,14 +182,8 @@
           </p>
         </div>
       </div>
-      <div class="csd-context__image" aria-hidden="true">
-        <div class="csd-context__image-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <rect x="4" y="6" width="40" height="32" rx="3"/>
-            <path d="M4 20h40M14 6v32"/>
-          </svg>
-          <span>Legacy Horizon</span>
-        </div>
+      <div class="csd-context__image">
+        <img src="assets/PINS/beforeee.png" alt="Horizon legacy case management system showing case details, work items, and document folders for a planning application." width="3024" height="1869" loading="lazy" decoding="async" />
         <p class="csd-context__caption">Previous case management system on Horizon.</p>
       </div>
     </section>
@@ -199,7 +207,7 @@
     </section>
 
     <!-- Initial challenges -->
-    <section class="csd-context csd-context--full">
+    <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Initial challenges</span>
         <h2 class="csd-context__title">Sifting through complexity and frosty relationships.</h2>
@@ -212,6 +220,16 @@
           </p>
         </div>
       </div>
+      <figure class="csd-pitch-figure">
+        <img
+          src="assets/PINS/planning%20landscape.png"
+          alt="Flow diagram: NSIPS planning process from pre-application advice through decision, aligned with the case team journey—create case, receive documents, upload and redact files, edit metadata, publish to the website."
+          width="7431"
+          height="1863"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
     </section>
 
     <!-- Process framing -->
@@ -272,7 +290,7 @@
     </section>
 
     <!-- Optimising flows -->
-    <section class="csd-context csd-context--full">
+    <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Optimising flows</span>
         <h2 class="csd-context__title">Mapping out the file publishing flow to reduce steps.</h2>
@@ -281,6 +299,118 @@
             Previously, every file had to be edited and published one by one. In the redesign, I streamlined the flow with bulk editing and publishing, cutting the steps down dramatically.
           </p>
         </div>
+      </div>
+
+      <div class="pins-flow">
+        <input type="checkbox" id="pins-publish-flow-toggle" class="pins-flow__checkbox" />
+        <div class="pins-flow__toolbar">
+          <div class="pins-flow__toolbar-notes">
+            <p class="pins-flow__note pins-flow__note--before">
+              <span class="pins-flow__note-badge" aria-hidden="true"></span>
+              Repeat steps per document · <strong>×1000s</strong> of files
+            </p>
+            <p class="pins-flow__note pins-flow__note--after">
+              <span class="pins-flow__note-badge pins-flow__note-badge--done" aria-hidden="true"></span>
+              Tasks complete · <strong>Done once</strong> for 1000s of documents
+            </p>
+          </div>
+          <label for="pins-publish-flow-toggle" class="pins-flow__toggle">
+            <span class="pins-flow__toggle-ui" aria-hidden="true">
+              <span class="pins-flow__toggle-knob"></span>
+            </span>
+            <span class="pins-flow__toggle-label">
+              <span class="pins-flow__toggle-text pins-flow__toggle-text--off">Show changes</span>
+              <span class="pins-flow__toggle-text pins-flow__toggle-text--on">Showing improved flow</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="pins-flow__viewport" id="pins-publish-flow-viewport">
+          <div class="pins-flow__track pins-flow__track--before" aria-hidden="false">
+            <div class="pins-flow-col">
+              <div class="pins-flow-col__header">1.0 Document received</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">1.1 Document redacted and re-uploaded</li>
+              </ol>
+              <p class="pins-flow-col__pain">Can’t mark as redacted</p>
+            </div>
+            <span class="pins-flow__arrow" aria-hidden="true">→</span>
+            <div class="pins-flow-col">
+              <div class="pins-flow-col__header">2.0 Edit document</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">2.1 Select document</li>
+                <li class="pins-flow-col__item">2.2 Right-click → Properties</li>
+                <li class="pins-flow-col__item">2.3 Categories</li>
+                <li class="pins-flow-col__item">2.4 Edit Properties</li>
+                <li class="pins-flow-col__item">2.5 Edit details → Save</li>
+              </ol>
+              <p class="pins-flow-col__pain">No way to set status to checked</p>
+            </div>
+            <span class="pins-flow__arrow" aria-hidden="true">→</span>
+            <div class="pins-flow-col">
+              <div class="pins-flow-col__header">3.0 Set to publish</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">3.1 Select document</li>
+                <li class="pins-flow-col__item">3.2 Right-click → Properties</li>
+                <li class="pins-flow-col__item">3.3 Publishing options</li>
+                <li class="pins-flow-col__item">3.4 Status → Publish</li>
+              </ol>
+              <p class="pins-flow-col__pain">Can’t track status across many docs</p>
+            </div>
+            <span class="pins-flow__arrow" aria-hidden="true">→</span>
+            <div class="pins-flow-col">
+              <div class="pins-flow-col__header">4.0 Publish</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">4.1 Publish documents</li>
+                <li class="pins-flow-col__item">4.2 Whole queue goes live</li>
+              </ol>
+              <p class="pins-flow-col__pain">Can’t pick which docs publish</p>
+              <p class="pins-flow-col__pain">Can’t track many docs at once</p>
+            </div>
+          </div>
+
+          <div class="pins-flow__track pins-flow__track--after" aria-hidden="true">
+            <div class="pins-flow-col pins-flow-col--improved">
+              <div class="pins-flow-col__header">1.0 Document received</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">1.1 Document redacted and re-uploaded</li>
+                <li class="pins-flow-col__item pins-flow-col__item--focus">1.2 Multiple docs marked redacted</li>
+              </ol>
+              <p class="pins-flow-col__cta">Mark multiple docs as redacted</p>
+            </div>
+            <span class="pins-flow__arrow" aria-hidden="true">→</span>
+            <div class="pins-flow-col pins-flow-col--improved">
+              <div class="pins-flow-col__header">2.0 Edit document</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">2.1 View / edit document</li>
+                <li class="pins-flow-col__item">2.2 Make changes</li>
+                <li class="pins-flow-col__item pins-flow-col__item--focus">2.3 Mark as checked</li>
+              </ol>
+              <p class="pins-flow-col__cta">Mark multiple docs as checked</p>
+            </div>
+            <span class="pins-flow__arrow" aria-hidden="true">→</span>
+            <div class="pins-flow-col pins-flow-col--improved">
+              <div class="pins-flow-col__header">3.0 Set to publish</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">3.1 Select multiple documents</li>
+                <li class="pins-flow-col__item pins-flow-col__item--focus">3.2 Status → Ready to publish</li>
+              </ol>
+              <p class="pins-flow-col__cta">Mark multiple docs ready to publish</p>
+            </div>
+            <span class="pins-flow__arrow" aria-hidden="true">→</span>
+            <div class="pins-flow-col pins-flow-col--improved">
+              <div class="pins-flow-col__header">4.0 Publish</div>
+              <ol class="pins-flow-col__list">
+                <li class="pins-flow-col__item">4.1 View publishing queue</li>
+                <li class="pins-flow-col__item">4.2 Edit from queue</li>
+                <li class="pins-flow-col__item pins-flow-col__item--focus">4.3 Publish selected</li>
+              </ol>
+              <p class="pins-flow-col__cta">Publish the selection from queue</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="pins-flow__caption csd-context__caption">Legacy Horizon flow versus bulk-first steps in the redesign. Toggle <strong>Show changes</strong> to compare.</p>
       </div>
     </section>
 
@@ -298,20 +428,21 @@
           </p>
         </div>
       </div>
-      <div class="csd-context__image" aria-hidden="true">
-        <div class="csd-context__image-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <rect x="8" y="10" width="32" height="28" rx="2"/>
-            <path d="M14 18h20M14 24h16"/>
-          </svg>
-          <span>GDS / GOV.UK</span>
-        </div>
+      <div class="csd-context__image">
+        <img
+          src="assets/PINS/GDS.png"
+          alt="GOV.UK Design System overview: applying GDS components and patterns to the case management service."
+          width="512"
+          height="484"
+          loading="lazy"
+          decoding="async"
+        />
         <p class="csd-context__caption">GOV.UK Design System, extended where research demanded it.</p>
       </div>
     </section>
 
     <!-- Design iteration -->
-    <section class="csd-beforeafter">
+    <section class="csd-beforeafter pins-design-iterate">
       <div class="csd-beforeafter__intro">
         <span class="kicker">Design, test and iterate</span>
         <p class="csd-statement__text">
@@ -325,56 +456,118 @@
         <figure class="csd-beforeafter__panel">
           <div class="csd-beforeafter__img-wrap">
             <span class="csd-beforeafter__badge">Before testing</span>
-            <div class="csd-beforeafter__placeholder" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
-              <span>Early designs</span>
-            </div>
+            <img
+              src="assets/PINS/Before%20-%20doc%20storage.png"
+              alt="Document storage before usability testing: Reports folder table with colourful status badges, icon-only download column, and bulk actions behind a dropdown."
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <figcaption class="csd-beforeafter__caption">
-            <strong class="csd-beforeafter__caption-title">Designs before testing</strong>
-            <p>Download/view CTAs unclear to users; colour coding too distracting for common tasks; bulk actions buried in a dropdown.</p>
+            <strong class="csd-beforeafter__caption-title">DESIGNS BEFORE TESTING</strong>
+            <ul class="csd-beforeafter__caption-list">
+              <li>Download/view CTAs unclear to users</li>
+              <li>Colour coding too distracting for common tasks</li>
+              <li>Bulk actions buried in a dropdown</li>
+            </ul>
           </figcaption>
         </figure>
         <figure class="csd-beforeafter__panel">
           <div class="csd-beforeafter__img-wrap">
             <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After testing</span>
-            <div class="csd-beforeafter__placeholder" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
-              <span>Refined designs</span>
-            </div>
+            <img
+              src="assets/PINS/After%20doc%20storage.png"
+              alt="Document storage after usability testing: Documents view with neutral status text, visible bulk action panels, and labelled View/edit properties and Download links."
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <figcaption class="csd-beforeafter__caption">
-            <strong class="csd-beforeafter__caption-title">Designs after testing</strong>
-            <p>Neutral statuses to reduce noise; bulk actions visible; clearer download/view CTAs, refined document storage and publishing around easier access to core actions.</p>
+            <strong class="csd-beforeafter__caption-title">DESIGNS AFTER TESTING</strong>
+            <ul class="csd-beforeafter__caption-list">
+              <li>Neutral statuses - reducing visual noise while maintaining clarity.</li>
+              <li>Bulk actions visible - improving task speed and reducing confusion.</li>
+              <li>Clearer download/view CTAs with text labels</li>
+            </ul>
           </figcaption>
         </figure>
       </div>
     </section>
 
     <!-- Publishing queue -->
-    <section class="csd-context csd-context--full">
-      <div class="csd-context__text">
-        <span class="kicker">Publishing queue</span>
-        <h2 class="csd-context__title">Giving case admin teams more control, and reducing errors with the publishing queue.</h2>
-        <div class="csd-context__body">
-          <p>
-            One of the core issues was the time taken to publish files and errors made along the way. I added new functionality to the publishing queue, collaborating with the front-office team so internal tooling lined up with what went live on the public site.
+    <section class="csd-context pins-queue-section">
+      <div class="pins-queue-top">
+        <div class="csd-context__text">
+          <span class="kicker">Publishing queue</span>
+          <h2 class="csd-context__title">Giving case admin teams more control, and reducing errors with the publishing queue.</h2>
+          <div class="csd-context__body">
+            <p>
+              One of the core issues was the time taken to publish files and errors made along the way. I added new functionality to the publishing queue, collaborating with the front-office team so internal tooling lined up with what went live on the public site.
+            </p>
+          </div>
+        </div>
+
+        <div class="pins-queue-benefits">
+          <span class="kicker">Benefits</span>
+          <ul class="csd-impact__list pins-queue-benefits__list">
+            <li><strong>Easy bulk management</strong>, speeding up processes and saving case team hours</li>
+            <li><strong>Edit files before publishing</strong>, reducing errors</li>
+            <li><strong>Full control over release order</strong>, reducing rework</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pins-queue-hotspots-root pins-queue-visual">
+        <div class="pins-queue-annotate">
+          <p class="pins-queue-annotate__lede">
+            Publishing queue interface — hover or tap a marker for design notes.
+          </p>
+          <div class="fos-concept__asset-wrap pins-queue-annotate__asset">
+            <img
+              class="fos-concept__img"
+              src="assets/PINS/Publishing%20queue.png"
+              width="11246"
+              height="6968"
+              alt="Publishing queue table with bulk Publish documents actions, document rows with metadata, View/edit details and Remove links, and pagination."
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="fos-concept__hotspots pins-queue-hotspots" role="group" aria-label="Publishing queue design notes">
+              <div class="fos-hotspot fos-hotspot--note-below pins-queue-hotspot pins-queue-hotspot--status">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: publishing status indicator"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Status indicator</strong>
+                  <p>Status indicator to show which documents are in the process of publishing and cannot be edited.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below pins-queue-hotspot pins-queue-hotspot--selection">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: bulk selection"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Selection</strong>
+                  <p>Select or deselect which documents from the queue to publish immediately, either individually or in bulk, saving time.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot pins-queue-hotspot pins-queue-hotspot--viewedit">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: view and edit details"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>View/edit</strong>
+                  <p>View and edit document details before publishing, reducing errors.</p>
+                </div>
+              </div>
+              <div class="fos-hotspot fos-hotspot--note-below pins-queue-hotspot pins-queue-hotspot--remove">
+                <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: remove from queue"></button>
+                <div class="fos-hotspot__popup" role="tooltip">
+                  <strong>Remove</strong>
+                  <p>Remove documents from the queue.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="csd-context__caption pins-queue-annotate__caption">
+            Callouts match usability annotations from testing — same UI as the built queue without burned-in labels.
           </p>
         </div>
       </div>
-    </section>
-
-    <!-- Queue benefits -->
-    <section class="csd-impact">
-      <div class="csd-impact__header">
-        <span class="kicker">Benefits</span>
-        <h2 class="csd-impact__title">What the queue <em class="italic">unlocked.</em></h2>
-      </div>
-      <ul class="csd-impact__list">
-        <li><strong>Easy bulk management</strong>, speeding up processes and saving case team hours</li>
-        <li><strong>Edit files before publishing</strong>, reducing errors</li>
-        <li><strong>Full control over release order</strong>, reducing rework</li>
-      </ul>
     </section>
 
     <!-- Quote 1 -->
@@ -409,20 +602,18 @@
       </p>
     </section>
 
-    <!-- Quote 2 -->
-    <section class="csd-quotes">
-      <span class="kicker csd-quotes__kicker">User testing feedback</span>
-      <div class="csd-quotes__grid">
-        <figure class="csd-quote">
-          <blockquote class="csd-quote__text">
-            “We are so looking forward to everything being rolled out, you and the team are the first group of consultants who listen and deliver what we actually want, plus other good things thrown in as well.”
-          </blockquote>
-          <figcaption class="csd-quote__attr">
-            <span class="csd-quote__name">Case Admin user</span>
-            <span class="csd-quote__role">The Planning Inspectorate</span>
-          </figcaption>
-        </figure>
-      </div>
+    <!-- User testing feedback (before scaling) -->
+    <section class="csd-pullquote">
+      <span class="kicker csd-pullquote__kicker">User testing feedback</span>
+      <figure class="csd-pullquote__inner">
+        <blockquote class="csd-pullquote__text">
+          “We are so looking forward to everything being rolled out, you and the team are <span class="csd-editorial__hl">the first group of consultants who listen</span> and deliver what we actually want, plus other good things thrown in as well.”
+        </blockquote>
+        <figcaption class="csd-pullquote__attr">
+          <span class="csd-pullquote__name">Case Admin user</span>
+          <span class="csd-pullquote__role">The Planning Inspectorate</span>
+        </figcaption>
+      </figure>
     </section>
 
     <!-- Scaling -->
@@ -441,10 +632,10 @@
       </div>
       <div class="csd-context__image">
         <img
-          src="assets/PINS/web-portfolio-mockup_11.png"
-          width="1600"
-          height="1200"
-          alt="Planning Inspectorate digital experience: browser mockups of the public website and case workflows, representing the live service built as the team scaled."
+          src="assets/PINS/Team.jpeg"
+          width="2048"
+          height="1152"
+          alt="The Planning Inspectorate project team photographed together in the studio, including remote teammates on screen—representing the scaled, multi-discipline crew shipping the live service."
           loading="lazy"
           decoding="async"
         />
@@ -453,7 +644,7 @@
     </section>
 
     <!-- PM quote -->
-    <section class="csd-pullquote">
+    <section class="csd-pullquote csd-pullquote--wide">
       <span class="kicker csd-pullquote__kicker">Project leadership</span>
       <figure class="csd-pullquote__inner">
         <blockquote class="csd-pullquote__text">
@@ -467,7 +658,7 @@
     </section>
 
     <!-- Reflections -->
-    <section class="csd-context csd-context--full">
+    <section class="csd-context csd-context--reflection-mock">
       <div class="csd-context__text">
         <span class="kicker">Reflections</span>
         <h2 class="csd-context__title">One small piece of a bigger body of work.</h2>
@@ -479,6 +670,14 @@
             One learning that stood out was the importance of building strong relationships with stakeholders and users: the earlier you can build trust, the more willing people are to cooperate toward a shared goal.
           </p>
         </div>
+      </div>
+      <div class="csd-context__image csd-context__image--reflection-mock">
+        <img
+          src="assets/PINS/doublemock.png"
+          alt="Overlapping NSIP Applications mockups: documents folder workflow and project overview."
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </section>
 
