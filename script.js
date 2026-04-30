@@ -346,8 +346,8 @@ function mountSpotifyFab() {
     return seg.replace(/#.*/, '').toLowerCase();
   }
 
-  /** Keeps typography correct when SPA-swapping shell is still index.html vs other pages */
-  function syncBodyHomeClass(resolvedHref) {
+  /** Keeps body page classes correct when SPA-swapping (#spa-main shell may stay index.html). */
+  function syncBodyPageClasses(resolvedHref) {
     let url;
     try {
       url = new URL(resolvedHref, window.location.href);
@@ -357,6 +357,7 @@ function mountSpotifyFab() {
     let key = filenameKey(url.pathname);
     if (!key) key = 'index.html';
     document.body.classList.toggle('page-home', key === 'index.html');
+    document.body.classList.toggle('page-about', key === 'about.html');
   }
 
   const CASE_STUDY_DETAIL_PAGES = new Set([
@@ -463,7 +464,7 @@ function mountSpotifyFab() {
     }
 
     updateNavAriaCurrent(url.href);
-    syncBodyHomeClass(url.href);
+    syncBodyPageClasses(url.href);
     window.scrollTo(0, 0);
 
     const hid = url.hash.slice(1);
@@ -779,6 +780,19 @@ function mountSpotifyFab() {
         });
       }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
       allReveal.forEach(el => revealObserver.observe(el));
+      /* Sections already in viewport (e.g. after SPA navigate + scroll 0 jump) sometimes miss
+         the first IntersectionObserver frame; unblock immediately-visible blocks. */
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+          const r = el.getBoundingClientRect();
+          const slack = Math.min(window.innerHeight * 0.12, 120);
+          const viewBottom = window.innerHeight + slack;
+          if (r.top < viewBottom && r.bottom > -slack) {
+            el.classList.add('is-in');
+            revealObserver.unobserve(el);
+          }
+        });
+      });
     } else {
       allReveal.forEach(el => el.classList.add('is-in'));
     }
@@ -1017,6 +1031,6 @@ function mountSpotifyFab() {
   });
 
   updateNavAriaCurrent(window.location.href);
-  syncBodyHomeClass(window.location.href);
+  syncBodyPageClasses(window.location.href);
 
 })();

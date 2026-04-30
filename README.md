@@ -1,12 +1,12 @@
-# Zena Zerai — Portfolio
+# Zena Zerai: Portfolio
 
 A small, warm record store of selected work. A single-page portfolio for **Zena Zerai, Senior Product Designer**, themed after a dim vinyl shop: amber chandeliers, sleeve-and-disc case studies, a slow-spinning Side B, and the high-contrast Studio Namma type voice.
 
 ## Stack
 
-Plain HTML, CSS and a touch of JS — no build step, no dependencies. Fonts are pulled from Google Fonts:
+Plain HTML, CSS and a touch of JS, with no build step and no dependencies. Fonts are pulled from Google Fonts:
 
-- **Instrument Serif** (display, italic) — closest free match to Studio Namma's *PP Editorial New*
+- **Instrument Serif** (display, italic): closest free match to Studio Namma's *PP Editorial New*
 - **Inter** (body)
 - **JetBrains Mono** (record-label kickers)
 
@@ -28,7 +28,7 @@ Then open <http://localhost:8000>.
 
 ```
 .
-├── index.html          # Markup — hero, marquee, works, about, contact
+├── index.html          # Markup: hero, marquee, works, about, contact
 ├── styles.css          # Theme, type, layout, motion
 ├── script.js           # Tap-to-flip, scroll reveals, nav lift
 ├── assets/
@@ -38,11 +38,11 @@ Then open <http://localhost:8000>.
 
 ## Sections
 
-1. **Hero** — Dimmed record-store backdrop, big italic name, "33⅓ RPM" record-shop ticker.
-2. **Marquee** — A slow scrolling banner ("Selected Works ✦ Senior Product Designer ✦ …").
-3. **Works (The Catalogue)** — Case studies as flippable vinyl sleeves. Hover (or tap on mobile) to peek the disc and reveal liner notes and a tracklist.
-4. **About (Liner Notes)** — A spinning vinyl on the left, the artist's bio and "what I do" tracklist on the right.
-5. **Contact (End of Side B)** — Big italic call-to-action and the usual links.
+1. **Hero**: Dimmed record-store backdrop, big italic name, "33⅓ RPM" record-shop ticker.
+2. **Marquee**: A slow scrolling banner ("Selected Works ✦ Senior Product Designer ✦ …").
+3. **Works (The Catalogue)**: Case studies as flippable vinyl sleeves. Hover (or tap on mobile) to peek the disc and reveal liner notes and a tracklist.
+4. **About (Liner Notes)**: A spinning vinyl on the left, the artist's bio and "what I do" tracklist on the right.
+5. **Contact (End of Side B)**: Big italic call-to-action and the usual links.
 
 ## Customising
 
@@ -54,7 +54,7 @@ Then open <http://localhost:8000>.
 
 - Real semantic HTML (`<header>`, `<nav>`, `<section>`, `<footer>`).
 - Records are keyboard-flippable (Enter / Space) with visible focus.
-- Honours `prefers-reduced-motion` — disables the marquee, the spinning vinyl, and reveal transitions.
+- Honours `prefers-reduced-motion`, which disables the marquee, the spinning vinyl, and reveal transitions.
 
 ## Notes
 

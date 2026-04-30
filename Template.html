@@ -184,8 +184,11 @@
            ───────────────────────────────────────────────────────────────────────── -->
 
       <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY START, Block: Impact, list variant (<ul class="csd-impact__list">)
-           Omit if unused. Alternative: stats grid inside .csd-impact (see HTML comment in planning-inspectorate.html).
+           COPY START, Block: Impact (emoji-led list: use ONLY in this Impact section)
+           On <ul>: add csd-impact__list csd-impact__list--lead-icons
+           Each <li>: <span class="csd-impact__lead-icon" aria-hidden="true">…</span><span>…text…</span>
+           Elsewhere (context, goals, etc.) use <ul class="csd-impact__list"> only: amber dot markers.
+           Omit Impact block if unused. Alternative: stats grid inside .csd-impact (see planning-inspectorate.html).
            ───────────────────────────────────────────────────────────────────────── -->
       <section class="csd-impact">
 
@@ -194,10 +197,10 @@
           <h2 class="csd-impact__title">Section title <em class="italic">emphasis.</em></h2>
         </div>
 
-        <ul class="csd-impact__list">
-          <li>Outcome bullet one</li>
-          <li>Outcome bullet two, use <strong>bold</strong> for emphasis</li>
-          <li>Outcome bullet three</li>
+        <ul class="csd-impact__list csd-impact__list--lead-icons">
+          <li><span class="csd-impact__lead-icon" aria-hidden="true">✨</span><span>Outcome bullet one</span></li>
+          <li><span class="csd-impact__lead-icon" aria-hidden="true">📌</span><span>Outcome bullet two, use <strong>bold</strong> for emphasis</span></li>
+          <li><span class="csd-impact__lead-icon" aria-hidden="true">🎯</span><span>Outcome bullet three</span></li>
         </ul>
 
       </section>
@@ -560,7 +563,7 @@
             <span class="csd-outcome__desc">Metric description <span class="csd-outcome__note">(optional note)</span></span>
           </li>
           <li class="csd-outcome__item">
-            <span class="csd-outcome__stat">—</span>
+            <span class="csd-outcome__stat">-</span>
             <span class="csd-outcome__desc">Metric description</span>
           </li>
         </ol>
