@@ -3753,6 +3753,7 @@ body.page-about .nav__links a:hover {
 }
 
 .cd-sleeve__media-strip {
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -3762,17 +3763,80 @@ body.page-about .nav__links a:hover {
   overflow-y: hidden;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 6px;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
   margin-bottom: 2px;
-  scrollbar-width: thin;
+  scrollbar-width: auto;
 }
 
 .cd-sleeve__media-strip::-webkit-scrollbar {
-  height: 6px;
+  height: 10px;
 }
 .cd-sleeve__media-strip::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: rgba(42, 32, 24, 0.28);
+  border-radius: 6px;
+  background: rgba(42, 32, 24, 0.38);
+}
+
+.cd-sleeve__strip-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 4px 4px 0;
+}
+
+.cd-sleeve__strip-nav__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(58, 42, 24, 0.32);
+  background: color-mix(in srgb, var(--cream) 55%, #e8dfd0);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1;
+  color: #2a2319;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.cd-sleeve__strip-nav__btn:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--amber) 55%, transparent);
+  background: color-mix(in srgb, var(--cream) 35%, #f2e9dc);
+  color: #1c1510;
+}
+
+.cd-sleeve__strip-nav__btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--amber) 55%, transparent);
+  outline-offset: 3px;
+}
+
+.cd-sleeve__strip-nav__btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.cd-sleeve__strip-nav__status {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(58, 42, 24, 0.72);
+  min-width: 5.5rem;
+  text-align: center;
 }
 
 .cd-sleeve__media-pane {
@@ -3870,6 +3934,41 @@ body.page-about .nav__links a:hover {
 .cd-sleeve__cover-visual--desktop .cd-sleeve__cover-video {
   object-fit: contain;
   pointer-events: auto;
+}
+
+.cd-sleeve__cover-visual--desktop .cd-sleeve__cover-stack > .cd-sleeve__cover-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  z-index: 4;
+}
+
+/* Center-crop taller iframe vertically to hide VEED / letterbox bars at top & bottom */
+.cd-sleeve__cover-visual--desktop .cd-sleeve__cover-stack > .cd-sleeve__embed-crop-y {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.cd-sleeve__cover-visual--desktop .cd-sleeve__embed-crop-y .cd-sleeve__cover-embed {
+  position: absolute;
+  inset: unset;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 128%;
+  border: none;
+  display: block;
+  transform: translate(-50%, -50%);
+}
+
+/* Premiere short: VEED watermark bars; tweak height % if stripes still peek in */
+.cd-sleeve__embed-crop-y--premiere .cd-sleeve__cover-embed {
+  height: 132%;
 }
 
 .cd-sleeve__cover-visual--desktop .cd-sleeve__cover-surface {

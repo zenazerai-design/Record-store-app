@@ -125,6 +125,121 @@ function mountSpotifyFab() {
     const aiRack = main.querySelector('.cd-rack.cd-rack--ai-row');
     let aiDockRaf = 0;
 
+    const stripNavCleanups = [];
+
+    /**
+     * Multi-pane Polaroid rails: iframe embeds swallow horizontal gestures. Add Prev/Next
+     * controls and keyboard support so users can reliably move between clips.
+     */
+    function initAISleeveStripNavigation() {
+      if (!aiRack) return;
+      aiRack.querySelectorAll('.cd-sleeve__media-strip').forEach((strip) => {
+        const wrap = strip.parentElement;
+        if (!wrap || !wrap.classList.contains('cd-sleeve__cover-wrap')) return;
+
+        const panes = strip.querySelectorAll(':scope > .cd-sleeve__media-pane');
+        if (panes.length < 2) return;
+        if (strip.nextElementSibling?.classList?.contains('cd-sleeve__strip-nav')) return;
+
+        const reduced = prefersReducedMotion();
+
+        function currentPaneIndex() {
+          const sr = strip.getBoundingClientRect();
+          const cx = sr.left + sr.width * 0.5;
+          let best = 0;
+          panes.forEach((pane, i) => {
+            const pr = pane.getBoundingClientRect();
+            const mx = pr.left + pr.width * 0.5;
+            if (mx <= cx) best = i;
+          });
+          return best;
+        }
+
+        function clampIndex(next) {
+          return Math.max(0, Math.min(panes.length - 1, next));
+        }
+
+        function go(direction) {
+          const i = clampIndex(currentPaneIndex() + direction);
+          panes[i].scrollIntoView({
+            behavior: reduced ? 'auto' : 'smooth',
+            inline: 'start',
+            block: 'nearest',
+          });
+        }
+
+        function syncChrome() {
+          const i = currentPaneIndex();
+          prevBtn.disabled = i <= 0;
+          nextBtn.disabled = i >= panes.length - 1;
+          statusEl.textContent = `${i + 1} / ${panes.length}`;
+        }
+
+        const nav = document.createElement('div');
+        nav.className = 'cd-sleeve__strip-nav';
+        nav.setAttribute('role', 'toolbar');
+        nav.setAttribute('aria-label', 'Browse media in this strip');
+
+        const prevBtn = document.createElement('button');
+        prevBtn.type = 'button';
+        prevBtn.className = 'cd-sleeve__strip-nav__btn cd-sleeve__strip-nav__btn--prev';
+        prevBtn.setAttribute('aria-label', 'Previous clip');
+        prevBtn.innerHTML = '<span aria-hidden="true">\u2190</span>';
+
+        const statusEl = document.createElement('span');
+        statusEl.className = 'cd-sleeve__strip-nav__status';
+
+        const nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'cd-sleeve__strip-nav__btn cd-sleeve__strip-nav__btn--next';
+        nextBtn.setAttribute('aria-label', 'Next clip');
+        nextBtn.innerHTML = '<span aria-hidden="true">\u2192</span>';
+
+        nav.append(prevBtn, statusEl, nextBtn);
+        strip.insertAdjacentElement('afterend', nav);
+
+        const onPrev = () => go(-1);
+        const onNext = () => go(1);
+
+        prevBtn.addEventListener('click', onPrev);
+        nextBtn.addEventListener('click', onNext);
+
+        let scrollRaf = 0;
+        const onStripScroll = () => {
+          if (scrollRaf) cancelAnimationFrame(scrollRaf);
+          scrollRaf = requestAnimationFrame(() => {
+            scrollRaf = 0;
+            syncChrome();
+          });
+        };
+
+        strip.addEventListener('scroll', onStripScroll, { passive: true });
+
+        function onStripKeydown(e) {
+          if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            go(1);
+          } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            go(-1);
+          }
+        }
+
+        strip.addEventListener('keydown', onStripKeydown);
+
+        syncChrome();
+        stripNavCleanups.push(() => {
+          prevBtn.removeEventListener('click', onPrev);
+          nextBtn.removeEventListener('click', onNext);
+          strip.removeEventListener('keydown', onStripKeydown);
+          strip.removeEventListener('scroll', onStripScroll, { passive: true });
+          nav.remove();
+        });
+      });
+    }
+
+    initAISleeveStripNavigation();
+
     /** AI row: clear legacy inline panel metrics (layout is flex in CSS) */
     function alignAiExploreDockedPanel() {
       if (!aiRack) return;
@@ -331,6 +446,7 @@ function mountSpotifyFab() {
       main.removeEventListener('click', onClick);
       window.removeEventListener('resize', onAiRackRelayout);
       cancelAnimationFrame(aiDockRaf);
+      stripNavCleanups.splice(0).forEach((fn) => fn());
     };
   }
 
