@@ -4938,6 +4938,132 @@ a { color: inherit; text-decoration: none; }
   max-width: 72ch;
 }
 
+/* Copy stacked above a full-width block (e.g. expandable diagram) */
+.csd-context--design-stack {
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 5vw, 56px);
+}
+
+.csd-context--design-stack .csd-context__text {
+  max-width: 72ch;
+}
+
+.csd-context--design-stack .csd-expandable-diagram {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Native expandable media: summary toggles full-width scroll region */
+.csd-expandable-diagram {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.csd-expandable-diagram__summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px 16px;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  user-select: none;
+}
+
+.csd-expandable-diagram__summary::-webkit-details-marker {
+  display: none;
+}
+
+.csd-expandable-diagram__summary-copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.csd-expandable-diagram__icon {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s var(--ease);
+  opacity: 0.65;
+  align-self: center;
+}
+
+.csd-expandable-diagram[open] .csd-expandable-diagram__icon {
+  transform: rotate(-135deg);
+}
+
+.csd-expandable-diagram__label {
+  margin: 0;
+}
+
+.csd-expandable-diagram__hint {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+
+@media (min-width: 520px) {
+  .csd-expandable-diagram__summary-copy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 20px;
+  }
+
+  .csd-expandable-diagram__hint {
+    text-align: right;
+    flex: 1 1 auto;
+    min-width: max(140px, 25%);
+  }
+}
+
+.csd-expandable-diagram__inner {
+  border-top: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+.csd-expandable-diagram__scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: min(78vh, 720px);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  background: var(--surface);
+}
+
+.csd-expandable-diagram__scroll:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--cream) 55%, transparent);
+  outline-offset: -2px;
+}
+
+.csd-expandable-diagram__scroll img {
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: min(76vh, 680px);
+  display: block;
+}
+
+.csd-expandable-diagram__caption {
+  padding: 14px 20px 0;
+  margin: 0;
+}
+
 /* Two-column flip: image left, text right (DOM can stay text node → image; CSS swaps).
    Default without this class is text left | image right. */
 .csd-context--reverse .csd-context__image {
@@ -5081,6 +5207,32 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.4;
+}
+
+/* Wide flow / diagram: horizontal scroll inside sticky side column */
+.csd-context__image-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  scrollbar-gutter: stable;
+}
+
+.csd-context__image-scroll:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--cream) 55%, transparent);
+  outline-offset: 3px;
+}
+
+.csd-context__image .csd-context__image-scroll img {
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: min(72vh, 560px);
+  display: block;
+  border: none;
+  border-radius: 0;
 }
 
 /* Full-width pitch / deck imagery inside case study */
@@ -7169,6 +7321,114 @@ a { color: inherit; text-decoration: none; }
   scroll-padding-inline: 0;
 }
 
+/* GWI Foundation: crop asset bottom (Outstanding Questions) so the card grid fits the column */
+.gwi-foundation-object-model {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  aspect-ratio: 2604 / 2050;
+}
+
+.gwi-foundation-object-model img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border: none;
+  border-radius: 0;
+}
+
+/* GWI: stacked before/after rows (object model + admin vs iteration) */
+.gwi-design-iterations__pairs {
+  display: grid;
+  gap: clamp(40px, 5vw, 56px);
+}
+
+.gwi-design-iterations__lead {
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* GWI design iterations: uniform image cards; screenshots fill frame (crop) */
+.gwi-design-iterations .csd-beforeafter__img-wrap {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  min-height: 0;
+}
+
+.gwi-design-iterations .csd-beforeafter__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Badges sit on busy screenshots: solid fills + shadow for legibility */
+.gwi-design-iterations .csd-beforeafter__badge {
+  background: rgba(14, 11, 8, 0.94);
+  color: var(--cream);
+  border: 1px solid rgba(239, 228, 203, 0.45);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 5px 12px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.gwi-design-iterations .csd-beforeafter__badge--after {
+  background: #c96a32;
+  background: linear-gradient(180deg, #e9954f 0%, #c96a32 100%);
+  color: #0e0b08;
+  border-color: rgba(14, 11, 8, 0.35);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(14, 11, 8, 0.2);
+}
+
+/* GWI Pivot: scroll-triggered “dropped in” block (whole section lands as you scroll) */
+.gwi-pivot-drop {
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gwi-pivot-drop--arm:not(.gwi-pivot-drop--landed) .gwi-pivot-drop__surface {
+    opacity: 0;
+    transform: translate3d(0, -52px, 0) scale(0.96) rotate(-0.9deg);
+    transform-origin: 50% 0;
+    filter: blur(1px);
+    transition:
+      opacity 0.45s ease,
+      transform 0s,
+      filter 0.45s ease;
+    will-change: transform, opacity, filter;
+  }
+
+  .gwi-pivot-drop--arm.gwi-pivot-drop--landed .gwi-pivot-drop__surface {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+    transition:
+      opacity 0.55s cubic-bezier(0.2, 0.85, 0.28, 1),
+      transform 0.82s cubic-bezier(0.2, 1.15, 0.42, 1),
+      filter 0.45s ease;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gwi-pivot-drop .gwi-pivot-drop__surface {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 .gwi-framing-visuals.csd-context__image {
   position: static;
   min-width: 0;
@@ -7232,7 +7492,16 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gwi-framing-visuals .csd-iterate__scroll-wrap::after {
+  top: 0;
   right: 0;
+  bottom: 0;
+  width: min(100px, 18vw);
+  background: linear-gradient(
+    to left,
+    rgba(14, 11, 8, 0.5) 0%,
+    rgba(14, 11, 8, 0.16) 50%,
+    transparent 100%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

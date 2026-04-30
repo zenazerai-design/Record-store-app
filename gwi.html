@@ -427,24 +427,27 @@
         </div>
       </div>
 
-      <div class="csd-context__image" aria-hidden="true">
-        <div class="csd-context__image-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <rect x="4" y="6" width="40" height="32" rx="3"/>
-            <path d="M16 22l6 6 10-10"/>
-          </svg>
-          <span>OOUX / object map</span>
+      <div class="csd-context__image">
+        <div class="gwi-foundation-object-model">
+          <img
+            src="assets/GWI/Reusable Object Card Component.png"
+            alt="Proposed future object model: two-column grid of reusable object cards (UM Discovery) for Org, Account, User, Plan, Feature, Bundle, Role, AccessGrant, Seat Allocation, API Token, Domain, and related entities with category tags."
+            width="2016"
+            height="2558"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-        <p class="csd-context__caption">Object model or relationship sketch: paste image when ready.</p>
+        <p class="csd-context__caption">Object model or relationship sketch.</p>
       </div>
 
     </section>
 
-    <section class="csd-context csd-context--full">
+    <section class="csd-context csd-context--full gwi-pivot-drop" data-gwi-pivot-drop aria-labelledby="gwi-pivot-heading">
 
-      <div class="csd-context__text">
+      <div class="csd-context__text gwi-pivot-drop__surface">
         <span class="kicker">Pivot</span>
-        <h2 class="csd-context__title">Adapting to a faster path to Agentic Alpha</h2>
+        <h2 class="csd-context__title" id="gwi-pivot-heading">Adapting to a faster path to Agentic Alpha</h2>
         <div class="csd-context__body">
           <p>As discovery progressed, the business shifted focus towards launching an <strong>Agentic Alpha product within ~two months</strong>, including self-serve functionality.</p>
           <p>It wasn’t feasible to resolve all foundational challenges in that timeframe.</p>
@@ -453,59 +456,44 @@
 
     </section>
 
-    <section class="csd-context csd-context--full">
+    <section class="csd-context csd-context--full" aria-labelledby="gwi-approach-scope-heading">
 
       <div class="csd-context__text">
-        <span class="kicker">The approach</span>
-        <h2 class="csd-context__title">Balancing <span class="csd-editorial__takeaway">long-term structure</span> with <span class="csd-editorial__takeaway">short-term delivery</span></h2>
+        <span class="kicker">Approach &amp; MVP scope</span>
+        <h2 class="csd-context__title" id="gwi-approach-scope-heading">Balancing <span class="csd-editorial__takeaway">long-term structure</span> with <span class="csd-editorial__takeaway">short-term delivery</span></h2>
         <div class="csd-context__body">
-          <p>With a tight timeline, we couldn’t solve the underlying system challenges in full.</p>
-          <p>Working closely with Product and Engineering, we reframed the approach:</p>
-          <ul class="csd-context__list">
-            <li>Use existing systems, despite known limitations</li>
-            <li>Define a realistic MVP for Alpha</li>
-            <li>Separate immediate delivery from longer-term architectural changes</li>
-          </ul>
+          <p>With a tight timeline, we couldn’t solve the underlying system challenges in full. Working closely with Product and Engineering, we focused on what could be delivered for Alpha, drawing a clear line between in-scope work and longer-term bets.</p>
         </div>
-      </div>
-
-    </section>
-
-    <section class="csd-editorial" aria-label="MVP scope">
-      <div class="csd-editorial__inner csd-editorial__inner--split">
-        <div class="csd-editorial__chunk">
-          <span class="kicker">MVP scope</span>
-          <h2 class="csd-editorial__title">Focusing on what could be delivered now</h2>
-          <div class="csd-gwi-scope-panels">
-            <div class="csd-gwi-scope-panels__panel csd-gwi-scope-panels__panel--in">
-              <h3 class="csd-gwi-scope-panels__title">In scope</h3>
-              <ul class="csd-editorial__list csd-editorial__list--prioritised">
-                <li>Self-serve for the new product</li>
-                <li>Role-based access</li>
-                <li>User access management</li>
-                <li>API / MCP usage and metering</li>
-              </ul>
-            </div>
-            <div class="csd-gwi-scope-panels__panel csd-gwi-scope-panels__panel--out">
-              <h3 class="csd-gwi-scope-panels__title">Out of scope</h3>
-              <ul class="csd-editorial__list csd-editorial__list--deferred">
-                <li>Full system redesign</li>
-                <li>Enterprise-grade organisational modelling</li>
-                <li>Backend-heavy dependencies</li>
-              </ul>
-            </div>
+        <div class="csd-gwi-scope-panels">
+          <div class="csd-gwi-scope-panels__panel csd-gwi-scope-panels__panel--in">
+            <h3 class="csd-gwi-scope-panels__title">In scope</h3>
+            <ul class="csd-editorial__list csd-editorial__list--prioritised">
+              <li>Self-serve for the new product</li>
+              <li>Role-based access</li>
+              <li>User access management</li>
+              <li>API / MCP usage and metering</li>
+            </ul>
+          </div>
+          <div class="csd-gwi-scope-panels__panel csd-gwi-scope-panels__panel--out">
+            <h3 class="csd-gwi-scope-panels__title">Out of scope</h3>
+            <ul class="csd-editorial__list csd-editorial__list--deferred">
+              <li>Full system redesign</li>
+              <li>Enterprise-grade organisational modelling</li>
+              <li>Backend-heavy dependencies</li>
+            </ul>
           </div>
         </div>
       </div>
+
     </section>
 
     
 
-    <section class="csd-context">
+    <section class="csd-context csd-context--design-stack" aria-labelledby="gwi-design-heading">
 
       <div class="csd-context__text">
         <span class="kicker">Design</span>
-        <h2 class="csd-context__title">Shaping a practical, constrained experience</h2>
+        <h2 class="csd-context__title" id="gwi-design-heading">Shaping a practical, constrained experience</h2>
         <div class="csd-context__body">
           <p>I moved from idealised models to a <strong>practical, shippable experience</strong>:</p>
           <ul class="csd-context__list">
@@ -516,37 +504,33 @@
         </div>
       </div>
 
-      <div class="csd-context__image" aria-hidden="true">
-        <div class="csd-context__image-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <rect x="4" y="6" width="40" height="32" rx="3"/>
-            <path d="M4 20h40M14 6v32"/>
-          </svg>
-          <span>Flows / UI</span>
-        </div>
-        <p class="csd-context__caption">Screens or flow map (side column asset).</p>
-      </div>
-
-    </section>
-
-    <section class="csd-fullimg" aria-label="Full-width design asset">
-
-      <div class="csd-fullimg__scene">
-        <div class="csd-fullimg__inner">
-
-          <div class="csd-fullimg__placeholder" aria-hidden="true">
-            <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="0.8" aria-hidden="true">
-              <rect x="2" y="2" width="60" height="44" rx="4"/>
-              <circle cx="20" cy="16" r="5"/>
-              <path d="M2 34l16-12 12 10 10-8 22 14"/>
-            </svg>
-            <span>Full-width design</span>
+      <details class="csd-expandable-diagram">
+        <summary class="csd-expandable-diagram__summary">
+          <span class="csd-expandable-diagram__summary-copy">
+            <span class="csd-expandable-diagram__label">Self-serve flow diagram — Operation Octopus</span>
+            <span class="csd-expandable-diagram__hint">Expand · scroll sideways if needed</span>
+          </span>
+          <span class="csd-expandable-diagram__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="csd-expandable-diagram__inner">
+          <div
+            class="csd-expandable-diagram__scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Self-serve brainstorm flow diagram — scroll horizontally for full width"
+          >
+            <img
+              src="assets/GWI/Operation Octopus - Self-Serve Brainstorm (1).png"
+              alt="Self-serve brainstorm flow: removing users journey for Client Admin, from login through user management, confirmation, primary admin transfer, and success."
+              width="9600"
+              height="2700"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-
+          <p class="csd-context__caption csd-expandable-diagram__caption">Operation Octopus · self-serve flows (scroll sideways to view full diagram).</p>
         </div>
-      </div>
-
-      <p class="csd-fullimg__caption">Full-bleed artefact: journey, key screen, or annotated prototype.</p>
+      </details>
 
     </section>
 
@@ -555,7 +539,7 @@
         <div class="csd-editorial__chunk">
           <span class="kicker">Build</span>
           <h2 class="csd-editorial__title">Working collaboratively <span class="csd-editorial__title-accent">from design to code</span></h2>
-          <div class="csd-editorial__split csd-editorial__split--stacked">
+          <div class="csd-editorial__split">
             <div class="csd-editorial__body">
               <p>To accelerate delivery and alignment, we worked in a <strong class="csd-editorial__takeaway">hands-on, collaborative build process with developers</strong>, shipping increments from the same vocabulary as design, rather than tossing specs over the wall.</p>
             </div>
@@ -576,13 +560,99 @@
       </div>
     </section>
 
+    <section class="csd-beforeafter gwi-design-iterations" aria-labelledby="gwi-design-iterations-heading">
+      <div class="csd-beforeafter__intro">
+        <span class="kicker">Iteration</span>
+        <h2 class="csd-context__title" id="gwi-design-iterations-heading">Design iterations</h2>
+        <p class="gwi-design-iterations__lead">Before / after snapshots from modelling and interface work—showing how artefacts tightened as constraints became clear.</p>
+      </div>
+
+      <div class="gwi-design-iterations__pairs">
+        <div class="csd-beforeafter__grid">
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge">Before</span>
+              <img
+                src="assets/GWI/People management Figma Make.png"
+                width="3438"
+                height="2240"
+                alt="People management in Netflix Admin Panel mock: dark sidebar, member table with search and filters, row actions such as resend invite and remove—no bulk toolbar."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">People — row-level actions</strong>
+              <p>Figma Make concept: clear table and invites, but changes were still one row at a time.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+              <img
+                src="assets/GWI/Bulk select.png"
+                width="2896"
+                height="1582"
+                alt="Octopus Admin Portal People tab with multiple rows selected and a floating bulk action bar: change role, remove user, and selection count."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">Bulk select</strong>
+              <p>Staging build: multi-select with a dedicated bar for role changes and removals at scale.</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="csd-beforeafter__grid">
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge">Before</span>
+              <img
+                src="assets/GWI/API usage Figma Make.png"
+                width="3438"
+                height="2240"
+                alt="API usage mock in Netflix Admin Panel: warning banner at 75% quota, summary card with progress bar, and breakdown cards for requests, remaining, and period reset."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">API usage — period summary</strong>
+              <p>Early Figma direction focused on quota visibility and billing-period framing.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+              <img
+                src="assets/GWI/API tokens Staging V2.png"
+                width="3408"
+                height="2622"
+                alt="Admin Portal API &amp; MCP tab: usage overview with progress bar, masked API token with copy control, and MCP OAuth credentials with copy and learn-more link."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">API &amp; MCP — credentials in product</strong>
+              <p>Staging: combined usage readout with token and MCP OAuth surfaced for integrators.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="csd-video" aria-labelledby="gwi-video-self-serve-heading">
       <div class="csd-video__header">
         <span class="kicker" id="gwi-video-self-serve-heading">Prototype · Self-serve</span>
       </div>
       <div class="csd-video__frame">
         <iframe
-          src="about:blank"
+          src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=Manage_users_demo_owolqn"
           title="GWI self-serve prototype walkthrough"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -590,7 +660,7 @@
           loading="lazy"
         ></iframe>
       </div>
-      <p class="csd-video__caption">Paste Loom, Vimeo, or YouTube embed URL into the iframe <code>src</code>.</p>
+      <p class="csd-video__caption">Manage users — Cloudinary-hosted prototype demo.</p>
     </section>
 
     <section class="csd-video" aria-labelledby="gwi-video-api-heading">
@@ -599,7 +669,7 @@
       </div>
       <div class="csd-video__frame">
         <iframe
-          src="about:blank"
+          src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=Api_Metering_demo_n2ugs0"
           title="GWI API or metering walkthrough"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -607,7 +677,7 @@
           loading="lazy"
         ></iframe>
       </div>
-      <p class="csd-video__caption">Second recording: API usage, MCP, or meeting clip.</p>
+      <p class="csd-video__caption">API metering — Cloudinary-hosted prototype demo.</p>
     </section>
 
     <section class="csd-context">

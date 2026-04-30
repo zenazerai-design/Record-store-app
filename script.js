@@ -64,6 +64,7 @@ function mountSpotifyFab() {
   let flipImagesCleanup  = () => {};
   let fosHotspotCleanup  = () => {};
   let aiSleeveCleanup    = () => {};
+  let pivotDropCleanup  = () => {};
   let revealObserver     = null;
 
   function teardownDynamicPage() {
@@ -75,6 +76,8 @@ function mountSpotifyFab() {
     fosHotspotCleanup = () => {};
     aiSleeveCleanup();
     aiSleeveCleanup = () => {};
+    pivotDropCleanup();
+    pivotDropCleanup = () => {};
     if (revealObserver) {
       revealObserver.disconnect();
       revealObserver = null;
@@ -757,7 +760,7 @@ function mountSpotifyFab() {
 
   function setupRevealOnScroll() {
     const reveal = document.querySelectorAll(
-      '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials, .csd-case--gwi > .csd-back-wrap, .csd-case--gwi > section'
+      '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials, .csd-case--gwi > .csd-back-wrap, .csd-case--gwi > section:not(.gwi-pivot-drop)'
     );
     reveal.forEach(el => el.classList.add('reveal'));
 
@@ -851,11 +854,43 @@ function mountSpotifyFab() {
     return () => removers.forEach(fn => fn());
   }
 
+  function initGwiPivotDrop() {
+    const el = document.querySelector('[data-gwi-pivot-drop]');
+    if (!el) return () => {};
+
+    el.classList.add('gwi-pivot-drop--arm');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.classList.add('gwi-pivot-drop--landed');
+      return () => {
+        el.classList.remove('gwi-pivot-drop--arm', 'gwi-pivot-drop--landed');
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          el.classList.add('gwi-pivot-drop--landed');
+          observer.unobserve(el);
+        });
+      },
+      { rootMargin: '0px 0px -14% 0px', threshold: 0.1 }
+    );
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      el.classList.remove('gwi-pivot-drop--landed', 'gwi-pivot-drop--arm');
+    };
+  }
+
   function initDynamicPage() {
     recordStackCleanup = initRecordStack();
     flipImagesCleanup  = initFlipImages();
     fosHotspotCleanup  = initFosConceptHotspots();
     aiSleeveCleanup    = initAISleeves();
+    pivotDropCleanup   = initGwiPivotDrop();
     initCaseStudyRecordClicks();
     setupRevealOnScroll();
     initTrackCards();
