@@ -5873,47 +5873,105 @@ body.page-about .nav__links a:hover {
   line-height: 1.5;
 }
 
-/* ── BLOCK: Goal + Approach (staggered role summary) ─────────── */
+/* ── BLOCK: Goal + Approach (paired panels) ─────────────────── */
 .csd-role-summary {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: start;
+  gap: clamp(20px, 3vw, 28px);
+  align-items: stretch;
   padding: 64px 0 60px;
   border-bottom: 1px solid var(--line);
 }
 
-.csd-role-summary__goal {
-  max-width: 46ch;
+.csd-role-summary__goal,
+.csd-role-summary__approach {
+  max-width: none;
 }
 
-.csd-role-summary__approach {
-  max-width: 46ch;
-  margin-top: clamp(72px, 11vw, 160px);
-  justify-self: end;
-  text-align: right;
+.csd-role-summary--panels .csd-role-summary__panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(28px, 4vw, 40px) clamp(24px, 3.5vw, 36px) clamp(32px, 4.5vw, 44px);
+  display: grid;
+  gap: clamp(14px, 2vw, 20px);
+  overflow: hidden;
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.csd-role-summary--panels .csd-role-summary__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--amber-2));
+  opacity: 0.65;
+}
+
+.csd-role-summary--panels .csd-role-summary__panel:hover {
+  border-color: rgba(214, 123, 61, 0.28);
+  transform: translateY(-2px);
+}
+
+.csd-role-summary__panel-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.csd-role-summary__index {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(44px, 4.5vw, 64px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--amber);
+  opacity: 0.42;
+  user-select: none;
+}
+
+.csd-role-summary--panels .csd-role-summary__panel:hover .csd-role-summary__index {
+  opacity: 0.72;
+}
+
+.csd-role-summary__kicker {
+  margin: 0;
+  align-self: center;
 }
 
 .csd-role-summary__heading {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(28px, 3.4vw, 44px);
-  line-height: 1.1;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.12;
   letter-spacing: -0.04em;
   color: var(--cream);
-  margin: 0 0 22px;
+  margin: 0;
 }
 
 .csd-role-summary__body {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .csd-role-summary__body p {
   margin: 0;
-  font-size: clamp(15px, 1.1vw, 17px);
-  line-height: 1.78;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.75;
   color: var(--ink-soft);
+}
+
+.csd-role-summary__body p.csd-role-summary__lede {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+  color: var(--cream);
 }
 
 .csd-role-summary__body p strong {
@@ -5926,10 +5984,18 @@ body.page-about .nav__links a:hover {
     grid-template-columns: 1fr;
   }
 
-  .csd-role-summary__approach {
-    margin-top: 8px;
-    justify-self: start;
-    text-align: left;
+  .csd-role-summary--panels .csd-role-summary__panel:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .csd-role-summary--panels .csd-role-summary__panel {
+    transition: none;
+  }
+
+  .csd-role-summary--panels .csd-role-summary__panel:hover {
+    transform: none;
   }
 }
 
@@ -6012,6 +6078,161 @@ body.page-about .nav__links a:hover {
   margin-bottom: 0;
 }
 
+/* Toyota experiment one: full-height PDP screenshots */
+.csd-beforeafter--toy-pdp-screens .csd-beforeafter__img-wrap:has(> img) {
+  aspect-ratio: unset;
+  min-height: 200px;
+}
+
+@media (min-width: 720px) {
+  .csd-beforeafter--toy-pdp-screens .csd-beforeafter__img-wrap:has(> img) {
+    min-height: 280px;
+    max-height: min(78vh, 820px);
+  }
+}
+
+.csd-beforeafter--toy-pdp-screens .csd-beforeafter__img-wrap img {
+  height: auto;
+  width: 100%;
+  max-height: min(78vh, 820px);
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* Toyota experiment one: insight takeaway (distinct from standard context prose) */
+.csd-toy-insight-panel {
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(56px, 9vw, 96px);
+  background:
+    radial-gradient(
+      ellipse 85% 120% at 0% 40%,
+      color-mix(in oklab, var(--amber) 16%, transparent) 0%,
+      transparent 58%
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in oklab, var(--surface) 55%, var(--bg-2)),
+      var(--bg-2)
+    );
+}
+
+.csd-toy-insight-panel__frame {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+  display: flex;
+  gap: clamp(24px, 4vw, 44px);
+  align-items: stretch;
+}
+
+.csd-toy-insight-panel__mark {
+  flex: 0 0 6px;
+  align-self: stretch;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--amber-2),
+    color-mix(in oklab, var(--amber) 75%, var(--surface))
+  );
+  box-shadow: 0 0 28px color-mix(in oklab, var(--amber) 35%, transparent);
+}
+
+.csd-toy-insight-panel__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: start;
+  min-width: 0;
+}
+
+.csd-toy-insight-panel__label {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+  padding-top: 4px;
+}
+
+.csd-toy-insight-panel__label .kicker {
+  color: var(--cream);
+  letter-spacing: 0.16em;
+  max-width: 12em;
+}
+
+.csd-toy-insight-panel__index {
+  font-family: var(--sans);
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  color: color-mix(in oklab, var(--cream) 12%, transparent);
+  user-select: none;
+}
+
+.csd-toy-insight-panel__body {
+  display: grid;
+  gap: clamp(18px, 2.8vw, 26px);
+  padding-top: 0;
+  border-left: none;
+}
+
+.csd-toy-insight-panel__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 4.8vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  margin: 0;
+  max-width: 18ch;
+}
+
+.csd-toy-insight-panel__title em {
+  font-style: italic;
+}
+
+.csd-toy-insight-panel__lede {
+  font-family: var(--sans);
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.72;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 54ch;
+  padding-bottom: clamp(4px, 1vw, 10px);
+  border-bottom: 1px solid color-mix(in oklab, var(--line) 70%, transparent);
+}
+
+@media (max-width: 720px) {
+  .csd-toy-insight-panel__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .csd-toy-insight-panel__label {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: end;
+    justify-items: start;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .csd-toy-insight-panel__index {
+    line-height: 0.72;
+    margin-bottom: -0.06em;
+  }
+
+  .csd-toy-insight-panel__title {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .csd-toy-insight-panel__mark {
+    box-shadow: none;
+  }
+}
+
 /* Experiment two: Decision · single aside placeholder (reuse stripe fill) */
 .csd-toy-exp2-decision__placeholder-wrap {
   border-radius: var(--radius);
@@ -6026,6 +6247,138 @@ body.page-about .nav__links a:hover {
 .csd-toy-exp2-decision__placeholder-wrap .csd-beforeafter__placeholder {
   position: absolute;
   inset: 0;
+}
+
+/* Experiment two: personalisation placement scroll (Toyota web mocks) */
+.csd-toy-placement-visuals.csd-iterate {
+  gap: clamp(24px, 4vw, 32px);
+}
+
+.csd-toy-placement-visuals .csd-iterate__rail {
+  gap: 12px;
+  align-items: flex-start;
+  scroll-padding-inline: clamp(14px, 3vw, 40px);
+}
+
+/* Thumb: cap height so caption stays in view above the fold */
+.csd-toy-placement-visuals .csd-iterate__thumb--photo {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 92%, var(--bg));
+  aspect-ratio: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 0;
+}
+
+.csd-toy-placement-visuals .csd-iterate__thumb--photo img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(42dvh, 420px);
+  display: block;
+}
+
+@media (max-height: 720px) {
+  .csd-toy-placement-visuals .csd-iterate__thumb--photo img {
+    max-height: min(36dvh, 340px);
+  }
+}
+
+/*
+ * One slide per viewport with a slim peek (more slide width, less side gutter).
+ */
+.csd-toy-placement-visuals .csd-iterate__card {
+  flex: 0 0 calc(100% - clamp(36px, 7vw, 72px));
+  scroll-snap-align: start;
+}
+
+.csd-toy-placement-visuals .csd-iterate__card-body {
+  padding: 8px 8px 10px;
+  gap: 4px;
+}
+
+/* Softer edge fade so the next-card peek stays readable */
+.csd-toy-placement-visuals .csd-iterate__scroll-wrap::after {
+  width: min(36px, 7vw);
+  background: linear-gradient(
+    to left,
+    var(--bg),
+    color-mix(in srgb, var(--bg) 35%, transparent)
+  );
+}
+
+.csd-toy-placement-visuals .csd-iterate__card-title {
+  font-size: 14px;
+}
+
+.csd-toy-placement-visuals .csd-iterate__card-desc {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.csd-toy-placement-visuals .csd-toy-placement-visuals__card--winner {
+  border-color: color-mix(in srgb, var(--amber) 42%, var(--line));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--amber) 28%, transparent),
+    0 14px 44px rgba(0, 0, 0, 0.22);
+}
+
+/* Winner: rationale sits on the mock like a stamp / tooltip */
+.csd-toy-placement-visuals__winner-stamp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: auto;
+  z-index: 2;
+  max-width: min(248px, 46%);
+  padding: 10px 11px 11px;
+  border-radius: 10px;
+  background: rgba(14, 11, 8, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--amber) 38%, var(--line));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 28px rgba(0, 0, 0, 0.38);
+}
+
+.csd-toy-placement-visuals__winner-stamp-title {
+  display: block;
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(252, 248, 242, 0.95);
+}
+
+.csd-toy-placement-visuals__rationale--stamp {
+  margin: 0;
+  padding-left: 1em;
+  font-size: 10px;
+  line-height: 1.42;
+  color: rgba(232, 224, 212, 0.92);
+}
+
+.csd-toy-placement-visuals__rationale--stamp li + li {
+  margin-top: 4px;
+}
+
+@media (max-width: 639px) {
+  .csd-toy-placement-visuals__winner-stamp {
+    top: 8px;
+    right: 8px;
+    max-width: min(220px, 52%);
+    padding: 8px 10px 10px;
+  }
+
+  .csd-toy-placement-visuals__rationale--stamp {
+    font-size: 9px;
+  }
 }
 
 /* ── BLOCK: Editorial / body copy (typography-only stripes) ─ */
@@ -6337,6 +6690,41 @@ body.page-about .nav__links a:hover {
   color: var(--accent, var(--amber-2));
 }
 
+.csd-statement--compact {
+  gap: 16px;
+  padding: 56px 0 64px;
+}
+
+.csd-statement__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.csd-statement__text--compact {
+  font-weight: 500;
+  font-size: clamp(16px, 2.1vw, 21px);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  max-width: 42em;
+}
+
+.csd-statement__note {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.nav__cta--scope-note {
+  padding: 6px 11px;
+  font-size: 9px;
+}
+
 /* ── BLOCK: Pull Quote ───────────────────────────────────── */
 .csd-quote {
   padding: 96px 0 88px;
@@ -6521,7 +6909,9 @@ body.page-about .nav__links a:hover {
   overflow: hidden;
 }
 
-.hcuk-ds-swipe__thumb--tokens .csd-ds-split__tokens-mosaic {
+/* Same thumb frame for tokens + components: 2-up grid, padding, and contained images */
+.hcuk-ds-swipe__thumb--tokens .csd-ds-split__tokens-mosaic,
+.hcuk-ds-swipe__thumb--components .csd-ds-split__components-inner--pair {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -6537,7 +6927,8 @@ body.page-about .nav__links a:hover {
   background: color-mix(in srgb, var(--surface) 94%, var(--bg));
 }
 
-.hcuk-ds-swipe__thumb--tokens .csd-ds-split__tokens-mosaic img {
+.hcuk-ds-swipe__thumb--tokens .csd-ds-split__tokens-mosaic img,
+.hcuk-ds-swipe__thumb--components .csd-ds-split__components-inner--pair img {
   width: 100%;
   height: 100%;
   min-height: 0;
@@ -6545,37 +6936,24 @@ body.page-about .nav__links a:hover {
   object-position: center center;
 }
 
-/* Extra vertical room on the tokens slide so both Figma grabs stay legible */
-.hcuk-ds-swipe .hcuk-ds-swipe__thumb--tokens.csd-iterate__thumb {
-  aspect-ratio: 16 / 11;
-}
-
-.hcuk-ds-swipe__thumb--components .csd-ds-split__components-inner--pair {
-  position: absolute;
-  inset: clamp(10px, 2.5vw, 16px);
-  width: auto;
-  height: auto;
-  max-width: none;
-  align-content: center;
-}
-
-.hcuk-ds-swipe__thumb--components .csd-ds-split__components-inner--pair img {
-  max-height: min(220px, 32vh);
-  width: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-}
-
 .hcuk-ds-swipe .csd-iterate__card-body {
   padding: 22px 22px 26px;
-}
-
-.hcuk-ds-swipe .csd-iterate__card-title {
-  font-size: clamp(16px, 1.25vw, 19px);
+  /* Equal text band so both cards share the same overall height */
+  min-height: clamp(7.5rem, 22vw, 9.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .hcuk-ds-swipe .csd-iterate__card-desc {
+  flex: 1 1 auto;
+  margin: 0;
   font-size: clamp(14px, 1.05vw, 16px);
+}
+
+.hcuk-ds-swipe .csd-iterate__card-title {
+  margin: 0;
+  font-size: clamp(16px, 1.25vw, 19px);
 }
 
 .hcuk-ds-swipe .csd-iterate__scroll-wrap::after {
@@ -6597,6 +6975,7 @@ body.page-about .nav__links a:hover {
 }
 
 @media (max-width: 560px) {
+  .hcuk-ds-swipe__thumb--tokens .csd-ds-split__tokens-mosaic,
   .hcuk-ds-swipe__thumb--components .csd-ds-split__components-inner--pair {
     grid-template-columns: 1fr;
   }

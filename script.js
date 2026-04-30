@@ -708,7 +708,7 @@ function mountSpotifyFab() {
   }
 
   document.addEventListener('click', e => {
-    const t = e.target.closest('#nav-copy-email, #foot-copy-email, #mobile-copy-email, #copy-email');
+    const t = e.target.closest('#nav-copy-email, #foot-copy-email, #mobile-copy-email, #copy-email, #scope-copy-email');
     if (!t) return;
     if (t.tagName !== 'BUTTON') return;
     e.preventDefault();

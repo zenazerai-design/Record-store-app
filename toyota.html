@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Improving conversion with rapid experimentation | Zena Zerai</title>
+  <title>Toyota Optimisation</title>
   <meta name="description" content="Toyota: Senior Product Designer on a growth team. A/B experiments across web and mobile to improve conversion, validated with behavioural data." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +71,8 @@
         </div>
 
         <h1 class="csd-hero__title">
-          Improving conversion with rapid experimentation
+          Toyota<br>
+          <em class="italic">Optimisation.</em>
         </h1>
 
         <div class="csd-hero__body">
@@ -110,6 +111,11 @@
           <dd class="csd-meta__value">Sep 25′ – Dec 25′</dd>
         </div>
 
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Team</dt>
+          <dd class="csd-meta__value">Optimisation Consultant, Lead full-stack engineer, QA Tester</dd>
+        </div>
+
         <div class="csd-meta__item csd-meta__item--full">
           <dt class="csd-meta__label">Role</dt>
           <dd class="csd-meta__value csd-meta__pills">
@@ -119,11 +125,6 @@
             <span>Production Design</span>
             <span>Mobile and Web</span>
           </dd>
-        </div>
-
-        <div class="csd-meta__item csd-meta__item--full">
-          <dt class="csd-meta__label">Team</dt>
-          <dd class="csd-meta__value">Optimisation Consultant, Lead full-stack engineer, QA Tester</dd>
         </div>
 
       </dl>
@@ -151,18 +152,26 @@
       </div>
     </section>
 
-    <section class="csd-role-summary" aria-labelledby="toyota-goal-heading">
-      <div class="csd-role-summary__goal">
+    <section class="csd-role-summary csd-role-summary--panels" aria-labelledby="toyota-goal-heading toyota-approach-heading">
+      <div class="csd-role-summary__goal csd-role-summary__panel">
+        <div class="csd-role-summary__panel-top">
+          <span class="csd-role-summary__index" aria-hidden="true">01</span>
+          <span class="kicker csd-role-summary__kicker">North star</span>
+        </div>
         <h2 id="toyota-goal-heading" class="csd-role-summary__heading">Goal</h2>
         <div class="csd-role-summary__body">
-          <p>I was brought into the team to identify opportunities to improve conversion across Toyota’s digital journeys, from initial exploration through to enquiry and purchase.</p>
+          <p class="csd-role-summary__lede">I was brought into the team to identify opportunities to improve conversion across Toyota’s digital journeys, from initial exploration through to enquiry and purchase.</p>
           <p>Working across the full lifecycle, I focused on uncovering high-impact opportunities using behavioural data and translated them into design-led experiments on live journeys.</p>
         </div>
       </div>
-      <div class="csd-role-summary__approach">
-        <h2 class="csd-role-summary__heading">Approach</h2>
+      <div class="csd-role-summary__approach csd-role-summary__panel">
+        <div class="csd-role-summary__panel-top">
+          <span class="csd-role-summary__index" aria-hidden="true">02</span>
+          <span class="kicker csd-role-summary__kicker">How we worked</span>
+        </div>
+        <h2 id="toyota-approach-heading" class="csd-role-summary__heading">Approach</h2>
         <div class="csd-role-summary__body">
-          <p>We ran controlled A/B tests on live product journeys, comparing existing designs (control) against new variants to measure impact.</p>
+          <p class="csd-role-summary__lede">We ran controlled A/B tests on live product journeys, comparing existing designs (control) against new variants to measure impact.</p>
           <p>Working closely with a Senior Optimisation Consultant, Lead Engineer, and QA Tester, I helped shape hypotheses, define success metrics, and design experiments grounded in behavioural data from <strong>Adobe Analytics</strong> and <strong>ContentSquare</strong>.</p>
           <p>This allowed us to identify high-impact opportunities, prioritise what to test, and iterate quickly while balancing risk on a live production site.</p>
         </div>
@@ -184,30 +193,16 @@
           <p class="csd-context__caption">Placeholder, swap for experiment UI</p>
         </div>
       </div>
-      <div class="csd-toy-exp1__evidence">
-        <div class="csd-context__text">
-          <span class="kicker">Journey analysis</span>
-          <div class="csd-context__body">
-            <p class="csd-context__lede">
-              From PDP, <strong>~50%</strong> returned to <strong>PLP</strong>, <strong>5%</strong> to new car model pages, <strong>3%</strong> to the <strong>homepage</strong>, <strong>3%</strong> used cars and <strong>2%</strong> to the enquiry form.</p>
-            <p>Users frequently attempted to return to listings, highlighting a gap in navigation.</p>
-            <p class="csd-context__meta-line">
-              <span class="muted">Segment ·</span> Journeys after SCL: PDP · June 17–July 16, 2025 (30 days) · All devices · All users
-            </p>
-            <ul class="csd-context__list">
-              <li><strong>49.8%</strong> → SCL: PLP · <strong>25.5%</strong> site exit · <strong>3.58%</strong> homepage · <strong>3.57%</strong> SCL: PDP (refresh / repeat)</li>
-              <li>Enquiry form: <strong>2.3%</strong></li>
-            </ul>
-          </div>
-        </div>
-        <div class="csd-context__image">
-          <img src="assets/toyota-journey-analysis.png" alt="Sunburst chart showing next steps after the product detail page: largest flows to listing and exit" loading="lazy" />
-          <p class="csd-context__caption">Next-step breakdown from PDP · Enquiry 2.3%</p>
-        </div>
-      </div>
     </section>
 
-    <!-- Design explorations · Experiment one (Template.html: Hypothesis + two-panel) -->
+    <section class="csd-statement" aria-label="Hypothesis">
+      <span class="kicker">Hypothesis</span>
+      <p class="csd-statement__text">
+        Improving visibility and clarity of returning to listings would increase exploration <span class="csd-statement__fade">and progression toward enquiry.</span>
+      </p>
+    </section>
+
+    <!-- Design explorations · Experiment one -->
     <section class="csd-context csd-context--full" aria-labelledby="toyota-exp1-design-heading">
       <div class="csd-context__text">
         <span class="kicker">Design explorations · Experiment one</span>
@@ -220,33 +215,25 @@
       </div>
     </section>
 
-    <section class="csd-statement" aria-label="Hypothesis">
-      <span class="kicker">Hypothesis</span>
-      <p class="csd-statement__text">
-        Improving visibility and clarity of returning to listings would increase exploration <span class="csd-statement__fade">and progression toward enquiry.</span>
-      </p>
-    </section>
-
-    <section class="csd-beforeafter csd-beforeafter--exp1-explore-panels" aria-label="Navigation pattern placeholders">
+    <section class="csd-beforeafter csd-beforeafter--exp1-explore-panels csd-beforeafter--toy-pdp-screens" aria-label="Product detail page: control and variant">
       <div class="csd-beforeafter__grid">
         <figure class="csd-beforeafter__panel">
           <div class="csd-beforeafter__img-wrap">
-            <div class="csd-beforeafter__placeholder" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M4 20h40M14 6v32"/></svg>
-              <span>Pattern exploration · placeholder</span>
-            </div>
+            <img src="assets/Toyota/PDP page - original.png" alt="Toyota Aygo X product detail page, original layout with breadcrumbs and pricing sidebar" loading="lazy" decoding="async" />
           </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">original design - The Control</strong>
+          </figcaption>
         </figure>
         <figure class="csd-beforeafter__panel">
           <div class="csd-beforeafter__img-wrap">
-            <div class="csd-beforeafter__placeholder csd-beforeafter__placeholder--stripe" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M16 22l6 6 10-10"/></svg>
-              <span>Alternative pattern · placeholder</span>
-            </div>
+            <img src="assets/Toyota/PDP page - Proposed new version A.png" alt="Toyota Aygo X product detail page, proposed layout with Back to results and refined pricing panel" loading="lazy" decoding="async" />
           </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">New Design - The Variant</strong>
+          </figcaption>
         </figure>
       </div>
-      <p class="csd-toy-exp1-design__panels-note">Exploring different navigation patterns to support return to listings</p>
     </section>
 
     <section class="csd-context csd-context--full" aria-labelledby="toyota-constraints-heading">
@@ -271,12 +258,18 @@
       </ul>
     </section>
 
-    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp1-insight-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Insight · Experiment one</span>
-        <h2 id="toyota-exp1-insight-heading" class="csd-editorial__title">Clarity beats complexity</h2>
-        <div class="csd-context__body">
-          <p>Clarity in familiar patterns can outperform introducing something new. Improving familiar interactions can have a significant impact on user flow, particularly in high-intent journeys where users are trying to move quickly.</p>
+    <section class="csd-toy-insight-panel" aria-labelledby="toyota-exp1-insight-heading">
+      <div class="csd-toy-insight-panel__frame">
+        <div class="csd-toy-insight-panel__mark" aria-hidden="true"></div>
+        <div class="csd-toy-insight-panel__grid">
+          <header class="csd-toy-insight-panel__label">
+            <span class="kicker">Insight · Experiment one</span>
+            <span class="csd-toy-insight-panel__index" aria-hidden="true">01</span>
+          </header>
+          <div class="csd-toy-insight-panel__body">
+            <h2 id="toyota-exp1-insight-heading" class="csd-toy-insight-panel__title">Clarity <em class="italic">beats complexity</em></h2>
+            <p class="csd-toy-insight-panel__lede">Clarity in familiar patterns can outperform introducing something new. Improving familiar interactions can have a significant impact on user flow, particularly in high-intent journeys where users are trying to move quickly.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -284,20 +277,10 @@
     <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-heading">
       <div class="csd-context__text">
         <span class="kicker kicker--experiment-badge"><strong>Experiment two</strong> · Fleet personalisation</span>
-        <h2 id="toyota-exp2-heading" class="csd-context__title">Supporting business users through clearer, contextual pricing and messaging</h2>
+        <h2 id="toyota-exp2-heading" class="csd-context__title">Lightweight personalisation for business buyers</h2>
         <div class="csd-context__body">
-          <p>As we looked across the configuration journey, it became clear the experience was primarily geared toward personal buyers. Business users were moving through the same flow, but without clear support, particularly around pricing context (incl./excl. VAT), which made it harder to understand relevance.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-approach-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Approach · Experiment two</span>
-        <h2 id="toyota-exp2-approach-heading" class="csd-editorial__title">Introducing lightweight personalisation</h2>
-        <div class="csd-context__body">
-          <p>Rather than redesigning the journey, the opportunity was to introduce a clearer distinction between personal and business contexts within the existing experience.</p>
-          <p>Using competitor analysis as a starting point, I explored how other journeys introduced personalisation and where it could sit most effectively. This led to testing multiple entry points, within the sales grid, below navigation, and within the hero, as well as evolving the design from simple icon + text to more engaging, image-led messaging.</p>
+          <p>The configuration journey leaned personal; business users had thin context on incl./excl. VAT and what pricing meant for them.</p>
+          <p>Rather than a full redesign, we layered a personal vs business distinction into the live experience. Competitor patterns informed several placement tests (sales grid, below nav, hero), from simple icon-and-text to richer, image-led messaging.</p>
         </div>
       </div>
     </section>
@@ -309,38 +292,61 @@
       </p>
     </section>
 
-    <section class="csd-context" aria-labelledby="toyota-exp2-decision-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Decision · Experiment two</span>
-        <h2 id="toyota-exp2-decision-heading" class="csd-context__title">Make personalisation visible and reusable</h2>
-        <div class="csd-context__body">
-          <p>Through exploration, it became clear that placement was critical. Options embedded within the grid were less noticeable, and those layered on imagery reduced clarity.</p>
-          <p>We introduced a <strong>high-visibility Personal / Business toggle above the main content</strong>, making it easy to find, clearly legible, and reusable as a pattern for future personalisation.</p>
-          <p>On mobile, this was adapted into a <strong>dedicated section</strong> to maintain visibility and usability.</p>
-        </div>
+    <section class="csd-iterate csd-toy-placement-visuals" aria-labelledby="toyota-exp2-placement-heading">
+      <div class="csd-iterate__intro">
+        <span class="kicker kicker--experiment-badge"><strong>Experiment two</strong> · Personalisation placement ideas</span>
+        <h2 id="toyota-exp2-placement-heading" class="csd-iterate__title">Make personalisation visible and reusable</h2>
+        <p class="csd-iterate__lead">Four desktop directions for letting people switch personal and business pricing and messaging.</p>
+        <p class="csd-iterate__shift">Placement turned out to matter: toggles inside the sales grid were easy to overlook, and treatments sitting on the hero image traded legibility for clutter. Scroll across to compare; we carried the <strong>question banner</strong> forward as the primary pattern (with a dedicated section on mobile so it stayed easy to spot and tap).</p>
       </div>
-      <div class="csd-context__image">
-        <div class="csd-toy-exp2-decision__placeholder-wrap" aria-hidden="true">
-          <div class="csd-beforeafter__placeholder csd-beforeafter__placeholder--stripe">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M12 26h24M24 18v18"/></svg>
-            <span>Personal · Business toggle · placeholder</span>
-          </div>
+      <div class="csd-iterate__scroll-wrap">
+        <p class="csd-iterate__hint">Swipe or scroll · one placement at a time</p>
+        <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Carousel: personal versus business toggle placements. Scroll sideways for more options.">
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="assets/Toyota/In hero - Web.png" alt="Toyota model page mock: Personal and Business tabs inline with the hero headline and price" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">In hero</h3>
+              <p class="csd-iterate__card-desc">Toggle alongside the model name and price, embedded in the hero treatment.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="assets/Toyota/Sales Banner - Web.png" alt="Toyota model page mock: toggle placement within the sales and offers tile area" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Sales banner</h3>
+              <p class="csd-iterate__card-desc">Contextual to offers and pricing blocks lower on the page.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="assets/Toyota/Top banner -Web.png" alt="Toyota model page mock: slim dark bar below global navigation with Personal inc VAT and Business ex VAT tabs" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Top banner</h3>
+              <p class="csd-iterate__card-desc">Dedicated strip under the main nav, above the hero.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card csd-toy-placement-visuals__card--winner">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <aside class="csd-toy-placement-visuals__winner-stamp" aria-label="Rationale for chosen direction">
+                <strong class="csd-toy-placement-visuals__winner-stamp-title">Chosen direction</strong>
+                <ul class="csd-toy-placement-visuals__rationale csd-toy-placement-visuals__rationale--stamp">
+                  <li>More attention grabbing: the sales grid does not see much interaction.</li>
+                  <li>Higher legibility on a solid surface instead of over photography.</li>
+                  <li>Easier to reuse when we need to introduce other choices on the page.</li>
+                </ul>
+              </aside>
+              <img src="assets/Toyota/Question banner - Web.png" alt="Toyota model page mock: dark banner below the hero asking personal or business use, with explicit Personal and Business actions" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Question banner</h3>
+              <p class="csd-iterate__card-desc">Prompt-led band below the hero: clear question, supporting line on VAT, then Personal / Business controls.</p>
+            </div>
+          </article>
         </div>
-        <p class="csd-context__caption">Final toggle, desktop and mobile (single pattern, adapted across breakpoints)</p>
-      </div>
-    </section>
-
-    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-constraints-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Constraints and trade-offs · Experiment two</span>
-        <h2 id="toyota-exp2-constraints-heading" class="csd-editorial__title">Worked within platform and testing limits</h2>
-        <div class="csd-context__body">
-          <p>The work was constrained to content-level changes within the existing configuration journey, with no changes to core layout or components.</p>
-          <p>Certain elements were controlled by Toyota Europe, requiring longer approval cycles, and models already in active tests were excluded, narrowing the scope of what could be explored.</p>
-        </div>
-        <p class="csd-context__meta-line">
-          Exploring placement for visibility and clarity
-        </p>
       </div>
     </section>
 
