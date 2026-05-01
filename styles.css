@@ -684,7 +684,8 @@ a { color: inherit; text-decoration: none; }
   /* min-content: do not use 0 here — it lets the row shrink and pills can paint over the summary */
   min-height: min-content;
   position: relative;
-  z-index: 2;
+  /* Above .record__face-foot so vinyl bleed (negative bottom %) is not covered by footer row */
+  z-index: 3;
 }
 
 .record__title-row {
@@ -932,7 +933,7 @@ a { color: inherit; text-decoration: none; }
 
 .record__face-foot {
   position: relative;
-  z-index: 4;
+  z-index: 1;
   grid-row: 3;
   align-self: end;
   display: flex;
@@ -941,8 +942,6 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   gap: clamp(16px, 2vw, 28px);
   padding-top: clamp(10px, 1.2vw, 16px);
-  /* Paint above vinyl bleed from .record__image (vinyl uses overflow: visible) */
-  background: var(--surface);
   margin-top: 2px;
 }
 .record__face-foot-actions {
@@ -1103,9 +1102,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (min-width: 881px) {
-  /* Sleeve height between 16:10 and 16:12: short enough for viewport, tall enough that pills are not clipped */
   .page-home .works .record {
-    aspect-ratio: 16 / 10.85;
+    aspect-ratio: unset;
+    height: auto;
+  }
+  .page-home .works .record__inner,
+  .page-home .works .record__front {
+    height: auto;
   }
   /* Slightly wider text column vs image */
   .page-home .works .record .record__title-row {
@@ -1114,32 +1117,30 @@ a { color: inherit; text-decoration: none; }
   }
   .page-home .works .record .record__title-row .record__title {
     max-width: min(100%, 44ch);
-    font-size: clamp(18px, 2.72vw, 36px);
+    font-size: clamp(20px, 3.05vw, 40px);
     line-height: 1.06;
   }
   .page-home .works .record .record__summary {
     max-width: min(56ch, 100%);
   }
   .page-home .works .record__media {
-    padding-bottom: clamp(10px, 1.6vw, 22px);
+    padding: 0;
+    align-self: end;
   }
-  /* Dense layout: footer follows hero block closely instead of sinking with a stretched 1fr middle row */
   .page-home .works .record__face {
+    display: grid;
     grid-template-rows: auto auto auto;
     align-content: start;
+    height: auto;
     row-gap: clamp(8px, 1.15vw, 15px);
-    padding: clamp(20px, 3.8vw, 46px) clamp(24px, 4.1vw, 56px)
-      clamp(16px, 2.8vw, 30px);
+    padding: clamp(20px, 3.8vw, 46px) clamp(24px, 4.1vw, 56px) 32px;
   }
   .page-home .works .record__title-row > .record__pills--hero {
     position: relative;
     z-index: 3;
   }
   .page-home .works .record__face-foot {
-    align-self: start;
-    padding-top: clamp(6px, 0.85vw, 11px);
-    margin-top: 2px;
-    gap: clamp(12px, 1.5vw, 20px);
+    margin-top: -12px;
   }
   .page-home .works .record__stat-num {
     font-size: clamp(28px, 2.95vw, 40px);
@@ -1149,21 +1150,17 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-/* Laptops: same two-column layout but a bit more room for copy and slightly taller sleeve (svh width floor handles card width in JS) */
 @media (min-width: 881px) and (max-width: 1279px) {
-  .page-home .works .record {
-    aspect-ratio: 16 / 11.1;
-  }
   .page-home .works .record .record__title-row {
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     column-gap: clamp(28px, 3.8vw, 56px);
   }
   .page-home .works .record .record__face {
     row-gap: clamp(9px, 1.25vw, 16px);
-    padding: clamp(20px, 3.6vw, 42px) clamp(22px, 3.8vw, 48px)
-      clamp(14px, 2.6vw, 28px);
+    padding: clamp(20px, 3.6vw, 42px) clamp(22px, 3.8vw, 48px) 32px;
   }
 }
+
 
 /* FOOTER: key metrics + CTA */
 .record__back-foot {
@@ -2236,14 +2233,20 @@ a { color: inherit; text-decoration: none; }
     display: none;
   }
   .page-home .works .record__client {
-    font-size: clamp(23px, 6.2vw, 30px);
+    font-size: clamp(18px, 5vw, 24px);
     font-weight: 600;
     letter-spacing: 0.01em;
     line-height: 1.15;
     padding: 0 20px 14px;
   }
+  .page-home .works .record__pills--hero span {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    padding: 5px 10px 4px;
+  }
   .page-home .works .record__pills--hero {
     grid-row: 4;
+    gap: 5px;
   }
   .page-home .works .record__face-foot {
     grid-row: 5;
