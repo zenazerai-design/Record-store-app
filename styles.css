@@ -626,7 +626,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Homepage catalogue: slightly wider track (sticky stack sets crate to 100vw via inline styles, which overrides this) */
 .page-home .works .crate {
-  max-width: min(1340px, 100%);
+  max-width: min(calc(1420px * 2 / 3 * 1.21), 100%);
 }
 
 .record {
@@ -694,6 +694,38 @@ a { color: inherit; text-decoration: none; }
   column-gap: clamp(40px, 6vw, 80px);
   min-height: min-content;
   flex-shrink: 0;
+}
+
+/* Desktop only: pills sit in column 1 under body copy with a small gap; media spans both rows */
+@media (min-width: 881px) {
+  .record__title-row {
+    grid-template-rows: auto auto;
+    row-gap: clamp(6px, 0.85vw, 12px);
+    padding-bottom: clamp(6px, 0.95vw, 12px);
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .record__title-row > .record__copy-col {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .record__title-row > .record__pills--hero {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .record__title-row > .record__media {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: start;
+  }
 }
 
 .record__copy-col {
@@ -881,7 +913,6 @@ a { color: inherit; text-decoration: none; }
 .record__summary {
   margin: 0;
   padding: 0;
-  padding-bottom: clamp(6px, 0.8vw, 12px);
   color: var(--ink-soft);
   font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.55;
@@ -1067,15 +1098,71 @@ a { color: inherit; text-decoration: none; }
 .page-home .works .record__copy-col {
   align-self: start;
 }
-.page-home .works .record__face-foot {
-  padding-top: clamp(16px, 2vw, 26px);
-}
-.page-home .works .record__pills--hero {
-  margin-top: clamp(14px, 2vw, 26px);
-  padding: clamp(8px, 1vw, 12px) 0 clamp(14px, 2vw, 22px);
-}
 .page-home .works .record__media {
   padding-bottom: clamp(20px, 3vw, 36px);
+}
+
+@media (min-width: 881px) {
+  /* Sleeve height between 16:10 and 16:12: short enough for viewport, tall enough that pills are not clipped */
+  .page-home .works .record {
+    aspect-ratio: 16 / 10.85;
+  }
+  /* Slightly wider text column vs image */
+  .page-home .works .record .record__title-row {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    column-gap: clamp(32px, 4.8vw, 68px);
+  }
+  .page-home .works .record .record__title-row .record__title {
+    max-width: min(100%, 44ch);
+    font-size: clamp(18px, 2.72vw, 36px);
+    line-height: 1.06;
+  }
+  .page-home .works .record .record__summary {
+    max-width: min(56ch, 100%);
+  }
+  .page-home .works .record__media {
+    padding-bottom: clamp(10px, 1.6vw, 22px);
+  }
+  /* Dense layout: footer follows hero block closely instead of sinking with a stretched 1fr middle row */
+  .page-home .works .record__face {
+    grid-template-rows: auto auto auto;
+    align-content: start;
+    row-gap: clamp(8px, 1.15vw, 15px);
+    padding: clamp(20px, 3.8vw, 46px) clamp(24px, 4.1vw, 56px)
+      clamp(16px, 2.8vw, 30px);
+  }
+  .page-home .works .record__title-row > .record__pills--hero {
+    position: relative;
+    z-index: 3;
+  }
+  .page-home .works .record__face-foot {
+    align-self: start;
+    padding-top: clamp(6px, 0.85vw, 11px);
+    margin-top: 2px;
+    gap: clamp(12px, 1.5vw, 20px);
+  }
+  .page-home .works .record__stat-num {
+    font-size: clamp(28px, 2.95vw, 40px);
+  }
+  .page-home .works .record__stats {
+    gap: clamp(20px, 2.5vw, 40px);
+  }
+}
+
+/* Laptops: same two-column layout but a bit more room for copy and slightly taller sleeve (svh width floor handles card width in JS) */
+@media (min-width: 881px) and (max-width: 1279px) {
+  .page-home .works .record {
+    aspect-ratio: 16 / 11.1;
+  }
+  .page-home .works .record .record__title-row {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    column-gap: clamp(28px, 3.8vw, 56px);
+  }
+  .page-home .works .record .record__face {
+    row-gap: clamp(9px, 1.25vw, 16px);
+    padding: clamp(20px, 3.6vw, 42px) clamp(22px, 3.8vw, 48px)
+      clamp(14px, 2.6vw, 28px);
+  }
 }
 
 /* FOOTER: key metrics + CTA */

@@ -861,7 +861,9 @@ function mountSpotifyFab() {
         position:   'absolute',
         top:        '50%',
         left:       '50%',
-        width:      'min(1200px, 95vw, calc((100svh - 120px) * 1.72))',
+        /* min(vw,svh) alone over-shrinks on short laptop viewports; floor with vw so width tracks the screen, not only height */
+        width:
+          'min(calc(1220px * 2 / 3 * 1.21), max(min(calc(94vw * 2 / 3 * 1.21), calc((100svh - 168px) * 1.3552)), calc(71vw)))',
         margin:     '0',
         willChange: 'transform, opacity',
       });
