@@ -861,8 +861,7 @@ function mountSpotifyFab() {
         position:   'absolute',
         top:        '50%',
         left:       '50%',
-        width:
-          'min(1120px, 92vw, calc((100svh - 170px) * 1.6))',
+        width:      'min(1200px, 95vw, calc((100svh - 120px) * 1.72))',
         margin:     '0',
         willChange: 'transform, opacity',
       });

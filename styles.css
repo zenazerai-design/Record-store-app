@@ -632,8 +632,8 @@ a { color: inherit; text-decoration: none; }
 .record {
   position: relative;
   width: 100%;
-  /* Shorter sleeve so stacked cards fit in viewport; homepage can tune further below */
-  aspect-ratio: 16 / 10;
+  /* Tall enough for headline + body + pill row + footer; middle grid row uses min-content floor (no squashing) */
+  aspect-ratio: 16 / 12;
   cursor: pointer;
 }
 .record__inner {
@@ -660,9 +660,9 @@ a { color: inherit; text-decoration: none; }
   padding: clamp(28px, 5vw, 72px);
   display: grid;
   grid-template-columns: 1fr;
-  /* All intrinsic rows — no growing middle slice, so footer sits right under hero block */
-  grid-template-rows: auto auto auto;
-  row-gap: clamp(12px, 1.5vw, 20px);
+  /* minmax(min-content, 1fr): middle row never shrinks below copy + pills (1fr alone can min to 0 and causes overlap) */
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+  row-gap: clamp(18px, 2.2vw, 28px);
   overflow: hidden;
 }
 
@@ -687,35 +687,13 @@ a { color: inherit; text-decoration: none; }
   z-index: 2;
 }
 
-/* Hero: copy (row1) + pills (row2) in column 1; media spans both rows in column 2 */
 .record__title-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: auto auto;
   align-items: start;
-  column-gap: clamp(32px, 5vw, 72px);
-  row-gap: clamp(8px, 1vw, 14px);
-  padding-bottom: clamp(8px, 1vw, 12px);
-  border-bottom: 1px dashed var(--line);
+  column-gap: clamp(40px, 6vw, 80px);
   min-height: min-content;
   flex-shrink: 0;
-}
-
-.record__title-row > .record__copy-col {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.record__title-row > .record__pills--hero {
-  grid-column: 1;
-  grid-row: 2;
-  align-self: start;
-}
-
-.record__title-row > .record__media {
-  grid-column: 2;
-  grid-row: 1 / -1;
-  align-self: start;
 }
 
 .record__copy-col {
@@ -903,7 +881,7 @@ a { color: inherit; text-decoration: none; }
 .record__summary {
   margin: 0;
   padding: 0;
-  padding-bottom: 0;
+  padding-bottom: clamp(6px, 0.8vw, 12px);
   color: var(--ink-soft);
   font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.55;
@@ -925,17 +903,16 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   z-index: 4;
   grid-row: 3;
-  align-self: start;
+  align-self: end;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: clamp(12px, 1.6vw, 22px);
-  padding-top: clamp(8px, 1vw, 14px);
-  padding-bottom: clamp(10px, 1.5vw, 18px);
+  gap: clamp(16px, 2vw, 28px);
+  padding-top: clamp(10px, 1.2vw, 16px);
   /* Paint above vinyl bleed from .record__image (vinyl uses overflow: visible) */
   background: var(--surface);
-  margin-top: 0;
+  margin-top: 2px;
 }
 .record__face-foot-actions {
   display: flex;
@@ -1066,17 +1043,18 @@ a { color: inherit; text-decoration: none; }
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* Hero pills live in left column under summary (grid); right column is media spanning both rows */
+/* Case study card: full-width pill row under title + media (avoids collision with stats footer) */
 .record__pills--hero {
   margin: 0;
+  margin-top: 0;
   flex: 0 0 auto;
+  align-self: stretch;
   width: 100%;
-  max-width: 100%;
   min-width: 0;
   gap: 6px;
-  padding: 2px 0 0;
+  padding: 0 0 clamp(8px, 1vw, 14px);
   border-top: none;
-  border-bottom: none;
+  border-bottom: 1px dashed var(--line);
 }
 .record__pills--hero span {
   font-size: 11px;
@@ -1090,24 +1068,14 @@ a { color: inherit; text-decoration: none; }
   align-self: start;
 }
 .page-home .works .record__face-foot {
-  padding-top: clamp(10px, 1.4vw, 16px);
-  padding-bottom: clamp(14px, 2.2vw, 28px);
+  padding-top: clamp(16px, 2vw, 26px);
 }
 .page-home .works .record__pills--hero {
-  margin-top: 0;
-  padding: 2px 0 clamp(6px, 0.85vw, 10px);
+  margin-top: clamp(14px, 2vw, 26px);
+  padding: clamp(8px, 1vw, 12px) 0 clamp(14px, 2vw, 22px);
 }
 .page-home .works .record__media {
-  padding-bottom: clamp(8px, 1.2vw, 16px);
-}
-
-@media (min-width: 881px) {
-  /* Tighter sleeve padding on desktop catalogue (width is viewport-capped in script.js) */
-  .page-home .works .record .record__face {
-    padding: clamp(22px, 3.8vw, 52px) clamp(24px, 4vw, 56px)
-      clamp(18px, 2.8vw, 34px);
-    row-gap: clamp(10px, 1.3vw, 16px);
-  }
+  padding-bottom: clamp(20px, 3vw, 36px);
 }
 
 /* FOOTER: key metrics + CTA */
