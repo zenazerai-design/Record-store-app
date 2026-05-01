@@ -157,15 +157,11 @@
 
       <div class="csd-context__text">
         <span class="kicker">The challenge</span>
-        <h2 class="csd-context__title">A fragmented system with no clear model</h2>
+        <h2 class="csd-context__title">Admin isn’t just a tool</h2>
         <div class="csd-context__body">
-          <p>It quickly became clear that <strong>user management and access were not well understood</strong>.</p>
-          <p><strong>GWI Admin’s Organisations</strong> page is a good snapshot of that reality: filters for IDs, Salesforce, bundles, and tiers; a wide results table; and row-level actions like attributes, bundles, and delete. Teams could work the list, but there was <strong>no shared mental model</strong> of what an organisation was or how it should relate to users and access across the rest of the stack.</p>
-          <ul class="csd-context__list">
-            <li>No <strong>clear model</strong> of users or organisations</li>
-            <li><strong>Systems fragmented</strong> across tools</li>
-            <li>Processes heavily <strong>manual and inconsistent</strong></li>
-          </ul>
+          <p>Admin isn’t just a tool: it’s the operating system of our business. It controls who can access the platform, what they can see, what they’re paying for, and how we track value.</p>
+          <p>On the surface everything works, but underneath it only works because we make it work.</p>
+          <p>It had been built across <strong>multiple codebases</strong> and <strong>hacked together over time</strong>, so there was no single, coherent foundation to design against.</p>
         </div>
       </div>
 
@@ -184,7 +180,7 @@
       <div class="csd-iterate__intro gwi-discovery-visuals__intro">
         <span class="kicker">Discovery</span>
         <h2 id="gwi-discovery-heading" class="csd-iterate__title">Building a shared understanding</h2>
-        <p class="gwi-discovery-visuals__body">I led discovery across multiple teams to understand how the business actually operated.</p>
+        <p class="gwi-discovery-visuals__body">This was <strong>long overdue</strong> discovery: we needed a grounded picture of how <strong>users</strong> and the <strong>business</strong> actually operated before we could shape Admin with confidence. I led that work across multiple teams.</p>
         <p class="csd-iterate__lead gwi-discovery-visuals__artefacts-label">Discovery artefacts</p>
       </div>
       <div class="csd-iterate__scroll-wrap gwi-discovery-visuals__scroll-wrap">
@@ -208,21 +204,21 @@
             </div>
           </article>
           <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo csd-iterate__thumb--photo-anchor-right">
+              <img src="assets/GWI/User interview.png" alt="Discovery workshop whiteboard: org setup flow with team collaboration." width="1954" height="1082" loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Interviews</h3>
+              <p class="csd-iterate__card-desc">13 interviews across RevOps, Enterprise CS, Product, Engineering, AI, and Legal.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
             <div class="csd-iterate__thumb csd-iterate__thumb--photo">
               <img src="assets/GWI/Service mapping.png" alt="Service map: tools, teams, and handoffs across admin and operations." width="2734" height="1352" loading="lazy" decoding="async" />
             </div>
             <div class="csd-iterate__card-body">
               <h3 class="csd-iterate__card-title">Service mapping</h3>
               <p class="csd-iterate__card-desc">How work moved between systems and owners.</p>
-            </div>
-          </article>
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo csd-iterate__thumb--photo-anchor-right">
-              <img src="assets/GWI/User interview.png" alt="Discovery workshop whiteboard: org setup flow with team collaboration." width="1954" height="1082" loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">Teams &amp; interviews</h3>
-              <p class="csd-iterate__card-desc">13 interviews across RevOps, Enterprise CS, Product, Engineering, AI, and Legal.</p>
             </div>
           </article>
         </div>
@@ -417,7 +413,7 @@
         <span class="kicker">Foundation</span>
         <h2 class="csd-context__title">Defining core entities and relationships (OOUX)</h2>
         <div class="csd-context__body">
-          <p>Before moving into interface design, I led Object-Oriented UX work to define:</p>
+          <p>Before moving into interface design, I led cross-functional Object-Oriented UX workshops to define:</p>
           <ul class="csd-context__list">
             <li>Core entities (users, organisations, access)</li>
             <li>Relationships between systems</li>
@@ -439,6 +435,38 @@
           />
         </div>
         <p class="csd-context__caption">Object model or relationship sketch.</p>
+      </div>
+
+    </section>
+
+    <section class="csd-context gwi-direction" aria-labelledby="gwi-future-vision-heading">
+
+      <div class="csd-context__text">
+        <span class="kicker">Direction</span>
+        <h2 class="csd-context__title" id="gwi-future-vision-heading">Imagining the <span class="csd-editorial__takeaway">future</span> of admin</h2>
+        <div class="csd-context__body">
+          <p>I used the outputs of our OOUX work to shape a <strong>future direction</strong> for what the admin platform could be: a coherent set of capabilities leadership and teams could align around before we moved into detailed interface design.</p>
+          <ul class="csd-context__list gwi-direction__list">
+            <li><strong>Parent–child hierarchy</strong> — a clear roll-up view of accounts</li>
+            <li>A way to <strong>view and manage seat capacity</strong></li>
+            <li>An <strong>overview of users and access</strong> within organisations</li>
+            <li>A way to <strong>track subscriptions</strong> to spot opportunities for engagement and reduce churn</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="csd-context__image gwi-direction__media">
+        <div class="csd-video__frame">
+          <iframe
+            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=Future_vision_qzclh0"
+            title="Future admin system vision (Cloudinary)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="csd-context__caption">Future admin system</p>
       </div>
 
     </section>
@@ -495,12 +523,7 @@
         <span class="kicker">Design</span>
         <h2 class="csd-context__title" id="gwi-design-heading">Shaping a practical, constrained experience</h2>
         <div class="csd-context__body">
-          <p>I moved from idealised models to a <strong>practical, shippable experience</strong>:</p>
-          <ul class="csd-context__list">
-            <li>Mapped end-to-end user flows</li>
-            <li>Reused existing patterns where possible</li>
-            <li>Simplified interactions to match constraints</li>
-          </ul>
+          <p>I mapped out <strong>end-to-end flows</strong> and <strong>edge cases</strong> so we could see how self-serve would behave in practice before locking the interface.</p>
         </div>
       </div>
 
@@ -534,6 +557,164 @@
 
     </section>
 
+    <section class="gwi-admin-rules" aria-labelledby="gwi-admin-rules-heading">
+      <div class="gwi-admin-rules__intro">
+        <span class="kicker">Governance</span>
+        <h2 class="csd-context__title" id="gwi-admin-rules-heading">Thinking through admin role edits</h2>
+        <p class="gwi-admin-rules__lede">Every organisation must keep <strong>at least one admin</strong>. I worked through <strong>individual</strong> and <strong>bulk</strong> role changes so validation, disabled actions, and error copy appeared <em>before</em> anyone could accidentally remove the last administrator.</p>
+      </div>
+
+      <div class="gwi-admin-rules__block">
+        <h3 class="gwi-admin-rules__block-title">Individual role change</h3>
+        <div class="gwi-admin-rules__grid">
+          <figure class="gwi-admin-rules__figure">
+            <div class="gwi-admin-rules__shot">
+              <img
+                src="assets/GWI/Edit%20single%20role%20disabled.png"
+                width="4344"
+                height="2790"
+                alt="Octopus Admin Portal: Change role modal for Marcus Webb with Make Admin and Make Member options; Continue action disabled when the change would leave no organisation admin."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="gwi-admin-rules__caption">Last-admin guard: primary action stays off until the user resolves the conflict.</figcaption>
+          </figure>
+          <figure class="gwi-admin-rules__figure">
+            <div class="gwi-admin-rules__shot">
+              <img
+                src="assets/GWI/Edit%20single%20role%20selected.png"
+                width="4344"
+                height="2790"
+                alt="Octopus Admin Portal: Change role modal with Make Member selected for Marcus Webb; Continue enabled when another admin will remain."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="gwi-admin-rules__caption">Safe path: switching to Member only when the org still has admin coverage.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="gwi-admin-rules__block">
+        <h3 class="gwi-admin-rules__block-title">Bulk role change</h3>
+        <div class="gwi-admin-rules__grid">
+          <figure class="gwi-admin-rules__figure">
+            <div class="gwi-admin-rules__shot">
+              <img
+                src="assets/GWI/Bulk%20edit%20role.png"
+                width="4344"
+                height="2790"
+                alt="Octopus Admin Portal: bulk Change role modal for 49 selected users with counts of members and admins; Make all Admin or Make all Member cards and Continue."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="gwi-admin-rules__caption">Bulk edit: selection summary makes the admin mix explicit before a batch change.</figcaption>
+          </figure>
+          <figure class="gwi-admin-rules__figure">
+            <div class="gwi-admin-rules__shot">
+              <img
+                src="assets/GWI/Bulk%20edit%20role%20-%20when%20only%201%20admin%20remaining.png"
+                width="4344"
+                height="2790"
+                alt="Octopus Admin Portal: bulk Change role with Make all Member selected; inline validation that at least one organisation admin is required, with Continue disabled."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="gwi-admin-rules__caption">Validation surface: blocking state, clear instruction, and disabled continue until selection is fixed.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-beforeafter gwi-design-iterations" aria-labelledby="gwi-design-iterations-heading">
+      <div class="csd-beforeafter__intro">
+        <span class="kicker">Iteration</span>
+        <h2 class="csd-context__title" id="gwi-design-iterations-heading">Design iterations</h2>
+        <p class="gwi-design-iterations__lead">Before / after snapshots from modelling and interface work, showing how artefacts tightened as constraints became clear.</p>
+      </div>
+
+      <div class="gwi-design-iterations__pairs">
+        <div class="csd-beforeafter__grid">
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge">Before</span>
+              <img
+                src="assets/People%20old.png"
+                width="3660"
+                height="2373"
+                alt="Earlier Admin Portal People view: Overview, People, API &amp; MCP, Settings tabs; table with User, Role, Status, Last Login, and per-row Change role plus Remove actions; Export and Invite member in the header."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">People: status column and inline CTAs</strong>
+              <p>Earlier pattern: a <strong>Status</strong> column plus <strong>inline Change role and Remove</strong> on every row, built as one-off table rows instead of a shared grid component. Busy, and hard to extend.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+              <img
+                src="assets/People%20screen%20new.png"
+                width="2426"
+                height="1498"
+                alt="People management: Invite member, search, and member table with Admin and Member role pills; sole Admin row without row actions menu compared with Member rows that include overflow menus and bulk selection checkboxes."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">People: calmer grid, React Table</strong>
+              <p><strong>Removed Status</strong> once we agreed it was unclear and not feasible to own in the product. <strong>Moved CTAs into the row actions menu</strong> so the table stays scannable and sensitive changes carry a bit more friction. Under the hood: <strong>React Table</strong> for faster delivery and flexibility.</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="csd-beforeafter__grid">
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge">Before</span>
+              <img
+                src="assets/GWI/API%20%26%20MCP.png"
+                width="2896"
+                height="2110"
+                alt="Earlier Admin Portal API &amp; MCP tab: usage bar with percent consumed, calls used, remaining, and limit, reset date; masked API token and MCP OAuth fields with Copy actions."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">API &amp; MCP: usage and credentials together</strong>
+              <p>One screen paired quota progress and reset timing with token copy blocks so admins could sanity-check consumption and grab secrets in a single stop.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="csd-beforeafter__panel">
+            <div class="csd-beforeafter__img-wrap">
+              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
+              <img
+                src="assets/New%20-%20Top%20of%20API%20page.png"
+                width="1945"
+                height="1275"
+                alt="Octopus Admin Portal API usage: KPI cards for total, API-only, and MCP-only call volumes; grouped bar chart of API versus MCP usage over time with Daily, Weekly, and Monthly controls; tooltip on API totals."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="csd-beforeafter__caption">
+              <strong class="csd-beforeafter__caption-title">API &amp; MCP: rollout metrics in staging</strong>
+              <p>Shifted the top of the experience toward rollup KPIs and an API versus MCP timeline so leadership and admins see trajectory and split before diving into credential management.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="csd-editorial" aria-label="Build process">
       <div class="csd-editorial__inner csd-editorial__inner--split">
         <div class="csd-editorial__chunk">
@@ -556,92 +737,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="csd-beforeafter gwi-design-iterations" aria-labelledby="gwi-design-iterations-heading">
-      <div class="csd-beforeafter__intro">
-        <span class="kicker">Iteration</span>
-        <h2 class="csd-context__title" id="gwi-design-iterations-heading">Design iterations</h2>
-        <p class="gwi-design-iterations__lead">Before / after snapshots from modelling and interface work, showing how artefacts tightened as constraints became clear.</p>
-      </div>
-
-      <div class="gwi-design-iterations__pairs">
-        <div class="csd-beforeafter__grid">
-          <figure class="csd-beforeafter__panel">
-            <div class="csd-beforeafter__img-wrap">
-              <span class="csd-beforeafter__badge">Before</span>
-              <img
-                src="assets/GWI/People management Figma Make.png"
-                width="3438"
-                height="2240"
-                alt="People management in Netflix Admin Panel mock: dark sidebar, member table with search and filters, row actions such as resend invite and remove (no bulk toolbar)."
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="csd-beforeafter__caption">
-              <strong class="csd-beforeafter__caption-title">People: row-level actions</strong>
-              <p>Figma Make concept: Netflix-style admin shell, dense table, and per-row actions before the Octopus build.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="csd-beforeafter__panel">
-            <div class="csd-beforeafter__img-wrap">
-              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
-              <img
-                src="assets/GWI/People list.png"
-                width="2424"
-                height="1456"
-                alt="Octopus Admin Portal People management: sidebar and header, Netflix Media context; People tab active; searchable member table with name, email, Admin and Member role badges, last login dates, row overflow menus, and Invite member primary action."
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="csd-beforeafter__caption">
-              <strong class="csd-beforeafter__caption-title">People: staging</strong>
-              <p>Octopus Admin Portal: tenant context in the chrome, DS-aligned roles, invites, and searchable list.</p>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div class="csd-beforeafter__grid">
-          <figure class="csd-beforeafter__panel">
-            <div class="csd-beforeafter__img-wrap">
-              <span class="csd-beforeafter__badge">Before</span>
-              <img
-                src="assets/GWI/API usage Figma Make.png"
-                width="3438"
-                height="2240"
-                alt="API usage mock in Netflix Admin Panel: warning banner at 75% quota, summary card with progress bar, and breakdown cards for requests, remaining, and period reset."
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="csd-beforeafter__caption">
-              <strong class="csd-beforeafter__caption-title">API usage: period summary</strong>
-              <p>Early Figma direction focused on quota visibility and billing-period framing.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="csd-beforeafter__panel">
-            <div class="csd-beforeafter__img-wrap">
-              <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
-              <img
-                src="assets/GWI/Top of API page.png"
-                width="2402"
-                height="1484"
-                alt="Octopus Admin Portal API usage: API &amp; MCP tab selected for Netflix Media; KPI cards for total calls plus API-only and MCP-only counts; grouped bar chart of API versus MCP usage over time with Daily, Weekly, and Monthly granularity; tooltip on monthly API totals."
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="csd-beforeafter__caption">
-              <strong class="csd-beforeafter__caption-title">API usage: dashboards in staging</strong>
-              <p>Octopus shell: rollup metrics and an API versus MCP timeline so admins see volume before diving into credentials.</p>
-            </figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -680,19 +775,34 @@
       <p class="csd-video__caption">API metering (Cloudinary-hosted prototype demo).</p>
     </section>
 
-    <section class="csd-context">
-
+    <section class="csd-context gwi-acceleration">
       <div class="csd-context__text">
-        <span class="kicker">Acceleration</span>
         <h2 class="csd-context__title">Using AI to move faster</h2>
         <div class="csd-context__body">
           <p>AI tools were used to support speed and understanding:</p>
           <ul class="csd-context__list csd-context__list--cards">
-            <li>Synthesising research</li>
-            <li>Exploring system logic</li>
-            <li>Accelerating prototyping</li>
+            <li>
+              <strong>Rovo AI (Atlassian)</strong>
+              <span class="csd-gwi-ai-card__desc">To uncover buried engineering decisions</span>
+            </li>
+            <li>
+              <strong>Secoda AI</strong>
+              <span class="csd-gwi-ai-card__desc">To understand gaps between systems and business costs</span>
+            </li>
+            <li>
+              <strong>ChatGPT</strong>
+              <span class="csd-gwi-ai-card__desc">Create an agent to store research artefacts and synthesise findings</span>
+            </li>
+            <li>
+              <strong>Figma Make</strong>
+              <span class="csd-gwi-ai-card__desc">Quick ideation and concepts</span>
+            </li>
+            <li>
+              <strong>Cursor</strong>
+              <span class="csd-gwi-ai-card__desc">To build prototypes with Figma MCP and push to repo</span>
+            </li>
           </ul>
-          <p>To make this sustainable, I collaborate on evolving our existing design system by defining foundations for structure, tokens, and components to support scalable, consistent development.</p>
+          <p>Alongside those tools, I developed a <strong>staging design system</strong> as the base for a <strong>future product-wide rollout</strong>, so we could <strong>move fast</strong> prototyping with AI while keeping tokens and components coherent enough to scale.</p>
         </div>
       </div>
 
@@ -710,9 +820,8 @@
             />
           </div>
           <figcaption class="csd-gwi-ds-placeholder__meta">
-            <span class="kicker">Design system</span>
+            <span class="kicker">Staging Design System</span>
             <p class="csd-gwi-ds-placeholder__title">Tokens · variants · components</p>
-            <p class="csd-gwi-ds-placeholder__desc">Structured for reuse in Figma, Cursor, and handoff to engineering.</p>
           </figcaption>
         </figure>
       </div>

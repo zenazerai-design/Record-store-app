@@ -171,9 +171,8 @@
         </div>
         <h2 id="toyota-approach-heading" class="csd-role-summary__heading">Approach</h2>
         <div class="csd-role-summary__body">
-          <p class="csd-role-summary__lede">We ran controlled A/B tests on live product journeys, comparing existing designs (control) against new variants to measure impact.</p>
-          <p>Working closely with a Senior Optimisation Consultant, Lead Engineer, and QA Tester, I helped shape hypotheses, define success metrics, and design experiments grounded in behavioural data from <strong>Adobe Analytics</strong> and <strong>ContentSquare</strong>.</p>
-          <p>This allowed us to identify high-impact opportunities, prioritise what to test, and iterate quickly while balancing risk on a live production site.</p>
+          <p class="csd-role-summary__lede">I ran controlled A/B tests on live product journeys, comparing existing designs (control) against new variants to measure impact.</p>
+          <p>With a Senior Optimisation Consultant, Lead Engineer, and QA Tester, I shaped hypotheses and success metrics using behavioural data from <strong>Adobe Analytics</strong> and <strong>ContentSquare</strong>, prioritised high-impact tests, and iterated safely on production.</p>
         </div>
       </div>
     </section>
@@ -189,8 +188,8 @@
           </div>
         </div>
         <div class="csd-toy-exp1__intro-visual csd-context__image">
-          <img src="assets/toyota-exp1-placeholder.png" alt="Placeholder image for experiment one, replace with final UI or test screens" loading="lazy" />
-          <p class="csd-context__caption">Placeholder, swap for experiment UI</p>
+          <img src="assets/Toyota/journey-analysis-return-to-plp.png" alt="Journey analysis sunburst chart: users starting from stock car PDP with a large share moving to PLP next" loading="lazy" decoding="async" />
+          <p class="csd-context__caption">Journey analysis - users frequently attempted to return to listings</p>
         </div>
       </div>
     </section>
@@ -219,30 +218,38 @@
       <div class="csd-beforeafter__grid">
         <figure class="csd-beforeafter__panel">
           <div class="csd-beforeafter__img-wrap">
-            <img src="assets/Toyota/PDP page - original.png" alt="Toyota Aygo X product detail page, original layout with breadcrumbs and pricing sidebar" loading="lazy" decoding="async" />
+            <img src="assets/Toyota/PDP page - original.png" alt="Toyota Aygo X product detail page, control: breadcrumb navigation and pricing sidebar" loading="lazy" decoding="async" />
           </div>
           <figcaption class="csd-beforeafter__caption">
-            <strong class="csd-beforeafter__caption-title">original design - The Control</strong>
+            <strong class="csd-beforeafter__caption-title">Image 1 · The original design (the control)</strong>
+            <p>Breadcrumb navigation</p>
           </figcaption>
         </figure>
         <figure class="csd-beforeafter__panel">
           <div class="csd-beforeafter__img-wrap">
-            <img src="assets/Toyota/PDP page - Proposed new version A.png" alt="Toyota Aygo X product detail page, proposed layout with Back to results and refined pricing panel" loading="lazy" decoding="async" />
+            <img src="assets/Toyota/PDP page - Proposed new version A.png" alt="Toyota Aygo X product detail page, variant: back link navigation (Back to results) and refined pricing panel" loading="lazy" decoding="async" />
           </div>
           <figcaption class="csd-beforeafter__caption">
-            <strong class="csd-beforeafter__caption-title">New Design - The Variant</strong>
+            <strong class="csd-beforeafter__caption-title">Image 2 · The new design (the variant)</strong>
+            <p>Back link navigation</p>
           </figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="csd-context csd-context--full" aria-labelledby="toyota-constraints-heading">
+    <section class="csd-context" aria-labelledby="toyota-exp1-contentsquare-heading">
       <div class="csd-context__text">
-        <span class="kicker">Constraints and trade-offs</span>
-        <h2 id="toyota-constraints-heading" class="csd-editorial__title">Working with system limitations</h2>
+        <span class="kicker">Experiment one · ContentSquare</span>
+        <h2 id="toyota-exp1-contentsquare-heading" class="csd-context__title">Click-through on the way back to the listing</h2>
         <div class="csd-context__body">
-          <p>Constrained by the existing design system, we couldn’t introduce new interaction patterns. Although analysis surfaced wider issues, we chose to focus on a small, testable change to isolate impact and move quickly.</p>
+          <p>ContentSquare click data on <strong>AB-115 (stock car return to PLP)</strong> showed the gain in listing views lining up with the new return CTAs, not random noise elsewhere on the page.</p>
+          <p><strong>Mobile:</strong> Control taps on the breadcrumb trail that sent people back to stock were about <strong>1–1.5%</strong> CTR; the variant landed around <strong>5.5–7.2%</strong>. On mobile, people skewed toward the <strong>back arrow</strong> over the “Back to results” copy.</p>
+          <p><strong>Desktop:</strong> Control was roughly <strong>0.75–1.9%</strong>; the variant reached about <strong>1.8–8.2%</strong>. On desktop, <strong>“Back to results”</strong> drew more clicks than the arrow.</p>
         </div>
+      </div>
+      <div class="csd-context__image">
+        <img src="assets/Toyota/Content square data.png" alt="ContentSquare click overlays for AB-115: mobile and desktop, control breadcrumbs versus variant back control, with CTR percentages on each target" loading="lazy" decoding="async" />
+        <p class="csd-context__caption">AB-115 · Stock car return to PLP</p>
       </div>
     </section>
 
@@ -280,7 +287,7 @@
         <h2 id="toyota-exp2-heading" class="csd-context__title">Lightweight personalisation for business buyers</h2>
         <div class="csd-context__body">
           <p>The configuration journey leaned personal; business users had thin context on incl./excl. VAT and what pricing meant for them.</p>
-          <p>Rather than a full redesign, we layered a personal vs business distinction into the live experience. Competitor patterns informed several placement tests (sales grid, below nav, hero), from simple icon-and-text to richer, image-led messaging.</p>
+          <p>Rather than a full redesign, I looked for simple ways to add a personal vs business switch, using competitors and a bit of internal critique before we tested anything live.</p>
         </div>
       </div>
     </section>
@@ -294,10 +301,9 @@
 
     <section class="csd-iterate csd-toy-placement-visuals" aria-labelledby="toyota-exp2-placement-heading">
       <div class="csd-iterate__intro">
-        <span class="kicker kicker--experiment-badge"><strong>Experiment two</strong> · Personalisation placement ideas</span>
+        <span class="kicker kicker--experiment-badge"><strong>Experiment two</strong> · Where to put the switch</span>
         <h2 id="toyota-exp2-placement-heading" class="csd-iterate__title">Make personalisation visible and reusable</h2>
-        <p class="csd-iterate__lead">Four desktop directions for letting people switch personal and business pricing and messaging.</p>
-        <p class="csd-iterate__shift">Placement turned out to matter: toggles inside the sales grid were easy to overlook, and treatments sitting on the hero image traded legibility for clutter. Scroll across to compare; we carried the <strong>question banner</strong> forward as the primary pattern (with a dedicated section on mobile so it stayed easy to spot and tap).</p>
+        <p class="csd-iterate__lead">I explored four desktop placements for the personal vs business toggle, not as a formal study, just to see what felt right. Scroll across: the sales-grid version was easy to miss, and sitting it on the hero felt noisy. I preferred the question banner under the hero, with a separate band on mobile so it was easy to see and tap.</p>
       </div>
       <div class="csd-iterate__scroll-wrap">
         <p class="csd-iterate__hint">Swipe or scroll · one placement at a time</p>
@@ -336,7 +342,7 @@
                 <ul class="csd-toy-placement-visuals__rationale csd-toy-placement-visuals__rationale--stamp">
                   <li>More attention grabbing: the sales grid does not see much interaction.</li>
                   <li>Higher legibility on a solid surface instead of over photography.</li>
-                  <li>Easier to reuse when we need to introduce other choices on the page.</li>
+                  <li>Easier to reuse when I need to introduce other choices on the page.</li>
                 </ul>
               </aside>
               <img src="assets/Toyota/Question banner - Web.png" alt="Toyota model page mock: dark banner below the hero asking personal or business use, with explicit Personal and Business actions" loading="lazy" decoding="async" />
@@ -350,24 +356,86 @@
       </div>
     </section>
 
-    <section class="csd-context csd-context--full" aria-label="Experiment set up, experiment two">
+    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-value-led-heading">
       <div class="csd-context__text">
-        <span class="kicker">Experiment set up · Experiment two</span>
+        <span class="kicker kicker--experiment-badge"><strong>Experiment two</strong> · Personalisation visible</span>
+        <h2 id="toyota-exp2-value-led-heading" class="csd-context__title">New value-led messaging block</h2>
         <div class="csd-context__body">
-          <p>Working closely with optimisation, we structured the test as <strong>control vs variant</strong> and lined up definitions for success ahead of launch.</p>
-          <p>Because the territory was exploratory, measurement prioritised resonance over conversion claims to start, whether users noticed the toggle, used it deliberately, and saw business-priced content as meaningful before we scaled the pattern.</p>
-          <ul class="csd-context__list">
-            <li>Toggle exposure rate and interactions (clicks, repeat visits to the toggle, drop-off beside it)</li>
-            <li>Transitions into <strong>business</strong> context after toggling, including views of VAT-aware pricing lines and onward configuration steps tied to fleet intent</li>
-            <li>CTR and scroll depth on business-specific explanatory / pricing surfaces introduced with the variant</li>
-            <li>Signals of engagement downstream (time in configuration post-toggle, enquiry starts with business journey metadata where available)</li>
-          </ul>
-          <p>Together these gave optimisation and QA enough to judge whether to extend the pattern versus iterate, without over-indexing early on a single north-star KPI.</p>
+          <p>Replacing consumer-led copy with business-relevant messaging when users choose a fleet context.</p>
         </div>
       </div>
     </section>
 
-    <section class="csd-context" aria-labelledby="toyota-exp2-outcome-heading">
+    <section class="csd-beforeafter csd-beforeafter--exp1-explore-panels csd-beforeafter--toy-exp2-personalisation" aria-label="Value-led messaging: personal and business content">
+      <div class="csd-beforeafter__grid">
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <img src="assets/Toyota/Current content section.png" alt="Value-led messaging for personal buyers: four icon columns with savings, warranty, roadside assistance, and service plans" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Before · Personal content</strong>
+          </figcaption>
+        </figure>
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <img src="assets/Toyota/NEw content section.png" alt="Value-led messaging for business buyers: four image cards with dealer network, connected services, warranty, and electric range" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">After · Business content</strong>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-sales-grid-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Sales grid · Experiment two</span>
+        <h2 id="toyota-exp2-sales-grid-heading" class="csd-context__title">Links and tiles tailored to business journeys</h2>
+        <div class="csd-context__body">
+          <p>The sales grid swapped personal CTAs for business contract hire, calculators, and fleet-oriented promos once people moved into the business context.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-beforeafter csd-beforeafter--exp1-explore-panels csd-beforeafter--toy-exp2-personalisation" aria-label="Sales grid: personal and business content">
+      <div class="csd-beforeafter__grid">
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <img src="assets/Toyota/Sales grid - Personal content.png" alt="Sales grid for personal buyers: build tile, award winning, hybrid pricing with brochure and search stock, electrified saving" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Personal content</strong>
+          </figcaption>
+        </figure>
+        <figure class="csd-beforeafter__panel">
+          <div class="csd-beforeafter__img-wrap">
+            <img src="assets/Toyota/Sales grid - Business content.png" alt="Sales grid for business buyers: BCH quote, calculator, contract hire offers, company car tax, and fleet-focused tiles" loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="csd-beforeafter__caption">
+            <strong class="csd-beforeafter__caption-title">Business content</strong>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="csd-video" aria-labelledby="toyota-exp2-prototype-video-heading">
+      <div class="csd-video__header">
+        <span class="kicker" id="toyota-exp2-prototype-video-heading">Prototype · Experiment two · Personalisation</span>
+      </div>
+      <div class="csd-video__frame">
+        <iframe
+          src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=Toyota_personalisation_zmp2u0"
+          title="Toyota personal vs business personalisation prototype walkthrough"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="csd-video__caption">Interaction and content changes across personalisation (Cloudinary-hosted prototype).</p>
+    </section>
+
+    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-outcome-heading">
       <div class="csd-context__text">
         <span class="kicker">Outcome · Experiment two</span>
         <h2 id="toyota-exp2-outcome-heading" class="csd-context__title">Strong early engagement signals</h2>
@@ -376,23 +444,20 @@
           <p>The experiment launched shortly before I left the project, but early signals supported further investment in personalisation.</p>
         </div>
       </div>
-      <div class="csd-context__image">
-        <div class="csd-toy-exp2-decision__placeholder-wrap" aria-hidden="true">
-          <div class="csd-beforeafter__placeholder csd-beforeafter__placeholder--stripe">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1"><rect x="4" y="6" width="40" height="32" rx="3"/><path d="M8 32l10-14 10 8 12-14"/></svg>
-            <span>Early results / UI · placeholder</span>
-          </div>
-        </div>
-        <p class="csd-context__caption">Engagement snapshot · swap for dashboards or variant screen</p>
-      </div>
     </section>
 
-    <section class="csd-context csd-context--full" aria-labelledby="toyota-exp2-insight-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Insight · Experiment two</span>
-        <h2 id="toyota-exp2-insight-heading" class="csd-editorial__title">Make personalisation obvious and user-controlled</h2>
-        <div class="csd-context__body">
-          <p>Even lightweight personalisation can be effective when it’s visible, easy to use, and clearly improves relevance, without requiring complex system changes.</p>
+    <section class="csd-toy-insight-panel" aria-labelledby="toyota-exp2-insight-heading">
+      <div class="csd-toy-insight-panel__frame">
+        <div class="csd-toy-insight-panel__mark" aria-hidden="true"></div>
+        <div class="csd-toy-insight-panel__grid">
+          <header class="csd-toy-insight-panel__label">
+            <span class="kicker">Insight · Experiment two</span>
+            <span class="csd-toy-insight-panel__index" aria-hidden="true">02</span>
+          </header>
+          <div class="csd-toy-insight-panel__body">
+            <h2 id="toyota-exp2-insight-heading" class="csd-toy-insight-panel__title">Make personalisation <em class="italic">obvious and user-controlled</em></h2>
+            <p class="csd-toy-insight-panel__lede">Even lightweight personalisation can be effective when it’s visible, easy to use, and clearly improves relevance, without requiring complex system changes.</p>
+          </div>
         </div>
       </div>
     </section>

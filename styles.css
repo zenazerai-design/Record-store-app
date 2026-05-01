@@ -6124,6 +6124,13 @@ body.page-about .nav__links a:hover {
   gap: 18px;
 }
 
+/* Journey chart: keep readable but lighter than full column width */
+.csd-toy-exp1__intro-visual img {
+  width: 100%;
+  max-width: min(100%, 380px);
+  margin-inline: auto;
+}
+
 .csd-toy-exp1__evidence {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -6196,6 +6203,45 @@ body.page-about .nav__links a:hover {
   max-height: min(78vh, 820px);
   object-fit: contain;
   object-position: center top;
+}
+
+/* Toyota experiment two: personalisation comparisons — equal panel height, comfy image padding */
+.csd-beforeafter--toy-exp2-personalisation .csd-beforeafter__grid {
+  align-items: stretch;
+}
+
+.csd-beforeafter--toy-exp2-personalisation .csd-beforeafter__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+}
+
+.csd-beforeafter--toy-exp2-personalisation .csd-beforeafter__img-wrap:has(> img) {
+  aspect-ratio: unset;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  max-height: min(78vh, 820px);
+  padding-block: clamp(14px, 2.8vw, 32px);
+  box-sizing: border-box;
+}
+
+@media (min-width: 720px) {
+  .csd-beforeafter--toy-exp2-personalisation .csd-beforeafter__img-wrap:has(> img) {
+    min-height: 280px;
+  }
+}
+
+.csd-beforeafter--toy-exp2-personalisation .csd-beforeafter__img-wrap img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 /* Toyota experiment one: insight takeaway (distinct from standard context prose) */
@@ -6332,21 +6378,7 @@ body.page-about .nav__links a:hover {
   }
 }
 
-/* Experiment two: Decision · single aside placeholder (reuse stripe fill) */
-.csd-toy-exp2-decision__placeholder-wrap {
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  min-height: clamp(180px, 28vw, 320px);
-  position: relative;
-  background: var(--surface);
-}
 
-.csd-toy-exp2-decision__placeholder-wrap .csd-beforeafter__placeholder {
-  position: absolute;
-  inset: 0;
-}
 
 /* Experiment two: personalisation placement scroll (Toyota web mocks) */
 .csd-toy-placement-visuals.csd-iterate {
@@ -6355,43 +6387,49 @@ body.page-about .nav__links a:hover {
 
 .csd-toy-placement-visuals .csd-iterate__rail {
   gap: 12px;
-  align-items: flex-start;
+  align-items: stretch;
   scroll-padding-inline: clamp(14px, 3vw, 40px);
 }
 
-/* Thumb: cap height so caption stays in view above the fold */
+/* Thumb: equal card heights in the row; image vertically centred with min padding */
 .csd-toy-placement-visuals .csd-iterate__thumb--photo {
   position: relative;
-  padding: 0;
+  padding-block: clamp(14px, 2.8vw, 32px);
   overflow: hidden;
   background: color-mix(in srgb, var(--surface) 92%, var(--bg));
   aspect-ratio: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  min-height: 0;
+  flex: 1 1 auto;
+  min-height: min(52dvh, 520px);
 }
 
 .csd-toy-placement-visuals .csd-iterate__thumb--photo img {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: min(42dvh, 420px);
+  max-height: min(62dvh, 640px);
   display: block;
 }
 
 @media (max-height: 720px) {
+  .csd-toy-placement-visuals .csd-iterate__thumb--photo {
+    min-height: min(44dvh, 400px);
+  }
+
   .csd-toy-placement-visuals .csd-iterate__thumb--photo img {
-    max-height: min(36dvh, 340px);
+    max-height: min(50dvh, 360px);
   }
 }
 
 /*
- * One slide per viewport with a slim peek (more slide width, less side gutter).
+ * One slide nearly full bleed with a slim peek (same-height cards via rail align-items stretch).
  */
 .csd-toy-placement-visuals .csd-iterate__card {
-  flex: 0 0 calc(100% - clamp(36px, 7vw, 72px));
+  flex: 0 0 calc(100% - clamp(14px, 4vw, 36px));
   scroll-snap-align: start;
+  align-self: stretch;
 }
 
 .csd-toy-placement-visuals .csd-iterate__card-body {
@@ -9030,14 +9068,29 @@ body.page-about .nav__links a:hover {
 
 /* “Using AI to move faster”: interactive cards instead of bullets */
 .csd-case--gwi .csd-context__body .csd-context__list--cards {
+  list-style: none;
+  padding: 0;
+  margin: 0.65em 0 1em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 168px), 1fr));
   gap: clamp(10px, 2vw, 14px);
-  margin: 0.65em 0 1em;
+}
+
+/* GWI Acceleration: keep kicker, title, copy, and cards on one measure; left-aligned */
+.csd-case--gwi .gwi-acceleration .csd-context__text {
+  max-width: min(72ch, 100%);
+}
+
+.csd-case--gwi .gwi-acceleration .csd-context__body .csd-context__list--cards {
+  width: 100%;
+  justify-content: start;
+  justify-items: stretch;
 }
 
 .csd-case--gwi .csd-context__body .csd-context__list--cards li {
-  display: block;
+  display: grid;
+  gap: 8px;
+  align-content: start;
   margin: 0;
   padding: clamp(14px, 2vw, 20px) clamp(16px, 2.2vw, 22px);
   border: 1px solid var(--line);
@@ -9048,6 +9101,32 @@ body.page-about .nav__links a:hover {
     transform 0.38s cubic-bezier(0.34, 1.35, 0.64, 1),
     box-shadow 0.32s ease;
   text-wrap: balance;
+}
+
+.csd-case--gwi .gwi-acceleration .csd-context__body .csd-context__list--cards li {
+  text-align: left;
+  text-wrap: pretty;
+  justify-self: stretch;
+}
+
+.csd-case--gwi .csd-context__body .csd-context__list--cards li strong {
+  display: block;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+  line-height: 1.25;
+}
+
+.csd-case--gwi .csd-context__body .csd-context__list--cards li .csd-gwi-ai-card__desc {
+  display: block;
+  font-family: var(--sans);
+  font-size: clamp(12px, 0.98vw, 14px);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0;
 }
 
 .csd-case--gwi .csd-context__body .csd-context__list--cards li::before {
@@ -9233,6 +9312,149 @@ body.page-about .nav__links a:hover {
     transform: none;
     filter: none;
   }
+}
+
+/* GWI Direction: wider media column, larger embed, tidier capability list */
+.csd-context.gwi-direction {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.28fr);
+  gap: clamp(40px, 5vw, 96px);
+  align-items: start;
+}
+
+.gwi-direction .gwi-direction__media {
+  max-width: none;
+  width: 100%;
+}
+
+.gwi-direction .gwi-direction__media .csd-video__frame {
+  aspect-ratio: 16 / 9;
+  min-height: clamp(220px, 38vw, 560px);
+  border-radius: clamp(14px, 2vw, 22px);
+}
+
+.gwi-direction .gwi-direction__list {
+  gap: 0;
+  margin-top: 4px;
+}
+
+/* Block + absolute marker: flex would split <strong> and adjacent text into separate flex items. */
+.csd-context.gwi-direction .csd-context__body .gwi-direction__list li {
+  display: block;
+  position: relative;
+  margin-bottom: 0;
+  padding: clamp(10px, 1.2vw, 14px) 0;
+  padding-left: calc(12px + 10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+}
+
+.csd-context.gwi-direction .csd-context__body .gwi-direction__list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.csd-context.gwi-direction .csd-context__body .gwi-direction__list li::before {
+  position: absolute;
+  left: 0;
+  top: calc(clamp(10px, 1.2vw, 14px) + 0.5lh - 3px);
+  flex-shrink: unset;
+  margin-top: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 960px) {
+  .csd-context.gwi-direction {
+    grid-template-columns: 1fr;
+  }
+
+  .gwi-direction .gwi-direction__media .csd-video__frame {
+    min-height: clamp(200px, 52vw, 420px);
+  }
+}
+
+/* GWI: admin role validation (individual + bulk) */
+.gwi-admin-rules {
+  padding: 64px 0 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.gwi-admin-rules__intro {
+  max-width: 72ch;
+  margin-bottom: clamp(36px, 5vw, 52px);
+  display: grid;
+  gap: clamp(16px, 2vw, 22px);
+}
+
+.gwi-admin-rules__lede {
+  margin: 0;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.gwi-admin-rules__lede strong {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.gwi-admin-rules__block + .gwi-admin-rules__block {
+  margin-top: clamp(40px, 5.5vw, 64px);
+}
+
+.gwi-admin-rules__block-title {
+  margin: 0 0 clamp(18px, 2.4vw, 26px);
+  font-family: var(--sans);
+  font-size: clamp(13px, 1.05vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.gwi-admin-rules__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 2.8vw, 32px);
+  align-items: start;
+}
+
+.gwi-admin-rules__figure {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.gwi-admin-rules__shot {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+
+.gwi-admin-rules__shot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.gwi-admin-rules__caption {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(13px, 1vw, 14px);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .gwi-admin-rules__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gwi-pivot-drop .gwi-pivot-drop__surface .csd-context__title {
+  font-size: clamp(36px, 4.8vw, 62px);
+  line-height: 1.06;
 }
 
 .gwi-framing-visuals.csd-context__image {
