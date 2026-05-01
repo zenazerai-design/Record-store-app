@@ -1029,9 +1029,10 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px dashed var(--line);
 }
 .record__pills--hero span {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  padding: 6px 11px 5px;
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  font-weight: 500;
+  padding: 7px 13px 6px;
 }
 
 /* FOOTER: key metrics + CTA */
@@ -4499,21 +4500,25 @@ body.page-about .nav__links a:hover {
 .csd-meta__pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 2px;
+  gap: 8px;
+  margin-top: 4px;
 }
 
 .csd-meta__pills span {
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.09em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  background: var(--surface);
-  border: 1px solid var(--line);
+  color: var(--cream);
+  background: color-mix(in srgb, var(--surface) 78%, rgba(239, 228, 203, 0.12));
+  border: 1px solid color-mix(in srgb, var(--line) 55%, var(--cream) 18%);
   border-radius: 100px;
-  padding: 4px 10px;
+  padding: 6px 12px;
   white-space: nowrap;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
@@ -5253,26 +5258,26 @@ body.page-about .nav__links a:hover {
 
 /*
  * Publishing queue hotspots: % are centre of marker, relative to full PNG (Publishing queue.png includes coloured margins around the white UI card).
- * Tune here if the asset export changes; targets: status pill row 1; checkbox / View·edit / Remove on bottom data row.
+ * Targets: status pill row 1; Select + View/edit row 3; Remove row 4.
  */
 .pins-queue-hotspots .pins-queue-hotspot--status {
-  left: 38%;
-  top: 31%;
+  left: 36%;
+  top: 42%;
 }
 
 .pins-queue-hotspots .pins-queue-hotspot--selection {
-  left: 23%;
-  top: 56%;
+  left: 29%;
+  top: 60%;
 }
 
 .pins-queue-hotspots .pins-queue-hotspot--viewedit {
-  left: 66%;
-  top: 56%;
+  left: 65%;
+  top: 60%;
 }
 
 .pins-queue-hotspots .pins-queue-hotspot--remove {
-  left: 76%;
-  top: 56%;
+  left: 74%;
+  top: 67%;
 }
 
 /* Copy stacked above a full-width block (e.g. expandable diagram) */
@@ -6391,50 +6396,63 @@ body.page-about .nav__links a:hover {
   scroll-padding-inline: clamp(14px, 3vw, 40px);
 }
 
-/* Thumb: equal card heights in the row; image vertically centred with min padding */
+/* Thumb: image sizes the card horizontally; taller mocks for prominence */
 .csd-toy-placement-visuals .csd-iterate__thumb--photo {
   position: relative;
-  padding-block: clamp(14px, 2.8vw, 32px);
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding-block: clamp(18px, 3.2vw, 40px);
   overflow: hidden;
   background: color-mix(in srgb, var(--surface) 92%, var(--bg));
-  aspect-ratio: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 auto;
-  min-height: min(52dvh, 520px);
+  height: auto;
+  min-height: min(58dvh, 600px);
 }
 
 .csd-toy-placement-visuals .csd-iterate__thumb--photo img {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: min(62dvh, 640px);
-  display: block;
+  max-height: min(72dvh, 840px);
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @media (max-height: 720px) {
   .csd-toy-placement-visuals .csd-iterate__thumb--photo {
-    min-height: min(44dvh, 400px);
+    min-height: min(48dvh, 440px);
   }
 
   .csd-toy-placement-visuals .csd-iterate__thumb--photo img {
-    max-height: min(50dvh, 360px);
+    max-height: min(58dvh, 420px);
   }
 }
 
 /*
- * One slide nearly full bleed with a slim peek (same-height cards via rail align-items stretch).
+ * Inline-table so caption stays the same width as the screenshot column;
+ * rail stretch keeps slides equal height; width hugs each image scale.
  */
 .csd-toy-placement-visuals .csd-iterate__card {
-  flex: 0 0 calc(100% - clamp(14px, 4vw, 36px));
+  display: inline-table;
+  table-layout: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  caption-side: bottom;
+  flex: 0 0 auto;
+  max-width: min(100%, calc(100vw - clamp(32px, 9vw, 72px)));
   scroll-snap-align: start;
   align-self: stretch;
+  vertical-align: top;
+  height: auto;
 }
 
 .csd-toy-placement-visuals .csd-iterate__card-body {
-  padding: 8px 8px 10px;
-  gap: 4px;
+  display: table-caption;
+  caption-side: bottom;
+  box-sizing: border-box;
+  width: auto;
+  overflow-wrap: break-word;
+  padding: clamp(12px, 2vw, 18px) clamp(14px, 2.2vw, 20px) clamp(16px, 2.4vw, 22px);
 }
 
 /* Softer edge fade so the next-card peek stays readable */
@@ -6448,12 +6466,13 @@ body.page-about .nav__links a:hover {
 }
 
 .csd-toy-placement-visuals .csd-iterate__card-title {
-  font-size: 14px;
+  font-size: clamp(14px, 1.08vw, 17px);
 }
 
 .csd-toy-placement-visuals .csd-iterate__card-desc {
-  font-size: 13px;
+  font-size: clamp(13px, 1.02vw, 15px);
   line-height: 1.45;
+  margin-top: 8px;
 }
 
 .csd-toy-placement-visuals .csd-toy-placement-visuals__card--winner {
