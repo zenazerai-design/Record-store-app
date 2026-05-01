@@ -624,11 +624,16 @@ a { color: inherit; text-decoration: none; }
   gap: clamp(28px, 4vw, 56px);
 }
 
+/* Homepage catalogue: slightly wider track (sticky stack sets crate to 100vw via inline styles, which overrides this) */
+.page-home .works .crate {
+  max-width: min(1320px, 100%);
+}
+
 .record {
   position: relative;
   width: 100%;
-  /* Taller than 16:10 so title row + pill row + stats row clear without overlap in the sticky stack */
-  aspect-ratio: 16 / 11;
+  /* Tall enough for headline + body + pill row + footer; middle grid row uses min-content floor (no squashing) */
+  aspect-ratio: 16 / 12;
   cursor: pointer;
 }
 .record__inner {
@@ -655,7 +660,8 @@ a { color: inherit; text-decoration: none; }
   padding: clamp(28px, 5vw, 72px);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  /* minmax(min-content, 1fr): middle row never shrinks below copy + pills (1fr alone can min to 0 and causes overlap) */
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
   row-gap: clamp(18px, 2.2vw, 28px);
   overflow: hidden;
 }
@@ -686,6 +692,7 @@ a { color: inherit; text-decoration: none; }
   align-items: start;
   column-gap: clamp(40px, 6vw, 80px);
   min-height: 0;
+  flex-shrink: 0;
 }
 
 .record__copy-col {
@@ -873,6 +880,7 @@ a { color: inherit; text-decoration: none; }
 .record__summary {
   margin: 0;
   padding: 0;
+  padding-bottom: clamp(6px, 0.8vw, 12px);
   color: var(--ink-soft);
   font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.55;
@@ -1062,8 +1070,8 @@ a { color: inherit; text-decoration: none; }
   padding-top: clamp(16px, 2vw, 26px);
 }
 .page-home .works .record__pills--hero {
-  margin-top: 0;
-  padding: clamp(4px, 0.5vw, 8px) 0 clamp(14px, 2vw, 22px);
+  margin-top: clamp(10px, 1.5vw, 20px);
+  padding: clamp(6px, 0.75vw, 10px) 0 clamp(14px, 2vw, 22px);
 }
 .page-home .works .record__media {
   padding-bottom: clamp(20px, 3vw, 36px);
@@ -2128,6 +2136,29 @@ a { color: inherit; text-decoration: none; }
   }
   .page-home .works .record__face-foot {
     padding: 14px 20px 20px;
+  }
+
+  /* Homepage only: simpler mobile catalogue cards (image · cat · client · tags · CTA) */
+  .page-home .works .record__face {
+    grid-template-rows: auto auto auto auto auto;
+  }
+  .page-home .works .record__title,
+  .page-home .works .record__summary,
+  .page-home .works .record__stats {
+    display: none;
+  }
+  .page-home .works .record__client {
+    font-size: clamp(23px, 6.2vw, 30px);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+    padding: 0 20px 14px;
+  }
+  .page-home .works .record__pills--hero {
+    grid-row: 4;
+  }
+  .page-home .works .record__face-foot {
+    grid-row: 5;
   }
 
   .record__face-foot-actions {
