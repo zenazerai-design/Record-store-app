@@ -133,33 +133,16 @@
       </dl>
     </section>
 
-    <section class="csd-editorial ba-case-p1" aria-label="Part 1 baseline booking">
-      <div class="csd-editorial__inner">
-        <div class="csd-editorial__chunk">
-          <span class="kicker">Part 1</span>
-          <h2 class="csd-editorial__title" id="ba-baseline-heading">Baseline booking: same flow, clearer scaffolding</h2>
-          <div class="csd-editorial__body">
-            <p>
-              Before personalization, I tightened the <strong>line from discovery to confirmation</strong>: a credible entry, date-led results you can scan, and a review step that reads as a pause, not another wall of chrome. The goal was <strong>legibility</strong> inside familiar patterns (badges, sort, cabins, rewards), not a new booking paradigm.
-            </p>
-            <p>
-              The screens below are <strong>directional placeholders</strong> for that baseline only (lighter, campaign-led layouts versus a darker app shell). Underneath, it’s still a normal catalog, no Smart match story yet.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="csd-beforeafter ba-booking-beforeafter" aria-labelledby="ba-beforeafter-heading">
       <div class="csd-beforeafter__intro">
         <span class="kicker">Visual direction</span>
         <p class="csd-statement__text" id="ba-beforeafter-heading">
-          Earlier web density ↔ calmer navy system&nbsp;<span class="csd-statement__fade">same tasks: search, compare, review.</span>
+          <strong>Before:</strong> busier campaign-led layouts. <strong>After:</strong> calmer navy shell, same tasks&nbsp;<span class="csd-statement__fade">(search, compare, review).</span>
         </p>
       </div>
 
       <div class="csd-beforeafter__grid">
-        <figure class="csd-beforeafter__panel">
+        <figure class="csd-beforeafter__panel csd-beforeafter__panel--ba-before">
           <div class="csd-beforeafter__img-wrap">
             <span class="csd-beforeafter__badge">Before</span>
             <img src="assets/BA/ba-booking-before-placeholder.png" width="1200" height="750" alt="Three mobile screens: BA promotional London deals hero, LHR to JFK outbound flight list with off-peak badges, and London to Istanbul results with date price ribbon." loading="lazy" decoding="async" />
@@ -170,7 +153,7 @@
           </figcaption>
         </figure>
 
-        <figure class="csd-beforeafter__panel">
+        <figure class="csd-beforeafter__panel csd-beforeafter__panel--ba-after">
           <div class="csd-beforeafter__img-wrap">
             <span class="csd-beforeafter__badge csd-beforeafter__badge--after">After</span>
             <img src="assets/BA/ba-booking-after-placeholder.png" width="1200" height="750" alt="Three mobile screens: dark home with recent searches and reward flight cards, LGW to Singapore results with filters, and Singapore trip review with hero image and flight accordion." loading="lazy" decoding="async" />
@@ -198,136 +181,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="csd-findings ba-booking-findings" aria-labelledby="ba-journey-heading">
-      <div class="csd-findings__header">
-        <span class="kicker">The flow</span>
-        <h2 id="ba-journey-heading" class="csd-findings__title">Four screens I <em class="italic">wired together.</em></h2>
-        <p class="csd-findings__intro">Search through summary: party and inferred trip type drive copy, banners, and a lightweight trip score, all in front-end state, so reviewers can click the whole story.</p>
-      </div>
-
-      <div class="ba-flow-diagram" aria-label="Smart match booking prototype user flow">
-        <p class="ba-flow-diagram__label" id="ba-flow-label">End-to-end path in the prototype</p>
-        <div class="ba-flow-diagram__track" role="list" aria-describedby="ba-flow-label">
-          <div class="ba-flow-diagram__segment" role="listitem">
-            <div class="ba-flow-diagram__step">
-              <span class="ba-flow-diagram__num" aria-hidden="true">1</span>
-              <div class="ba-flow-diagram__body">
-                <strong class="ba-flow-diagram__title">Search</strong>
-                <ul class="ba-flow-diagram__list">
-                  <li>Route, dates, party (adults / children / infants)</li>
-                  <li>Optional Smart match card + “Learn how we guessed”</li>
-                  <li>Light confirmation or manual trip type if they adjust</li>
-                </ul>
-              </div>
-            </div>
-            <span class="ba-flow-diagram__arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="ba-flow-diagram__segment" role="listitem">
-            <div class="ba-flow-diagram__step">
-              <span class="ba-flow-diagram__num" aria-hidden="true">2</span>
-              <div class="ba-flow-diagram__body">
-                <strong class="ba-flow-diagram__title">Results</strong>
-                <ul class="ba-flow-diagram__list">
-                  <li>Toggle <em>All flights</em> / <em>Recommended</em></li>
-                  <li>Compare cards · pick cabin / fare</li>
-                  <li>“Why this works for you” on matched options</li>
-                </ul>
-              </div>
-            </div>
-            <span class="ba-flow-diagram__arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="ba-flow-diagram__segment" role="listitem">
-            <div class="ba-flow-diagram__step">
-              <span class="ba-flow-diagram__num" aria-hidden="true">3</span>
-              <div class="ba-flow-diagram__body">
-                <strong class="ba-flow-diagram__title">Add-ons</strong>
-                <ul class="ba-flow-diagram__list">
-                  <li>Banner reflects inferred trip type</li>
-                  <li>Same All / Recommended pattern for extras</li>
-                  <li>Bullets on AI-suggested add-ons</li>
-                </ul>
-              </div>
-            </div>
-            <span class="ba-flow-diagram__arrow" aria-hidden="true">→</span>
-          </div>
-          <div class="ba-flow-diagram__segment" role="listitem">
-            <div class="ba-flow-diagram__step">
-              <span class="ba-flow-diagram__num" aria-hidden="true">4</span>
-              <div class="ba-flow-diagram__body">
-                <strong class="ba-flow-diagram__title">Summary</strong>
-                <ul class="ba-flow-diagram__list">
-                  <li>AI trip score + short narrative</li>
-                  <li>Price breakdown + flight recap</li>
-                  <li>Prototype-only “Continue to pay” cue</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="csd-findings__grid">
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">01</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Search</h3>
-            <p class="csd-finding__desc">Route and dates, party steppers, optional Smart match card with confidence and “Learn how we guessed”; “Adjust recommendation” opens manual trip type.</p>
-          </div>
-        </article>
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">02</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Results</h3>
-            <p class="csd-finding__desc">Segment control: <em>All flights</em> vs <em>Recommended</em>. Cards pair plain options with “Why this works for you” hints.</p>
-          </div>
-        </article>
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">03</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Add-ons</h3>
-            <p class="csd-finding__desc">Contextual banner by match type; same All / Recommended pattern; bullet “why we recommend this” on AI-tagged extras.</p>
-          </div>
-        </article>
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">04</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Summary</h3>
-            <p class="csd-finding__desc">AI trip score with short narrative, price breakdown, flight recap, plus a prototype-only payment cue.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="csd-outcome ba-booking-outcome" aria-labelledby="ba-outcome-heading">
-      <div class="csd-outcome__header">
-        <span class="kicker">In short</span>
-        <h2 id="ba-outcome-heading" class="csd-outcome__title">What the prototype <em class="italic">shows.</em></h2>
-      </div>
-      <ol class="csd-outcome__list">
-        <li class="csd-outcome__item">
-          <span class="csd-outcome__stat">4</span>
-          <span class="csd-outcome__desc">Click-through screens from search to summary, with copy that follows party and trip type. It also previews how recommended could sit next to the full list, with short “why” lines and a check-in before personalization.</span>
-        </li>
-      </ol>
-    </section>
-
-    <section class="csd-video" aria-labelledby="ba-prototype-video-heading">
-      <div class="csd-video__header">
-        <span class="kicker" id="ba-prototype-video-heading">Walkthrough</span>
-      </div>
-      <div class="csd-video__frame">
-        <iframe
-          src="about:blank"
-          title="British Airways smart-assisted booking prototype walkthrough"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-          loading="lazy"
-        ></iframe>
-      </div>
-      <p class="csd-video__caption">Paste your Loom, Vimeo, or YouTube embed URL into the iframe <code>src</code>. For a self-hosted MP4, swap the iframe for a <code>video</code> element inside this frame.</p>
     </section>
 
     <section class="csd-context csd-context--full pitch-reflections" aria-labelledby="pitch-reflections-heading">
