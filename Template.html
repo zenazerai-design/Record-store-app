@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Hosted subpath fix: stable relative URLs for GitHub Pages /Record-store-app/ (no-op for file:// and site root). -->
+  <script>
+  (function () {
+    if (location.protocol === "file:") return;
+    var p = location.pathname;
+    var dir = /\.html?$/i.test(p) ? p.replace(/[^/]+$/, "") : (p.endsWith("/") ? p : p + "/");
+    if (!dir || dir === "/") return;
+    var b = document.createElement("base");
+    b.href = dir;
+    var head = document.head;
+    var cs = head.querySelector("meta[charset]");
+    if (!cs) { head.insertBefore(b, head.firstChild); return; }
+    if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+    else head.appendChild(b);
+  })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- EDIT: Page title & description for each case study -->
   <title>Case Study Title | Zena Zerai</title>
