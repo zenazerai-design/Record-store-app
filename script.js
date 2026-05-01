@@ -715,6 +715,18 @@ function mountSpotifyFab() {
     return /\.html(\/|$)/i.test(path);
   }
 
+  function closeMobileNav() {
+    const btn = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('mobile-nav');
+    if (!btn || !drawer) return;
+    if (!drawer.classList.contains('is-open')) return;
+    drawer.classList.remove('is-open');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
   async function spaNavigate(rawUrl, { replace = false } = {}) {
     const spaMain = document.getElementById('spa-main');
     let url;
@@ -736,6 +748,8 @@ function mountSpotifyFab() {
       window.location.href = rawUrl;
       return;
     }
+
+    closeMobileNav();
 
     let fetchUrl = url.href;
     if (window.location.protocol !== 'file:') fetchUrl = url.pathname + url.search;
@@ -1102,22 +1116,12 @@ function mountSpotifyFab() {
     });
 
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('is-open');
-        hamburgerBtn.classList.remove('is-open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        mobileNav.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', () => closeMobileNav());
     });
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
-        mobileNav.classList.remove('is-open');
-        hamburgerBtn.classList.remove('is-open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        mobileNav.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        closeMobileNav();
         hamburgerBtn.focus();
       }
     });
@@ -1601,6 +1605,7 @@ function mountSpotifyFab() {
   }, true);
 
   window.addEventListener('popstate', () => {
+    closeMobileNav();
     spaNavigate(window.location.href, { replace: true });
   });
 

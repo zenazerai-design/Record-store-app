@@ -276,15 +276,35 @@
       </div>
 
       <div class="csd-context__image">
-        <img
-          src="assets/GWI/gwi-fragmented-systems.png"
-          alt="Diagram of four isolated tool silos with large gaps between them and broken dashed lines in the middle: Salesforce (contracts and billing), GWI admin (users and access), Mixpanel (usage data), spreadsheets (everything in between). Nothing connects the four systems."
-          width="1536"
-          height="1024"
-          loading="lazy"
-          decoding="async"
-        />
-        <p class="csd-context__caption">Four silos with empty space between; no integration, only manual handoffs.</p>
+        <div
+          class="gwi-system-diagram"
+          role="img"
+          aria-label="Fragmented ecosystem: Salesforce, Mixpanel, Intercom, and GWI admin sit at the corners with empty gaps between them. Spreadsheets labelled The Glue sit in the centre. Nothing reliably connects these systems; work moves by manual handoff."
+        >
+          <ul class="gwi-system-diagram__grid">
+            <li class="gwi-system-diagram__card gwi-system-diagram__card--corner">
+              <span class="gwi-system-diagram__name">Salesforce</span>
+              <span class="gwi-system-diagram__role">Contracts and billing</span>
+            </li>
+            <li class="gwi-system-diagram__card gwi-system-diagram__card--corner">
+              <span class="gwi-system-diagram__name">Mixpanel</span>
+              <span class="gwi-system-diagram__role">Usage data</span>
+            </li>
+            <li class="gwi-system-diagram__card gwi-system-diagram__card--center">
+              <span class="gwi-system-diagram__name">Spreadsheets</span>
+              <span class="gwi-system-diagram__glue">The Glue</span>
+            </li>
+            <li class="gwi-system-diagram__card gwi-system-diagram__card--corner">
+              <span class="gwi-system-diagram__name">Intercom</span>
+              <span class="gwi-system-diagram__role">Customer requests</span>
+            </li>
+            <li class="gwi-system-diagram__card gwi-system-diagram__card--corner">
+              <span class="gwi-system-diagram__name">GWI admin</span>
+              <span class="gwi-system-diagram__role">Users and access</span>
+            </li>
+          </ul>
+        </div>
+        <p class="csd-context__caption">Tools at the corners, spreadsheets holding the gaps in the middle; no integration, only manual handoffs.</p>
       </div>
 
     </section>
@@ -782,7 +802,7 @@
           loading="lazy"
         ></iframe>
       </div>
-      <p class="csd-video__caption">Manage users (Cloudinary-hosted prototype demo).</p>
+      <p class="csd-video__caption">Manage users (demo).</p>
     </section>
 
     <section class="csd-video" aria-labelledby="gwi-video-api-heading">
@@ -799,7 +819,7 @@
           loading="lazy"
         ></iframe>
       </div>
-      <p class="csd-video__caption">API metering (Cloudinary-hosted prototype demo).</p>
+      <p class="csd-video__caption">API metering (demo).</p>
     </section>
 
     <section class="csd-context gwi-acceleration">
