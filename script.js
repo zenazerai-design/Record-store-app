@@ -86,6 +86,11 @@ function mountSpotifyFab() {
   let pivotDropCleanup  = () => {};
   let pinsFlowCleanup   = () => {};
   let revealObserver     = null;
+  /** Clears flaky IntersectionObserver “stuck invisible” fallback. */
+  let revealSafetyTimerId = /** @type {ReturnType<typeof setTimeout> | null} */ (null);
+
+  /** Incremented whenever a newer in-app navigation starts; stale async completions must not swap DOM. */
+  let spaNavGeneration = 0;
 
   function teardownDynamicPage() {
     recordStackCleanup();
@@ -100,6 +105,10 @@ function mountSpotifyFab() {
     pivotDropCleanup = () => {};
     pinsFlowCleanup();
     pinsFlowCleanup = () => {};
+    if (revealSafetyTimerId !== null) {
+      clearTimeout(revealSafetyTimerId);
+      revealSafetyTimerId = null;
+    }
     if (revealObserver) {
       revealObserver.disconnect();
       revealObserver = null;
@@ -748,6 +757,29 @@ function mountSpotifyFab() {
     window.location.href = destination;
   }
 
+  /** Retries help with transient network/CDN failures during SPA transitions (common on flaky mobile/Wi‑Fi). */
+  async function fetchInternalHtmlPage(fetchUrl) {
+    const maxAttempts = 3;
+    /** @type {unknown} */
+    let lastIssue = null;
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      try {
+        const res = await fetch(fetchUrl, {
+          credentials: 'same-origin',
+          cache: 'no-store',
+        });
+        if (res.ok) return res;
+        lastIssue = new Error(String(res.status));
+      } catch (err) {
+        lastIssue = err;
+      }
+      if (attempt < maxAttempts - 1) {
+        await new Promise(r => setTimeout(r, 200 * (attempt + 1)));
+      }
+    }
+    throw lastIssue instanceof Error ? lastIssue : new Error('fetch failed');
+  }
+
   async function spaNavigate(rawUrl, { replace = false } = {}) {
     const spaMain = document.getElementById('spa-main');
     let url;
@@ -770,6 +802,7 @@ function mountSpotifyFab() {
       return;
     }
 
+    const gen = ++spaNavGeneration;
     closeMobileNav();
 
     let fetchUrl = url.href;
@@ -777,27 +810,29 @@ function mountSpotifyFab() {
 
     let res;
     try {
-      res = await fetch(fetchUrl, {
-        credentials: 'same-origin',
-        cache: 'no-store',
-      });
+      res = await fetchInternalHtmlPage(fetchUrl);
     } catch {
-      navigateHard(rawUrl);
+      if (gen === spaNavGeneration) navigateHard(rawUrl);
       return;
     }
+    if (gen !== spaNavGeneration) return;
 
-    if (!res.ok) {
-      navigateHard(rawUrl);
+    let html;
+    try {
+      html = await res.text();
+    } catch {
+      if (gen === spaNavGeneration) navigateHard(rawUrl);
       return;
     }
+    if (gen !== spaNavGeneration) return;
 
-    const html = await res.text();
     const doc  = new DOMParser().parseFromString(html, 'text/html');
     const next = doc.getElementById('spa-main');
     if (!next) {
-      navigateHard(rawUrl);
+      if (gen === spaNavGeneration) navigateHard(rawUrl);
       return;
     }
+    if (gen !== spaNavGeneration) return;
 
     teardownDynamicPage();
 
@@ -816,9 +851,10 @@ function mountSpotifyFab() {
       if (replace) history.replaceState({ spa: 1 }, '', historyPath);
       else history.pushState({ spa: 1 }, '', historyPath);
     } catch {
-      navigateHard(rawUrl);
+      if (gen === spaNavGeneration) navigateHard(rawUrl);
       return;
     }
+    if (gen !== spaNavGeneration) return;
 
     updateNavAriaCurrent(url.href);
     syncBodyPageClasses(url.href);
@@ -1100,7 +1136,7 @@ function mountSpotifyFab() {
   }
 
   function copyEmail() {
-    navigator.clipboard.writeText('zenazerai@gmail.com').then(showCopiedToast);
+    navigator.clipboard.writeText('zenazerai@gmail.com').then(showCopiedToast).catch(() => {});
   }
 
   document.addEventListener('click', e => {
@@ -1186,10 +1222,20 @@ function mountSpotifyFab() {
           const viewBottom = window.innerHeight + slack;
           if (r.top < viewBottom && r.bottom > -slack) {
             el.classList.add('is-in');
-            revealObserver.unobserve(el);
+            revealObserver?.unobserve(el);
           }
         });
       });
+
+      /* IO can still occasionally miss sections (scroll timing, WKWebKit, SPA swap). Guarantee visibility. */
+      if (revealSafetyTimerId !== null) clearTimeout(revealSafetyTimerId);
+      revealSafetyTimerId = setTimeout(() => {
+        revealSafetyTimerId = null;
+        document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+          el.classList.add('is-in');
+          revealObserver?.unobserve(el);
+        });
+      }, 3200);
     } else {
       allReveal.forEach(el => el.classList.add('is-in'));
     }
@@ -1321,15 +1367,19 @@ function mountSpotifyFab() {
   }
 
   function initDynamicPage() {
-    recordStackCleanup = initRecordStack();
-    flipImagesCleanup  = initFlipImages();
-    fosHotspotCleanup  = initFosConceptHotspots();
-    aiSleeveCleanup    = initAISleeves();
-    pivotDropCleanup   = initGwiPivotDrop();
-    pinsFlowCleanup    = initPinsPublishFlow();
-    initCaseStudyRecordClicks();
-    setupRevealOnScroll();
-    initTrackCards();
+    try {
+      recordStackCleanup = initRecordStack();
+      flipImagesCleanup  = initFlipImages();
+      fosHotspotCleanup  = initFosConceptHotspots();
+      aiSleeveCleanup    = initAISleeves();
+      pivotDropCleanup   = initGwiPivotDrop();
+      pinsFlowCleanup    = initPinsPublishFlow();
+      initCaseStudyRecordClicks();
+      setupRevealOnScroll();
+      initTrackCards();
+    } catch {
+      /* One bad interaction should not strand the SPA shell entirely. */
+    }
   }
 
   initDynamicPage();
