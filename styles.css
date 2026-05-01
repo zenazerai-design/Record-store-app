@@ -4381,6 +4381,26 @@ body.page-about .nav__links a:hover {
   color: #221c17;
 }
 
+/* Expanded AI sleeves: must override two-column .cd-sleeve__featured (higher-specificity desktop grid) */
+@media (max-width: 900px) {
+  .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    gap: clamp(14px, 3vw, 22px);
+    align-items: stretch;
+  }
+
+  .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__media-shell {
+    order: -1;
+    align-items: stretch;
+  }
+
+  .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy {
+    order: 1;
+  }
+}
+
 @media (max-width: 720px) {
   .cd-sleeve__featured {
     grid-template-columns: 1fr;
@@ -4411,20 +4431,6 @@ body.page-about .nav__links a:hover {
   .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-case.cd-case__toggle.cd-case--no-link {
     align-self: center;
     max-width: min(220px, 88vw);
-  }
-
-  /* Video / polaroid above copy when expanded */
-  .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
-    grid-auto-flow: row;
-  }
-
-  .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__media-shell {
-    order: -1;
-    align-items: stretch;
-  }
-
-  .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy {
-    order: 1;
   }
 
   .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
