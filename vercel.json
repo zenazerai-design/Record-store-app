@@ -3,6 +3,11 @@
   "version": 2,
   "redirects": [
     {
+      "source": "/mirror",
+      "destination": "https://zenazerai-design.github.io/Record-store-app/",
+      "permanent": false
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.zenazerai.com" }],
       "destination": "https://zenazerai.com/:path*",
