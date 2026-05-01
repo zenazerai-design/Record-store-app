@@ -7021,6 +7021,12 @@ body.page-about .nav__links a:hover {
   max-width: 56ch;
 }
 
+.hcuk-delivered-video-stack {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
 .hcuk-design-system-gallery__rail {
   min-width: 0;
 }
