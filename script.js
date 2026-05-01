@@ -6,7 +6,7 @@
    - SPA-style navigation so the Spotify embed keeps playing across internal pages
 */
 
-/* Injected once: Spotify embed loads when the panel opens (src set from data-src). */
+/* Injected once: panel opens mounts the Embed via Spotify iFrame API (playback state for the FAB chip). */
 const SPOTIFY_FAB_HTML = `
   <div class="spotify-fab" id="spotify-fab">
     <div class="spotify-fab__panel" id="spotify-fab-panel" role="region" aria-label="Spotify playlist player" aria-hidden="true">
@@ -19,10 +19,10 @@ const SPOTIFY_FAB_HTML = `
         </button>
       </div>
       <div class="spotify-fab__embed">
-        <iframe data-src="https://open.spotify.com/embed/playlist/145DhPn9Z7D2cnNkggKWZx?utm_source=generator" src="" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist"></iframe>
+        <div id="spotify-fab-embed-root" class="spotify-fab__embed-root" data-spotify-uri="spotify:playlist:145DhPn9Z7D2cnNkggKWZx"></div>
       </div>
     </div>
-    <button type="button" class="spotify-fab__trigger" id="spotify-fab-trigger" aria-expanded="false" aria-controls="spotify-fab-panel" title="Open playlist player">
+    <button type="button" class="spotify-fab__trigger" id="spotify-fab-trigger" aria-expanded="false" aria-controls="spotify-fab-panel" title="Open Spotify playlist player">
       <span class="spotify-fab__art" aria-hidden="true">
         <svg class="spotify-fab__turntable" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
           <rect x="3" y="13" width="42" height="29" rx="4" fill="#241C15" stroke="#3D3228" stroke-width="1"/>
@@ -37,8 +37,11 @@ const SPOTIFY_FAB_HTML = `
         </svg>
       </span>
       <span class="spotify-fab__play-ring" aria-hidden="true">
-        <svg class="spotify-fab__play" viewBox="0 0 24 24" width="16" height="16" focusable="false">
+        <svg class="spotify-fab__play" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
           <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
+        </svg>
+        <svg class="spotify-fab__pause" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+          <path fill="currentColor" d="M5 4h5v16H5V4zm9 0h5v16h-5V4z"/>
         </svg>
       </span>
     </button>
@@ -1251,45 +1254,211 @@ function mountSpotifyFab() {
   applyCaseStudyPasswordGate(window.location.href);
 
   function initSpotifyFabListeners() {
-    const spotifyFab     = document.getElementById('spotify-fab');
-    const spotifyTrigger = document.getElementById('spotify-fab-trigger');
-    const spotifyPanel   = document.getElementById('spotify-fab-panel');
-    const spotifyIframe  = spotifyFab?.querySelector('.spotify-fab__embed iframe');
-    const spotifyClose   = spotifyFab?.querySelector('.spotify-fab__panel-close');
+    const spotifyFab       = document.getElementById('spotify-fab');
+    const spotifyTrigger   = document.getElementById('spotify-fab-trigger');
+    const spotifyPanel     = document.getElementById('spotify-fab-panel');
+    const spotifyEmbedWrap = spotifyFab?.querySelector('.spotify-fab__embed');
+    const spotifyClose     = spotifyFab?.querySelector('.spotify-fab__panel-close');
+    const spotifyPlayRing  = spotifyFab?.querySelector('.spotify-fab__play-ring');
+
+    let spotifyEmbedController       = null;
+    let spotifyPlaybackState        = /** @type {{ isPaused: boolean } | null} */ (null);
+    let spotifyUserEverStartedPlayback = false;
+    let spotifyIFrameApiPromise     = null;
+    let spotifyAttachPromise       = /** @type {Promise<void> | null} */ (null);
+
+    function spotifyShowsPauseChip() {
+      return !!spotifyPlaybackState && spotifyPlaybackState.isPaused === false;
+    }
+
+    function applySpotifyPlaybackData(data) {
+      if (!data || typeof data.isPaused !== 'boolean') return;
+      spotifyPlaybackState = { isPaused: data.isPaused };
+      if (!data.isPaused) spotifyUserEverStartedPlayback = true;
+      syncSpotifyFabTransport();
+    }
+
+    function ensureSpotifyIFrameApiLoaded() {
+      if (!spotifyIFrameApiPromise) {
+        spotifyIFrameApiPromise = new Promise((resolve, reject) => {
+          const prevReady = window.onSpotifyIframeApiReady;
+          window.onSpotifyIframeApiReady = function (IFrameAPI) {
+            try {
+              if (typeof prevReady === 'function') prevReady(IFrameAPI);
+            } catch (_) {
+              /* another consumer */
+            }
+            resolve(IFrameAPI);
+          };
+
+          let s = document.querySelector('script[data-spotify-iframe-api-src="1"]');
+          if (!s) {
+            s = document.createElement('script');
+            s.dataset.spotifyIframeApiSrc = '1';
+            s.async = true;
+            s.src = 'https://open.spotify.com/embed/iframe-api/v1';
+            s.onerror = () => reject(new Error('Spotify iFrame API failed to load'));
+            document.body.appendChild(s);
+          }
+        });
+      }
+      return spotifyIFrameApiPromise;
+    }
+
+    function mountSpotifyFallbackIframe() {
+      if (!spotifyEmbedWrap?.querySelector('iframe')) {
+        spotifyEmbedWrap.innerHTML = '';
+        const iframe = document.createElement('iframe');
+        iframe.src =
+          'https://open.spotify.com/embed/playlist/145DhPn9Z7D2cnNkggKWZx?utm_source=generator';
+        iframe.width = '100%';
+        iframe.height = '352';
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute(
+          'allow',
+          'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture',
+        );
+        iframe.allowFullscreen = true;
+        iframe.title = 'Spotify playlist';
+        iframe.loading = 'lazy';
+        spotifyEmbedWrap.appendChild(iframe);
+      }
+      spotifyPlaybackState = null;
+      syncSpotifyFabTransport();
+    }
+
+    function attachSpotifyEmbedViaApiIfNeeded() {
+      if (!spotifyFab || !spotifyEmbedWrap) return Promise.resolve();
+      if (spotifyEmbedController) return Promise.resolve();
+      if (spotifyAttachPromise) return spotifyAttachPromise;
+
+      spotifyAttachPromise = (async () => {
+        try {
+          let root = document.getElementById('spotify-fab-embed-root');
+          if (!root || !spotifyEmbedWrap.contains(root)) {
+            spotifyEmbedWrap.innerHTML =
+              '<div id="spotify-fab-embed-root" class="spotify-fab__embed-root" data-spotify-uri="spotify:playlist:145DhPn9Z7D2cnNkggKWZx"></div>';
+            root = document.getElementById('spotify-fab-embed-root');
+          }
+          const mount = /** @type {HTMLElement|null} */ (root);
+          if (!mount || spotifyEmbedController) return;
+
+          const playlistUri =
+            mount.getAttribute('data-spotify-uri') || 'spotify:playlist:145DhPn9Z7D2cnNkggKWZx';
+
+          const IFrameAPI = await ensureSpotifyIFrameApiLoaded();
+
+          await new Promise((resolve, reject) => {
+            try {
+              IFrameAPI.createController(
+                mount,
+                {
+                  uri: playlistUri,
+                  width: '100%',
+                  height: '352',
+                },
+                EmbedController => {
+                  try {
+                    spotifyEmbedController = EmbedController;
+                    EmbedController.addListener('playback_update', e =>
+                      applySpotifyPlaybackData(e.data),
+                    );
+                    EmbedController.addListener('playback_started', () => {
+                      spotifyUserEverStartedPlayback = true;
+                      spotifyPlaybackState = { isPaused: false };
+                      syncSpotifyFabTransport();
+                    });
+                    EmbedController.addListener('ready', () => {
+                      syncSpotifyFabTransport();
+                    });
+                    syncSpotifyFabTransport();
+                  } finally {
+                    resolve(undefined);
+                  }
+                },
+              );
+            } catch (err) {
+              reject(err);
+            }
+          });
+        } catch (_) {
+          mountSpotifyFallbackIframe();
+        } finally {
+          spotifyAttachPromise = null;
+        }
+      })();
+
+      return spotifyAttachPromise;
+    }
+
+    function syncSpotifyFabTransport() {
+      if (!spotifyTrigger || !spotifyFab) return;
+      const fabPlayingChip = spotifyShowsPauseChip();
+      spotifyTrigger.classList.toggle('spotify-fab__trigger--playing', fabPlayingChip);
+
+      const open = spotifyFab.classList.contains('spotify-fab--open');
+
+      spotifyTrigger.setAttribute(
+        'aria-label',
+        fabPlayingChip
+          ? 'Playback is playing. Pause with the amber button, or open or close the player with the platter.'
+          : spotifyUserEverStartedPlayback
+            ? 'Playback is paused in the Spotify player. Amber button resumes, platter toggles the panel.'
+            : open
+              ? 'Player open. Press play inside the Spotify embed, then use amber to pause or resume.'
+              : 'Spotify playlist: platter opens the player; use play inside Spotify first, then amber pauses.',
+      );
+
+      spotifyTrigger.title = fabPlayingChip
+        ? 'Pause playback (tap amber)'
+        : spotifyUserEverStartedPlayback
+          ? 'Resume playback (tap amber)'
+          : open
+            ? 'Hide panel (tap platter)'
+            : 'Open Spotify player (tap platter)';
+
+      if (spotifyPlayRing) {
+        spotifyPlayRing.title = fabPlayingChip
+          ? 'Pause playback'
+          : spotifyUserEverStartedPlayback
+            ? 'Resume playback'
+            : 'Use play inside the Spotify embed first';
+      }
+    }
 
     function setSpotifyOpen(open) {
       if (!spotifyFab || !spotifyTrigger || !spotifyPanel) return;
       spotifyFab.classList.toggle('spotify-fab--open', open);
       spotifyTrigger.setAttribute('aria-expanded', String(open));
       spotifyPanel.setAttribute('aria-hidden', String(!open));
-      if (open && spotifyIframe && spotifyIframe.dataset.src && !spotifyIframe.getAttribute('src')) {
-        spotifyIframe.setAttribute('src', spotifyIframe.dataset.src);
+      if (open) {
+        attachSpotifyEmbedViaApiIfNeeded();
       }
+      syncSpotifyFabTransport();
+    }
+
+    function closeSpotifyPanelFromOutside() {
+      if (!spotifyFab || !spotifyTrigger || !spotifyPanel) return;
+      if (!spotifyFab.classList.contains('spotify-fab--open')) return;
+      spotifyFab.classList.remove('spotify-fab--open');
+      spotifyTrigger.setAttribute('aria-expanded', 'false');
+      spotifyPanel.setAttribute('aria-hidden', 'true');
+      syncSpotifyFabTransport();
     }
 
     if (!document.body.dataset.spotifyFabBound) {
       document.body.dataset.spotifyFabBound = '1';
 
       document.addEventListener('click', () => {
-        const fab = document.getElementById('spotify-fab');
-        if (fab && fab.classList.contains('spotify-fab--open')) {
-          fab.classList.remove('spotify-fab--open');
-          const tr = document.getElementById('spotify-fab-trigger');
-          const pa = document.getElementById('spotify-fab-panel');
-          if (tr) tr.setAttribute('aria-expanded', 'false');
-          if (pa) pa.setAttribute('aria-hidden', 'true');
-        }
+        closeSpotifyPanelFromOutside();
       });
 
       document.addEventListener('keydown', e => {
         if (e.key !== 'Escape') return;
-        const fab = document.getElementById('spotify-fab');
-        if (fab && fab.classList.contains('spotify-fab--open')) {
-          fab.classList.remove('spotify-fab--open');
-          document.getElementById('spotify-fab-trigger')?.setAttribute('aria-expanded', 'false');
-          document.getElementById('spotify-fab-panel')?.setAttribute('aria-hidden', 'true');
-          document.getElementById('spotify-fab-trigger')?.focus();
-        }
+        const fabOpen = document.getElementById('spotify-fab')?.classList.contains('spotify-fab--open');
+        if (!fabOpen) return;
+        closeSpotifyPanelFromOutside();
+        document.getElementById('spotify-fab-trigger')?.focus();
       });
     }
 
@@ -1297,15 +1466,50 @@ function mountSpotifyFab() {
       spotifyFab.dataset.listenersBound = '1';
       spotifyFab.addEventListener('click', e => e.stopPropagation());
 
-      spotifyTrigger.addEventListener('click', () => {
-        const open = !spotifyFab.classList.contains('spotify-fab--open');
-        setSpotifyOpen(open);
+      spotifyTrigger.addEventListener('click', e => {
+        const onRing = Boolean(e.target.closest('.spotify-fab__play-ring'));
+        const togglePanelOpen = () => {
+          const open = !spotifyFab.classList.contains('spotify-fab--open');
+          setSpotifyOpen(open);
+        };
+
+        const handleRing = () => {
+          const ctrl = spotifyEmbedController;
+          if (spotifyShowsPauseChip() && ctrl) {
+            try {
+              ctrl.pause();
+            } catch (_) {
+              /* ignore */
+            }
+            return;
+          }
+          if (ctrl && spotifyUserEverStartedPlayback) {
+            try {
+              ctrl.resume();
+            } catch (_) {
+              /* ignore */
+            }
+            return;
+          }
+          if (!spotifyFab.classList.contains('spotify-fab--open')) {
+            setSpotifyOpen(true);
+          }
+          attachSpotifyEmbedViaApiIfNeeded();
+        };
+
+        if (onRing) {
+          void attachSpotifyEmbedViaApiIfNeeded().then(handleRing);
+          return;
+        }
+        togglePanelOpen();
       });
 
       spotifyClose?.addEventListener('click', () => {
         setSpotifyOpen(false);
         spotifyTrigger.focus();
       });
+
+      syncSpotifyFabTransport();
     }
   }
 

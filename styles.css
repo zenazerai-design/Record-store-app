@@ -10879,11 +10879,27 @@ body.page-about .nav__links a:hover {
     0 6px 16px rgba(214, 123, 61, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
   z-index: 2;
+}
+
+/* Pulse only once the Spotify embed is loaded (see script.js sync). */
+.spotify-fab__trigger--playing .spotify-fab__play-ring {
   animation: spotify-fab-pulse 2.2s var(--ease) infinite;
 }
 
 .spotify-fab__play {
   margin-left: 2px;
+}
+
+.spotify-fab__pause {
+  display: none;
+}
+
+.spotify-fab__trigger--playing .spotify-fab__play {
+  display: none;
+}
+
+.spotify-fab__trigger--playing .spotify-fab__pause {
+  display: block;
 }
 
 @keyframes spotify-fab-pulse {
