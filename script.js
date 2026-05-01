@@ -587,7 +587,7 @@ function mountSpotifyFab() {
   function applyCaseStudyPasswordGate(resolvedHref) {
     let key = '';
     try {
-      key = filenameKey(new URL(resolvedHref, window.location.href).pathname);
+      key = filenameKey(new URL(resolvedHref, document.baseURI).pathname);
     } catch {
       key = '';
     }
@@ -672,7 +672,7 @@ function mountSpotifyFab() {
   function syncBodyPageClasses(resolvedHref) {
     let url;
     try {
-      url = new URL(resolvedHref, window.location.href);
+      url = new URL(resolvedHref, document.baseURI);
     } catch {
       return;
     }
@@ -696,14 +696,14 @@ function mountSpotifyFab() {
   ]);
 
   function updateNavAriaCurrent(resolvedUrl) {
-    let activeFile = filenameKey(new URL(resolvedUrl, window.location.href).pathname);
+    let activeFile = filenameKey(new URL(resolvedUrl, document.baseURI).pathname);
     if (CASE_STUDY_DETAIL_PAGES.has(activeFile)) activeFile = 'case-studies.html';
     else if (AI_EXPLORATION_DETAIL_PAGES.has(activeFile)) activeFile = 'ai-explorations.html';
 
     document.querySelectorAll('.nav__links a[href], .mobile-nav__links a[href]').forEach(a => {
       const h = a.getAttribute('href');
       if (!h || h.startsWith('#')) return;
-      const linkFile = filenameKey(new URL(h, window.location.href).pathname);
+      const linkFile = filenameKey(new URL(h, document.baseURI).pathname);
       if (linkFile === activeFile) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
@@ -731,7 +731,7 @@ function mountSpotifyFab() {
     const spaMain = document.getElementById('spa-main');
     let url;
     try {
-      url = new URL(rawUrl, window.location.href);
+      url = new URL(rawUrl, document.baseURI);
     } catch {
       window.location.href = rawUrl;
       return;
