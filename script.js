@@ -1,7 +1,7 @@
 /* Enhancements:
    - Stacked-record scroll effect for case studies
    - Case study records: whole card navigates (nested links unchanged)
-   - Reveal on scroll for sections
+   - Reveal on scroll for sections, catalogue, and every article.csd case study
    - Header style on scroll
    - SPA-style navigation so the Spotify embed keeps playing across internal pages
 */
@@ -797,137 +797,173 @@ function mountSpotifyFab() {
   ────────────────────────────────────────────────────────────────── */
   function initRecordStack() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-    if (window.matchMedia('(max-width: 820px)').matches) return () => {};
 
     const section = document.getElementById('works');
     const crate   = section && section.querySelector('.crate');
-    if (!crate) return () => {};
+    if (!crate || !section) return () => {};
 
     const cards = Array.from(crate.querySelectorAll(':scope > .record'));
     const N = cards.length;
     if (N < 2) return () => {};
 
-    const STACK = [
-      { ty:  0,  sc: 1.000 },
-      { ty: 26,  sc: 0.965 },
-      { ty: 47,  sc: 0.933 },
-      { ty: 64,  sc: 0.904 },
-    ];
+    /* Matches styles.css stacked mobile catalogue @media (max-width: 880px) */
+    const mqDesk = window.matchMedia('(min-width: 881px)');
+    let removeScrollResize = () => {};
 
-    function stackAt(pos) {
-      const p = Math.max(0, pos);
-      if (p >= STACK.length - 1) return STACK[STACK.length - 1];
-      const lo = STACK[Math.floor(p)];
-      const hi = STACK[Math.ceil(p)];
-      const f  = p % 1;
-      return {
-        ty: lo.ty + (hi.ty - lo.ty) * f,
-        sc: lo.sc + (hi.sc - lo.sc) * f,
+    function clearStackEffects() {
+      removeScrollResize();
+      removeScrollResize = () => {};
+      section.style.minHeight = '';
+      crate.removeAttribute('style');
+      cards.forEach(card => {
+        card.removeAttribute('style');
+        card.classList.remove('is-in');
+      });
+    }
+
+    function activateStackScroll() {
+      clearStackEffects();
+      if (!mqDesk.matches) return;
+
+      const STACK = [
+        { ty:  0,  sc: 1.000 },
+        { ty: 26,  sc: 0.965 },
+        { ty: 47,  sc: 0.933 },
+        { ty: 64,  sc: 0.904 },
+      ];
+
+      function stackAt(pos) {
+        const p = Math.max(0, pos);
+        if (p >= STACK.length - 1) return STACK[STACK.length - 1];
+        const lo = STACK[Math.floor(p)];
+        const hi = STACK[Math.ceil(p)];
+        const f  = p % 1;
+        return {
+          ty: lo.ty + (hi.ty - lo.ty) * f,
+          sc: lo.sc + (hi.sc - lo.sc) * f,
+        };
+      }
+
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const eio  = t => t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
+
+      let PER = 0, animStart = 0;
+
+      function measure() {
+        PER = Math.max(window.innerHeight * 0.95, 500);
+
+        const head  = section.querySelector('.section__head');
+        const headH = head ? head.offsetHeight : 0;
+
+        animStart =
+          section.getBoundingClientRect().top + window.scrollY + headH;
+
+        section.style.minHeight =
+          `${headH + window.innerHeight + (N - 1) * PER + 120}px`;
+      }
+
+      Object.assign(crate.style, {
+        position:    'sticky',
+        top:         '0',
+        height:      '100svh',
+        gap:         '0',
+        padding:     '0',
+        maxWidth:    '100%',
+        margin:      '0',
+        overflow:    'visible',
+        perspective: '2200px',
+      });
+
+      cards.forEach(card => {
+        Object.assign(card.style, {
+          position:   'absolute',
+          top:        '50%',
+          left:       '50%',
+          width:
+            'min(calc(1220px * 2 / 3 * 1.21), max(min(calc(94vw * 2 / 3 * 1.21), calc((100svh - 168px) * 1.3552)), calc(71vw)))',
+          margin:     '0',
+          willChange: 'transform, opacity',
+        });
+        card.classList.add('is-in');
+      });
+
+      function draw() {
+        const scrolled = Math.max(0, window.scrollY - animStart);
+        const sp    = scrolled / PER;
+        const front = Math.min(Math.floor(sp), N - 2);
+        const rawT  = sp - front;
+
+        const DWELL = 0.45;
+        const animT = rawT < DWELL ? 0 : (rawT - DWELL) / (1 - DWELL);
+        const t  = Math.min(Math.max(animT, 0), 1);
+        const te = eio(t);
+
+        const GONE_Y = -(window.innerHeight * 0.55 + 600);
+
+        cards.forEach((card, i) => {
+          let ty, sc, op = 1, ro = 0, zi, pe;
+
+          if (i < front) {
+            ty = GONE_Y; sc = 0.88; op = 0; ro = -2;
+            zi = N - i;  pe = 'none';
+
+          } else if (i === front) {
+            const from = stackAt(0);
+            ty = lerp(from.ty, GONE_Y, te);
+            sc = lerp(from.sc, 0.88,   te);
+            ro = lerp(0,       -2,     te);
+            op = te > 0.85 ? lerp(1, 0, (te - 0.85) / 0.15) : 1;
+            zi = N + 1;
+            pe = t > 0.75 ? 'none' : 'auto';
+
+          } else {
+            const sPos = i - front;
+            const from = stackAt(sPos);
+            const to   = stackAt(sPos - 1);
+            ty = lerp(from.ty, to.ty, te);
+            sc = lerp(from.sc, to.sc, te);
+            zi = N - sPos;
+            pe = 'auto';
+          }
+
+          card.style.transform =
+            `translate(-50%, calc(-50% + ${ty}px)) scale(${sc}) rotate(${ro}deg)`;
+          card.style.opacity       = String(Math.max(0, op));
+          card.style.zIndex        = String(zi);
+          card.style.pointerEvents = pe;
+        });
+      }
+
+      measure();
+      draw();
+      const onScroll = draw;
+      const onResize = () => {
+        if (!mqDesk.matches) {
+          activateStackScroll();
+          return;
+        }
+        measure();
+        draw();
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize, { passive: true });
+
+      removeScrollResize = () => {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onResize);
       };
     }
 
-    const lerp = (a, b, t) => a + (b - a) * t;
-    const eio  = t => t < 0.5 ? 2*t*t : -1 + (4 - 2*t) * t;
-
-    let PER = 0, animStart = 0;
-
-    function measure() {
-      PER = Math.max(window.innerHeight * 0.95, 500);
-
-      const head  = section.querySelector('.section__head');
-      const headH = head ? head.offsetHeight : 0;
-
-      animStart =
-        section.getBoundingClientRect().top + window.scrollY + headH;
-
-      section.style.minHeight =
-        `${headH + window.innerHeight + (N - 1) * PER + 120}px`;
+    function mqListener() {
+      activateStackScroll();
     }
 
-    Object.assign(crate.style, {
-      position:    'sticky',
-      top:         '0',
-      height:      '100svh',
-      gap:         '0',
-      padding:     '0',
-      maxWidth:    '100%',
-      margin:      '0',
-      overflow:    'visible',
-      perspective: '2200px',
-    });
-
-    cards.forEach(card => {
-      Object.assign(card.style, {
-        position:   'absolute',
-        top:        '50%',
-        left:       '50%',
-        /* min(vw,svh) alone over-shrinks on short laptop viewports; floor with vw so width tracks the screen, not only height */
-        width:
-          'min(calc(1220px * 2 / 3 * 1.21), max(min(calc(94vw * 2 / 3 * 1.21), calc((100svh - 168px) * 1.3552)), calc(71vw)))',
-        margin:     '0',
-        willChange: 'transform, opacity',
-      });
-      card.classList.add('is-in');
-    });
-
-    function draw() {
-      const scrolled = Math.max(0, window.scrollY - animStart);
-      const sp    = scrolled / PER;
-      const front = Math.min(Math.floor(sp), N - 2);
-      const rawT  = sp - front;
-
-      const DWELL = 0.45;
-      const animT = rawT < DWELL ? 0 : (rawT - DWELL) / (1 - DWELL);
-      const t  = Math.min(Math.max(animT, 0), 1);
-      const te = eio(t);
-
-      const GONE_Y = -(window.innerHeight * 0.55 + 600);
-
-      cards.forEach((card, i) => {
-        let ty, sc, op = 1, ro = 0, zi, pe;
-
-        if (i < front) {
-          ty = GONE_Y; sc = 0.88; op = 0; ro = -2;
-          zi = N - i;  pe = 'none';
-
-        } else if (i === front) {
-          const from = stackAt(0);
-          ty = lerp(from.ty, GONE_Y, te);
-          sc = lerp(from.sc, 0.88,   te);
-          ro = lerp(0,       -2,     te);
-          op = te > 0.85 ? lerp(1, 0, (te - 0.85) / 0.15) : 1;
-          zi = N + 1;
-          pe = t > 0.75 ? 'none' : 'auto';
-
-        } else {
-          const sPos = i - front;
-          const from = stackAt(sPos);
-          const to   = stackAt(sPos - 1);
-          ty = lerp(from.ty, to.ty, te);
-          sc = lerp(from.sc, to.sc, te);
-          zi = N - sPos;
-          /* Let peeking sleeves receive clicks on exposed areas; z-index keeps the front card on top where they overlap. */
-          pe = 'auto';
-        }
-
-        card.style.transform =
-          `translate(-50%, calc(-50% + ${ty}px)) scale(${sc}) rotate(${ro}deg)`;
-        card.style.opacity       = String(Math.max(0, op));
-        card.style.zIndex        = String(zi);
-        card.style.pointerEvents = pe;
-      });
-    }
-
-    measure();
-    draw();
-    const onScroll = draw;
-    const onResize = () => { measure(); draw(); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize, { passive: true });
+    mqDesk.addEventListener('change', mqListener);
+    activateStackScroll();
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
+      mqDesk.removeEventListener('change', mqListener);
+      clearStackEffects();
     };
   }
 
@@ -1081,7 +1117,18 @@ function mountSpotifyFab() {
 
   function setupRevealOnScroll() {
     const reveal = document.querySelectorAll(
-      '.section__head, .lineup__floor, .about__copy, .about__visual, .foot__inner, .testimonials, .csd-case--gwi > .csd-back-wrap, .csd-case--gwi > section:not(.gwi-pivot-drop)'
+      [
+        '.section__head',
+        '.lineup__floor',
+        '.about__copy',
+        '.about__visual',
+        '.foot__inner',
+        '.testimonials',
+        '.cs-page-hero__inner',
+        '.cs-grid-section .cs-grid > .cs-card',
+        'article.csd > .csd-back-wrap',
+        'article.csd > section:not(.gwi-pivot-drop)',
+      ].join(', ')
     );
     reveal.forEach(el => el.classList.add('reveal'));
 

@@ -2659,7 +2659,26 @@ body.page-about .nav__links a:hover {
   border: none;
   border-radius: 0;
   overflow: hidden;
-  transition: opacity .2s var(--ease);
+  transition: opacity 0.2s var(--ease);
+}
+
+/* Listing cards: slower motion so scroll-reveal timings win over the base `.cs-card` rule */
+.cs-grid-section .cs-grid > li.cs-card.reveal {
+  transition:
+    opacity 0.88s var(--ease),
+    transform 0.88s var(--ease);
+}
+
+@media (hover: hover) {
+  .cs-grid-section .cs-grid > li.cs-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-grid-section .cs-grid > li.cs-card:hover {
+    transform: none;
+  }
 }
 .cs-card:hover .cs-card__image img {
   transform: scale(1.02);
@@ -4599,6 +4618,144 @@ body.page-about .nav__links a:hover {
 
 .csd-back:hover svg {
   transform: translateX(-3px);
+}
+
+/* ── Case study detail: reveal polish + hovers on all shipped studies ── */
+
+@media (prefers-reduced-motion: no-preference) {
+  article.csd > .csd-back-wrap.reveal,
+  article.csd > section.reveal:not(.gwi-pivot-drop) {
+    transform: translateY(22px);
+    transition:
+      opacity 0.95s var(--ease),
+      transform 0.95s var(--ease);
+  }
+}
+
+@media (hover: hover) {
+  article.csd .csd-hero__cover-inner img {
+    transition: transform 0.65s var(--ease);
+  }
+
+  article.csd .csd-hero__cover:hover .csd-hero__cover-inner img {
+    transform: scale(1.055);
+  }
+
+  article.csd .csd-meta__pills span {
+    transition:
+      border-color 0.3s var(--ease),
+      color 0.3s var(--ease),
+      background 0.3s var(--ease),
+      transform 0.3s var(--ease),
+      box-shadow 0.3s var(--ease);
+  }
+
+  article.csd .csd-meta__pills span:hover {
+    border-color: color-mix(in srgb, var(--amber) 55%, var(--line));
+    color: var(--cream);
+    background: color-mix(in srgb, var(--surface) 88%, rgba(214, 123, 61, 0.18));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  }
+
+  article.csd .csd-iterate__card {
+    transition:
+      transform 0.42s var(--ease),
+      box-shadow 0.42s var(--ease),
+      border-color 0.32s var(--ease);
+  }
+
+  article.csd .csd-iterate__card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.38),
+      0 0 0 1px color-mix(in srgb, var(--amber) 32%, transparent);
+    border-color: color-mix(in srgb, var(--amber) 38%, var(--line));
+  }
+
+  article.csd .csd-impact__stat {
+    transition: transform 0.36s var(--ease);
+    will-change: transform;
+  }
+
+  article.csd .csd-impact__stat:hover {
+    transform: translateY(-5px);
+  }
+
+  article.csd .csd-fullimg .csd-fullimg__inner {
+    transition: box-shadow 0.45s var(--ease), border-color 0.35s var(--ease);
+  }
+
+  article.csd .csd-fullimg:hover .csd-fullimg__inner {
+    box-shadow:
+      0 28px 64px rgba(0, 0, 0, 0.45),
+      0 0 0 1px color-mix(in srgb, var(--cream) 12%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  article.csd .csd-impact__stat,
+  article.csd .csd-impact__stat:hover {
+    transform: none;
+  }
+
+  article.csd .csd-hero__cover:hover .csd-hero__cover-inner img {
+    transform: none;
+  }
+
+  article.csd .csd-meta__pills span:hover {
+    transform: none;
+  }
+
+  article.csd .csd-iterate__card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  article.csd .csd-statement__accent {
+    padding-bottom: 0.08em;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 calc(100% - 1px);
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size 0.5s var(--ease);
+  }
+
+  article.csd .csd-statement:hover .csd-statement__accent,
+  article.csd .csd-statement__accent:hover {
+    background-size: 100% 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  article.csd .csd-statement__accent {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+    text-decoration-thickness: 1px;
+  }
+}
+
+/* Case studies listing: stagger when the grid enters view */
+@media (prefers-reduced-motion: no-preference) {
+  .cs-grid-section .cs-grid > li.cs-card.reveal:nth-child(1) {
+    transition-delay: 0.04s;
+  }
+  .cs-grid-section .cs-grid > li.cs-card.reveal:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  .cs-grid-section .cs-grid > li.cs-card.reveal:nth-child(3) {
+    transition-delay: 0.16s;
+  }
+  .cs-grid-section .cs-grid > li.cs-card.reveal:nth-child(4) {
+    transition-delay: 0.22s;
+  }
+  .cs-grid-section .cs-grid > li.cs-card.reveal:nth-child(5) {
+    transition-delay: 0.28s;
+  }
+  .cs-grid-section .cs-grid > li.cs-card.reveal:nth-child(6) {
+    transition-delay: 0.34s;
+  }
 }
 
 /* ── BLOCK: Hero ─────────────────────────────────────────── */
@@ -10716,65 +10873,9 @@ body.page-about .nav__links a:hover {
   }
 }
 
-/* GWI: motion & interactions (scroll reveal wired in script.js; hovers scoped here) */
-
-/* Slightly bolder reveal than global default: case study sections are long-form */
-@media (prefers-reduced-motion: no-preference) {
-  .csd-case--gwi > .csd-back-wrap.reveal,
-  .csd-case--gwi > section.reveal {
-    transform: translateY(22px);
-    transition:
-      opacity 0.95s var(--ease),
-      transform 0.95s var(--ease);
-  }
-
-  .csd-case--gwi > .csd-back-wrap.reveal.is-in,
-  .csd-case--gwi > section.reveal.is-in {
-    transform: none;
-  }
-}
+/* GWI-only hovers (shared case-study polish lives under .csd-back / article.csd) */
 
 @media (hover: hover) {
-  .csd-case--gwi .csd-hero__cover-inner img {
-    transition: transform 0.65s var(--ease);
-  }
-
-  .csd-case--gwi .csd-hero__cover:hover .csd-hero__cover-inner img {
-    transform: scale(1.055);
-  }
-
-  .csd-case--gwi .csd-meta__pills span {
-    transition:
-      border-color 0.3s var(--ease),
-      color 0.3s var(--ease),
-      background 0.3s var(--ease),
-      transform 0.3s var(--ease),
-      box-shadow 0.3s var(--ease);
-  }
-
-  .csd-case--gwi .csd-meta__pills span:hover {
-    border-color: color-mix(in srgb, var(--amber) 55%, var(--line));
-    color: var(--cream);
-    background: color-mix(in srgb, var(--surface) 88%, rgba(214, 123, 61, 0.18));
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-  }
-
-  .csd-case--gwi .csd-iterate__card {
-    transition:
-      transform 0.42s var(--ease),
-      box-shadow 0.42s var(--ease),
-      border-color 0.32s var(--ease);
-  }
-
-  .csd-case--gwi .csd-iterate__card:hover {
-    transform: translateY(-8px);
-    box-shadow:
-      0 22px 48px rgba(0, 0, 0, 0.38),
-      0 0 0 1px color-mix(in srgb, var(--amber) 32%, transparent);
-    border-color: color-mix(in srgb, var(--amber) 38%, var(--line));
-  }
-
   /* Discovery artefact cards: scale up on hover so thumbnails read larger */
   .csd-case--gwi .gwi-discovery-visuals .csd-iterate__card {
     position: relative;
@@ -10839,24 +10940,7 @@ body.page-about .nav__links a:hover {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .csd-case--gwi .csd-statement__accent {
-    padding-bottom: 0.08em;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-position: 0 calc(100% - 1px);
-    background-repeat: no-repeat;
-    background-size: 0 2px;
-    transition: background-size 0.5s var(--ease);
-  }
-
-  .csd-case--gwi .csd-statement:hover .csd-statement__accent,
-  .csd-case--gwi .csd-statement__accent:hover {
-    background-size: 100% 2px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .csd-case--gwi .csd-iterate__card,
   .csd-case--gwi .csd-gwi-impact-narrative__cards > li,
   .csd-case--gwi .csd-gwi-scope-panels__panel,
   .csd-case--gwi .csd-gwi-ds-placeholder__frame,
@@ -10864,26 +10948,12 @@ body.page-about .nav__links a:hover {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .csd-case--gwi .csd-iterate__card:hover,
   .csd-case--gwi .csd-gwi-impact-narrative__cards > li:hover,
   .csd-case--gwi .csd-gwi-scope-panels__panel:hover,
   .csd-case--gwi .csd-gwi-ds-placeholder__frame:hover,
-  .hcuk-design-system-gallery .hcuk-ds-swipe .csd-iterate__card:hover {
+  .hcuk-design-system-gallery .hcuk-ds-swipe .csd-iterate__card:hover,
+  .csd-case--gwi .gwi-discovery-visuals .csd-iterate__card:hover {
     transform: none;
-  }
-
-  .csd-case--gwi .csd-meta__pills span:hover {
-    transform: none;
-  }
-
-  .csd-case--gwi .csd-hero__cover:hover .csd-hero__cover-inner img {
-    transform: none;
-  }
-
-  .csd-case--gwi .csd-statement__accent {
-    text-decoration: underline;
-    text-underline-offset: 0.12em;
-    text-decoration-thickness: 1px;
   }
 }
 
