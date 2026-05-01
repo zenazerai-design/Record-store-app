@@ -13,6 +13,17 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div id="case-study-lock-root" class="case-study-lock-root" hidden aria-hidden="true"></div>
+<script>
+(function(){
+  try {
+    if (sessionStorage.getItem('zenaCsAuth2026') === '1') return;
+  } catch (e) {}
+  document.documentElement.classList.add('case-study-locked');
+  var el = document.getElementById('case-study-lock-root');
+  if (el) { el.removeAttribute('hidden'); el.setAttribute('aria-hidden', 'false'); }
+})();
+</script>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">

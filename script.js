@@ -6,7 +6,7 @@
    - SPA-style navigation so the Spotify embed keeps playing across internal pages
 */
 
-/* Injected once: replace PLAYLIST_ID with your playlist ID */
+/* Injected once: Spotify embed loads when the panel opens (src set from data-src). */
 const SPOTIFY_FAB_HTML = `
   <div class="spotify-fab" id="spotify-fab">
     <div class="spotify-fab__panel" id="spotify-fab-panel" role="region" aria-label="Spotify playlist player" aria-hidden="true">
@@ -19,7 +19,7 @@ const SPOTIFY_FAB_HTML = `
         </button>
       </div>
       <div class="spotify-fab__embed">
-        <iframe data-src="https://open.spotify.com/embed/playlist/PLAYLIST_ID?utm_source=generator&theme=0" src="" width="100%" height="232" style="border:0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist"></iframe>
+        <iframe data-src="https://open.spotify.com/embed/playlist/145DhPn9Z7D2cnNkggKWZx?utm_source=generator" src="" width="100%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist"></iframe>
       </div>
     </div>
     <button type="button" class="spotify-fab__trigger" id="spotify-fab-trigger" aria-expanded="false" aria-controls="spotify-fab-panel" title="Open playlist player">
@@ -143,7 +143,12 @@ function mountSpotifyFab() {
     function syncMediaStripEmbedsInPanel(panel) {
       if (!panel) return;
       requestAnimationFrame(() => {
-        panel.querySelectorAll('.cd-sleeve__media-strip').forEach(s => s._aiSyncCoverEmbeds?.());
+        requestAnimationFrame(() => {
+          panel.querySelectorAll('.cd-sleeve__media-strip').forEach((s) => {
+            s._aiSyncCoverEmbeds?.();
+            s._aiSyncStripChrome?.();
+          });
+        });
       });
     }
 
@@ -168,20 +173,57 @@ function mountSpotifyFab() {
 
         const reduced = prefersReducedMotion();
 
-        function currentPaneIndex() {
-          const sr = strip.getBoundingClientRect();
-          const cx = sr.left + sr.width * 0.5;
-          let best = 0;
-          panes.forEach((pane, i) => {
-            const pr = pane.getBoundingClientRect();
-            const mx = pr.left + pr.width * 0.5;
-            if (mx <= cx) best = i;
-          });
-          return best;
-        }
-
         function clampIndex(next) {
           return Math.max(0, Math.min(panes.length - 1, next));
+        }
+
+        function stripPanelVisible() {
+          const panelEl = strip.closest('.cd-sleeve__panel');
+          return !!(panelEl && !panelEl.hidden);
+        }
+
+        /**
+         * Geometry-based indexing breaks while the sleeve panel is `hidden` (degenerate rects)
+         * and can label the first slide as last. Prefer scroll offsets + pane stride; fall back
+         * to largest visible overlap in the viewport.
+         */
+        function currentPaneIndex() {
+          if (!stripPanelVisible() || panes.length === 0) return 0;
+
+          const sr = strip.getBoundingClientRect();
+          const cw = strip.clientWidth;
+
+          const step =
+            panes.length > 1 && cw > 0
+              ? panes[1].offsetLeft - panes[0].offsetLeft
+              : cw > 0
+                ? cw
+                : 0;
+
+          if (step > 0) {
+            const fromScroll = Math.round(strip.scrollLeft / step);
+            if (!Number.isNaN(fromScroll)) return clampIndex(fromScroll);
+          }
+
+          let best = 0;
+          let bestVis = -1;
+          for (let i = 0; i < panes.length; i++) {
+            const pr = panes[i].getBoundingClientRect();
+            const vis =
+              sr.width <= 0
+                ? pr.width > 0
+                  ? pr.width
+                  : 0
+                : Math.max(
+                    0,
+                    Math.min(pr.right, sr.right) - Math.max(pr.left, sr.left),
+                  );
+            if (vis > bestVis) {
+              bestVis = vis;
+              best = i;
+            }
+          }
+          return best;
         }
 
         function go(direction) {
@@ -198,11 +240,6 @@ function mountSpotifyFab() {
           prevBtn.disabled = i <= 0;
           nextBtn.disabled = i >= panes.length - 1;
           statusEl.textContent = `${i + 1} / ${panes.length}`;
-        }
-
-        function stripPanelVisible() {
-          const panelEl = strip.closest('.cd-sleeve__panel');
-          return !!(panelEl && !panelEl.hidden);
         }
 
         function syncStripCoverEmbeds(activeIndex) {
@@ -281,6 +318,8 @@ function mountSpotifyFab() {
 
         strip.addEventListener('keydown', onStripKeydown);
 
+        strip._aiSyncStripChrome = syncChrome;
+
         syncChrome();
         strip._aiSyncCoverEmbeds();
         stripNavCleanups.push(() => {
@@ -289,6 +328,7 @@ function mountSpotifyFab() {
           strip.removeEventListener('keydown', onStripKeydown);
           strip.removeEventListener('scroll', onStripScroll, { passive: true });
           delete strip._aiSyncCoverEmbeds;
+          delete strip._aiSyncStripChrome;
           nav.remove();
         });
       });
@@ -521,6 +561,102 @@ function mountSpotifyFab() {
     return seg.replace(/#.*/, '').toLowerCase();
   }
 
+  /** Client-side gate for password-protected case study HTML (SPA + full page loads). Not security-grade. */
+  const CASE_STUDY_PASSWORD_PAGES = new Set([
+    'planning-inspectorate.html',
+    'gwi.html',
+    'hyundai-finance.html',
+    'toyota.html',
+    'ba-fo.html',
+  ]);
+
+  const CASE_STUDY_AUTH_KEY = 'zenaCsAuth2026';
+  const CASE_STUDY_PASSWORD = 'zena2026';
+
+  function applyCaseStudyPasswordGate(resolvedHref) {
+    let key = '';
+    try {
+      key = filenameKey(new URL(resolvedHref, window.location.href).pathname);
+    } catch {
+      key = '';
+    }
+    const needs = CASE_STUDY_PASSWORD_PAGES.has(key);
+
+    let authed = false;
+    try {
+      authed = sessionStorage.getItem(CASE_STUDY_AUTH_KEY) === '1';
+    } catch {
+      authed = false;
+    }
+
+    let root = document.getElementById('case-study-lock-root');
+
+    function resetLockChrome() {
+      document.documentElement.classList.remove('case-study-locked');
+      if (root) {
+        root.innerHTML = '';
+        root.setAttribute('hidden', '');
+        root.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    if (!needs || authed) {
+      resetLockChrome();
+      return;
+    }
+
+    document.documentElement.classList.add('case-study-locked');
+    if (!root) {
+      root = document.createElement('div');
+      root.id = 'case-study-lock-root';
+      root.className = 'case-study-lock-root';
+      document.body.insertBefore(root, document.body.firstChild);
+    }
+    root.removeAttribute('hidden');
+    root.setAttribute('aria-hidden', 'false');
+
+    if (document.getElementById('case-study-lock-form')) return;
+
+    root.innerHTML =
+      '<div class="case-study-lock__backdrop" aria-hidden="true"></div>' +
+      '<div class="case-study-lock__panel" role="dialog" aria-modal="true" aria-labelledby="case-study-lock-title">' +
+      '<p class="kicker case-study-lock__kicker">Case study</p>' +
+      '<h2 class="case-study-lock__title" id="case-study-lock-title">This page is password protected</h2>' +
+      '<p class="case-study-lock__hint">Enter the password to continue.</p>' +
+      '<form class="case-study-lock__form" id="case-study-lock-form">' +
+      '<label class="sr-only" for="case-study-lock-input">Password</label>' +
+      '<input type="password" id="case-study-lock-input" class="case-study-lock__input" name="password" autocomplete="current-password" required />' +
+      '<button type="submit" class="case-study-lock__submit">Unlock</button>' +
+      '</form>' +
+      '<p class="case-study-lock__error" id="case-study-lock-error" role="alert" hidden>Incorrect password. Try again.</p>' +
+      '</div>';
+
+    const form = document.getElementById('case-study-lock-form');
+    const input = document.getElementById('case-study-lock-input');
+    const err = document.getElementById('case-study-lock-error');
+    if (!form || !input || !err) return;
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      err.hidden = true;
+      const v = input.value.trim();
+      if (v === CASE_STUDY_PASSWORD) {
+        try {
+          sessionStorage.setItem(CASE_STUDY_AUTH_KEY, '1');
+        } catch {
+          /* ignore */
+        }
+        resetLockChrome();
+      } else {
+        err.hidden = false;
+        input.value = '';
+        input.focus();
+      }
+    });
+
+    requestAnimationFrame(() => input.focus());
+  }
+
   /** Keeps body page classes correct when SPA-swapping (#spa-main shell may stay index.html). */
   function syncBodyPageClasses(resolvedHref) {
     let url;
@@ -650,6 +786,7 @@ function mountSpotifyFab() {
     }
 
     initDynamicPage();
+    applyCaseStudyPasswordGate(url.href);
   }
 
   /* ──────────────────────────────────────────────────────────────────
@@ -1111,6 +1248,7 @@ function mountSpotifyFab() {
   }
 
   initDynamicPage();
+  applyCaseStudyPasswordGate(window.location.href);
 
   function initSpotifyFabListeners() {
     const spotifyFab     = document.getElementById('spotify-fab');

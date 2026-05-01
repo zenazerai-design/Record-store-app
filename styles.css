@@ -163,8 +163,8 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--bg);
   background: var(--amber);
@@ -320,11 +320,12 @@ a { color: inherit; text-decoration: none; }
   transform: translateX(-50%) translateY(12px);
   background: var(--ink);
   color: var(--cream);
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 12px 24px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  padding: 14px 24px;
   border-radius: 2px;
   border: 1px solid rgba(245,235,215,0.15);
   opacity: 0;
@@ -604,6 +605,15 @@ a { color: inherit; text-decoration: none; }
   overflow: visible;
 }
 
+/* Catalogue intro is <p>; remove default paragraph margins so space to .crate matches .section__head padding only */
+.works .section__head .section__lede,
+.works .section__head .section__note {
+  margin-block: 0;
+}
+.works .section__head .section__note {
+  margin-top: 0.5rem;
+}
+
 .crate {
   list-style: none;
   margin: 0 auto;
@@ -684,6 +694,7 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-start;
   gap: clamp(12px, 1.4vw, 20px);
   min-width: 0;
+  align-self: stretch;
 }
 
 .record__copy-stack {
@@ -889,7 +900,7 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-end;
   justify-content: space-between;
   gap: clamp(16px, 2vw, 28px);
-  padding-top: clamp(20px, 2.5vw, 32px);
+  padding-top: clamp(10px, 1.2vw, 16px);
 }
 .record__face-foot-actions {
   display: flex;
@@ -1023,9 +1034,10 @@ a { color: inherit; text-decoration: none; }
 /* Case study card: pills below summary in left column; dashed rule above impact row */
 .record__pills--hero {
   margin: 0;
+  margin-top: auto;
   width: 100%;
   gap: 6px;
-  padding: 0 0 clamp(20px, 2.8vw, 30px);
+  padding: 0 0 clamp(8px, 1vw, 14px);
   border-top: none;
   border-bottom: 1px dashed var(--line);
 }
@@ -1034,6 +1046,18 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.11em;
   font-weight: 500;
   padding: 7px 13px 6px;
+}
+
+/* Homepage catalogue only: undo global record layout tweaks; keep tightened layout elsewhere (e.g. case-studies grid) */
+.page-home .works .record__copy-col {
+  align-self: start;
+}
+.page-home .works .record__face-foot {
+  padding-top: clamp(20px, 2.5vw, 32px);
+}
+.page-home .works .record__pills--hero {
+  margin-top: 0;
+  padding: 0 0 clamp(20px, 2.8vw, 30px);
 }
 
 /* FOOTER: key metrics + CTA */
@@ -2075,7 +2099,7 @@ a { color: inherit; text-decoration: none; }
   .record__pills--hero {
     grid-row: 6;
     margin: 0;
-    padding: 0 20px 16px;
+    padding: 0 20px 10px;
     justify-content: flex-start;
     border-bottom: 1px dashed var(--line);
   }
@@ -2083,10 +2107,18 @@ a { color: inherit; text-decoration: none; }
   .record__face-foot {
     grid-row: 7;
     grid-column: 1;
-    padding: 14px 20px 20px;
+    padding: 10px 20px 20px;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+  }
+
+  /* Homepage: match pre-tweak stacked-record foot / pills rhythm */
+  .page-home .works .record__pills--hero {
+    padding: 0 20px 16px;
+  }
+  .page-home .works .record__face-foot {
+    padding: 14px 20px 20px;
   }
 
   .record__face-foot-actions {
@@ -2798,7 +2830,7 @@ body.page-about .nav__links a:hover {
 .ai-shelf__head {
   display: grid;
   gap: 18px;
-  margin-bottom: 52px;
+  margin-bottom: 28px;
 }
 
 .cd-rack {
@@ -2815,6 +2847,33 @@ body.page-about .nav__links a:hover {
 .cd-rack li {
   width: 200px;
   flex-shrink: 0;
+}
+
+/* Lit countertop behind CDs: separates jewel cases from the page field */
+.ai-shelf .cd-rack {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 3vw, 40px);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(125% 85% at 50% -8%, rgba(255, 255, 255, 0.16) 0%, transparent 58%),
+    linear-gradient(
+      168deg,
+      color-mix(in srgb, var(--cream) 10%, var(--surface)) 0%,
+      color-mix(in srgb, var(--surface) 88%, var(--bg)) 42%,
+      color-mix(in srgb, var(--bg-2) 75%, black) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--ink-soft) 18%, var(--line));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.11),
+    0 0 0 1px rgba(0, 0, 0, 0.42),
+    0 26px 70px rgba(0, 0, 0, 0.62);
+}
+
+/* Homepage only: tray hugs the CDs (same inset as section; no full-bleed bar) */
+.ai-shelf:not(.ai-shelf--page) .cd-rack {
+  width: fit-content;
+  max-width: 100%;
 }
 
 /* The clickable card block */
@@ -2839,22 +2898,30 @@ body.page-about .nav__links a:hover {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1.03;
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
-  background: #060504;
+  background: #050403;
   box-shadow:
-    0 8px 28px rgba(0,0,0,0.75),
-    0 2px 6px rgba(0,0,0,0.5),
-    inset 0 1px 0 rgba(255,255,255,0.06);
+    0 0 0 1px rgba(255, 255, 255, 0.26),
+    0 0 0 3px rgba(0, 0, 0, 0.72),
+    0 6px 0 rgba(0, 0, 0, 0.35),
+    0 14px 46px rgba(0, 0, 0, 0.9),
+    0 4px 12px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -22px 40px rgba(0, 0, 0, 0.3);
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .cd-case:hover .cd-case__jewel {
   transform: translateY(-10px) rotate(-0.7deg);
   box-shadow:
-    0 22px 52px rgba(0,0,0,0.88),
-    0 6px 14px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.09);
+    0 0 0 1px rgba(255, 255, 255, 0.34),
+    0 0 0 3px rgba(0, 0, 0, 0.62),
+    0 8px 0 rgba(0, 0, 0, 0.32),
+    0 30px 72px rgba(0, 0, 0, 0.94),
+    0 12px 24px rgba(0, 0, 0, 0.68),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -22px 40px rgba(0, 0, 0, 0.24);
 }
 
 /* Left spine: the binding edge */
@@ -3979,9 +4046,22 @@ body.page-about .nav__links a:hover {
   transform: translate(-50%, -50%);
 }
 
-/* Premiere short: VEED watermark bars; tweak height % if stripes still peek in */
-.cd-sleeve__embed-crop-y--premiere .cd-sleeve__cover-embed {
-  height: 132%;
+/*
+ * Premiere short: VEED bars on export — clip-path trims the aperture (undeniable framing change)
+ * and the iframe stays vertically oversized so fewer player pixels sit in the watermark bands.
+ */
+.cd-sleeve__cover-visual--desktop .cd-sleeve__cover-stack > .cd-sleeve__embed-crop-y--premiere {
+  clip-path: inset(11% 0 23% 0);
+  /* Safari <15.4; harmless duplicate where unsupported */
+  -webkit-clip-path: inset(11% 0 23% 0);
+}
+
+.cd-sleeve__cover-visual--desktop
+  .cd-sleeve__cover-stack
+  > .cd-sleeve__embed-crop-y--premiere
+  .cd-sleeve__cover-embed {
+  height: 185%;
+  top: 53%;
 }
 
 .cd-sleeve__cover-visual--desktop .cd-sleeve__cover-surface {
@@ -7259,7 +7339,7 @@ body.page-about .nav__links a:hover {
 
 .nav__cta--scope-note {
   padding: 6px 11px;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 /* ── BLOCK: Pull Quote ───────────────────────────────────── */
@@ -10719,7 +10799,9 @@ body.page-about .nav__links a:hover {
 .spotify-fab__embed iframe {
   display: block;
   width: 100%;
+  height: 352px;
   border: 0;
+  border-radius: 12px;
   vertical-align: bottom;
 }
 
@@ -10827,4 +10909,141 @@ body.page-about .nav__links a:hover {
   .spotify-fab__turntable {
     transform: none;
   }
+}
+
+/* ─── Case study password gate ───────────────────────────────── */
+
+html.case-study-locked {
+  overflow: hidden;
+}
+
+html.case-study-locked body > *:not(#case-study-lock-root) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+#case-study-lock-root.case-study-lock-root:not([hidden]) {
+  display: grid;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.case-study-lock-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  place-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.case-study-lock__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 8, 4, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.case-study-lock__panel {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  background: rgba(28, 22, 18, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.case-study-lock__kicker {
+  margin-bottom: 0.5rem;
+}
+
+.case-study-lock__title {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: rgba(249, 244, 235, 0.96);
+  margin: 0 0 0.75rem;
+}
+
+.case-study-lock__hint {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: rgba(224, 210, 195, 0.75);
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+
+.case-study-lock__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.case-study-lock__input {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.9375rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(14, 10, 7, 0.9);
+  color: rgba(249, 244, 235, 0.95);
+  outline: none;
+}
+
+.case-study-lock__input:focus {
+  border-color: rgba(214, 123, 61, 0.55);
+  box-shadow: 0 0 0 3px rgba(214, 123, 61, 0.15);
+}
+
+.case-study-lock__submit {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(214, 123, 61, 0.95);
+  color: #1c1410;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.case-study-lock__submit:hover {
+  background: rgba(229, 140, 76, 1);
+}
+
+.case-study-lock__submit:active {
+  transform: scale(0.98);
+}
+
+.case-study-lock__submit:focus-visible {
+  outline: 2px solid rgba(249, 244, 235, 0.85);
+  outline-offset: 2px;
+}
+
+.case-study-lock__error {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 160, 140, 0.95);
+  margin: 0.85rem 0 0;
+  line-height: 1.4;
+}
+
+.case-study-lock-root .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
