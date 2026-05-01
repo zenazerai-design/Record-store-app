@@ -24,6 +24,27 @@ npx serve .
 
 Then open <http://localhost:8000>.
 
+## GitHub Pages (why you might see 404)
+
+Publishing is controlled in the repository **Settings**, not by `git push` alone.
+
+**Easiest setup (no Actions required):**
+
+1. GitHub repo → **Settings** → **Pages** (left sidebar).
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. **Branch:** `main`, **Folder:** `/ (root)` → **Save**.
+4. Wait about one minute. The project URL is  
+   `https://<user-or-org>.github.io/Record-store-app/`  
+   (folder name must match the repository name, including capitals).
+
+**If you use the included Actions workflow instead:**
+
+1. **Source** must be **GitHub Actions** (not “Deploy from a branch” at the same time).
+2. Open the **Actions** tab and ensure **Deploy to GitHub Pages** succeeded.
+3. First run: check **Settings → Environments → `github-pages`** and approve any waiting deployment/waitlisted protection rules.
+
+**Private repository:** GitHub often does **not** serve a **public** `github.io` site for **private** repos unless your plan/settings allow “GitHub Pages on private repositories.” If Pages stays blank or 404, try making the repo **public** under **Settings → General → Danger Zone** (only if that is acceptable), or host on Netlify/Vercel/Cloudflare Pages instead.
+
 ## File structure
 
 ```
