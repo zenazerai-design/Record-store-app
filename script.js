@@ -960,7 +960,7 @@ function mountSpotifyFab() {
           top:        '50%',
           left:       '50%',
           width:
-            'min(calc(1220px * 2 / 3 * 1.21), max(min(calc(94vw * 2 / 3 * 1.21), calc((100svh - 168px) * 1.3552)), calc(71vw)))',
+            'min(calc(1540px * 2 / 3 * 1.21), max(min(calc(96vw * 2 / 3 * 1.24), calc((100svh - 168px) * 1.48)), calc(78vw)))',
           margin:     '0',
           willChange: 'transform, opacity',
         });
