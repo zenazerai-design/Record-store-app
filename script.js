@@ -1204,7 +1204,21 @@ function mountSpotifyFab() {
 
     const allReveal = document.querySelectorAll('.reveal');
 
+    /** Desktop + late font layout can leave blocks at opacity:0 if IO misses once; re-run after paint. */
+    function unblockVisibleReveals() {
+      const slack = Math.min(window.innerHeight * 0.22, 260);
+      document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+        const r = el.getBoundingClientRect();
+        const viewBottom = window.innerHeight + slack;
+        if (r.top < viewBottom && r.bottom > -slack) {
+          el.classList.add('is-in');
+          revealObserver?.unobserve(el);
+        }
+      });
+    }
+
     if ('IntersectionObserver' in window) {
+      /* Positive bottom margin = treat “near viewport” as intersecting (large monitors, no scroll yet). */
       revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1212,21 +1226,17 @@ function mountSpotifyFab() {
             revealObserver.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      }, { rootMargin: '0px 0px 45% 0px', threshold: 0.02 });
       allReveal.forEach(el => revealObserver.observe(el));
-      /* Sections already in viewport (e.g. after SPA navigate + scroll 0 jump) sometimes miss
-         the first IntersectionObserver frame; unblock immediately-visible blocks. */
-      requestAnimationFrame(() => {
-        document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
-          const r = el.getBoundingClientRect();
-          const slack = Math.min(window.innerHeight * 0.12, 120);
-          const viewBottom = window.innerHeight + slack;
-          if (r.top < viewBottom && r.bottom > -slack) {
-            el.classList.add('is-in');
-            revealObserver?.unobserve(el);
-          }
-        });
-      });
+      requestAnimationFrame(unblockVisibleReveals);
+      setTimeout(unblockVisibleReveals, 120);
+      setTimeout(unblockVisibleReveals, 450);
+      setTimeout(unblockVisibleReveals, 1100);
+      if (document.readyState === 'complete') {
+        requestAnimationFrame(unblockVisibleReveals);
+      } else {
+        window.addEventListener('load', () => requestAnimationFrame(unblockVisibleReveals), { once: true });
+      }
 
       /* IO can still occasionally miss sections (scroll timing, WKWebKit, SPA swap). Guarantee visibility. */
       if (revealSafetyTimerId !== null) clearTimeout(revealSafetyTimerId);
@@ -1236,7 +1246,7 @@ function mountSpotifyFab() {
           el.classList.add('is-in');
           revealObserver?.unobserve(el);
         });
-      }, 3200);
+      }, 2200);
     } else {
       allReveal.forEach(el => el.classList.add('is-in'));
     }
