@@ -1,4 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "version": 2
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.zenazerai.com" }],
+      "destination": "https://zenazerai.com/:path*",
+      "permanent": true
+    }
+  ]
 }
