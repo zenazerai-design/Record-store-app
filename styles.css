@@ -2645,6 +2645,41 @@ body.page-about .nav__links a:hover {
   max-width: 48ch;
 }
 
+.cs-page-hero__recruiter {
+  margin: 12px 0 0;
+  padding: 14px 16px;
+  border-left: 2px solid rgba(214, 123, 61, 0.45);
+  background: rgba(214, 123, 61, 0.06);
+  border-radius: 0 12px 12px 0;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(237, 225, 205, 0.88);
+  max-width: 52ch;
+}
+.cs-page-hero__recruiter-label {
+  display: inline-block;
+  margin-right: 0.35em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: var(--amber-2);
+}
+.cs-passphrase {
+  display: inline-block;
+  margin: 0 0.12em;
+  padding: 0.12em 0.45em;
+  font-family: var(--mono);
+  font-size: 0.88em;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 234, 215, 0.18);
+  background: rgba(14, 10, 7, 0.55);
+  color: var(--cream);
+  white-space: nowrap;
+}
+
 .cs-page-hero--ai-explore {
   padding-bottom: 28px;
 }
@@ -11515,6 +11550,18 @@ html.case-study-locked body > *:not(#case-study-lock-root) {
   color: rgba(224, 210, 195, 0.75);
   margin: 0 0 1.25rem;
   line-height: 1.5;
+}
+.case-study-lock__hint--recruiter-tip {
+  margin-bottom: 0.35rem;
+}
+.case-study-lock__hint--secondary {
+  margin-bottom: 1.05rem;
+  font-size: 0.8125rem;
+  color: rgba(224, 210, 195, 0.62);
+}
+.case-study-lock__hint-strong {
+  color: rgba(245, 234, 215, 0.9);
+  font-weight: 600;
 }
 
 .case-study-lock__form {
