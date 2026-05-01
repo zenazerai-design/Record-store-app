@@ -558,10 +558,18 @@ function mountSpotifyFab() {
     return false;
   }
 
+  /** Last path segment as a lowercased *.html filename; directory roots become index.html.
+   *  Fixes body.page-home and nav state when the URL is "/" (Vercel apex) or …/Record-store-app/ (GitHub Pages).
+   */
   function filenameKey(pathname) {
-    if (!pathname) return '';
-    const seg = pathname.split('/').pop() || pathname;
-    return seg.replace(/#.*/, '').toLowerCase();
+    if (!pathname) return 'index.html';
+    const pathOnly = pathname.split('#')[0].replace(/\\/g, '/');
+    const noTrail = pathOnly.replace(/\/+$/, '');
+    if (!noTrail) return 'index.html';
+    const last = noTrail.slice(noTrail.lastIndexOf('/') + 1);
+    const key = last.toLowerCase().replace(/;.*/, '');
+    if (!key.endsWith('.html')) return 'index.html';
+    return key;
   }
 
   /** Client-side gate for password-protected case study HTML (SPA + full page loads). Not security-grade. */
