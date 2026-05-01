@@ -61,6 +61,22 @@ function mountSpotifyFab() {
 }
 
 (() => {
+  /* GitHub project pages 301 to /repo/, but the address bar can briefly stay /repo.
+     That breaks relative resolution (e.g. gwi.html → /gwi.html). Match the canonical URL. */
+  try {
+    if (location.protocol !== 'file:' && location.hostname.endsWith('github.io')) {
+      const p = location.pathname;
+      if (!p.endsWith('/') && !/\.html$/i.test(p)) {
+        const segs = p.split('/').filter(Boolean);
+        if (segs.length === 1) {
+          history.replaceState(history.state || {}, '', `${p}/${location.search}${location.hash}`);
+        }
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
   mountSpotifyFab();
 
   let recordStackCleanup = () => {};
@@ -727,25 +743,30 @@ function mountSpotifyFab() {
     document.body.style.overflow = '';
   }
 
+  function navigateHard(destination) {
+    closeMobileNav();
+    window.location.href = destination;
+  }
+
   async function spaNavigate(rawUrl, { replace = false } = {}) {
     const spaMain = document.getElementById('spa-main');
     let url;
     try {
       url = new URL(rawUrl, document.baseURI);
     } catch {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
     const here = new URL(window.location.href);
 
     if (!sameOriginForSpa(url, here)) {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
     if (!spaMain || !isInternalHtmlPageUrl(url)) {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
@@ -761,12 +782,12 @@ function mountSpotifyFab() {
         cache: 'no-store',
       });
     } catch {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
     if (!res.ok) {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
@@ -774,7 +795,7 @@ function mountSpotifyFab() {
     const doc  = new DOMParser().parseFromString(html, 'text/html');
     const next = doc.getElementById('spa-main');
     if (!next) {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
@@ -795,7 +816,7 @@ function mountSpotifyFab() {
       if (replace) history.replaceState({ spa: 1 }, '', historyPath);
       else history.pushState({ spa: 1 }, '', historyPath);
     } catch {
-      window.location.href = rawUrl;
+      navigateHard(rawUrl);
       return;
     }
 
@@ -1580,8 +1601,14 @@ function mountSpotifyFab() {
     if (e.button !== 0) return;
     const a = e.target.closest('a[href]');
     if (!a) return;
-    if (a.target === '_blank' || a.hasAttribute('download')) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.target === '_blank' || a.hasAttribute('download')) {
+      if (a.closest('#mobile-nav')) closeMobileNav();
+      return;
+    }
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      if (a.closest('#mobile-nav')) closeMobileNav();
+      return;
+    }
     if (a.hasAttribute('data-no-spa')) return;
 
     const hrefAttr = a.getAttribute('href');
