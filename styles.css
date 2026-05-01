@@ -5635,6 +5635,19 @@ body.page-about .nav__links a:hover {
   margin: 0;
 }
 
+.csd-context__body a.csd-inline-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(214, 123, 61, 0.35);
+  text-underline-offset: 0.2em;
+  transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
+}
+
+.csd-context__body a.csd-inline-link:hover,
+.csd-context__body a.csd-inline-link:focus-visible {
+  color: var(--amber);
+  text-decoration-color: rgba(214, 123, 61, 0.55);
+}
+
 .csd-context__title-note {
   font-family: var(--sans);
   font-size: 0.45em;
@@ -7400,18 +7413,20 @@ body.page-about .nav__links a:hover {
 }
 
 .ba-booking-beforeafter .csd-beforeafter__img-wrap {
-  aspect-ratio: auto;
+  aspect-ratio: 16 / 10;
   min-height: 0;
   min-width: 0;
 }
 
 .ba-booking-beforeafter .csd-beforeafter__img-wrap img {
   width: 100%;
-  height: auto;
+  height: 100%;
   min-width: 0;
+  object-fit: cover;
   display: block;
 }
 
+/* Same 16×10 frame as “After”; before art is wider — cover + pin fills the box (phones stay one row height). */
 .ba-booking-beforeafter .csd-beforeafter__panel--ba-before .csd-beforeafter__img-wrap {
   border-width: 2px;
   border-color: rgba(239, 228, 203, 0.35);
@@ -7419,6 +7434,15 @@ body.page-about .nav__links a:hover {
     radial-gradient(120% 80% at 50% 0%, rgba(239, 228, 203, 0.12), transparent 55%),
     var(--surface);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.ba-booking-beforeafter .csd-beforeafter__panel--ba-before .csd-beforeafter__img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .ba-booking-beforeafter .csd-beforeafter__panel--ba-after .csd-beforeafter__img-wrap {
