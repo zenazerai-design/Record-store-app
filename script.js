@@ -583,6 +583,10 @@ function mountSpotifyFab() {
     return false;
   }
 
+  function isHomePageKey(key) {
+    return key === 'index.html' || key === 'home.html';
+  }
+
   /** Last path segment as a lowercased *.html filename; directory roots become index.html.
    *  Fixes body.page-home and nav state when the URL is "/" (Vercel apex) or …/Record-store-app/ (GitHub Pages).
    */
@@ -703,7 +707,7 @@ function mountSpotifyFab() {
     }
     let key = filenameKey(url.pathname);
     if (!key) key = 'index.html';
-    document.body.classList.toggle('page-home', key === 'index.html');
+    document.body.classList.toggle('page-home', isHomePageKey(key));
     document.body.classList.toggle('page-about', key === 'about.html');
   }
 
