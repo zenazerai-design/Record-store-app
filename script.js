@@ -658,8 +658,7 @@ function mountSpotifyFab() {
       '<div class="case-study-lock__panel" role="dialog" aria-modal="true" aria-labelledby="case-study-lock-title">' +
       '<p class="kicker case-study-lock__kicker">Case study</p>' +
       '<h2 class="case-study-lock__title" id="case-study-lock-title">This page is password protected</h2>' +
-      '<p class="case-study-lock__hint case-study-lock__hint--recruiter-tip"><span class="case-study-lock__hint-strong">Tip for recruiters:</span> the passphrase is&nbsp;on the&nbsp;Case&nbsp;Studies&nbsp;landing page&nbsp;(first&nbsp;line&nbsp;beneath&nbsp;the&nbsp;intro).</p>' +
-      '<p class="case-study-lock__hint case-study-lock__hint--secondary">Everyone else:&nbsp;enter the passphrase below, or email for access.</p>' +
+      '<p class="case-study-lock__hint case-study-lock__hint--secondary">Enter the passphrase below, or email for access.</p>' +
       '<form class="case-study-lock__form" id="case-study-lock-form">' +
       '<label class="sr-only" for="case-study-lock-input">Password</label>' +
       '<input type="password" id="case-study-lock-input" class="case-study-lock__input" name="password" autocomplete="current-password" required />' +
