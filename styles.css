@@ -626,7 +626,13 @@ a { color: inherit; text-decoration: none; }
   max-width: var(--maxw);
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 4vw, 56px);
+  gap: clamp(36px, 4vw, 64px);
+}
+
+@media (max-width: 880px) {
+  .crate {
+    gap: clamp(44px, 5.5vw, 64px);
+  }
 }
 
 /* Homepage catalogue: allow slightly wider strip than generic --maxw (sticky stack clips from JS width on desktop) */
@@ -1534,6 +1540,27 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
+/* Web / tablet grid: equal card heights, links bottom-aligned across each row */
+@media (min-width: 561px) {
+  .side-acts__row > .sa-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .side-acts__row .sa-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    gap: 6px;
+  }
+
+  .side-acts__row .sa-card__link {
+    margin-top: auto;
+  }
+}
+
 .sa-card {
   width: 100%;
 }
@@ -2242,16 +2269,8 @@ a { color: inherit; text-decoration: none; }
     gap: 14px;
   }
 
-  /* Homepage: match pre-tweak stacked-record foot / pills rhythm */
-  .page-home .works .record__pills--hero {
-    padding: 0 20px 16px;
-  }
-
-  /* Homepage only: simpler mobile catalogue cards (image · cat · client · tags); card tap → case study */
+  /* Homepage mobile: match case-studies .cs-card; keep sector | audience (hide A1 · only) */
   .page-home .works .record__cat-ndx {
-    display: none;
-  }
-  .page-home .works .record__face-foot {
     display: none;
   }
   .page-home .works .record {
@@ -2262,29 +2281,169 @@ a { color: inherit; text-decoration: none; }
     outline-offset: 3px;
     border-radius: var(--radius);
   }
-  .page-home .works .record__face {
-    grid-template-rows: auto auto auto auto;
+
+  .page-home .works .record__cat {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 16px 0 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.35;
+    color: var(--accent, var(--amber));
   }
-  .page-home .works .record__title,
-  .page-home .works .record__summary,
-  .page-home .works .record__stats {
+
+  .page-home .works .record__front {
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .page-home .works .record__face {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto auto auto;
+    row-gap: 0;
+    column-gap: 12px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .page-home .works .record__face::before,
+  .page-home .works .record__face::after {
     display: none;
   }
+
+  .page-home .works .record__media {
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+
+  .page-home .works .record__image {
+    height: 240px;
+    max-height: 240px;
+    aspect-ratio: unset;
+    border-radius: 6px;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    background:
+      color-mix(in srgb, var(--accent, var(--amber)) 10%, var(--bg-2));
+    background-size: 100%;
+  }
+
+  .page-home .works .record__image::before {
+    border-radius: 6px;
+  }
+
+  .page-home .works .record__image > img {
+    border-radius: 6px;
+  }
+
+  .page-home .works .record__image::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent, var(--amber));
+    z-index: 4;
+    pointer-events: none;
+  }
+
   .page-home .works .record__client {
-    font-size: clamp(20px, 5.2vw, 26px);
+    grid-row: 3;
+    grid-column: 1;
+    align-self: start;
+    padding: 8px 0 0;
+    margin: 0;
+    font-family: var(--serif);
+    /* Match .cs-card__project (case-studies listing) so namerow height matches */
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 600;
-    letter-spacing: 0.01em;
-    line-height: 1.15;
-    padding: 0 20px 14px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--cream);
   }
-  .page-home .works .record__pills--hero span {
-    font-size: clamp(10px, 2.6vw, 11px);
-    letter-spacing: 0.1em;
-    padding: 6px 11px 5px;
+
+  .page-home .works .record__face-foot {
+    display: flex !important;
+    grid-row: 3;
+    grid-column: 2;
+    align-self: start;
+    padding: 8px 0 0;
+    margin: 0;
+    border: none;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0;
   }
-  .page-home .works .record__pills--hero {
+
+  .page-home .works .record__face-foot .record__stats {
+    display: none !important;
+  }
+
+  .page-home .works .record__face-cta {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--accent, var(--amber)) 90%, var(--muted));
+    gap: 6px;
+  }
+
+  .page-home .works .record__face-cta:hover {
+    opacity: 0.7;
+    gap: 10px;
+    transform: none;
+    background: none;
+    color: color-mix(in srgb, var(--accent, var(--amber)) 90%, var(--muted));
+  }
+
+  .page-home .works .record__title {
+    display: block !important;
     grid-row: 4;
-    gap: 5px;
+    grid-column: 1 / -1;
+    font-family: var(--sans, Inter, sans-serif);
+    font-weight: 400;
+    font-style: normal;
+    /* Match .cs-card__title */
+    font-size: clamp(13px, 1.1vw, 15px);
+    line-height: 1.5;
+    letter-spacing: 0;
+    color: var(--ink-soft);
+    /* Same as .cs-card__body gap between namerow and title (10px) */
+    margin: 10px 0 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .page-home .works .record__summary,
+  .page-home .works .record__stats {
+    display: none !important;
+  }
+
+  .page-home .works .record__pills--hero {
+    grid-row: 5;
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 10px 0 0;
+    border-bottom: none;
+    gap: 7px;
+  }
+
+  .page-home .works .record__pills--hero span {
+    font-size: 11.5px;
+    letter-spacing: 0.11em;
+    padding: 8px 14px 7px;
   }
 
   .record__face-foot-actions {
@@ -2679,7 +2838,7 @@ body.page-about .nav__links a:hover {
 .cs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 64px 28px;
+  gap: 72px 36px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2908,13 +3067,16 @@ body.page-about .nav__links a:hover {
 @media (max-width: 640px) {
   .cs-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 40px;
   }
   .cs-card__image {
     height: 240px;
   }
   .cs-card__body {
     padding: 16px 0 0;
+  }
+  .cs-card__project {
+    font-weight: 600;
   }
 }
 
