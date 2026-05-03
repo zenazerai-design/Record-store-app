@@ -85,6 +85,9 @@ function mountSpotifyFab() {
   let aiSleeveCleanup    = () => {};
   let pivotDropCleanup  = () => {};
   let pinsFlowCleanup   = () => {};
+  let careerAgentCleanup = () => {};
+  /** Invalidates async career-agent script load when SPA tears down before onload. */
+  let careerAgentLoadGen = 0;
   let revealObserver     = null;
   /** Clears flaky IntersectionObserver “stuck invisible” fallback. */
   let revealSafetyTimerId = /** @type {ReturnType<typeof setTimeout> | null} */ (null);
@@ -105,6 +108,8 @@ function mountSpotifyFab() {
     pivotDropCleanup = () => {};
     pinsFlowCleanup();
     pinsFlowCleanup = () => {};
+    careerAgentCleanup();
+    careerAgentCleanup = () => {};
     if (revealSafetyTimerId !== null) {
       clearTimeout(revealSafetyTimerId);
       revealSafetyTimerId = null;
@@ -708,7 +713,8 @@ function mountSpotifyFab() {
     let key = filenameKey(url.pathname);
     if (!key) key = 'index.html';
     document.body.classList.toggle('page-home', isHomePageKey(key));
-    document.body.classList.toggle('page-about', key === 'about.html');
+    document.body.classList.toggle('page-about', key === 'about.html' || key === 'career-agent-preview.html');
+    document.body.classList.toggle('page-career-agent-preview', key === 'career-agent-preview.html');
   }
 
   const CASE_STUDY_DETAIL_PAGES = new Set([
@@ -1255,6 +1261,56 @@ function mountSpotifyFab() {
     }
   }
 
+  /**
+   * Loads career-agent.js once (any entry page) so SPA navigation to about.html works.
+   * @returns {() => void}
+   */
+  function initCareerAgent() {
+    careerAgentCleanup();
+    careerAgentCleanup = () => {};
+
+    const root = document.getElementById('career-agent');
+    if (!root) return () => {};
+
+    const gen = careerAgentLoadGen;
+
+    let innerCleanup = () => {};
+
+    function applyInit() {
+      if (gen !== careerAgentLoadGen) return;
+      if (!root.isConnected) return;
+      if (typeof window.PortfolioCareerAgent?.init !== 'function') return;
+      innerCleanup();
+      innerCleanup = window.PortfolioCareerAgent.init(root) || (() => {});
+    }
+
+    if (typeof window.PortfolioCareerAgent?.init === 'function') {
+      applyInit();
+    } else {
+      const existing = document.querySelector('script[data-portfolio-career-agent]');
+      if (existing) {
+        existing.addEventListener('load', () => applyInit(), { once: true });
+      } else {
+        const ref = document.querySelector('script[src*="script.js"]');
+        const base = ref && ref.src ? ref.src.replace(/script\.js(\?[^#]*)?$/i, '') : '';
+        const s = document.createElement('script');
+        s.src = `${base}career-agent.js`;
+        s.async = true;
+        s.setAttribute('data-portfolio-career-agent', '1');
+        s.addEventListener('load', () => {
+          applyInit();
+        });
+        document.head.appendChild(s);
+      }
+    }
+
+    return () => {
+      innerCleanup();
+      innerCleanup = () => {};
+      careerAgentLoadGen += 1;
+    };
+  }
+
   function initTrackCards() {
     const cards = document.querySelectorAll('.track-card');
     if (!cards.length) return;
@@ -1388,6 +1444,7 @@ function mountSpotifyFab() {
       aiSleeveCleanup    = initAISleeves();
       pivotDropCleanup   = initGwiPivotDrop();
       pinsFlowCleanup    = initPinsPublishFlow();
+      careerAgentCleanup = initCareerAgent();
       initCaseStudyRecordClicks();
       setupRevealOnScroll();
       initTrackCards();

@@ -25,9 +25,18 @@ jobs:
 
       - uses: actions/configure-pages@v4
 
+      - name: Prepare site (exclude draft pages from deploy)
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='career-agent-preview.html' \
+            ./ _site/
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - uses: actions/deploy-pages@v4
         id: deployment
