@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+  (function () {
+    if (location.protocol === "file:") return;
+    var p = location.pathname;
+    var dir;
+    if (/\.html?$/i.test(p)) dir = p.replace(/[^/]+$/, "");
+    else if (p.endsWith("/")) dir = p;
+    else {
+      var i = p.lastIndexOf("/");
+      dir = i <= 0 ? "/" : p.slice(0, i + 1);
+    }
+    if (!dir || dir === "/") return;
+    var b = document.createElement("base");
+    b.href = dir;
+    var head = document.head;
+    var cs = head.querySelector("meta[charset]");
+    if (!cs) { head.insertBefore(b, head.firstChild); return; }
+    if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+    else head.appendChild(b);
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Slide templates (Figma export) | Zena Zerai</title>
+  <meta name="description" content="Local-only presentation slide HTML templates for Figma import. Not part of public site navigation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <style id="sfig-shared-css">
+    /* Paste this block once alongside any copied <section class="sfig-slide"> (see Copy shared CSS). */
+    .sfig-page {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      padding-bottom: 80px;
+    }
+    .sfig-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 20px;
+      padding: 14px var(--pad);
+      background: rgba(14, 11, 8, 0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .sfig-toolbar__title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+    .sfig-toolbar__hint {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 52ch;
+    }
+    .sfig-toolbar__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-left: auto;
+    }
+    .sfig-copy--ghost {
+      background: transparent;
+      color: var(--amber-2);
+      border-color: var(--line);
+    }
+    .sfig-copy--ghost:hover {
+      background: var(--surface);
+      border-color: var(--amber);
+      color: var(--ink);
+    }
+    .sfig-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      padding: 16px var(--pad) 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .sfig-toc a {
+      color: var(--ink-soft);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .sfig-toc a:hover { color: var(--amber-2); }
+
+    .sfig-stage-wrap {
+      padding: 28px var(--pad);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+    .sfig-stage {
+      /* Preview scale: logical slide is 1280×720 (16:9); adjust --sfig-w / --sfig-h to match your Figma frame */
+      --sfig-w: 1280px;
+      --sfig-h: 720px;
+      --sfig-scale: 0.42;
+      width: calc(var(--sfig-w) * var(--sfig-scale));
+      height: calc(var(--sfig-h) * var(--sfig-scale));
+      position: relative;
+    }
+    @media (max-width: 700px) {
+      .sfig-stage { --sfig-scale: 0.28; }
+    }
+    .sfig-stage__inner {
+      width: var(--sfig-w);
+      height: var(--sfig-h);
+      transform: scale(var(--sfig-scale));
+      transform-origin: top left;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .sfig-slide {
+      width: var(--sfig-w, 1280px);
+      height: var(--sfig-h, 720px);
+      box-sizing: border-box;
+      background: linear-gradient(165deg, var(--bg-2) 0%, var(--bg) 55%, #0a0806 100%);
+      border: 1px solid var(--line);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 48px 56px 40px;
+    }
+    .sfig-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.85'/></svg>");
+    }
+    .sfig-slide__chrome {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .sfig-slide__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .sfig-slide__label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sfig-copy {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--amber);
+      border: 1px solid var(--amber);
+      border-radius: 2px;
+      padding: 8px 14px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .2s var(--ease), border-color .2s var(--ease);
+    }
+    .sfig-copy:hover {
+      background: var(--amber-2);
+      border-color: var(--amber-2);
+    }
+    .sfig-copy:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 2px;
+    }
+    .sfig-slide__body {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sfig-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .sfig-display {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(42px, 4.2vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+    .sfig-display .italic { color: var(--amber-2); }
+    .sfig-lead {
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 42ch;
+    }
+    .sfig-h2 {
+      font-family: var(--serif);
+      font-size: 36px;
+      line-height: 1.12;
+      margin: 0 0 14px;
+      font-weight: 400;
+    }
+    .sfig-h3 {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      margin: 0 0 10px;
+    }
+    .sfig-p {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0 0 12px;
+    }
+    .sfig-p:last-child { margin-bottom: 0; }
+
+    .sfig-cover {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      min-height: 0;
+    }
+    @media (max-width: 900px) {
+      .sfig-cover { grid-template-columns: 1fr; }
+    }
+    .sfig-cover__text { min-width: 0; }
+    .sfig-cover__visual {
+      border-radius: var(--radius);
+      border: 1px dashed var(--line);
+      background: rgba(27, 20, 14, 0.6);
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Case study cover: title + hook + hero image */
+    .sfig-cs-cover {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 40px;
+      align-items: center;
+      min-height: 0;
+    }
+    .sfig-cs-cover__text {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sfig-cs-cover__text .sfig-display {
+      max-width: none;
+    }
+    .sfig-cs-cover__text .sfig-meta-row {
+      margin-top: 20px;
+      padding-top: 0;
+    }
+    .sfig-cs-cover__visual {
+      border-radius: var(--radius);
+      border: 1px dashed var(--line);
+      background: rgba(27, 20, 14, 0.65);
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      max-height: 340px;
+      justify-self: end;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.35;
+      padding: 16px;
+    }
+
+    .sfig-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      flex: 1;
+      min-height: 0;
+      align-items: start;
+    }
+    .sfig-grid-2--valign-center { align-items: center; }
+
+    .sfig-toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sfig-toc-list li {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      align-items: baseline;
+      font-family: var(--sans);
+      font-size: 17px;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+    .sfig-toc-list li:last-child { border-bottom: 0; }
+    .sfig-toc-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.06em;
+    }
+
+    .sfig-bullets {
+      margin: 0;
+      padding: 0 0 0 22px;
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .sfig-bullets li { margin-bottom: 10px; }
+    .sfig-bullets li::marker { color: var(--amber); }
+
+    .sfig-img-placeholder {
+      border-radius: var(--radius);
+      border: 1px dashed var(--line);
+      background: rgba(21, 16, 11, 0.85);
+      aspect-ratio: 4 / 3;
+      max-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .sfig-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: auto;
+      padding-top: 20px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sfig-meta-row span { color: var(--ink-soft); }
+
+    .sfig-quote {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px 48px;
+    }
+    .sfig-quote blockquote {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 32px;
+      line-height: 1.25;
+      color: var(--cream);
+      font-style: italic;
+    }
+    .sfig-quote cite {
+      display: block;
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-style: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sfig-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .sfig-stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      text-align: center;
+    }
+    .sfig-stat__val {
+      font-family: var(--serif);
+      font-size: 38px;
+      color: var(--amber-2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .sfig-stat__lbl {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sfig-callout {
+      border-left: 3px solid var(--amber);
+      padding: 14px 18px;
+      background: rgba(27, 20, 14, 0.65);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 12px;
+    }
+    .sfig-callout p {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .sfig-fig {
+      margin: 0;
+    }
+    .sfig-fig .sfig-img-placeholder {
+      max-height: none;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+    .sfig-fig figcaption {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Client poster (hero one-sheet) */
+    .sfig-poster-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      min-height: 0;
+      text-align: center;
+    }
+    .sfig-poster {
+      width: min(380px, 46%);
+      aspect-ratio: 2 / 3;
+      max-height: 520px;
+      border-radius: var(--radius);
+      border: 1px dashed var(--line);
+      background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      padding: 16px;
+    }
+    .sfig-poster-caption {
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 40ch;
+    }
+
+    /* Background mosaic + two text columns */
+    .sfig-slide--mosaic {
+      overflow: hidden;
+    }
+    .sfig-mosaic__bg {
+      position: absolute;
+      inset: -12% -8%;
+      z-index: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      opacity: 0.32;
+      transform: rotate(-2.5deg) scale(1.06);
+      pointer-events: none;
+    }
+    .sfig-mosaic__tile {
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sfig-mosaic__content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 44px;
+      align-content: center;
+      padding-top: 8px;
+    }
+    .sfig-mosaic__content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(14, 11, 8, 0.88) 0%, rgba(14, 11, 8, 0.55) 45%, rgba(14, 11, 8, 0.75) 100%);
+      border-radius: var(--radius);
+      margin: -8px;
+    }
+
+    /* Bold statement (type-only) */
+    .sfig-statement {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 32px 56px;
+    }
+    .sfig-statement__text {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 62px);
+      line-height: 1.06;
+      font-weight: 400;
+      color: var(--cream);
+      max-width: 14ch;
+    }
+    .sfig-statement__text strong {
+      font-weight: 400;
+      color: var(--amber-2);
+    }
+    .sfig-statement__line2 {
+      margin: 18px 0 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Section / page break headers */
+    .sfig-break {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+      padding-right: 8%;
+    }
+    .sfig-break--rule .sfig-break__rule {
+      width: 72px;
+      height: 3px;
+      background: var(--amber);
+      margin-bottom: 22px;
+      box-shadow: 0 0 20px rgba(214, 123, 61, 0.45);
+    }
+    .sfig-break--rule .sfig-display {
+      font-size: clamp(44px, 4.5vw, 58px);
+      margin-bottom: 12px;
+    }
+    .sfig-break--center {
+      align-items: center;
+      text-align: center;
+      padding-right: 0;
+    }
+    .sfig-break--center .sfig-break__rule {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .sfig-break__num {
+      font-family: var(--serif);
+      font-size: clamp(72px, 10vw, 120px);
+      line-height: 0.9;
+      color: var(--line);
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+    .sfig-break__num span {
+      color: rgba(138, 122, 102, 0.45);
+    }
+
+    /* Three columns: optional image + header + subcopy */
+    .sfig-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px 28px;
+      flex: 1;
+      min-height: 0;
+      align-items: start;
+      margin-top: 6px;
+    }
+    .sfig-trio__cell {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+    .sfig-trio__img {
+      aspect-ratio: 16 / 10;
+      max-height: 120px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px dashed var(--line);
+      background: rgba(21, 16, 11, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .sfig-trio__img.is-empty {
+      display: none;
+    }
+    .sfig-trio__title {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.15;
+      margin: 0;
+      color: var(--ink);
+    }
+    .sfig-trio__copy {
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* Prototype / screen recording video frame */
+    .sfig-proto {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sfig-proto__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px 24px;
+    }
+    .sfig-proto__head .sfig-h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+    .sfig-proto__badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--line);
+      padding: 5px 10px;
+      border-radius: 2px;
+    }
+    .sfig-proto__frame {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px dashed var(--line);
+      background: radial-gradient(ellipse 80% 70% at 50% 45%, rgba(27, 20, 14, 0.95) 0%, var(--bg-2) 72%);
+      aspect-ratio: 16 / 9;
+      max-height: 380px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sfig-proto__play {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(214, 123, 61, 0.2);
+      border: 2px solid var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 28px rgba(214, 123, 61, 0.25);
+    }
+    .sfig-proto__play svg {
+      margin-left: 4px;
+      opacity: 0.95;
+    }
+    .sfig-proto__hint {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      max-width: 90%;
+    }
+    .sfig-proto__cap {
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 70ch;
+    }
+
+    .sfig-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      z-index: 200;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--cream);
+      padding: 10px 18px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: transform .35s var(--ease), opacity .35s var(--ease);
+      pointer-events: none;
+    }
+    .sfig-toast.sfig-toast--on {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="sfig-page">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="sfig-toolbar">
+    <p class="sfig-toolbar__title">Slide templates · Figma</p>
+    <p class="sfig-toolbar__hint">Not linked from the public site (<code style="font-size:12px;color:var(--amber-2);">noindex</code>). <strong style="color:var(--cream);font-weight:600;">Copy all slides</strong> or <strong style="color:var(--cream);font-weight:600;">Download .html</strong> bundles every template into <strong style="color:var(--cream);font-weight:600;">one</strong> document so a freemium HTML importer often counts it as <strong style="color:var(--cream);font-weight:600;">one</strong> import; split frames in Figma afterward. Per-slide: <strong style="color:var(--cream);font-weight:600;">Copy for Figma</strong>, or <strong style="color:var(--cream);font-weight:600;">Copy shared CSS</strong> + <strong style="color:var(--cream);font-weight:600;">Copy HTML</strong>. Preview: <code style="font-size:12px;">.sfig-stage</code>; slide: <code style="font-size:12px;">1280×720</code>.</p>
+    <div class="sfig-toolbar__actions">
+      <button type="button" class="sfig-copy" id="sfig-copy-all-figma">Copy all slides</button>
+      <button type="button" class="sfig-copy sfig-copy--ghost" id="sfig-download-all-figma">Download .html</button>
+      <button type="button" class="sfig-copy" id="sfig-copy-shared-css">Copy shared CSS</button>
+    </div>
+  </header>
+
+  <nav class="sfig-toc" aria-label="Slide anchors">
+    <a href="#slide-cover">Cover</a>
+    <a href="#slide-intro">Intro</a>
+    <a href="#slide-contents">Contents</a>
+    <a href="#slide-career">Career</a>
+    <a href="#slide-cs-cover">CS cover</a>
+    <a href="#slide-cs-section">CS section</a>
+    <a href="#slide-cs-split">CS split</a>
+    <a href="#slide-cs-bullets">CS bullets</a>
+    <a href="#slide-cs-quote">CS quote</a>
+    <a href="#slide-cs-figure">CS figure</a>
+    <a href="#slide-proto-video">Proto video</a>
+    <a href="#slide-cs-stats">CS stats</a>
+    <a href="#slide-cs-callout">CS callout</a>
+    <a href="#slide-client-poster">Client poster</a>
+    <a href="#slide-mosaic">Mosaic + copy</a>
+    <a href="#slide-statement">Statement</a>
+    <a href="#slide-break-rule">Break · rule</a>
+    <a href="#slide-break-num">Break · num</a>
+    <a href="#slide-trio">Trio blocks</a>
+  </nav>
+
+  <div class="sfig-stage-wrap">
+
+    <!-- ——— Cover ——— -->
+    <div class="sfig-stage" id="slide-cover">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Cover" aria-label="Cover slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Cover</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-cover">
+              <div class="sfig-cover__text">
+                <p class="sfig-kicker">Presentation title</p>
+                <h1 class="sfig-display">Your deck title <em class="italic">goes here</em></h1>
+                <p class="sfig-lead">Subtitle or context line. Swap image in the placeholder for hero art.</p>
+              </div>
+              <div class="sfig-cover__visual" role="img" aria-label="Image placeholder">Cover image · replace</div>
+            </div>
+            <div class="sfig-meta-row">
+              <span>Zena Zerai</span>
+              <span>Senior Product Designer</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Intro ——— -->
+    <div class="sfig-stage" id="slide-intro">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Intro" aria-label="Intro slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Intro</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">About me</p>
+            <h2 class="sfig-h2">Short intro headline</h2>
+            <div class="sfig-grid-2 sfig-grid-2--valign-center" style="margin-top:8px;">
+              <div>
+                <p class="sfig-p">Two or three sentences on who you are, what you focus on, and what this deck covers. Tone can match your site bio.</p>
+                <p class="sfig-p">Second paragraph for craft, sectors, or a hook for the audience.</p>
+              </div>
+              <div class="sfig-img-placeholder" role="img" aria-label="Portrait placeholder">Photo optional</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Contents ——— -->
+    <div class="sfig-stage" id="slide-contents">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Contents" aria-label="Contents slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Contents</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Today</p>
+            <h2 class="sfig-h2">Contents</h2>
+            <ol class="sfig-toc-list" style="margin-top:20px;">
+              <li><span class="sfig-toc-num">01</span> Context and problem</li>
+              <li><span class="sfig-toc-num">02</span> Discovery and constraints</li>
+              <li><span class="sfig-toc-num">03</span> Design approach</li>
+              <li><span class="sfig-toc-num">04</span> Outcomes and learnings</li>
+            </ol>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Career history ——— -->
+    <div class="sfig-stage" id="slide-career">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Career history" aria-label="Career history slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Career</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Background</p>
+            <h2 class="sfig-h2">Career history</h2>
+            <div class="sfig-grid-2" style="margin-top:16px;">
+              <ul class="sfig-bullets">
+                <li>Role, company, years: one line impact.</li>
+                <li>Another milestone or domain shift.</li>
+                <li>Methods you own: research, systems, product craft.</li>
+                <li>Sectors: B2B SaaS, fintech, public sector, etc.</li>
+              </ul>
+              <div class="sfig-img-placeholder" style="max-height:100%;align-self:stretch;" role="img" aria-label="Career visual placeholder">Logo strip / timeline visual</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study cover ——— -->
+    <div class="sfig-stage" id="slide-cs-cover">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study cover" aria-label="Case study cover slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Case study cover</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-cs-cover">
+              <div class="sfig-cs-cover__text">
+                <p class="sfig-kicker">Case study · Client or product</p>
+                <h1 class="sfig-display">Project name <em class="italic">one line hook.</em></h1>
+                <p class="sfig-lead" style="margin-top:8px;">One sentence on scope: what shipped, what you owned, or timeframe.</p>
+                <div class="sfig-meta-row">
+                  <span>Your role</span>
+                  <span>Year</span>
+                  <span>NDA / public</span>
+                </div>
+              </div>
+              <div class="sfig-cs-cover__visual" role="img" aria-label="Case study hero placeholder">Key visual<br>hero / UI / product</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: section title ——— -->
+    <div class="sfig-stage" id="slide-cs-section">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study section" aria-label="Case study section slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS section</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body" style="justify-content:center;">
+            <p class="sfig-kicker">Section label</p>
+            <h2 class="sfig-display" style="font-size:clamp(36px,3.5vw,52px);">Problem framing</h2>
+            <p class="sfig-lead" style="margin-top:16px;max-width:48ch;">Bridge copy: what the team believed, what evidence said, and why design mattered next.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: two column ——— -->
+    <div class="sfig-stage" id="slide-cs-split">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study split" aria-label="Case study two column slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS text + image</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Insight</p>
+            <h2 class="sfig-h2" style="margin-bottom:20px;">Short section title</h2>
+            <div class="sfig-grid-2 sfig-grid-2--valign-center" style="flex:1;">
+              <div>
+                <h3 class="sfig-h3">Subheading</h3>
+                <p class="sfig-p">Body copy explaining the decision, constraint, or user need. Keep to two short paragraphs for slide density.</p>
+                <p class="sfig-p">Optional second paragraph for measurement or handoff detail.</p>
+              </div>
+              <div class="sfig-img-placeholder" role="img" aria-label="UI or diagram placeholder">Screen / diagram</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: bullets ——— -->
+    <div class="sfig-stage" id="slide-cs-bullets">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study bullets" aria-label="Case study bullets slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS bullets</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">What we learned</p>
+            <h2 class="sfig-h2">Takeaways</h2>
+            <ul class="sfig-bullets" style="margin-top:20px;font-size:17px;">
+              <li>First bullet: crisp outcome or behaviour change.</li>
+              <li>Second bullet: tradeoff you navigated.</li>
+              <li>Third bullet: collaboration or governance win.</li>
+              <li>Fourth bullet: what you would do earlier next time.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: quote ——— -->
+    <div class="sfig-stage" id="slide-cs-quote">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study quote" aria-label="Case study quote slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS quote</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-quote">
+              <blockquote>
+                “A credible user or stakeholder quote that reinforces the narrative.”
+                <cite>Role, organisation</cite>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: figure ——— -->
+    <div class="sfig-stage" id="slide-cs-figure">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study figure" aria-label="Case study figure slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS full-width visual</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Solution</p>
+            <h2 class="sfig-h2" style="font-size:28px;margin-bottom:16px;">Caption-led visual slide</h2>
+            <figure class="sfig-fig">
+              <div class="sfig-img-placeholder" role="img" aria-label="Full-width image placeholder">Full-width key screen</div>
+              <figcaption>Figure 1 · Short caption for Figma handoff</figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Prototype video ——— -->
+    <div class="sfig-stage" id="slide-proto-video">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Prototype video" aria-label="Prototype video slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Prototype video</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-proto">
+              <p class="sfig-kicker">Walkthrough · Figma / Principle / browser</p>
+              <div class="sfig-proto__head">
+                <h2 class="sfig-h2">Interactive prototype</h2>
+                <span class="sfig-proto__badge">Replace with still / embed</span>
+              </div>
+              <div class="sfig-proto__frame" role="img" aria-label="Video frame placeholder">
+                <div class="sfig-proto__play" aria-hidden="true">
+                  <svg width="22" height="26" viewBox="0 0 22 26" fill="var(--amber)"><path d="M0 0v26l22-13L0 0z"/></svg>
+                </div>
+                <span class="sfig-proto__hint">16∶9 · drop screen recording or poster frame</span>
+              </div>
+              <p class="sfig-proto__cap">One line on what the clip shows (happy path, edge case, or state change). In Figma: swap this block for a video embed, a GIF, or a linked prototype frame.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: stats ——— -->
+    <div class="sfig-stage" id="slide-cs-stats">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study stats" aria-label="Case study stats slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS metrics</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Impact</p>
+            <h2 class="sfig-h2">Results</h2>
+            <div class="sfig-stats">
+              <div class="sfig-stat">
+                <div class="sfig-stat__val">42%</div>
+                <div class="sfig-stat__lbl">Metric label</div>
+              </div>
+              <div class="sfig-stat">
+                <div class="sfig-stat__val">12k</div>
+                <div class="sfig-stat__lbl">Users / tasks</div>
+              </div>
+              <div class="sfig-stat">
+                <div class="sfig-stat__val">4 wks</div>
+                <div class="sfig-stat__lbl">Time to ship</div>
+              </div>
+            </div>
+            <p class="sfig-p" style="margin-top:20px;max-width:56ch;">Footnote on methodology, baseline, or caveats. Keeps the numbers honest in review.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: callout ——— -->
+    <div class="sfig-stage" id="slide-cs-callout">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Case study callout" aria-label="Case study callout slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS callout</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Constraint</p>
+            <h2 class="sfig-h2">Design principle or decision</h2>
+            <p class="sfig-p" style="margin-top:8px;">Short setup paragraph.</p>
+            <div class="sfig-callout">
+              <p><strong style="color:var(--cream);">Callout:</strong> One focused statement: the rule you enforced, the risk you reduced, or the non-negotiable for the team.</p>
+            </div>
+            <p class="sfig-p" style="margin-top:16px;">Closing line tying back to user or business value.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Client poster ——— -->
+    <div class="sfig-stage" id="slide-client-poster">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Client poster" aria-label="Client poster slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Client poster</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker" style="text-align:center;margin-bottom:4px;">Client · Campaign or brand</p>
+            <div class="sfig-poster-wrap">
+              <div class="sfig-poster" role="img" aria-label="Poster placeholder">Drop poster<br>2∶3</div>
+              <p class="sfig-poster-caption">Optional line: where this ran, your role (art direction, design), or why it mattered for the case study.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Mosaic background + two text blocks ——— -->
+    <div class="sfig-stage" id="slide-mosaic">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide sfig-slide--mosaic" data-slide-name="Mosaic + two columns" aria-label="Background mosaic slide">
+          <div class="sfig-mosaic__bg" aria-hidden="true">
+            <div class="sfig-mosaic__tile">Image</div>
+            <div class="sfig-mosaic__tile">Image</div>
+            <div class="sfig-mosaic__tile">Image</div>
+            <div class="sfig-mosaic__tile">Image</div>
+          </div>
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Mosaic + copy</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Narrative</p>
+            <div class="sfig-mosaic__content">
+              <div>
+                <h3 class="sfig-h3">First text block</h3>
+                <p class="sfig-p">Replace mosaic tiles with photography or UI crops. They sit behind a dark scrim so body copy stays readable.</p>
+                <p class="sfig-p">Keep each column to a short paragraph for deck pacing.</p>
+              </div>
+              <div>
+                <h3 class="sfig-h3">Second text block</h3>
+                <p class="sfig-p">Use this side for contrast: constraints, stakeholder view, or “before” state while the other column sets “after” or insight.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Bold statement (copy only) ——— -->
+    <div class="sfig-stage" id="slide-statement">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Bold statement" aria-label="Bold statement slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Statement</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-statement">
+              <p class="sfig-statement__text">One line that <strong>lands</strong> the idea.</p>
+              <p class="sfig-statement__line2">Optional kicker · edit or delete</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Page break: rule + title ——— -->
+    <div class="sfig-stage" id="slide-break-rule">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Section break (rule)" aria-label="Section break with rule">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Break · rule</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-break sfig-break--rule">
+              <div class="sfig-break__rule" aria-hidden="true"></div>
+              <p class="sfig-kicker">Part two</p>
+              <h2 class="sfig-display">Discovery <em class="italic">&amp; research</em></h2>
+              <p class="sfig-lead" style="margin-top:14px;max-width:42ch;">Optional one line under the break. Delete this paragraph for a cleaner divider.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Page break: big number ——— -->
+    <div class="sfig-stage" id="slide-break-num">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Section break (number)" aria-label="Section break with number">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Break · number</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <div class="sfig-break sfig-break--center">
+              <p class="sfig-break__num" aria-hidden="true"><span>0</span>2</p>
+              <p class="sfig-kicker">Section</p>
+              <h2 class="sfig-display" style="font-size:clamp(40px,4vw,54px);">Design <em class="italic">exploration</em></h2>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Three blocks (image + header + subcopy) ——— -->
+    <div class="sfig-stage" id="slide-trio">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide" data-slide-name="Trio blocks" aria-label="Three column blocks slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Trio</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker">Pillars · or journey stages</p>
+            <h2 class="sfig-h2" style="margin-bottom:4px;">Three parallel ideas</h2>
+            <div class="sfig-trio">
+              <div class="sfig-trio__cell">
+                <div class="sfig-trio__img" role="img" aria-label="Optional image">Icon / thumb</div>
+                <h3 class="sfig-trio__title">First pillar</h3>
+                <p class="sfig-trio__copy">Short subcopy: one or two sentences on this strand.</p>
+              </div>
+              <div class="sfig-trio__cell">
+                <div class="sfig-trio__img is-empty" aria-hidden="true"></div>
+                <h3 class="sfig-trio__title">No image column</h3>
+                <p class="sfig-trio__copy">Middle column has no image: the thumb div uses class is-empty to collapse it. Remove that class when you add art.</p>
+              </div>
+              <div class="sfig-trio__cell">
+                <div class="sfig-trio__img" role="img" aria-label="Optional image">Icon / thumb</div>
+                <h3 class="sfig-trio__title">Third pillar</h3>
+                <p class="sfig-trio__copy">Subcopy for outcomes, enablers, or principles.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sfig-toast" id="sfig-toast" role="status" aria-live="polite">Copied</div>
+
+  <script>
+  (function () {
+    var toast = document.getElementById("sfig-toast");
+    var tTimer;
+    var FONT_LINK =
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n' +
+      '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">\n';
+    var ROOT_SNIPPET =
+      ":root {\n" +
+      "  --bg: #0E0B08;\n" +
+      "  --bg-2: #15100B;\n" +
+      "  --surface: #1B140E;\n" +
+      "  --line: #2A2018;\n" +
+      "  --ink: #F5EFE3;\n" +
+      "  --ink-soft: #C9BEAB;\n" +
+      "  --muted: #8A7A66;\n" +
+      "  --amber: #D67B3D;\n" +
+      "  --amber-2: #E9A05B;\n" +
+      "  --cream: #EFE4CB;\n" +
+      '  --serif: "Instrument Serif", "Times New Roman", serif;\n' +
+      '  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;\n' +
+      '  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;\n' +
+      "  --pad: clamp(20px, 4vw, 56px);\n" +
+      "  --radius: 14px;\n" +
+      "  --ease: cubic-bezier(.2, .7, .15, 1);\n" +
+      "}\n" +
+      ".italic { font-style: italic; color: var(--amber-2); }\n";
+    function showToast(msg) {
+      toast.textContent = msg || "Copied";
+      toast.classList.add("sfig-toast--on");
+      clearTimeout(tTimer);
+      tTimer = setTimeout(function () {
+        toast.classList.remove("sfig-toast--on");
+      }, 2200);
+    }
+    function copyText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        return Promise.resolve();
+      } finally {
+        document.body.removeChild(ta);
+      }
+    }
+    function getSharedHeadBundle() {
+      var el = document.getElementById("sfig-shared-css");
+      var body = (el && el.textContent) ? el.textContent.trim() : "";
+      return (
+        "<!-- Fonts (or keep your own link) -->\n" +
+        FONT_LINK +
+        "<style>\n" +
+        ROOT_SNIPPET +
+        "\n" +
+        body +
+        "\n</style>\n"
+      );
+    }
+
+    function buildAllSlidesDocument() {
+      var slides = document.querySelectorAll(".sfig-slide");
+      var chunks = [];
+      for (var i = 0; i < slides.length; i++) {
+        chunks.push(slides[i].outerHTML);
+      }
+      var deck =
+        '<div class="sfig-deck-bundle" style="display:flex;flex-direction:column;align-items:center;gap:40px;padding:48px 24px;background:#0E0B08;">\n' +
+        chunks.join("\n") +
+        "\n</div>";
+      return (
+        "<!DOCTYPE html>\n" +
+        "<html lang=\"en\">\n" +
+        "<head>\n" +
+        "<meta charset=\"utf-8\">\n" +
+        "<title>Slide bundle · Zena Zerai</title>\n" +
+        getSharedHeadBundle() +
+        "</head>\n" +
+        "<body style=\"margin:0;background:#0E0B08;\">\n" +
+        deck +
+        "\n</body>\n</html>\n"
+      );
+    }
+
+    document.getElementById("sfig-copy-all-figma").addEventListener("click", function () {
+      copyText(buildAllSlidesDocument()).then(function () {
+        showToast("Copied all slides (one paste)");
+      }).catch(function () {
+        showToast("Copy failed — try Download .html");
+      });
+    });
+
+    document.getElementById("sfig-download-all-figma").addEventListener("click", function () {
+      var html = buildAllSlidesDocument();
+      var blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "slides-figma-bundle.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("Saved slides-figma-bundle.html");
+    });
+
+    document.getElementById("sfig-copy-shared-css").addEventListener("click", function () {
+      copyText(getSharedHeadBundle()).then(function () {
+        showToast("Copied shared CSS + tokens");
+      }).catch(function () {
+        showToast("Copy failed");
+      });
+    });
+
+    document.querySelectorAll("[data-copy-slide]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var slide = btn.closest(".sfig-slide");
+        if (!slide) return;
+        var html = slide.outerHTML;
+        var name = slide.getAttribute("data-slide-name") || "Slide";
+        copyText(html).then(function () {
+          showToast("Copied: " + name);
+        }).catch(function () {
+          showToast("Copy failed");
+        });
+      });
+    });
+
+    document.querySelectorAll(".sfig-slide__chrome").forEach(function (chrome) {
+      if (chrome.querySelector("[data-copy-figma-slide]")) return;
+      var oldBtn = chrome.querySelector("[data-copy-slide]");
+      if (!oldBtn) return;
+      var wrap = document.createElement("div");
+      wrap.className = "sfig-slide__actions";
+      oldBtn.parentNode.insertBefore(wrap, oldBtn);
+      wrap.appendChild(oldBtn);
+      var figmaBtn = document.createElement("button");
+      figmaBtn.type = "button";
+      figmaBtn.className = "sfig-copy";
+      figmaBtn.setAttribute("data-copy-figma-slide", "");
+      figmaBtn.textContent = "Copy for Figma";
+      wrap.appendChild(figmaBtn);
+      figmaBtn.addEventListener("click", function () {
+        var slide = figmaBtn.closest(".sfig-slide");
+        if (!slide) return;
+        var name = slide.getAttribute("data-slide-name") || "Slide";
+        var doc =
+          "<!DOCTYPE html>\n" +
+          "<html lang=\"en\">\n" +
+          "<head>\n" +
+          "<meta charset=\"utf-8\">\n" +
+          getSharedHeadBundle() +
+          "</head>\n" +
+          "<body style=\"margin:0;background:#0E0B08;\">\n" +
+          slide.outerHTML +
+          "\n</body>\n</html>\n";
+        copyText(doc).then(function () {
+          showToast("Copied full HTML: " + name);
+        }).catch(function () {
+          showToast("Copy failed");
+        });
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
