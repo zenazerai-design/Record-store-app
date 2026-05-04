@@ -4657,9 +4657,9 @@ body.page-about .nav__links a:hover {
  * and the iframe stays vertically oversized so fewer player pixels sit in the watermark bands.
  */
 .cd-sleeve__cover-visual--desktop .cd-sleeve__cover-stack > .cd-sleeve__embed-crop-y--premiere {
-  clip-path: inset(11% 0 23% 0);
+  clip-path: inset(15% 0 9% 0);
   /* Safari <15.4; harmless duplicate where unsupported */
-  -webkit-clip-path: inset(11% 0 23% 0);
+  -webkit-clip-path: inset(15% 0 9% 0);
 }
 
 .cd-sleeve__cover-visual--desktop
