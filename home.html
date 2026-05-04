@@ -7,7 +7,13 @@
   (function () {
     if (location.protocol === "file:") return;
     var p = location.pathname;
-    var dir = /\.html?$/i.test(p) ? p.replace(/[^/]+$/, "") : (p.endsWith("/") ? p : p + "/");
+    var dir;
+    if (/\.html?$/i.test(p)) dir = p.replace(/[^/]+$/, "");
+    else if (p.endsWith("/")) dir = p;
+    else {
+      var i = p.lastIndexOf("/");
+      dir = i <= 0 ? "/" : p.slice(0, i + 1);
+    }
     if (!dir || dir === "/") return;
     var b = document.createElement("base");
     b.href = dir;
@@ -194,9 +200,9 @@
                     <p class="record__summary">Led foundational discovery and early design for user management across a complex, multi-system platform, shaping scalable foundations for an upcoming agentic product launch.</p>
                   </div>
                   <div class="record__pills record__pills--hero">
-                    <span>User Research</span>
                     <span>Internal Tools</span>
                     <span>System Design</span>
+                    <span>AI prototyping</span>
                   </div>
                   <div class="record__media">
                     <div class="record__image">
