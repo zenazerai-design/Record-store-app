@@ -7,7 +7,13 @@
   (function () {
     if (location.protocol === "file:") return;
     var p = location.pathname;
-    var dir = /\.html?$/i.test(p) ? p.replace(/[^/]+$/, "") : (p.endsWith("/") ? p : p + "/");
+    var dir;
+    if (/\.html?$/i.test(p)) dir = p.replace(/[^/]+$/, "");
+    else if (p.endsWith("/")) dir = p;
+    else {
+      var i = p.lastIndexOf("/");
+      dir = i <= 0 ? "/" : p.slice(0, i + 1);
+    }
     if (!dir || dir === "/") return;
     var b = document.createElement("base");
     b.href = dir;
@@ -607,8 +613,9 @@
     <section class="gwi-admin-rules" aria-labelledby="gwi-admin-rules-heading">
       <div class="gwi-admin-rules__intro">
         <span class="kicker">Governance</span>
-        <h2 class="csd-context__title" id="gwi-admin-rules-heading">Thinking through admin role edits</h2>
-        <p class="gwi-admin-rules__lede">Every organisation must keep <strong>at least one admin</strong>. I worked through <strong>individual</strong> and <strong>bulk</strong> role changes so validation, disabled actions, and error copy appeared <em>before</em> anyone could accidentally remove the last administrator.</p>
+        <h2 class="csd-context__title" id="gwi-admin-rules-heading">RBAC, permissions, and self-serve role management</h2>
+        <p class="gwi-admin-rules__lede">Access in the admin portal is <strong>role-based (RBAC)</strong>. I helped clarify <strong>roles</strong> (who is an Admin versus a Member) and what each role is <strong>allowed to do</strong>: inviting people, changing settings, managing subscriptions, API access, and similar boundaries. Those permission sets had to read clearly in the product and line up with what the platform actually enforces.</p>
+        <p class="gwi-admin-rules__lede">Client teams need to manage their own users without a ticket every time, so I worked with <strong>engineering</strong> to agree the <strong>rules</strong> for self-serve changes to roles and users: which transitions are valid, what must never break (for example every organisation keeps <strong>at least one admin</strong>), and how checks should run in the UI as well as on the server. The flows below show <strong>individual</strong> and <strong>bulk</strong> edits where validation, disabled actions, and error copy appear <em>before</em> anyone can accidentally remove the last administrator.</p>
       </div>
 
       <div class="gwi-admin-rules__block">
