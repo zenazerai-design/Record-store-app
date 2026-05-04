@@ -1,3 +1,8 @@
 # Local Python environments
 .venv-pdf/
 .venv/
+
+# Local-only drafts (kept on disk, not versioned)
+career-agent-preview.html
+career-agent.js
+Zena Zerai May CV .pdf
