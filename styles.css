@@ -10708,6 +10708,11 @@ article.csd .csd-hero .kicker.csd-hero__kicker {
   display: block;
 }
 
+/* API “After”: tall framed mock; center crop keeps KPI row + main chart in frame */
+.gwi-design-iterations__api-after img {
+  object-position: 50% 38%;
+}
+
 /* Badges sit on busy screenshots: solid fills + shadow for legibility */
 .gwi-design-iterations .csd-beforeafter__badge {
   background: rgba(14, 11, 8, 0.94);
