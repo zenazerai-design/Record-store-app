@@ -208,13 +208,10 @@
     <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Background</span>
-        <h2 class="csd-context__title">A creaking legacy system unfit for purpose.</h2>
+        <h2 class="csd-context__title">Horizon wasn't fit for purpose.</h2>
         <div class="csd-context__body">
           <p>
-            The Planning Inspectorate's legacy system <strong>Horizon</strong> was used for managing and publishing planning application documentation. It was <span class="csd-editorial__hl">costing the government millions</span>, had been in use for over 15 years and was nearing the end of its contract.
-          </p>
-          <p>
-            Not only that, the system wasn't built for purpose. The planning application <span class="csd-editorial__hl">process was incredibly slow</span>, with applications often taking years to complete. Rather than easing the bottleneck, Horizon only compounded those delays.
+            For 15 years, <strong>Horizon</strong> handled planning application documentation at <span class="csd-editorial__hl">millions in cost</span>, with the contract running out. Cases already took years to close; the system <span class="csd-editorial__hl">made the backlog worse</span>, not better.
           </p>
         </div>
       </div>
@@ -289,7 +286,7 @@
     <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Initial challenges</span>
-        <h2 class="csd-context__title">Many roles, one sceptical system.</h2>
+        <h2 class="csd-context__title">Many roles, sceptical stakeholders.</h2>
         <div class="csd-context__body">
           <p>
             I had to learn complex planning workflows fast while designing for inspectors, case workers and other users, each with different responsibilities and levels of digital experience. Past failed transformations had left stakeholders wary of another agency-led change.
@@ -347,16 +344,16 @@
       </div>
     </section>
 
-    <section class="csd-statement">
-      <span class="kicker">Scale</span>
+    <section class="csd-statement csd-statement--viewport" aria-label="Scale">
+      <span class="kicker csd-statement__kicker">Scale</span>
       <p class="csd-statement__text">
         Multiply this by thousands of files per case, <span class="csd-statement__fade">the time and interaction costs were enormous.</span>
       </p>
     </section>
 
     <!-- Hypothesis -->
-    <section class="csd-statement">
-      <span class="kicker">Hypothesis</span>
+    <section class="csd-statement csd-statement--viewport" aria-label="Hypothesis">
+      <span class="kicker csd-statement__kicker">Hypothesis</span>
       <p class="csd-statement__text">
         If we enable the ability to edit and publish documents in bulk it will make it quicker to upload and publish files and&nbsp;<span class="csd-statement__fade">speed up the planning application process.</span>
       </p>
@@ -494,10 +491,10 @@
         <h2 class="csd-context__title">Applying standards while meeting user needs.</h2>
         <div class="csd-context__body">
           <p>
-            Because this was a GOV.UK service, I had to use the Government Design System to guarantee accessibility, inclusivity and consistency, and to cut down training needs. But case management is very different from the step-by-step form journeys the system is designed for. Since this wasn't public-facing, I had more flexibility. The challenge was knowing when to stick with GOV.UK patterns and when to adapt or extend them to better fit complex workflows.
+            As a GOV.UK service, we built on GDS for accessibility, consistency and familiar patterns for staff.
           </p>
           <p>
-            Where components needed to deviate from the system, I evidenced this with robust research findings.
+            Case management isn't a linear form journey. I kept GOV.UK patterns where they fit, extended them for complex workflows, and backed every deviation with research.
           </p>
         </div>
       </div>
@@ -579,10 +576,10 @@
       <div class="pins-queue-top">
         <div class="csd-context__text">
           <span class="kicker">Publishing queue</span>
-          <h2 class="csd-context__title">Giving case admin teams more control, and reducing errors with the publishing queue.</h2>
+          <h2 class="csd-context__title">More control, fewer publishing errors.</h2>
           <div class="csd-context__body">
             <p>
-              One of the core issues was the time taken to publish files and errors made along the way. I added new functionality to the publishing queue, collaborating with the front-office team so internal tooling lined up with what went live on the public site.
+              Publishing was slow and error-prone. I redesigned the queue with the front-office team so internal tooling matched what went live.
             </p>
           </div>
         </div>
@@ -590,25 +587,23 @@
         <div class="pins-queue-benefits">
           <span class="kicker">Benefits</span>
           <ul class="csd-impact__list pins-qual-list">
-            <li><span class="pins-qual-list__text"><strong>Easy bulk management</strong>, speeding up processes and saving case team hours</span></li>
-            <li><span class="pins-qual-list__text"><strong>Edit files before publishing</strong>, reducing errors</span></li>
-            <li><span class="pins-qual-list__text"><strong>Full control over release order</strong>, reducing rework</span></li>
+            <li><span class="pins-qual-list__text"><strong>Bulk management</strong>, saves case team hours</span></li>
+            <li><span class="pins-qual-list__text"><strong>Edit before publish</strong>, fewer errors</span></li>
+            <li><span class="pins-qual-list__text"><strong>Control release order</strong>, less rework</span></li>
           </ul>
         </div>
       </div>
 
       <div class="pins-queue-hotspots-root pins-queue-visual">
         <figure class="pins-queue-annotate">
-          <p class="pins-queue-annotate__lede">
-            Publishing queue interface: hover or tap a marker for design notes.
-          </p>
+          <p class="pins-queue-annotate__lede">Hover or tap markers for design notes.</p>
           <div class="fos-concept__asset-wrap pins-queue-annotate__asset">
             <img
               class="fos-concept__img"
               src="assets/PINS/Publishing%20queue.png"
               width="11246"
               height="6968"
-              alt="Publishing queue table with bulk Publish documents actions, document rows with metadata, View/edit details and Remove links, and pagination."
+              alt="Publishing queue: bulk publish, document rows, edit and remove actions."
               aria-describedby="pins-cap-queue"
               loading="lazy"
               decoding="async"
@@ -618,21 +613,21 @@
                 <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: publishing status indicator"></button>
                 <div class="fos-hotspot__popup" role="tooltip">
                   <strong>Status indicator</strong>
-                  <p>Status indicator to show which documents are in the process of publishing and cannot be edited.</p>
+                  <p>Documents currently publishing cannot be edited.</p>
                 </div>
               </div>
               <div class="fos-hotspot fos-hotspot--note-below pins-queue-hotspot pins-queue-hotspot--selection">
                 <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: bulk selection"></button>
                 <div class="fos-hotspot__popup" role="tooltip">
                   <strong>Selection</strong>
-                  <p>Select or deselect which documents from the queue to publish immediately, either individually or in bulk, saving time.</p>
+                  <p>Publish selected documents now, individually or in bulk.</p>
                 </div>
               </div>
               <div class="fos-hotspot pins-queue-hotspot pins-queue-hotspot--viewedit">
                 <button type="button" class="fos-hotspot__btn" aria-expanded="false" aria-label="Design note: view and edit details"></button>
                 <div class="fos-hotspot__popup" role="tooltip">
                   <strong>View/edit</strong>
-                  <p>View and edit document details before publishing, reducing errors.</p>
+                  <p>Edit details before publishing.</p>
                 </div>
               </div>
               <div class="fos-hotspot fos-hotspot--note-below pins-queue-hotspot pins-queue-hotspot--remove">
@@ -645,18 +640,18 @@
             </div>
           </div>
           <figcaption id="pins-cap-queue" class="csd-context__caption pins-queue-annotate__caption">
-            Callouts match usability annotations from testing, with the same UI as the built queue without burned-in labels.
+            Usability annotations from testing on the built queue UI.
           </figcaption>
         </figure>
       </div>
     </section>
 
     <!-- Quote 1 -->
-    <section class="csd-pullquote">
+    <section class="csd-pullquote csd-pullquote--viewport" aria-label="User testing feedback">
       <span class="kicker csd-pullquote__kicker">User testing feedback</span>
       <figure class="csd-pullquote__inner">
         <blockquote class="csd-pullquote__text">
-          “That’s straightforward, and much easier than what we’re doing now.”
+          “That’s <span class="csd-pullquote__lead">straightforward</span>, and much easier than what we’re doing now.”
         </blockquote>
         <figcaption class="csd-pullquote__attr">
           <span class="csd-pullquote__name">Case Admin worker</span>
@@ -665,27 +660,102 @@
       </figure>
     </section>
 
-    <!-- End results -->
-    <section class="csd-impact csd-impact--pins-end-results">
-      <div class="csd-impact__header">
-        <span class="kicker">End results</span>
-        <h2 class="csd-impact__title">Delivering a fully redesigned system <em class="italic">that speeds up the planning application process.</em></h2>
+    <!-- Final designs -->
+    <section class="pins-final-designs" aria-labelledby="pins-final-designs-heading">
+      <div class="pins-final-designs__intro">
+        <span class="kicker">Final designs</span>
+        <h2 id="pins-final-designs-heading" class="pins-final-designs__title">
+          Shipped NSIP Applications screens
+        </h2>
       </div>
-      <p class="csd-findings__intro">From this journey alone we were able to deliver on some of the key objectives set from the outset:</p>
-      <ul class="csd-impact__list pins-qual-list">
-        <li><span class="pins-qual-list__text">Reduced upload/publishing time from <strong>days to minutes</strong></span></li>
-        <li><span class="pins-qual-list__text">Improved <strong>SUS score by 35%</strong></span></li>
-        <li><span class="pins-qual-list__text">Designed a system aligned with <strong>GDS</strong>, with bespoke components where needed</span></li>
-        <li><span class="pins-qual-list__text">Met business goals of <strong>accessibility</strong> and <strong>scalability</strong></span></li>
-      </ul>
-      <p class="csd-findings__intro">
-        I was also able to win over sceptical users and stakeholders who had been hesitant at the start of the journey.
-      </p>
+
+      <div class="pins-final-designs__grid" role="list" aria-label="Final design screens">
+        <figure class="pins-final-designs__item csd-media-figure" role="listitem">
+          <figcaption id="pins-cap-end-apps" class="csd-context__caption">Applications landing page</figcaption>
+          <img
+            src="assets/PINS/pins-final-applications.png"
+            alt="NSIP Applications: applications landing page listing infrastructure cases by sector."
+            width="1440"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <figure class="pins-final-designs__item csd-media-figure" role="listitem">
+          <figcaption id="pins-cap-end-upload" class="csd-context__caption">Documents upload flow</figcaption>
+          <img
+            src="assets/PINS/pins-final-upload.png"
+            alt="NSIP Applications: upload files screen in the Applications documents folder."
+            width="1440"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <figure class="pins-final-designs__item csd-media-figure" role="listitem">
+          <figcaption id="pins-cap-end-published" class="csd-context__caption">Published project overview</figcaption>
+          <img
+            src="assets/PINS/pins-final-overview.png"
+            alt="NSIP Applications: Heathrow Terminal project overview with published status badge."
+            width="1440"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
     </section>
 
-    <!-- User testing feedback (before scaling) -->
-    <section class="csd-pullquote">
-      <span class="kicker csd-pullquote__kicker">User testing feedback</span>
+    <!-- Programme scope & team scale -->
+    <section class="pins-programme-scale" aria-labelledby="pins-programme-scale-heading">
+      <div class="pins-programme-scale__intro-row">
+        <div class="pins-programme-scale__head">
+          <span class="kicker">Programme scope</span>
+          <h2 id="pins-programme-scale-heading" class="pins-programme-scale__title">
+            From a tiny team to a <em class="italic">big team.</em>
+          </h2>
+          <p class="pins-programme-scale__lede">
+            Scroll the overview to see 10+ epics shipped across case management, from discovery through to the public Planning Inspectorate website.
+          </p>
+        </div>
+
+        <figure class="pins-programme-scale__epics csd-media-figure">
+          <div class="csd-impact__embed pins-programme-scale__embed">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&public_id=Epics_ozf1hv"
+              title="Planning Inspectorate: epics delivered across the case management programme (video)"
+              aria-describedby="pins-cap-epics-video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <figcaption id="pins-cap-epics-video" class="csd-context__caption">Epics delivered across the programme.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="pins-programme-scale__team">
+        <img
+          src="assets/PINS/Team.jpeg"
+          width="2048"
+          height="1152"
+          alt="The Planning Inspectorate project team photographed together in the studio, including remote teammates on screen."
+          aria-describedby="pins-cap-team"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption id="pins-cap-team" class="pins-programme-scale__team-caption">
+          <span class="kicker pins-programme-scale__team-kicker">Scaling the team</span>
+          <p>
+            From a small discovery crew to a multi-discipline team shipping the live service. <strong>First live case, March 2024</strong>, integrated with the new public-facing Planning Inspectorate website.
+          </p>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Project feedback -->
+    <section class="csd-pullquote" aria-label="Project feedback">
+      <span class="kicker csd-pullquote__kicker">Project feedback</span>
       <figure class="csd-pullquote__inner">
         <blockquote class="csd-pullquote__text">
           “We are so looking forward to everything being rolled out, you and the team are <span class="csd-editorial__hl">the first group of consultants who listen</span> and deliver what we actually want, plus other good things thrown in as well.”
@@ -697,32 +767,46 @@
       </figure>
     </section>
 
-    <!-- Scaling -->
-    <section class="csd-context">
-      <div class="csd-context__text">
-        <span class="kicker">Scaling the team</span>
-        <h2 class="csd-context__title">From a tiny team to a big team.</h2>
-        <div class="csd-context__body">
-          <p>
-            After a year growing the project from a small discovery team into a scaled operation, we delivered a fully redesigned system, from creating a case to publishing cases and documents on the Planning Inspectorate website, helping the agency secure a larger project during discovery.
-          </p>
-          <p>
-            The new system launched with its <strong>first live case in March 2024</strong>, fully integrated with the new public-facing Planning Inspectorate website.
-          </p>
-        </div>
+    <!-- End results -->
+    <section class="csd-impact pins-end-results" aria-labelledby="pins-end-results-heading">
+      <div class="pins-end-results__head">
+        <span class="kicker">End results</span>
+        <h2 id="pins-end-results-heading" class="csd-impact__title pins-end-results__title">
+          Objectives <em class="italic">delivered.</em>
+        </h2>
+        <p class="csd-findings__intro pins-end-results__lede">
+          From this journey alone we hit the objectives set at the outset:
+        </p>
       </div>
-      <figure class="csd-context__image csd-media-figure">
-        <img
-          src="assets/PINS/Team.jpeg"
-          width="2048"
-          height="1152"
-          alt="The Planning Inspectorate project team photographed together in the studio, including remote teammates on screen, representing the scaled, multi-discipline crew shipping the live service."
-          aria-describedby="pins-cap-team"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption id="pins-cap-team" class="csd-context__caption">From a small discovery crew to a multi-discipline team shipping the live service.</figcaption>
-      </figure>
+
+      <div class="pins-end-results__outcomes">
+        <article class="pins-end-outcome">
+          <p class="pins-end-outcome__metric" aria-hidden="true">Days → min</p>
+          <h3 class="pins-end-outcome__title">Faster publishing</h3>
+          <p class="pins-end-outcome__desc">Upload and publish workflows cut from days to minutes.</p>
+        </article>
+        <article class="pins-end-outcome">
+          <p class="pins-end-outcome__metric" aria-hidden="true"><span class="pins-end-outcome__metric-num">35</span>%</p>
+          <h3 class="pins-end-outcome__title">Higher satisfaction</h3>
+          <p class="pins-end-outcome__desc">System Usability Scale score improved after rollout.</p>
+        </article>
+        <article class="pins-end-outcome">
+          <p class="pins-end-outcome__metric pins-end-outcome__metric--text" aria-hidden="true">GDS+</p>
+          <h3 class="pins-end-outcome__title">Standards-led design</h3>
+          <p class="pins-end-outcome__desc">GOV.UK patterns throughout, with bespoke components where research required it.</p>
+        </article>
+        <article class="pins-end-outcome">
+          <p class="pins-end-outcome__metric pins-end-outcome__metric--text" aria-hidden="true">A11y</p>
+          <h3 class="pins-end-outcome__title">Built to scale</h3>
+          <p class="pins-end-outcome__desc">Accessibility and scalability goals met for a growing caseload.</p>
+        </article>
+      </div>
+
+      <div class="pins-end-results__body csd-context__body">
+        <p>
+          The publishing work in this case study was one thread in a much larger programme. Those outcomes landed with case teams and stakeholders who had been sceptical after past failed transformations, and by go-live they were championing the rollout.
+        </p>
+      </div>
     </section>
 
     <!-- PM quote -->
@@ -740,69 +824,34 @@
     </section>
 
     <!-- Reflections -->
-    <section class="csd-context csd-context--reflection-mock">
-      <div class="csd-context__text">
-        <span class="kicker">Reflections</span>
-        <h2 class="csd-context__title">One small piece of a bigger body of work.</h2>
-        <div class="csd-context__body">
-          <p>
-            The file publishing process was just one small part of the system overhaul, which involved shipping 10+ epics, scaling and leading a design team and integrating with the public-facing website.
-          </p>
-          <p>
-            One learning that stood out was the importance of building strong relationships with stakeholders and users: the earlier you can build trust, the more willing people are to cooperate toward a shared goal.
-          </p>
+    <section class="pins-reflections csd-editorial" aria-labelledby="pins-reflections-heading">
+      <div class="csd-editorial__inner csd-editorial__inner--split pins-reflections__inner">
+        <div class="csd-editorial__chunk pins-reflections__chunk">
+          <span class="kicker">Reflections</span>
+          <h2 id="pins-reflections-heading" class="csd-editorial__title">
+            What I'd carry <em class="italic">forward.</em>
+          </h2>
+          <div class="csd-editorial__body">
+            <p>
+              One learning that stood out was the importance of building strong relationships with stakeholders and users: the earlier you can build trust, the more willing people are to cooperate toward a shared goal.
+            </p>
+            <p class="csd-editorial__bridge">Patterns that held up across discovery, delivery, and a sceptical stakeholder landscape</p>
+            <ul class="csd-editorial__list">
+              <li>Design for operational scale: bulk workflows matter when cases hold thousands of files</li>
+              <li>Extend GDS with research-backed exceptions, and make the rationale visible</li>
+              <li>Choose clarity over minimalism when teams are making high-stakes publishing decisions</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <figure class="csd-context__image csd-context__image--reflection-mock csd-media-figure">
-        <img
-          src="assets/PINS/doublemock.png"
-          alt="Overlapping NSIP Applications mockups: documents folder workflow and project overview."
-          aria-describedby="pins-cap-reflection"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption id="pins-cap-reflection" class="csd-context__caption">NSIP Applications screens from across the redesigned system.</figcaption>
-      </figure>
-    </section>
-
-    <!-- System screens -->
-    <section class="pins-montage" aria-label="Screens from across the redesigned NSIP Applications system">
-      <div class="pins-montage__row">
-        <figure class="pins-montage__crop">
+        <figure class="pins-reflections__visual csd-media-figure">
           <img
-            src="assets/PINS/pins-applications.png"
-            alt="NSIP Applications: applications landing page listing infrastructure cases by sector."
-            aria-describedby="pins-cap-montage-apps"
-            width="576"
-            height="1024"
+            src="assets/PINS/doublemock.png"
+            alt="Overlapping NSIP Applications mockups: documents folder workflow and project overview."
+            aria-describedby="pins-cap-reflection"
             loading="lazy"
             decoding="async"
           />
-          <figcaption id="pins-cap-montage-apps" class="csd-context__caption">Applications landing page.</figcaption>
-        </figure>
-        <figure class="pins-montage__item">
-          <img
-            src="assets/PINS/pins-upload.png"
-            alt="NSIP Applications: upload files screen in the Applications documents folder."
-            aria-describedby="pins-cap-montage-upload"
-            width="1024"
-            height="848"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption id="pins-cap-montage-upload" class="csd-context__caption">Documents upload flow.</figcaption>
-        </figure>
-        <figure class="pins-montage__item">
-          <img
-            src="assets/PINS/pins-published.png"
-            alt="NSIP Applications: Heathrow Terminal project overview with published status badge."
-            aria-describedby="pins-cap-montage-published"
-            width="895"
-            height="1024"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption id="pins-cap-montage-published" class="csd-context__caption">Published project overview.</figcaption>
+          <figcaption id="pins-cap-reflection" class="csd-context__caption">NSIP Applications screens from across the redesigned system.</figcaption>
         </figure>
       </div>
     </section>
