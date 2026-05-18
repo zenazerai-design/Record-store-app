@@ -88,7 +88,7 @@
 
   <main id="spa-main" class="spa-main" tabindex="-1">
   <!-- ─── Case Study: The Planning Inspectorate ─────────────────── -->
-  <article class="csd">
+  <article class="csd csd-case--pins">
 
     <!-- Back link -->
     <div class="csd-back-wrap">
@@ -178,7 +178,7 @@
         <h2 class="csd-impact__title">What I <em class="italic">delivered.</em></h2>
 
         <ul class="csd-impact__list csd-impact__list--lead-icons">
-          <li><span class="csd-impact__lead-icon" aria-hidden="true">🏗️</span><span>Re-designed and shipped the full case management system from discovery to delivery</span></li>
+          <li><span class="csd-impact__lead-icon" aria-hidden="true">🏗️</span><span>Shipped the redesigned case management system from discovery to delivery</span></li>
           <li><span class="csd-impact__lead-icon" aria-hidden="true">⏱️</span><span>Cut case admin time from <strong>days to minutes</strong></span></li>
           <li><span class="csd-impact__lead-icon" aria-hidden="true">📈</span><span>Boosted user satisfaction by <strong>35%</strong> (SUS)</span></li>
           <li><span class="csd-impact__lead-icon" aria-hidden="true">💷</span><span>Helped secure a <strong>£9M contract renewal</strong></span></li>
@@ -189,15 +189,18 @@
 
       <figure class="csd-impact--with-side__figure csd-media-figure">
         <div class="csd-impact--with-side__video">
-          <div class="csd-impact__embed">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&public_id=713_720x30_shots_so_iwbrat"
+          <div class="csd-impact--with-side__embed">
+            <video
+              src="https://res.cloudinary.com/dp9szpkig/video/upload/713_720x30_shots_so_iwbrat.mp4"
               title="Planning Inspectorate case management: bulk edit flow prototype (video)"
               aria-describedby="pins-cap-impact-video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
+              autoplay
+              muted
+              playsinline
+              loop
+              preload="auto"
+              disablepictureinpicture
+            ></video>
           </div>
         </div>
         <figcaption id="pins-cap-impact-video" class="csd-context__caption csd-impact--with-side__caption">Prototype of bulk edit flow.</figcaption>
@@ -314,9 +317,9 @@
     <section class="csd-findings">
       <div class="csd-findings__header">
         <span class="kicker">Core pain points</span>
-        <h2 class="csd-findings__title">Inefficient and time&#8209;consuming <em class="italic">processes.</em></h2>
+        <h2 class="csd-findings__title">Too many clicks. Too little <em class="italic">visibility.</em></h2>
         <p class="csd-findings__intro">
-          Working within a complex system and tight deadline, I focused on high-impact decisions, what to keep and what to redesign. By mapping workflows and pain points and prioritising key opportunities, the Case Admin team emerged as the most critical group to improve.
+          Tight deadline, complex system. I mapped workflows, prioritised by impact, and bet on Case Admin first—the team hit hardest by document handling.
         </p>
       </div>
       <div class="csd-findings__grid">
@@ -363,7 +366,7 @@
     <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Optimising flows</span>
-        <h2 class="csd-context__title">Mapping out the file publishing flow to reduce steps.</h2>
+        <h2 class="csd-context__title">Mapped the flow, cut the steps.</h2>
         <div class="csd-context__body">
           <p>
             Previously, every file had to be edited and published one by one. In the redesign, I streamlined the flow with bulk editing and publishing, cutting the steps down dramatically.
@@ -480,7 +483,7 @@
           </div>
         </div>
 
-        <p id="pins-cap-flow" class="pins-flow__caption csd-context__caption">Legacy Horizon flow versus bulk-first steps in the redesign. Toggle <strong>Show changes</strong> to compare.</p>
+        <p id="pins-cap-flow" class="pins-flow__caption csd-context__caption">Legacy Horizon flow versus bulk-first steps in the redesign. The comparison cycles automatically; use <strong>Show changes</strong> to control it yourself.</p>
       </div>
     </section>
 
@@ -584,20 +587,20 @@
           </div>
         </div>
 
-        <div class="pins-queue-benefits">
-          <span class="kicker">Benefits</span>
-          <ul class="csd-impact__list pins-qual-list">
-            <li><span class="pins-qual-list__text"><strong>Bulk management</strong>, saves case team hours</span></li>
-            <li><span class="pins-qual-list__text"><strong>Edit before publish</strong>, fewer errors</span></li>
-            <li><span class="pins-qual-list__text"><strong>Control release order</strong>, less rework</span></li>
-          </ul>
-        </div>
       </div>
 
       <div class="pins-queue-hotspots-root pins-queue-visual">
         <figure class="pins-queue-annotate">
           <p class="pins-queue-annotate__lede">Hover or tap markers for design notes.</p>
           <div class="fos-concept__asset-wrap pins-queue-annotate__asset">
+            <aside class="pins-queue-benefits" aria-label="Publishing queue benefits">
+              <span class="kicker">Benefits</span>
+              <ul class="csd-impact__list pins-qual-list">
+                <li><span class="pins-qual-list__text"><strong>Bulk management</strong>, saves case team hours</span></li>
+                <li><span class="pins-qual-list__text"><strong>Edit before publish</strong>, fewer errors</span></li>
+                <li><span class="pins-qual-list__text"><strong>Control release order</strong>, less rework</span></li>
+              </ul>
+            </aside>
             <img
               class="fos-concept__img"
               src="assets/PINS/Publishing%20queue.png"
@@ -675,8 +678,19 @@
           <img
             src="assets/PINS/pins-final-applications.png"
             alt="NSIP Applications: applications landing page listing infrastructure cases by sector."
-            width="1440"
-            height="900"
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <figure class="pins-final-designs__item csd-media-figure" role="listitem">
+          <figcaption id="pins-cap-end-published" class="csd-context__caption">All application cases overview</figcaption>
+          <img
+            src="assets/PINS/pins-final-overview.png"
+            alt="NSIP Applications: all application cases overview listing cases by sector and stage."
+            width="1024"
+            height="1024"
             loading="lazy"
             decoding="async"
           />
@@ -686,19 +700,8 @@
           <img
             src="assets/PINS/pins-final-upload.png"
             alt="NSIP Applications: upload files screen in the Applications documents folder."
-            width="1440"
-            height="900"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <figure class="pins-final-designs__item csd-media-figure" role="listitem">
-          <figcaption id="pins-cap-end-published" class="csd-context__caption">Published project overview</figcaption>
-          <img
-            src="assets/PINS/pins-final-overview.png"
-            alt="NSIP Applications: Heathrow Terminal project overview with published status badge."
-            width="1440"
-            height="900"
+            width="1024"
+            height="682"
             loading="lazy"
             decoding="async"
           />
@@ -720,15 +723,19 @@
         </div>
 
         <figure class="pins-programme-scale__epics csd-media-figure">
-          <div class="csd-impact__embed pins-programme-scale__embed">
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&public_id=Epics_ozf1hv"
+          <div class="pins-programme-scale__embed">
+            <video
+              class="pins-programme-scale__video"
+              src="https://res.cloudinary.com/dp9szpkig/video/upload/Epics_ozf1hv.mp4"
               title="Planning Inspectorate: epics delivered across the case management programme (video)"
               aria-describedby="pins-cap-epics-video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
+              autoplay
+              muted
+              playsinline
+              loop
+              preload="auto"
+              disablepictureinpicture
+            ></video>
           </div>
           <figcaption id="pins-cap-epics-video" class="csd-context__caption">Epics delivered across the programme.</figcaption>
         </figure>
@@ -809,20 +816,6 @@
       </div>
     </section>
 
-    <!-- PM quote -->
-    <section class="csd-pullquote csd-pullquote--wide">
-      <span class="kicker csd-pullquote__kicker">Project leadership</span>
-      <figure class="csd-pullquote__inner">
-        <blockquote class="csd-pullquote__text">
-          “Zena has been driving the design and user interaction on the service… From a chaotic starting point, she’s gone above and beyond, engaging stakeholders, aligning the team and delivering with clarity.”
-        </blockquote>
-        <figcaption class="csd-pullquote__attr">
-          <span class="csd-pullquote__name">Project Manager</span>
-          <span class="csd-pullquote__role">The Planning Inspectorate</span>
-        </figcaption>
-      </figure>
-    </section>
-
     <!-- Reflections -->
     <section class="pins-reflections csd-editorial" aria-labelledby="pins-reflections-heading">
       <div class="csd-editorial__inner csd-editorial__inner--split pins-reflections__inner">
@@ -833,14 +826,8 @@
           </h2>
           <div class="csd-editorial__body">
             <p>
-              One learning that stood out was the importance of building strong relationships with stakeholders and users: the earlier you can build trust, the more willing people are to cooperate toward a shared goal.
+              Build trust with stakeholders early. Design for scale, document GDS exceptions clearly, and favour clarity when publishing stakes are high.
             </p>
-            <p class="csd-editorial__bridge">Patterns that held up across discovery, delivery, and a sceptical stakeholder landscape</p>
-            <ul class="csd-editorial__list">
-              <li>Design for operational scale: bulk workflows matter when cases hold thousands of files</li>
-              <li>Extend GDS with research-backed exceptions, and make the rationale visible</li>
-              <li>Choose clarity over minimalism when teams are making high-stakes publishing decisions</li>
-            </ul>
           </div>
         </div>
         <figure class="pins-reflections__visual csd-media-figure">

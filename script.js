@@ -728,6 +728,7 @@ function mountSpotifyFab() {
     document.body.classList.toggle('page-home', isHomePageKey(key));
     document.body.classList.toggle('page-about', key === 'about.html' || key === 'career-agent-preview.html');
     document.body.classList.toggle('page-career-agent-preview', key === 'career-agent-preview.html');
+    document.body.classList.toggle('page-pins', key === 'planning-inspectorate.html');
   }
 
   const CASE_STUDY_DETAIL_PAGES = new Set([
@@ -1675,7 +1676,7 @@ function mountSpotifyFab() {
     return () => removers.forEach(fn => fn());
   }
 
-  /** planning-inspectorate.html: publish flow before/after checkbox */
+  /** planning-inspectorate.html: publish flow before/after (auto-cycles when in view) */
   function initPinsPublishFlow() {
     const cb = document.getElementById('pins-publish-flow-toggle');
     if (!cb) return () => {};
@@ -1685,15 +1686,63 @@ function mountSpotifyFab() {
     const after = root?.querySelector('.pins-flow__track--after');
     if (!before || !after) return () => {};
 
+    const removers = [];
+    const CYCLE_MS = 4500;
+    let cycleTimer = null;
+    let userControlled = false;
+
     function sync() {
       const on = cb.checked;
       before.setAttribute('aria-hidden', on ? 'true' : 'false');
       after.setAttribute('aria-hidden', on ? 'false' : 'true');
     }
 
+    function clearCycle() {
+      if (cycleTimer !== null) {
+        clearInterval(cycleTimer);
+        cycleTimer = null;
+      }
+    }
+
+    function startCycle() {
+      if (userControlled || cycleTimer !== null) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      cycleTimer = setInterval(() => {
+        cb.checked = !cb.checked;
+        sync();
+      }, CYCLE_MS);
+    }
+
+    function onChange(e) {
+      sync();
+      if (e.isTrusted) {
+        userControlled = true;
+        clearCycle();
+      }
+    }
+
     sync();
-    cb.addEventListener('change', sync);
-    return () => cb.removeEventListener('change', sync);
+    cb.addEventListener('change', onChange);
+    removers.push(() => cb.removeEventListener('change', onChange));
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && root) {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !userControlled) startCycle();
+            else clearCycle();
+          });
+        },
+        { rootMargin: '0px 0px -12% 0px', threshold: 0.25 }
+      );
+      observer.observe(root);
+      removers.push(() => observer.disconnect());
+    }
+
+    return () => {
+      clearCycle();
+      removers.forEach(fn => fn());
+    };
   }
 
   function initGwiPivotDrop() {
