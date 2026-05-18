@@ -1,0 +1,14 @@
+{
+  "name": "career-agent-api",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "openai": "^6.35.0"
+  }
+}

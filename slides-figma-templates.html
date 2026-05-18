@@ -790,6 +790,336 @@
       max-width: 70ch;
     }
 
+    /* Ideal system → MVP → Alpha (three columns + arrows + footer strip) */
+    .sfig-slide--alpha-journey {
+      background: #000000;
+      padding: 32px 40px 22px;
+    }
+    .sfig-slide--alpha-journey .sfig-slide__chrome {
+      margin-bottom: 16px;
+    }
+    .sfig-slide--alpha-journey::before {
+      display: none;
+    }
+    .sfig-alpha__head {
+      flex-shrink: 0;
+      margin-bottom: 14px;
+    }
+    .sfig-alpha__eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin: 0 0 8px;
+    }
+    .sfig-alpha__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.06;
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+    .sfig-alpha__title strong {
+      font-weight: 400;
+      color: var(--cream);
+    }
+    .sfig-alpha__sub {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 56ch;
+    }
+    .sfig-alpha__main {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .sfig-alpha__arrow {
+      flex: 0 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      color: var(--amber);
+    }
+    .sfig-alpha__arrow svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .sfig-alpha-card {
+      flex: 1 1 0;
+      align-self: stretch;
+      min-width: 0;
+      border-radius: 12px;
+      border: 1px solid rgba(138, 122, 102, 0.35);
+      background: rgba(30, 28, 26, 0.92);
+      padding: 12px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sfig-alpha-card--mvp {
+      border: 1px dashed var(--amber);
+      background: rgba(27, 20, 14, 0.75);
+    }
+    .sfig-alpha-card__hdr {
+      border-bottom: 1px solid rgba(42, 32, 24, 0.6);
+      padding-bottom: 6px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+    .sfig-alpha-card__label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 3px;
+    }
+    .sfig-alpha-card__hint {
+      font-family: var(--sans);
+      font-size: 9px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.3;
+    }
+    .sfig-alpha-card__body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 9px;
+      color: var(--ink-soft);
+    }
+    .sfig-alpha-card__foot {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--amber-2);
+      margin: auto 0 0;
+      padding-top: 6px;
+      line-height: 1.3;
+      flex-shrink: 0;
+      border-top: 1px solid rgba(42, 32, 24, 0.45);
+    }
+    .sfig-alpha-card--mvp .sfig-alpha-card__foot {
+      border-top: 1px solid rgba(42, 32, 24, 0.45);
+      padding-top: 8px;
+      margin-top: 4px;
+      color: var(--ink);
+    }
+    .sfig-alpha-card--mvp .sfig-alpha-card__foot .sfig-alpha-trade {
+      color: var(--ink-soft);
+    }
+    .sfig-alpha-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .sfig-alpha-diagram {
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .sfig-alpha-diagram--org {
+      max-height: 104px;
+    }
+    .sfig-alpha-diagram--hub-svg {
+      max-height: 100px;
+    }
+    .sfig-alpha-diagram--org-flat {
+      max-height: 72px;
+    }
+    .sfig-alpha-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+    }
+    .sfig-alpha-dot svg {
+      width: 10px;
+      height: 10px;
+      display: block;
+    }
+    .sfig-alpha-dot:empty::before {
+      content: "";
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.92;
+    }
+    .sfig-alpha-dot--b { background: rgba(77, 163, 255, 0.25); color: #7eb8ff; }
+    .sfig-alpha-dot--p { background: rgba(155, 126, 222, 0.25); color: #c4a8ff; }
+    .sfig-alpha-dot--g { background: rgba(107, 203, 119, 0.2); color: #8fdd9a; }
+    .sfig-alpha-dot--y { background: rgba(233, 201, 75, 0.2); color: #efd76a; }
+    .sfig-alpha-dot--j { background: rgba(107, 203, 119, 0.15); color: #6bcb77; }
+    .sfig-alpha-mvp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      justify-content: center;
+    }
+    .sfig-alpha-mvp-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .sfig-alpha-mvp-item__icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid var(--amber);
+      background: rgba(214, 123, 61, 0.14);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--amber-2);
+    }
+    .sfig-alpha-mvp-item__icon svg {
+      width: 17px;
+      height: 17px;
+    }
+    .sfig-alpha-mvp-item h4 {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 2px;
+    }
+    .sfig-alpha-mvp-item p {
+      margin: 0;
+      font-size: 9px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .sfig-alpha-trade em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--amber-2);
+    }
+    .sfig-alpha-flat {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      justify-content: center;
+    }
+    .sfig-alphafeat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(18, 16, 14, 0.9);
+      border: 1px solid rgba(55, 48, 40, 0.75);
+      min-height: 40px;
+    }
+    .sfig-alphafeat .sfig-alpha-dot {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+    .sfig-alphafeat .sfig-alpha-dot:empty::before {
+      width: 6px;
+      height: 6px;
+    }
+    .sfig-alphafeat h4 {
+      font-family: var(--sans);
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 2px;
+    }
+    .sfig-alphafeat p {
+      margin: 0;
+      font-size: 9px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .sfig-alpha-footer {
+      flex-shrink: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(21, 16, 11, 0.95);
+      border: 1px solid rgba(42, 32, 24, 0.6);
+    }
+    .sfig-alpha-footer__left strong {
+      display: block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .sfig-alpha-footer__left span {
+      font-family: var(--sans);
+      font-size: 9px;
+      color: var(--muted);
+    }
+    .sfig-alpha-footer__mid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sfig-alpha-mini {
+      width: 48px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 7px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.25;
+    }
+    .sfig-alpha-mini svg {
+      display: block;
+      margin: 0 auto 4px;
+      width: 16px;
+      height: 16px;
+      opacity: 0.85;
+      color: var(--ink-soft);
+    }
+    .sfig-alpha-footer__right {
+      text-align: right;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
     .sfig-toast {
       position: fixed;
       bottom: 24px;
@@ -819,7 +1149,7 @@
 
   <header class="sfig-toolbar">
     <p class="sfig-toolbar__title">Slide templates · Figma</p>
-    <p class="sfig-toolbar__hint">Not linked from the public site (<code style="font-size:12px;color:var(--amber-2);">noindex</code>). <strong style="color:var(--cream);font-weight:600;">Copy all slides</strong> or <strong style="color:var(--cream);font-weight:600;">Download .html</strong> bundles every template into <strong style="color:var(--cream);font-weight:600;">one</strong> document so a freemium HTML importer often counts it as <strong style="color:var(--cream);font-weight:600;">one</strong> import; split frames in Figma afterward. Per-slide: <strong style="color:var(--cream);font-weight:600;">Copy for Figma</strong>, or <strong style="color:var(--cream);font-weight:600;">Copy shared CSS</strong> + <strong style="color:var(--cream);font-weight:600;">Copy HTML</strong>. Preview: <code style="font-size:12px;">.sfig-stage</code>; slide: <code style="font-size:12px;">1280×720</code>.</p>
+    <p class="sfig-toolbar__hint">Not linked from the public site (<code style="font-size:12px;color:var(--amber-2);">noindex</code>). <strong style="color:var(--cream);font-weight:600;">Copy all slides</strong> or <strong style="color:var(--cream);font-weight:600;">Download .html</strong> bundles every template into <strong style="color:var(--cream);font-weight:600;">one</strong> document so a freemium HTML importer often counts it as <strong style="color:var(--cream);font-weight:600;">one</strong> import; split frames in Figma afterward. Per-slide: <strong style="color:var(--cream);font-weight:600;">Copy for Figma</strong>, or <strong style="color:var(--cream);font-weight:600;">Copy shared CSS</strong> + <strong style="color:var(--cream);font-weight:600;">Copy HTML</strong>. If an importer breaks on CSS variables or SVG <code style="font-size:11px;">&lt;style&gt;</code>, use the flat <a href="alpha-journey-figma-import.html" style="color:var(--amber-2);" download>alpha-journey-figma-import.html</a> (Alpha slide only, hex colors, no template chrome). Preview: <code style="font-size:12px;">.sfig-stage</code>; slide: <code style="font-size:12px;">1280×720</code>.</p>
     <div class="sfig-toolbar__actions">
       <button type="button" class="sfig-copy" id="sfig-copy-all-figma">Copy all slides</button>
       <button type="button" class="sfig-copy sfig-copy--ghost" id="sfig-download-all-figma">Download .html</button>
@@ -847,6 +1177,7 @@
     <a href="#slide-break-rule">Break · rule</a>
     <a href="#slide-break-num">Break · num</a>
     <a href="#slide-trio">Trio blocks</a>
+    <a href="#slide-alpha-journey">Alpha journey</a>
   </nav>
 
   <div class="sfig-stage-wrap">
@@ -1293,6 +1624,184 @@
                 <p class="sfig-trio__copy">Subcopy for outcomes, enablers, or principles.</p>
               </div>
             </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Ideal system · MVP drivers · simplified Alpha (diagram journey) ——— -->
+    <div class="sfig-stage" id="slide-alpha-journey">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide sfig-slide--alpha-journey" data-slide-name="Alpha journey diagram" aria-label="Ideal system to Alpha journey slide">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · Alpha journey</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <header class="sfig-alpha__head">
+              <p class="sfig-alpha__eyebrow">From ideal system to Alpha reality</p>
+              <h2 class="sfig-alpha__title">Balancing <strong>scalable architecture</strong> with <em class="italic">Alpha reality</em></h2>
+              <p class="sfig-alpha__sub">Simplifying operational complexity without losing foundational logic.</p>
+            </header>
+
+            <div class="sfig-alpha__main">
+              <div class="sfig-alpha-card">
+                <div class="sfig-alpha-card__hdr">
+                  <p class="sfig-alpha-card__label">1. Future-state system</p>
+                  <p class="sfig-alpha-card__hint">The ideal enterprise system</p>
+                </div>
+                <div class="sfig-alpha-card__body">
+                  <figure class="sfig-alpha-diagram sfig-alpha-diagram--org" aria-label="Future-state org chart">
+                    <svg class="sfig-alpha-svg" viewBox="0 0 288 118" width="288" height="118" xmlns="http://www.w3.org/2000/svg">
+                      <g aria-hidden="true" stroke="#D67B3D" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M144 26v5M96 31h96"/>
+                        <path d="M96 31v7M192 31v7"/>
+                        <path d="M96 59v5M70 64h122"/>
+                        <path d="M87 64v9M131 64v9"/>
+                        <path d="M192 59v5M172 64h52"/>
+                        <path d="M181 64v9M225 64v9"/>
+                      </g>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="106" y="4" width="76" height="22" rx="5"/>
+                      <text x="144" y="18.5" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="8" font-weight="600" fill="#F5EFE3">Enterprise</text>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="53" y="38" width="86" height="21" rx="4"/>
+                      <text x="96" y="52" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="8" font-weight="600" fill="#F5EFE3">Business Unit A</text>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="149" y="38" width="86" height="21" rx="4"/>
+                      <text x="192" y="52" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="8" font-weight="600" fill="#F5EFE3">Business Unit B</text>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="68" y="73" width="38" height="17" rx="3"/>
+                      <text x="87" y="85" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="6.5" font-weight="500" fill="#C9BEAB">Team 1</text>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="112" y="73" width="38" height="17" rx="3"/>
+                      <text x="131" y="85" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="6.5" font-weight="500" fill="#C9BEAB">Team 2</text>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="162" y="73" width="38" height="17" rx="3"/>
+                      <text x="181" y="85" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="6.5" font-weight="500" fill="#C9BEAB">Team 1</text>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="206" y="73" width="38" height="17" rx="3"/>
+                      <text x="225" y="85" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="6.5" font-weight="500" fill="#C9BEAB">Team 2</text>
+                    </svg>
+                  </figure>
+                  <figure class="sfig-alpha-diagram sfig-alpha-diagram--hub-svg" aria-label="Governance capability network">
+                    <svg class="sfig-alpha-svg" viewBox="0 0 272 112" width="272" height="112" xmlns="http://www.w3.org/2000/svg">
+                      <ellipse cx="136" cy="56" rx="118" ry="48" fill="none" stroke="#534A43" stroke-width="1" stroke-dasharray="2 6" opacity="0.65"/>
+                      <g stroke="#534A43" stroke-width="1" stroke-dasharray="3 5" opacity="0.55" aria-hidden="true">
+                        <line x1="136" y1="56" x2="136" y2="16"/>
+                        <line x1="136" y1="56" x2="226" y2="56"/>
+                        <line x1="136" y1="56" x2="136" y2="96"/>
+                        <line x1="136" y1="56" x2="46" y2="56"/>
+                      </g>
+                      <circle cx="136" cy="56" r="17" fill="#151311" stroke="#5B8FC9" stroke-width="1.2"/>
+                      <circle cx="136" cy="52" r="3" stroke="#8EBEF0" stroke-width="1" fill="none"/>
+                      <path d="M130 61c2-5 14-5 14 0v1" stroke="#8EBEF0" stroke-width="1" fill="none" stroke-linecap="round"/>
+                      <text x="136" y="77" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="6" font-weight="500" fill="#93908A">Delegated admin</text>
+                      <circle cx="136" cy="17" r="11" fill="#151311" stroke="#9B8BC9" stroke-width="1"/>
+                      <text x="136" y="14" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">Granular</text>
+                      <text x="136" y="21" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">permissions</text>
+                      <circle cx="227" cy="56" r="11" fill="#151311" stroke="#5CBD8C" stroke-width="1"/>
+                      <text x="227" y="53.5" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">Lifecycle</text>
+                      <text x="227" y="60.5" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">governance</text>
+                      <circle cx="136" cy="96" r="11" fill="#151311" stroke="#D9C06A" stroke-width="1"/>
+                      <text x="136" y="92.5" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">Auditability</text>
+                      <text x="136" y="99.5" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">&amp; compliance</text>
+                      <circle cx="45" cy="56" r="11" fill="#151311" stroke="#6CBD7A" stroke-width="1"/>
+                      <text x="45" y="59" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="5.25" font-weight="500" fill="#93908A">Automation</text>
+                    </svg>
+                  </figure>
+                </div>
+                <p class="sfig-alpha-card__foot">Comprehensive, flexible, enterprise-ready</p>
+              </div>
+
+              <div class="sfig-alpha__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h14m0 0-5-5m5 5-5 5" stroke="#D67B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+
+              <div class="sfig-alpha-card sfig-alpha-card--mvp">
+                <div class="sfig-alpha-card__hdr">
+                  <p class="sfig-alpha-card__label">2. What shaped the MVP</p>
+                  <p class="sfig-alpha-card__hint">Delivery realities</p>
+                </div>
+                <div class="sfig-alpha-card__body">
+                  <ul class="sfig-alpha-mvp-list">
+                    <li class="sfig-alpha-mvp-item">
+                      <span class="sfig-alpha-mvp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E9A05B" stroke-width="1.5"/><path d="M12 7v6l4 2" stroke="#E9A05B" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                      <div><h4>Accelerated timeline</h4><p>Need to deliver value quickly.</p></div>
+                    </li>
+                    <li class="sfig-alpha-mvp-item">
+                      <span class="sfig-alpha-mvp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="#E9A05B" stroke-width="1.5"/><path d="M5 6v9c0 1.66 3.13 3 7 3s7-1.34 7-3V6" stroke="#E9A05B" stroke-width="1.5"/><path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3" stroke="#E9A05B" stroke-width="1.5"/></svg></span>
+                      <div><h4>Existing auth systems</h4><p>Leverage current infrastructure.</p></div>
+                    </li>
+                    <li class="sfig-alpha-mvp-item">
+                      <span class="sfig-alpha-mvp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E9A05B" stroke-width="1.5"/><path d="m12 6 3 4-3 10-3-10 3-4Z" stroke="#E9A05B" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                      <div><h4>Evolving product direction</h4><p>Prioritize flexibility for learning.</p></div>
+                    </li>
+                  </ul>
+                </div>
+                <p class="sfig-alpha-card__foot"><span class="sfig-alpha-trade">Intentional <em>trade-offs</em> to deliver operational value in Alpha.</span></p>
+              </div>
+
+              <div class="sfig-alpha__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 12h14m0 0-5-5m5 5-5 5" stroke="#D67B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+
+              <div class="sfig-alpha-card">
+                <div class="sfig-alpha-card__hdr">
+                  <p class="sfig-alpha-card__label">3. Simplified Alpha model</p>
+                  <p class="sfig-alpha-card__hint">Focused, operationally viable</p>
+                </div>
+                <div class="sfig-alpha-card__body">
+                  <figure class="sfig-alpha-diagram sfig-alpha-diagram--org-flat" aria-label="Simplified org structure">
+                    <svg class="sfig-alpha-svg" viewBox="0 0 200 78" width="200" height="78" xmlns="http://www.w3.org/2000/svg">
+                      <g aria-hidden="true" fill="none" stroke="#D67B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M100 24v6M58 30h84"/>
+                        <path d="M68 30v9M100 30v9M132 30v9"/>
+                      </g>
+                      <rect fill="#1C1917" stroke="#5C544C" stroke-width="1" x="64" y="4" width="72" height="20" rx="5"/>
+                      <text x="100" y="18" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="8" font-weight="600" fill="#F5EFE3">Organization</text>
+                      <g fill="none" stroke="#C9BEAB" stroke-width="1">
+                        <circle cx="68" cy="51" r="12" fill="#161412" stroke="#5C544C"/>
+                        <path d="M68 46.25a2.3 2.3 0 1 1 0 .1" stroke="#C9BEAB"/>
+                        <path d="M63.5 58.25c1.5-3.75 9-3.75 10.5 0" stroke-linecap="round" stroke="#C9BEAB"/>
+                        <circle cx="100" cy="51" r="12" fill="#161412" stroke="#5C544C"/>
+                        <path d="M100 46.25a2.3 2.3 0 1 1 0 .1" stroke="#C9BEAB"/>
+                        <path d="M95.5 58.25c1.5-3.75 9-3.75 10.5 0" stroke-linecap="round" stroke="#C9BEAB"/>
+                        <circle cx="132" cy="51" r="12" fill="#161412" stroke="#5C544C"/>
+                        <path d="M132 46.25a2.3 2.3 0 1 1 0 .1" stroke="#C9BEAB"/>
+                        <path d="M127.5 58.25c1.5-3.75 9-3.75 10.5 0" stroke-linecap="round" stroke="#C9BEAB"/>
+                      </g>
+                    </svg>
+                  </figure>
+                  <div class="sfig-alpha-flat">
+                    <div class="sfig-alphafeat">
+                      <span class="sfig-alpha-dot sfig-alpha-dot--p" style="flex-shrink:0;"></span>
+                      <div><h4>Lightweight RBAC</h4><p>Role-based access at org level.</p></div>
+                    </div>
+                    <div class="sfig-alphafeat">
+                      <span class="sfig-alpha-dot sfig-alpha-dot--g" style="flex-shrink:0;"></span>
+                      <div><h4>Org-level access</h4><p>Flat structure to reduce complexity.</p></div>
+                    </div>
+                    <div class="sfig-alphafeat">
+                      <span class="sfig-alpha-dot sfig-alpha-dot--y" style="flex-shrink:0;"></span>
+                      <div><h4>Simplified workflows</h4><p>Core flows only.</p></div>
+                    </div>
+                  </div>
+                </div>
+                <p class="sfig-alpha-card__foot">Minimum viable governance for Alpha</p>
+              </div>
+            </div>
+
+            <footer class="sfig-alpha-footer">
+              <div class="sfig-alpha-footer__left">
+                <strong>Strong foundations remain</strong>
+                <span>Built to evolve as needs mature</span>
+              </div>
+              <div class="sfig-alpha-footer__mid">
+                <div class="sfig-alpha-mini"><svg fill="none" viewBox="0 0 24 24"><path d="M7 17V7h10v10H7Zm2-8h6M9 21h6M12 5V3M10 21v-4h4v4" stroke="#C9BEAB" stroke-width="1.2"/></svg>Hierarchy model</div>
+                <div class="sfig-alpha-mini"><svg fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="#C9BEAB" stroke-width="1.2"/><path d="M12 8v6m-2-2h4" stroke="#C9BEAB" stroke-width="1.2"/></svg>Permission engine</div>
+                <div class="sfig-alpha-mini"><svg fill="none" viewBox="0 0 24 24"><path d="M14 2H6v16h12V8l-4-6Z" stroke="#C9BEAB" stroke-width="1.2"/><path d="M14 2v6h6M8 13h8M8 17h8" stroke="#C9BEAB" stroke-width="1.2"/></svg>Governance policy</div>
+                <div class="sfig-alpha-mini"><svg fill="none" viewBox="0 0 24 24"><path d="M4 18V6m5 12V10m5 8v-4m5 4v-9" stroke="#C9BEAB" stroke-width="1.2"/><path d="M4 18h16" stroke="#C9BEAB" stroke-width="1.2"/></svg>Audit &amp; obs.</div>
+                <div class="sfig-alpha-mini"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="#C9BEAB" stroke-width="1.2"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.31 11.31 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.31-11.31L19.14 5.93" stroke="#C9BEAB" stroke-width="1.2"/></svg>Automation</div>
+              </div>
+              <div class="sfig-alpha-footer__right">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4 12h12m0 0-5-5m5 5-5 5" stroke="#D67B3D" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Ready to be unlocked in future phases
+              </div>
+            </footer>
           </div>
         </section>
       </div>

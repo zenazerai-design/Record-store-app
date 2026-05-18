@@ -36,6 +36,7 @@ const SPOTIFY_FAB_HTML = `
           <circle cx="23.2" cy="31.2" r="1.15" fill="#D67B3D"/>
         </svg>
       </span>
+      <span class="spotify-fab__cta" id="spotify-fab-cta" aria-hidden="true">Play me</span>
       <span class="spotify-fab__play-ring" aria-hidden="true">
         <svg class="spotify-fab__play" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
           <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
@@ -86,11 +87,17 @@ function mountSpotifyFab() {
   let pivotDropCleanup  = () => {};
   let pinsFlowCleanup   = () => {};
   let careerAgentCleanup = () => {};
+  let heroEntranceCleanup = () => {};
+  let aboutEntranceCleanup = () => {};
   /** Invalidates async career-agent script load when SPA tears down before onload. */
   let careerAgentLoadGen = 0;
   let revealObserver     = null;
   /** Clears flaky IntersectionObserver “stuck invisible” fallback. */
   let revealSafetyTimerId = /** @type {ReturnType<typeof setTimeout> | null} */ (null);
+  /** Home: wait for hero before scroll reveals; avoids below-fold firing on load. */
+  let homeScrollRevealEnabled = false;
+  /** About: same gate as home hero before scroll reveals run. */
+  let aboutScrollRevealEnabled = false;
 
   /** Incremented whenever a newer in-app navigation starts; stale async completions must not swap DOM. */
   let spaNavGeneration = 0;
@@ -110,10 +117,16 @@ function mountSpotifyFab() {
     pinsFlowCleanup = () => {};
     careerAgentCleanup();
     careerAgentCleanup = () => {};
+    heroEntranceCleanup();
+    heroEntranceCleanup = () => {};
+    aboutEntranceCleanup();
+    aboutEntranceCleanup = () => {};
     if (revealSafetyTimerId !== null) {
       clearTimeout(revealSafetyTimerId);
       revealSafetyTimerId = null;
     }
+    homeScrollRevealEnabled = false;
+    aboutScrollRevealEnabled = false;
     if (revealObserver) {
       revealObserver.disconnect();
       revealObserver = null;
@@ -1194,27 +1207,268 @@ function mountSpotifyFab() {
     });
   }
 
+  /** Home hero: staggered copy reveal on first paint and after SPA swap to home. */
+  function initHeroEntrance() {
+    if (!document.body.classList.contains('page-home')) return () => {};
+
+    const hero = document.querySelector('.hero');
+    if (!hero) return () => {};
+
+    hero.classList.remove('hero--ready');
+    hero.classList.add('hero--hold');
+    document.body.classList.remove('home-motion-on');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hero.classList.remove('hero--hold');
+      hero.classList.add('hero--ready');
+      document.body.classList.add('home-motion-on');
+      homeScrollRevealEnabled = true;
+      revealVisibleHomeBlocks();
+      return () => {
+        hero.classList.remove('hero--ready', 'hero--hold');
+        document.body.classList.remove('home-motion-on');
+        homeScrollRevealEnabled = false;
+      };
+    }
+
+    const startId = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        hero.classList.remove('hero--hold');
+        hero.classList.add('hero--ready');
+        document.body.classList.add('home-motion-on');
+        homeScrollRevealEnabled = true;
+        revealVisibleHomeBlocks();
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(startId);
+      homeScrollRevealEnabled = false;
+      hero.classList.remove('hero--ready', 'hero--hold');
+      document.body.classList.remove('home-motion-on');
+    };
+  }
+
+  /** True when a home reveal target has entered the viewport (not just “near” it). */
+  function isHomeRevealInView(el) {
+    const r = el.getBoundingClientRect();
+    const vh = window.innerHeight;
+    return r.top < vh * 0.82 && r.bottom > vh * 0.12;
+  }
+
+  function revealVisibleHomeBlocks() {
+    if (!document.body.classList.contains('page-home') || !homeScrollRevealEnabled) return;
+    document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+      if (!isHomeRevealInView(el)) return;
+      el.classList.add('is-in');
+      revealObserver?.unobserve(el);
+    });
+  }
+
+  /** About hero: staggered copy + polaroid on first paint and after SPA swap. */
+  function initAboutEntrance() {
+    if (!document.body.classList.contains('page-about')) return () => {};
+
+    const hero = document.querySelector('.about--page');
+    if (!hero) return () => {};
+
+    setupAboutPageMotion();
+
+    hero.classList.remove('about--ready');
+    hero.classList.add('about--hold');
+    document.body.classList.remove('about-motion-on');
+
+    function markHeroIn() {
+      document.querySelectorAll('.about--page .about__copy, .about--page .about__visual').forEach(el => {
+        el.classList.add('is-in');
+        revealObserver?.unobserve(el);
+      });
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hero.classList.remove('about--hold');
+      hero.classList.add('about--ready');
+      document.body.classList.add('about-motion-on');
+      aboutScrollRevealEnabled = true;
+      markHeroIn();
+      revealVisibleAboutBlocks();
+      return () => {
+        hero.classList.remove('about--ready', 'about--hold');
+        document.body.classList.remove('about-motion-on');
+        aboutScrollRevealEnabled = false;
+      };
+    }
+
+    const startId = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        hero.classList.remove('about--hold');
+        hero.classList.add('about--ready');
+        document.body.classList.add('about-motion-on');
+        aboutScrollRevealEnabled = true;
+        markHeroIn();
+        revealVisibleAboutBlocks();
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(startId);
+      aboutScrollRevealEnabled = false;
+      hero.classList.remove('about--ready', 'about--hold');
+      document.body.classList.remove('about-motion-on');
+    };
+  }
+
+  function revealVisibleAboutBlocks() {
+    if (!document.body.classList.contains('page-about') || !aboutScrollRevealEnabled) return;
+    document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+      if (!isHomeRevealInView(el)) return;
+      el.classList.add('is-in');
+      revealObserver?.unobserve(el);
+    });
+  }
+
+  /** About page: hero stagger, track cards, career, jewel cards, outside-of-design. */
+  function setupAboutPageMotion() {
+    if (!document.body.classList.contains('page-about')) return;
+
+    const heroCopy = document.querySelector('.about__copy');
+    const heroVisual = document.querySelector('.about__visual');
+    if (heroCopy) heroCopy.classList.add('reveal', 'reveal--stagger');
+    if (heroVisual) heroVisual.classList.add('reveal', 'reveal--slide-right');
+
+    const careerHead = document.querySelector('.career__head');
+    if (careerHead) careerHead.classList.add('reveal', 'reveal--soft');
+
+    document.querySelectorAll('.career__item').forEach((item, i) => {
+      item.classList.add('reveal');
+      item.style.setProperty('--reveal-delay', `${i * 75}ms`);
+    });
+
+    const sideActsKicker = document.querySelector('.side-acts__inner > .kicker');
+    if (sideActsKicker) sideActsKicker.classList.add('reveal', 'reveal--soft');
+
+    document.querySelectorAll('.side-acts .sa-card').forEach((card, i) => {
+      card.classList.add('reveal', 'reveal--scale');
+      card.style.setProperty('--reveal-delay', `${i * 110}ms`);
+    });
+
+    const outsideHead = document.querySelector('.outside-design__head');
+    if (outsideHead) outsideHead.classList.add('reveal', 'reveal--soft');
+
+    const outsideBody = document.querySelector('.outside-design__body');
+    if (outsideBody) outsideBody.classList.add('reveal', 'reveal--stagger');
+
+    document.querySelectorAll('.outside-design__media > *').forEach((el, i) => {
+      el.classList.add('reveal', i === 0 ? 'reveal--slide-right' : 'reveal--scale');
+      el.style.setProperty('--reveal-delay', `${i * 120}ms`);
+    });
+
+    document.querySelectorAll('.foot__inner').forEach(el => {
+      el.classList.add('reveal');
+    });
+
+    document.querySelectorAll('.career, .side-acts, .outside-design').forEach(section => {
+      section.classList.add('about-section');
+    });
+  }
+
+  /** Home-only scroll reveals: staggered heads, records, CDs, testimonials, footer. */
+  function setupHomePageMotion() {
+    if (!document.body.classList.contains('page-home')) return;
+
+    document.querySelectorAll(
+      '.works .section__head, .lineup .section__head, .ai-shelf__head, .testimonials__header'
+    ).forEach(head => {
+      head.classList.add('reveal', 'reveal--stagger');
+    });
+
+    document.querySelectorAll('.lineup__floor').forEach(el => {
+      el.classList.add('reveal', 'reveal--slide-right');
+    });
+
+    const mqMobileCrate = window.matchMedia('(max-width: 880px)');
+    document.querySelectorAll('.works .crate > .record').forEach((rec, i) => {
+      if (!mqMobileCrate.matches) return;
+      rec.classList.add('reveal', 'reveal--lift');
+      rec.style.setProperty('--reveal-delay', `${Math.min(i * 100, 380)}ms`);
+    });
+
+    document.querySelectorAll('.ai-shelf .cd-rack > li').forEach((li, i) => {
+      li.classList.add('reveal', 'reveal--scale');
+      li.style.setProperty('--reveal-delay', `${i * 110}ms`);
+    });
+
+    document.querySelectorAll('.ai-shelf__more-wrap').forEach(el => {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', '300ms');
+    });
+
+    document.querySelectorAll('.testimonials .t-card').forEach((card, i) => {
+      card.classList.add('reveal', 'reveal--soft');
+      card.style.setProperty('--reveal-delay', `${i * 85}ms`);
+    });
+
+    document.querySelectorAll('.foot__inner').forEach(el => {
+      el.classList.add('reveal');
+    });
+
+    document.querySelectorAll('.works, .lineup, .ai-shelf, .testimonials').forEach(section => {
+      section.classList.add('home-section');
+    });
+  }
+
   function setupRevealOnScroll() {
-    const reveal = document.querySelectorAll(
-      [
-        '.section__head',
-        '.lineup__floor',
-        '.about__copy',
-        '.about__visual',
-        '.foot__inner',
-        '.testimonials',
-        '.cs-page-hero__inner',
-        '.cs-grid-section .cs-grid > .cs-card',
-        'article.csd > .csd-back-wrap',
-        'article.csd > section:not(.gwi-pivot-drop)',
-      ].join(', ')
-    );
+    setupHomePageMotion();
+    setupAboutPageMotion();
+
+    const isHome = document.body.classList.contains('page-home');
+    const isAbout = document.body.classList.contains('page-about');
+    const selectorList = isHome
+      ? [
+          '.about__copy',
+          '.about__visual',
+          '.cs-page-hero__inner',
+          '.cs-grid-section .cs-grid > .cs-card',
+          'article.csd > .csd-back-wrap',
+          'article.csd > section:not(.gwi-pivot-drop)',
+        ]
+      : isAbout
+      ? [
+          '.cs-page-hero__inner',
+          '.cs-grid-section .cs-grid > .cs-card',
+          'article.csd > .csd-back-wrap',
+          'article.csd > section:not(.gwi-pivot-drop)',
+        ]
+      : [
+          '.section__head',
+          '.lineup__floor',
+          '.about__copy',
+          '.about__visual',
+          '.foot__inner',
+          '.testimonials',
+          '.cs-page-hero__inner',
+          '.cs-grid-section .cs-grid > .cs-card',
+          'article.csd > .csd-back-wrap',
+          'article.csd > section:not(.gwi-pivot-drop)',
+        ];
+
+    const reveal = document.querySelectorAll(selectorList.join(', '));
     reveal.forEach(el => el.classList.add('reveal'));
 
     const allReveal = document.querySelectorAll('.reveal');
 
     /** Desktop + late font layout can leave blocks at opacity:0 if IO misses once; re-run after paint. */
     function unblockVisibleReveals() {
+      if (isHome) {
+        if (!homeScrollRevealEnabled) return;
+        revealVisibleHomeBlocks();
+        return;
+      }
+      if (isAbout) {
+        if (!aboutScrollRevealEnabled) return;
+        revealVisibleAboutBlocks();
+        return;
+      }
       const slack = Math.min(window.innerHeight * 0.22, 260);
       document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
         const r = el.getBoundingClientRect();
@@ -1227,35 +1481,72 @@ function mountSpotifyFab() {
     }
 
     if ('IntersectionObserver' in window) {
-      /* Positive bottom margin = treat “near viewport” as intersecting (large monitors, no scroll yet). */
+      const usesPremiumReveal = isHome || isAbout;
+      const revealRootMargin = usesPremiumReveal ? '0px 0px -14% 0px' : '0px 0px 45% 0px';
+      const revealThreshold = usesPremiumReveal ? 0.14 : 0.02;
+
       revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-in');
-            revealObserver.unobserve(entry.target);
+          if (!entry.isIntersecting) return;
+          if (isHome && !homeScrollRevealEnabled) return;
+          if (isAbout && !aboutScrollRevealEnabled) return;
+          const target = entry.target;
+          if (target.classList.contains('home-section') || target.classList.contains('about-section')) {
+            target.classList.add('is-section-in');
+          } else {
+            target.classList.add('is-in');
           }
+          revealObserver.unobserve(target);
         });
-      }, { rootMargin: '0px 0px 45% 0px', threshold: 0.02 });
+      }, { rootMargin: revealRootMargin, threshold: revealThreshold });
+
       allReveal.forEach(el => revealObserver.observe(el));
-      requestAnimationFrame(unblockVisibleReveals);
-      setTimeout(unblockVisibleReveals, 120);
-      setTimeout(unblockVisibleReveals, 450);
-      setTimeout(unblockVisibleReveals, 1100);
-      if (document.readyState === 'complete') {
+      document.querySelectorAll('.page-home .home-section').forEach(section => {
+        revealObserver.observe(section);
+      });
+      document.querySelectorAll('.page-about .about-section').forEach(section => {
+        revealObserver.observe(section);
+      });
+
+      if (isHome && homeScrollRevealEnabled) {
+        revealVisibleHomeBlocks();
+      }
+
+      if (isAbout && aboutScrollRevealEnabled) {
+        revealVisibleAboutBlocks();
+      }
+
+      if (!usesPremiumReveal) {
         requestAnimationFrame(unblockVisibleReveals);
-      } else {
-        window.addEventListener('load', () => requestAnimationFrame(unblockVisibleReveals), { once: true });
+        setTimeout(unblockVisibleReveals, 120);
+        setTimeout(unblockVisibleReveals, 450);
+        setTimeout(unblockVisibleReveals, 1100);
+        if (document.readyState === 'complete') {
+          requestAnimationFrame(unblockVisibleReveals);
+        } else {
+          window.addEventListener('load', () => requestAnimationFrame(unblockVisibleReveals), { once: true });
+        }
       }
 
       /* IO can still occasionally miss sections (scroll timing, WKWebKit, SPA swap). Guarantee visibility. */
       if (revealSafetyTimerId !== null) clearTimeout(revealSafetyTimerId);
+      const safetyMs = usesPremiumReveal ? 4000 : 2200;
       revealSafetyTimerId = setTimeout(() => {
         revealSafetyTimerId = null;
+        if (usesPremiumReveal) {
+          document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+            if (isHomeRevealInView(el)) {
+              el.classList.add('is-in');
+              revealObserver?.unobserve(el);
+            }
+          });
+          return;
+        }
         document.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
           el.classList.add('is-in');
           revealObserver?.unobserve(el);
         });
-      }, 2200);
+      }, safetyMs);
     } else {
       allReveal.forEach(el => el.classList.add('is-in'));
     }
@@ -1445,8 +1736,18 @@ function mountSpotifyFab() {
       pivotDropCleanup   = initGwiPivotDrop();
       pinsFlowCleanup    = initPinsPublishFlow();
       careerAgentCleanup = initCareerAgent();
+      heroEntranceCleanup = initHeroEntrance();
+      aboutEntranceCleanup = initAboutEntrance();
       initCaseStudyRecordClicks();
-      setupRevealOnScroll();
+      const runRevealSetup = () => setupRevealOnScroll();
+      const deferReveal =
+        (document.body.classList.contains('page-home') || document.body.classList.contains('page-about'))
+        && 'requestIdleCallback' in window;
+      if (deferReveal) {
+        requestIdleCallback(runRevealSetup, { timeout: 350 });
+      } else {
+        runRevealSetup();
+      }
       initTrackCards();
     } catch {
       /* One bad interaction should not strand the SPA shell entirely. */
@@ -1463,6 +1764,7 @@ function mountSpotifyFab() {
     const spotifyEmbedWrap = spotifyFab?.querySelector('.spotify-fab__embed');
     const spotifyClose     = spotifyFab?.querySelector('.spotify-fab__panel-close');
     const spotifyPlayRing  = spotifyFab?.querySelector('.spotify-fab__play-ring');
+    const spotifyCta       = document.getElementById('spotify-fab-cta');
 
     let spotifyEmbedController       = null;
     let spotifyPlaybackState        = /** @type {{ isPaused: boolean } | null} */ (null);
@@ -1626,6 +1928,19 @@ function mountSpotifyFab() {
           : spotifyUserEverStartedPlayback
             ? 'Resume playback'
             : 'Use play inside the Spotify embed first';
+      }
+
+      if (spotifyCta) {
+        const ctaText = fabPlayingChip
+          ? ''
+          : spotifyUserEverStartedPlayback
+            ? 'Resume'
+            : open
+              ? 'Hit play'
+              : 'Play me';
+        spotifyCta.textContent = ctaText;
+        spotifyCta.hidden = !ctaText;
+        spotifyCta.classList.toggle('spotify-fab__cta--dim', open && !spotifyUserEverStartedPlayback);
       }
     }
 
