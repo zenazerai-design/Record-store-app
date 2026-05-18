@@ -12642,27 +12642,45 @@ section.pins-final-designs {
   }
 }
 
-/* GWI Direction: wider media column, larger embed, tidier capability list */
+/* GWI Direction: copy, then full-width autoplay video cropped to frame */
 .csd-context.gwi-direction {
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.28fr);
-  gap: clamp(40px, 5vw, 96px);
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 4vw, 56px);
   align-items: start;
 }
 
+.gwi-direction .csd-context__text {
+  max-width: 72ch;
+}
+
 .gwi-direction .gwi-direction__media {
-  max-width: none;
+  grid-column: 1 / -1;
   width: 100%;
+  max-width: none;
+  position: static;
+  top: auto;
+  gap: 6px;
 }
 
 .gwi-direction .gwi-direction__media .csd-video__frame {
   aspect-ratio: 16 / 9;
-  min-height: clamp(220px, 38vw, 560px);
+  min-height: 0;
   border-radius: clamp(14px, 2vw, 22px);
+}
+
+.gwi-direction .gwi-direction__media .csd-video__frame video {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.gwi-direction .gwi-direction__media > .csd-context__caption {
+  margin-top: 0;
+  text-align: center;
 }
 
 .gwi-direction .gwi-direction__list {
   gap: 0;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 /* Block + absolute marker: flex would split <strong> and adjacent text into separate flex items. */
@@ -12670,33 +12688,17 @@ section.pins-final-designs {
   display: block;
   position: relative;
   margin-bottom: 0;
-  padding: clamp(10px, 1.2vw, 14px) 0;
+  padding: 2px 0;
   padding-left: calc(12px + 10px);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
-}
-
-.csd-context.gwi-direction .csd-context__body .gwi-direction__list li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
 }
 
 .csd-context.gwi-direction .csd-context__body .gwi-direction__list li::before {
   position: absolute;
   left: 0;
-  top: calc(clamp(10px, 1.2vw, 14px) + 0.5lh - 3px);
+  top: calc(2px + 0.5lh - 3px);
   flex-shrink: unset;
   margin-top: 0;
   margin-right: 0;
-}
-
-@media (max-width: 960px) {
-  .csd-context.gwi-direction {
-    grid-template-columns: 1fr;
-  }
-
-  .gwi-direction .gwi-direction__media .csd-video__frame {
-    min-height: clamp(200px, 52vw, 420px);
-  }
 }
 
 /* GWI: admin role validation (individual + bulk) */
