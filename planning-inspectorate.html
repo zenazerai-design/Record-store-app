@@ -124,7 +124,7 @@
 
       <div class="csd-hero__cover" aria-hidden="true">
         <div class="csd-hero__cover-inner">
-          <img src="assets/PINS/PINS cover.png" alt="The Planning Inspectorate, case management work" />
+          <img src="assets/PINS/PINS cover.png" alt="" />
         </div>
       </div>
     </section>
@@ -172,11 +172,10 @@
     <!-- ── BLOCK: Impact ───────────────────────────────────────────── -->
     <section class="csd-impact csd-impact--with-side">
 
+      <span class="kicker csd-impact--with-side__kicker">Impact</span>
+
       <div class="csd-impact__main">
-        <div class="csd-impact__header">
-          <span class="kicker">Impact</span>
-          <h2 class="csd-impact__title">What we <em class="italic">shipped.</em></h2>
-        </div>
+        <h2 class="csd-impact__title">What I <em class="italic">delivered.</em></h2>
 
         <ul class="csd-impact__list csd-impact__list--lead-icons">
           <li><span class="csd-impact__lead-icon" aria-hidden="true">🏗️</span><span>Re-designed and shipped the full case management system from discovery to delivery</span></li>
@@ -188,54 +187,101 @@
         </ul>
       </div>
 
-      <div class="csd-context__image">
-        <div class="csd-impact__embed">
-          <iframe
-            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&public_id=713_720x30_shots_so_iwbrat"
-            title="Planning Inspectorate case management: shipped experience (video)"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+      <figure class="csd-impact--with-side__figure csd-media-figure">
+        <div class="csd-impact--with-side__video">
+          <div class="csd-impact__embed">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&public_id=713_720x30_shots_so_iwbrat"
+              title="Planning Inspectorate case management: bulk edit flow prototype (video)"
+              aria-describedby="pins-cap-impact-video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
-      </div>
+        <figcaption id="pins-cap-impact-video" class="csd-context__caption csd-impact--with-side__caption">Prototype of bulk edit flow.</figcaption>
+      </figure>
     </section>
 
     <!-- Background -->
-    <section class="csd-context">
+    <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Background</span>
         <h2 class="csd-context__title">A creaking legacy system unfit for purpose.</h2>
         <div class="csd-context__body">
           <p>
-            The Planning Inspectorate's legacy system <strong>Horizon</strong> was used for managing and publishing planning application documentation. It was costly, had been in use for over 15 years and was nearing the end of its contract.
+            The Planning Inspectorate's legacy system <strong>Horizon</strong> was used for managing and publishing planning application documentation. It was <span class="csd-editorial__hl">costing the government millions</span>, had been in use for over 15 years and was nearing the end of its contract.
           </p>
           <p>
-            Not only that, the system wasn't built for purpose. The planning application process was incredibly slow, with applications often taking years to complete. This current system did nothing to help speed things up.
+            Not only that, the system wasn't built for purpose. The planning application <span class="csd-editorial__hl">process was incredibly slow</span>, with applications often taking years to complete. Rather than easing the bottleneck, Horizon only compounded those delays.
           </p>
         </div>
       </div>
-      <div class="csd-context__image">
-        <img src="assets/PINS/beforeee.png" alt="Horizon legacy case management system showing case details, work items, and document folders for a planning application." width="3024" height="1869" loading="lazy" decoding="async" />
-        <p class="csd-context__caption">Previous case management system on Horizon.</p>
-      </div>
+      <figure class="csd-pitch-figure">
+        <img
+          src="assets/PINS/beforeee.png"
+          alt="Horizon legacy case management system showing case details, work items, and document folders for a planning application."
+          aria-describedby="pins-cap-horizon"
+          width="3024"
+          height="1869"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption id="pins-cap-horizon" class="csd-context__caption">Previous case management system on Horizon.</figcaption>
+      </figure>
     </section>
 
     <!-- Goal -->
-    <section class="csd-context csd-context--full">
-      <div class="csd-context__text">
+    <section class="pins-goal" aria-labelledby="pins-goal-heading">
+      <div class="pins-goal__intro">
         <span class="kicker">The goal</span>
-        <h2 class="csd-context__title">Rebuild the system from scratch.</h2>
-        <div class="csd-context__body">
-          <p>
-            Our team was hired to build a case management system from scratch to replace the existing system. The redesign was set against a strategic government ambition for the department:
-          </p>
-          <ul class="csd-impact__list">
-            <li>Speed up the planning application process</li>
-            <li>Reduce errors and costs</li>
-            <li>Improve the user experience</li>
-          </ul>
-        </div>
+        <h2 id="pins-goal-heading" class="pins-goal__title">
+          Rebuild the system <em class="italic">from scratch.</em>
+        </h2>
+        <p class="pins-goal__lede">
+          We were brought in to replace Horizon with something built for how case teams work today: move planning applications along faster, cut down on costly publishing mistakes, and give inspectors and admins a system they could actually rely on.
+        </p>
+      </div>
+
+      <div class="csd-findings__grid pins-goal__objectives">
+        <article class="csd-finding csd-finding--objective">
+          <div class="csd-finding__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+          </div>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Speed up applications</h3>
+            <p class="csd-finding__desc">Cut admin bottlenecks in the planning pipeline</p>
+          </div>
+        </article>
+        <article class="csd-finding csd-finding--objective">
+          <div class="csd-finding__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+          </div>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Reduce errors &amp; cost</h3>
+            <p class="csd-finding__desc">Fewer publishing mistakes, less rework</p>
+          </div>
+        </article>
+        <article class="csd-finding csd-finding--objective">
+          <div class="csd-finding__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Improve the experience</h3>
+            <p class="csd-finding__desc">Built for inspectors and case teams day to day</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -243,13 +289,13 @@
     <section class="csd-context csd-context--design-stack">
       <div class="csd-context__text">
         <span class="kicker">Initial challenges</span>
-        <h2 class="csd-context__title">Sifting through complexity and frosty relationships.</h2>
+        <h2 class="csd-context__title">Many roles, one sceptical system.</h2>
         <div class="csd-context__body">
           <p>
-            Redesigning the system required getting up to speed fast, understanding both the complexity of planning applications and the differing needs of inspectors, case workers and other users. Beyond the workflows, previous failed transformation efforts had left stakeholders sceptical of another agency.
+            I had to learn complex planning workflows fast while designing for inspectors, case workers and other users, each with different responsibilities and levels of digital experience. Past failed transformations had left stakeholders wary of another agency-led change.
           </p>
           <p>
-            To cut through this, I ran exploratory research: interviews, stakeholder conversations and group sessions, unpacking processes, roles and the current system while navigating the underlying politics.
+            Interviews, workshops and stakeholder sessions mapped processes, roles and the politics around them.
           </p>
         </div>
       </div>
@@ -257,20 +303,14 @@
         <img
           src="assets/PINS/planning%20landscape.png"
           alt="Flow diagram: NSIPS planning process from pre-application advice through decision, aligned with the case team journey (create case, receive documents, upload and redact files, edit metadata, publish to the website)."
+          aria-describedby="pins-cap-landscape"
           width="7431"
           height="1863"
           loading="lazy"
           decoding="async"
         />
+        <figcaption id="pins-cap-landscape" class="csd-context__caption">A simplified view of a complex and strict planning application process alongside the case team's behind-the-scenes journey.</figcaption>
       </figure>
-    </section>
-
-    <!-- Process framing -->
-    <section class="csd-statement">
-      <span class="kicker">Process</span>
-      <p class="csd-statement__text">
-        A simplified view of a complex and strict planning application process <span class="csd-statement__fade">alongside the case team's behind-the-scenes journey.</span>
-      </p>
     </section>
 
     <!-- Core pain points -->
@@ -334,7 +374,7 @@
         </div>
       </div>
 
-      <div class="pins-flow">
+      <div class="pins-flow" role="group" aria-labelledby="pins-cap-flow">
         <input type="checkbox" id="pins-publish-flow-toggle" class="pins-flow__checkbox" />
         <div class="pins-flow__toolbar">
           <div class="pins-flow__toolbar-notes">
@@ -443,7 +483,7 @@
           </div>
         </div>
 
-        <p class="pins-flow__caption csd-context__caption">Legacy Horizon flow versus bulk-first steps in the redesign. Toggle <strong>Show changes</strong> to compare.</p>
+        <p id="pins-cap-flow" class="pins-flow__caption csd-context__caption">Legacy Horizon flow versus bulk-first steps in the redesign. Toggle <strong>Show changes</strong> to compare.</p>
       </div>
     </section>
 
@@ -461,17 +501,18 @@
           </p>
         </div>
       </div>
-      <div class="csd-context__image">
+      <figure class="csd-context__image csd-media-figure">
         <img
           src="assets/PINS/GDS.png"
           alt="GOV.UK Design System overview: applying GDS components and patterns to the case management service."
+          aria-describedby="pins-cap-gds"
           width="512"
           height="484"
           loading="lazy"
           decoding="async"
         />
-        <p class="csd-context__caption">GOV.UK Design System, extended where research demanded it.</p>
-      </div>
+        <figcaption id="pins-cap-gds" class="csd-context__caption">GOV.UK Design System, extended where research demanded it.</figcaption>
+      </figure>
     </section>
 
     <!-- Design iteration -->
@@ -492,13 +533,14 @@
             <img
               src="assets/PINS/before-doc-storage-1920.jpg"
               alt="Document storage before usability testing: Reports folder table with colourful status badges, icon-only download column, and bulk actions behind a dropdown."
+              aria-describedby="pins-cap-doc-before"
               width="1920"
               height="1577"
               loading="lazy"
               decoding="async"
             />
           </div>
-          <figcaption class="csd-beforeafter__caption">
+          <figcaption id="pins-cap-doc-before" class="csd-beforeafter__caption">
             <strong class="csd-beforeafter__caption-title">DESIGNS BEFORE TESTING</strong>
             <ul class="csd-beforeafter__caption-list">
               <li>Download/view CTAs unclear to users</li>
@@ -513,13 +555,14 @@
             <img
               src="assets/PINS/after-doc-storage-1920.jpg"
               alt="Document storage after usability testing: Documents view with neutral status text, visible bulk action panels, and labelled View/edit properties and Download links."
+              aria-describedby="pins-cap-doc-after"
               width="1920"
               height="1594"
               loading="lazy"
               decoding="async"
             />
           </div>
-          <figcaption class="csd-beforeafter__caption">
+          <figcaption id="pins-cap-doc-after" class="csd-beforeafter__caption">
             <strong class="csd-beforeafter__caption-title">DESIGNS AFTER TESTING</strong>
             <ul class="csd-beforeafter__caption-list">
               <li>Neutral statuses - reducing visual noise while maintaining clarity.</li>
@@ -555,7 +598,7 @@
       </div>
 
       <div class="pins-queue-hotspots-root pins-queue-visual">
-        <div class="pins-queue-annotate">
+        <figure class="pins-queue-annotate">
           <p class="pins-queue-annotate__lede">
             Publishing queue interface: hover or tap a marker for design notes.
           </p>
@@ -566,6 +609,7 @@
               width="11246"
               height="6968"
               alt="Publishing queue table with bulk Publish documents actions, document rows with metadata, View/edit details and Remove links, and pagination."
+              aria-describedby="pins-cap-queue"
               loading="lazy"
               decoding="async"
             />
@@ -600,10 +644,10 @@
               </div>
             </div>
           </div>
-          <p class="csd-context__caption pins-queue-annotate__caption">
+          <figcaption id="pins-cap-queue" class="csd-context__caption pins-queue-annotate__caption">
             Callouts match usability annotations from testing, with the same UI as the built queue without burned-in labels.
-          </p>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -667,17 +711,18 @@
           </p>
         </div>
       </div>
-      <div class="csd-context__image">
+      <figure class="csd-context__image csd-media-figure">
         <img
           src="assets/PINS/Team.jpeg"
           width="2048"
           height="1152"
           alt="The Planning Inspectorate project team photographed together in the studio, including remote teammates on screen, representing the scaled, multi-discipline crew shipping the live service."
+          aria-describedby="pins-cap-team"
           loading="lazy"
           decoding="async"
         />
-        <p class="csd-context__caption">From a small discovery crew to a multi-discipline team shipping the live service.</p>
-      </div>
+        <figcaption id="pins-cap-team" class="csd-context__caption">From a small discovery crew to a multi-discipline team shipping the live service.</figcaption>
+      </figure>
     </section>
 
     <!-- PM quote -->
@@ -708,45 +753,57 @@
           </p>
         </div>
       </div>
-      <div class="csd-context__image csd-context__image--reflection-mock">
+      <figure class="csd-context__image csd-context__image--reflection-mock csd-media-figure">
         <img
           src="assets/PINS/doublemock.png"
           alt="Overlapping NSIP Applications mockups: documents folder workflow and project overview."
+          aria-describedby="pins-cap-reflection"
           loading="lazy"
           decoding="async"
         />
-      </div>
+        <figcaption id="pins-cap-reflection" class="csd-context__caption">NSIP Applications screens from across the redesigned system.</figcaption>
+      </figure>
     </section>
 
     <!-- System screens -->
     <section class="pins-montage" aria-label="Screens from across the redesigned NSIP Applications system">
       <div class="pins-montage__row">
-        <div class="pins-montage__crop">
+        <figure class="pins-montage__crop">
           <img
             src="assets/PINS/pins-applications.png"
-            alt="NSIP Applications: applications landing page with sector cases."
+            alt="NSIP Applications: applications landing page listing infrastructure cases by sector."
+            aria-describedby="pins-cap-montage-apps"
             width="576"
             height="1024"
             loading="lazy"
             decoding="async"
           />
-        </div>
-        <img
-          src="assets/PINS/pins-upload.png"
-          alt="NSIP Applications: upload files in Applications documents folder."
-          width="1024"
-          height="848"
-          loading="lazy"
-          decoding="async"
-        />
-        <img
-          src="assets/PINS/pins-published.png"
-          alt="NSIP Applications: Heathrow Terminal project overview with published status."
-          width="895"
-          height="1024"
-          loading="lazy"
-          decoding="async"
-        />
+          <figcaption id="pins-cap-montage-apps" class="csd-context__caption">Applications landing page.</figcaption>
+        </figure>
+        <figure class="pins-montage__item">
+          <img
+            src="assets/PINS/pins-upload.png"
+            alt="NSIP Applications: upload files screen in the Applications documents folder."
+            aria-describedby="pins-cap-montage-upload"
+            width="1024"
+            height="848"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption id="pins-cap-montage-upload" class="csd-context__caption">Documents upload flow.</figcaption>
+        </figure>
+        <figure class="pins-montage__item">
+          <img
+            src="assets/PINS/pins-published.png"
+            alt="NSIP Applications: Heathrow Terminal project overview with published status badge."
+            aria-describedby="pins-cap-montage-published"
+            width="895"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption id="pins-cap-montage-published" class="csd-context__caption">Published project overview.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -756,19 +813,19 @@
       <ul class="cs-explore__grid" role="list">
         <li>
           <a class="cs-explore__card" href="gwi.html" aria-label="GWI, Reimagining user management for an AI-driven platform">
-            <img class="cs-explore__img" src="assets/GWI/API%20cover.png" alt="" />
+            <img class="cs-explore__img" src="assets/GWI/API%20cover.png" alt="GWI case study cover: user management for an AI-driven platform." />
             <span class="cs-explore__title">Reimagining user management for an AI-driven platform</span>
           </a>
         </li>
         <li>
           <a class="cs-explore__card" href="toyota.html" aria-label="Toyota experimentation">
-            <img class="cs-explore__img" src="assets/Toyota/343shots_so.png" alt="" />
+            <img class="cs-explore__img" src="assets/Toyota/343shots_so.png" alt="Toyota case study cover: in-car experimentation concepts." />
             <span class="cs-explore__title">Toyota experimentation</span>
           </a>
         </li>
         <li>
           <a class="cs-explore__card" href="hyundai-finance.html" aria-label="Hyundai Finance, Enabling car dealers to do soft credit checks">
-            <img class="cs-explore__img" src="assets/HCUK covr.png" alt="" />
+            <img class="cs-explore__img" src="assets/HCUK covr.png" alt="Hyundai Finance case study cover: dealer soft credit check interface." />
             <span class="cs-explore__title">Enabling car dealers to do soft credit checks</span>
           </a>
         </li>
