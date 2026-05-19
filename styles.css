@@ -12714,6 +12714,12 @@ section.pins-final-designs {
   gap: clamp(16px, 2vw, 22px);
 }
 
+.gwi-admin-rules__video {
+  margin-bottom: clamp(40px, 5.5vw, 64px);
+  display: grid;
+  gap: 12px;
+}
+
 .gwi-admin-rules__lede {
   margin: 0;
   font-size: clamp(15px, 1.15vw, 17px);
