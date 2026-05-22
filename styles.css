@@ -727,7 +727,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 880px) {
   .crate {
-    gap: clamp(44px, 5.5vw, 64px);
+    gap: clamp(64px, 9vw, 88px);
   }
 }
 
@@ -3964,7 +3964,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 @media (max-width: 640px) {
   .cs-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: clamp(64px, 9vw, 88px);
   }
   .cs-card__image {
     height: 240px;
