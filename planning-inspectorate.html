@@ -2,26 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Hosted subpath fix: stable relative URLs for GitHub Pages /Record-store-app/ (no-op for file:// and site root). -->
+  <!-- Resolve assets for file:// opens and GitHub Pages /Record-store-app/ (not http folder-name paths). -->
   <script>
   (function () {
-    if (location.protocol === "file:") return;
-    var p = location.pathname;
-    var dir;
-    if (/\.html?$/i.test(p)) dir = p.replace(/[^/]+$/, "");
-    else if (p.endsWith("/")) dir = p;
-    else {
-      var i = p.lastIndexOf("/");
-      dir = i <= 0 ? "/" : p.slice(0, i + 1);
+    function insertBase(href) {
+      if (document.querySelector("base")) return;
+      var b = document.createElement("base");
+      b.href = href;
+      var head = document.head;
+      var cs = head.querySelector("meta[charset]");
+      if (!cs) { head.insertBefore(b, head.firstChild); return; }
+      if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+      else head.appendChild(b);
     }
-    if (!dir || dir === "/") return;
-    var b = document.createElement("base");
-    b.href = dir;
-    var head = document.head;
-    var cs = head.querySelector("meta[charset]");
-    if (!cs) { head.insertBefore(b, head.firstChild); return; }
-    if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
-    else head.appendChild(b);
+    if (location.protocol === "file:") {
+      try {
+        var u = new URL(location.href);
+        if (/\.html?$/i.test(u.pathname)) {
+          u.pathname = u.pathname.replace(/\/[^/]*$/, "/");
+          u.search = "";
+          u.hash = "";
+          insertBase(u.href);
+        }
+      } catch (e) {}
+      return;
+    }
+    var prefix = "/Record-store-app/";
+    var p = location.pathname;
+    if (p === "/Record-store-app" || p.indexOf(prefix) === 0) insertBase(prefix);
   })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,14 +45,7 @@
 <body>
 <div id="case-study-lock-root" class="case-study-lock-root" hidden aria-hidden="true"></div>
 <script>
-(function(){
-  try {
-    if (sessionStorage.getItem('zenaCsAuth2026') === '1') return;
-  } catch (e) {}
-  document.documentElement.classList.add('case-study-locked');
-  var el = document.getElementById('case-study-lock-root');
-  if (el) { el.removeAttribute('hidden'); el.setAttribute('aria-hidden', 'false'); }
-})();
+/* Password gate runs in script.js so a missing script.js does not leave a blank page. */
 </script>
   <div class="grain" aria-hidden="true"></div>
 

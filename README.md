@@ -12,17 +12,19 @@ Plain HTML, CSS and a touch of JS, with no build step and no dependencies. Fonts
 
 ## Run it
 
-Just open `index.html` in a browser. Or, if you prefer a local server (recommended so the image loads cleanly on every browser):
+**Recommended:** use a local server so CSS, images, and in-page navigation work reliably.
+
+- **macOS:** double-click `Start local site.command` in this folder (opens http://localhost:8000/home.html).
+- **Terminal:**
 
 ```bash
-# Python 3
+cd "/path/to/Record store app"
 python3 -m http.server 8000
-
-# or Node
-npx serve .
 ```
 
-Then open <http://localhost:8000>.
+Then open <http://localhost:8000/home.html>.
+
+Opening `home.html` directly from Finder (`file://`) is supported for a single page, but some browsers block background loading between local files, so links and fonts may behave inconsistently. Prefer the local server for preview.
 
 ## GitHub Pages (why you might see 404)
 

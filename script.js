@@ -673,8 +673,7 @@ function mountSpotifyFab() {
     root.removeAttribute('hidden');
     root.setAttribute('aria-hidden', 'false');
 
-    if (document.getElementById('case-study-lock-form')) return;
-
+    if (!document.getElementById('case-study-lock-form')) {
     root.innerHTML =
       '<div class="case-study-lock__backdrop" aria-hidden="true"></div>' +
       '<div class="case-study-lock__panel" role="dialog" aria-modal="true" aria-labelledby="case-study-lock-title">' +
@@ -688,11 +687,14 @@ function mountSpotifyFab() {
       '</form>' +
       '<p class="case-study-lock__error" id="case-study-lock-error" role="alert" hidden>Incorrect password. Try again.</p>' +
       '</div>';
+    }
 
     const form = document.getElementById('case-study-lock-form');
     const input = document.getElementById('case-study-lock-input');
     const err = document.getElementById('case-study-lock-error');
     if (!form || !input || !err) return;
+    if (form.dataset.caseStudyLockBound === '1') return;
+    form.dataset.caseStudyLockBound = '1';
 
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -805,6 +807,11 @@ function mountSpotifyFab() {
   }
 
   async function spaNavigate(rawUrl, { replace = false } = {}) {
+    if (window.location.protocol === 'file:') {
+      navigateHard(rawUrl);
+      return;
+    }
+
     const spaMain = document.getElementById('spa-main');
     let url;
     try {
@@ -2086,6 +2093,7 @@ function mountSpotifyFab() {
     if (e.button !== 0) return;
     const a = e.target.closest('a[href]');
     if (!a) return;
+    if (window.location.protocol === 'file:') return;
     if (a.target === '_blank' || a.hasAttribute('download')) {
       if (a.closest('#mobile-nav')) closeMobileNav();
       return;
@@ -2118,6 +2126,10 @@ function mountSpotifyFab() {
 
   window.addEventListener('popstate', () => {
     closeMobileNav();
+    if (window.location.protocol === 'file:') {
+      window.location.reload();
+      return;
+    }
     spaNavigate(window.location.href, { replace: true });
   });
 
