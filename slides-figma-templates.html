@@ -1128,6 +1128,91 @@
       gap: 6px;
     }
 
+    /* Case study: in / out scope (GWI Approach & MVP) */
+    .sfig-slide--scope .sfig-slide__chrome {
+      margin-bottom: 14px;
+    }
+    .sfig-scope__title {
+      font-size: clamp(28px, 2.6vw, 36px);
+      line-height: 1.15;
+      margin-bottom: 10px;
+      max-width: 22ch;
+    }
+    .sfig-takeaway {
+      color: var(--amber);
+      font-weight: 600;
+    }
+    .sfig-scope__lede {
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 72ch;
+      margin-bottom: 14px;
+    }
+    .sfig-scope-panels {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-content: stretch;
+    }
+    .sfig-scope-panel {
+      padding: 18px 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+    }
+    .sfig-scope-panel--in {
+      background: linear-gradient(165deg, rgba(214, 123, 61, 0.09), transparent);
+    }
+    .sfig-scope-panel--out {
+      background: linear-gradient(165deg, rgba(138, 122, 102, 0.1), transparent);
+    }
+    .sfig-scope-panel__title {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .sfig-scope-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .sfig-scope-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+    .sfig-scope-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 16px 16px;
+    }
+    .sfig-scope-list--in li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Ccircle cx='10' cy='10' r='7.5' stroke='%23D67B3D' stroke-opacity='0.55' stroke-width='1.2'/%3E%3Cpath d='M6.25 10.1 8.85 12.65 13.95 7.05' stroke='%23E9A05B' stroke-width='1.85' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    .sfig-scope-list--out li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Ccircle cx='10' cy='10' r='7.5' stroke='%238A7A66' stroke-opacity='0.75' stroke-width='1.2'/%3E%3Cpath d='M7.85 7.05v6.3M12.35 7.05v6.3' stroke='%238A7A66' stroke-opacity='0.92' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
     .sfig-toast {
       position: fixed;
       bottom: 24px;
@@ -1186,6 +1271,7 @@
     <a href="#slide-break-num">Break · num</a>
     <a href="#slide-trio">Trio blocks</a>
     <a href="#slide-alpha-journey">Alpha journey</a>
+    <a href="#slide-cs-scope">CS scope</a>
   </nav>
 
   <div class="sfig-stage-wrap">
@@ -1810,6 +1896,42 @@
                 Ready to be unlocked in future phases
               </div>
             </footer>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ——— Case study: in / out scope (GWI Approach & MVP) ——— -->
+    <div class="sfig-stage" id="slide-cs-scope">
+      <div class="sfig-stage__inner">
+        <section class="sfig-slide sfig-slide--scope" data-slide-name="CS scope in/out" aria-label="Balancing long-term structure with short-term delivery">
+          <div class="sfig-slide__chrome">
+            <span class="sfig-slide__label">Template · CS scope (in / out)</span>
+            <button type="button" class="sfig-copy" data-copy-slide>Copy HTML</button>
+          </div>
+          <div class="sfig-slide__body">
+            <p class="sfig-kicker" style="margin-bottom:8px;">Approach &amp; MVP scope</p>
+            <h2 class="sfig-h2 sfig-scope__title">Balancing <strong class="sfig-takeaway">long-term structure</strong> with <strong class="sfig-takeaway">short-term delivery</strong></h2>
+            <p class="sfig-p sfig-scope__lede">With a tight timeline, we couldn’t solve the underlying system challenges in full. Working closely with Product and Engineering, we focused on what could be delivered for Alpha, drawing a clear line between in-scope work and longer-term bets.</p>
+            <div class="sfig-scope-panels">
+              <div class="sfig-scope-panel sfig-scope-panel--in">
+                <h3 class="sfig-scope-panel__title">In scope</h3>
+                <ul class="sfig-scope-list sfig-scope-list--in">
+                  <li>Self-serve for the new product</li>
+                  <li>Role-based access</li>
+                  <li>User access management</li>
+                  <li>API / MCP usage and metering</li>
+                </ul>
+              </div>
+              <div class="sfig-scope-panel sfig-scope-panel--out">
+                <h3 class="sfig-scope-panel__title">Out of scope</h3>
+                <ul class="sfig-scope-list sfig-scope-list--out">
+                  <li>Full system redesign</li>
+                  <li>Enterprise-grade organisational modelling</li>
+                  <li>Backend-heavy dependencies</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </div>
