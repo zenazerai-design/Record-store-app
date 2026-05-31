@@ -6,3 +6,14 @@
 career-agent-preview.html
 career-agent.js
 Zena Zerai May CV .pdf
+
+# Vinyl crate source assets (too large for GitHub; use web GLBs in repo)
+assets/vinyl-crate-3d/source/
+assets/vinyl-crate-3d/model/vinylbox.obj
+assets/vinyl-crate-3d/model/vinylbox_u0_v0_diffuse.png
+assets/vinyl-crate-3d/textures/vinylbox_u0_v0_diffuse.png
+
+# Local scratch
+.tmp-impact.mp4
+node_modules/
+record-crate-test.html

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+  (function () {
+    function insertBase(href) {
+      if (document.querySelector("base")) return;
+      var b = document.createElement("base");
+      b.href = href;
+      var head = document.head;
+      var cs = head.querySelector("meta[charset]");
+      if (!cs) { head.insertBefore(b, head.firstChild); return; }
+      if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+      else head.appendChild(b);
+    }
+    if (location.protocol === "file:") {
+      try {
+        var u = new URL(location.href);
+        if (/\.html?$/i.test(u.pathname)) {
+          u.pathname = u.pathname.replace(/\/[^/]*$/, "/");
+          u.search = "";
+          u.hash = "";
+          insertBase(u.href);
+        }
+      } catch (e) {}
+      return;
+    }
+    var prefix = "/Record-store-app/";
+    var p = location.pathname;
+    if (p === "/Record-store-app" || p.indexOf(prefix) === 0) insertBase(prefix);
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zena Zerai | Hero Concept</title>
+  <meta name="description" content="Oryzo-inspired hero concept for Zena Zerai, Senior Product Designer." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homepage-oryzo-hero.css" />
+</head>
+<body class="page-oryzo-hero">
+
+  <section class="oryzo-hero" id="top" aria-label="Introduction">
+    <div class="oryzo-hero__bg" aria-hidden="true">
+      <img src="assets/hero-vinyl-browsing.png" alt="" fetchpriority="high" decoding="async" />
+    </div>
+
+    <header class="oryzo-nav" id="oryzo-nav">
+      <nav aria-label="Primary">
+        <ul class="oryzo-nav__links">
+          <li><a href="home.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="ai-explorations.html">AI Explorations</a></li>
+        </ul>
+      </nav>
+      <button class="oryzo-nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <div class="oryzo-mobile-nav" id="mobile-nav" aria-hidden="true">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+      <button class="oryzo-nav__cta-rail" id="mobile-copy-email" type="button">Get in touch</button>
+    </div>
+
+    <div class="oryzo-stage">
+      <div class="oryzo-head">
+        <p class="oryzo-head__role">Senior Product Designer</p>
+        <h1 class="oryzo-head__title">Zena Zerai</h1>
+        <p class="oryzo-head__tagline">Turning complex systems into<br />products people understand</p>
+      </div>
+
+      <div class="oryzo-card">
+        <p class="oryzo-card__lead">Based in London · Available for senior product design roles</p>
+        <hr class="oryzo-card__rule" aria-hidden="true" />
+        <p class="oryzo-card__body">B2B SaaS · Fintech · Public Sector · Automotive · B2C</p>
+      </div>
+
+      <a class="oryzo-scroll" href="case-studies.html" aria-label="View case studies">
+        <span>Scroll to continue</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+
+      <div class="oryzo-player">
+        <button class="oryzo-player__trigger" id="player-trigger" type="button" aria-expanded="false" aria-controls="player-panel" aria-label="Open playlist player">
+          <span class="oryzo-player__art" aria-hidden="true">
+            <svg class="oryzo-player__turntable" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <rect x="3" y="13" width="42" height="29" rx="4" fill="#241C15" stroke="#3D3228" stroke-width="1"/>
+              <rect x="6" y="16" width="36" height="23" rx="2" fill="#1B140E" opacity="0.85"/>
+              <circle cx="21" cy="27.5" r="11.5" fill="#14110E" stroke="#4A3C30" stroke-width="0.75"/>
+              <circle cx="21" cy="27.5" r="8.5" stroke="#E9A05B" stroke-opacity="0.28" stroke-width="0.5"/>
+              <circle cx="21" cy="27.5" r="5.5" stroke="#8A7A66" stroke-opacity="0.35" stroke-width="0.35"/>
+              <circle cx="21" cy="27.5" r="2" fill="#C9BEAB"/>
+              <circle cx="36" cy="19" r="2.8" fill="#5C5145" stroke="#8A7A66" stroke-width="0.35"/>
+              <path d="M35.6 18.8L23.2 31.2" stroke="#C9BEAB" stroke-width="1.25" stroke-linecap="round"/>
+              <circle cx="23.2" cy="31.2" r="1.15" fill="#D67B3D"/>
+            </svg>
+          </span>
+          <span class="oryzo-player__cta" aria-hidden="true">Play me</span>
+          <span class="oryzo-player__play-ring" aria-hidden="true">
+            <svg class="oryzo-player__play" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+              <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <button class="oryzo-cta-rail" id="nav-copy-email" type="button" aria-label="Copy email address">
+      <span class="oryzo-cta-rail__text">Get in touch</span>
+    </button>
+  </section>
+
+  <div class="oryzo-player__panel" id="player-panel" role="region" aria-label="Spotify playlist player" aria-hidden="true">
+    <div class="oryzo-player__panel-head">
+      <span class="oryzo-player__panel-title">Now spinning</span>
+      <button class="oryzo-player__panel-close" id="player-close" type="button" aria-label="Close playlist">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="oryzo-player__embed">
+      <iframe
+        id="player-iframe"
+        title="Spotify playlist"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        src=""
+      ></iframe>
+    </div>
+  </div>
+
+  <div class="oryzo-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+
+  <script>
+  (function () {
+    var EMAIL = "zenazerai@gmail.com";
+    var SPOTIFY = "https://open.spotify.com/embed/playlist/145DhPn9Z7D2cnNkggKWZx?utm_source=generator&theme=0";
+
+    var nav = document.getElementById("oryzo-nav");
+    var hero = document.querySelector(".oryzo-hero");
+    var hamburger = document.getElementById("nav-hamburger");
+    var mobileNav = document.getElementById("mobile-nav");
+    var toast = document.getElementById("email-toast");
+    var playerTrigger = document.getElementById("player-trigger");
+    var playerPanel = document.getElementById("player-panel");
+    var playerClose = document.getElementById("player-close");
+    var playerIframe = document.getElementById("player-iframe");
+    var toastTimer;
+
+    requestAnimationFrame(function () {
+      nav.classList.add("is-ready");
+      hero.classList.add("is-ready");
+    });
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toast.classList.remove("is-visible");
+      }, 2400);
+    }
+
+    function copyEmail() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(EMAIL).then(function () {
+          showToast("Email copied to clipboard");
+        }).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    }
+
+    function fallbackCopy() {
+      var input = document.createElement("input");
+      input.value = EMAIL;
+      document.body.appendChild(input);
+      input.select();
+      try {
+        document.execCommand("copy");
+        showToast("Email copied to clipboard");
+      } catch (e) {
+        showToast(EMAIL);
+      }
+      document.body.removeChild(input);
+    }
+
+    document.getElementById("nav-copy-email").addEventListener("click", copyEmail);
+    document.getElementById("mobile-copy-email").addEventListener("click", copyEmail);
+
+    function setMobileNav(open) {
+      hamburger.classList.toggle("is-open", open);
+      hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+      mobileNav.classList.toggle("is-open", open);
+      mobileNav.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+
+    hamburger.addEventListener("click", function () {
+      setMobileNav(!hamburger.classList.contains("is-open"));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () { setMobileNav(false); });
+    });
+
+    function setPlayer(open) {
+      playerTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+      playerPanel.classList.toggle("is-open", open);
+      playerPanel.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open && !playerIframe.src) {
+        playerIframe.src = SPOTIFY;
+      }
+    }
+
+    playerTrigger.addEventListener("click", function () {
+      setPlayer(!playerPanel.classList.contains("is-open"));
+    });
+
+    playerClose.addEventListener("click", function () {
+      setPlayer(false);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        setMobileNav(false);
+        setPlayer(false);
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

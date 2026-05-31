@@ -1,0 +1,184 @@
+/* Exploration V2: identical layout, lighter premium styling only */
+
+body.page-home-v2 {
+  --v2-bg: #f6f2ea;
+  --v2-surface: #fffdf8;
+  --v2-ink: #1b1713;
+  --v2-soft: #6a5f54;
+  --v2-line: #d9ccbe;
+  --v2-accent: #b56e37;
+  --v2-shadow: 0 18px 40px rgba(31, 21, 12, 0.08);
+  background: radial-gradient(circle at 8% 12%, rgba(213, 169, 116, 0.14), transparent 34%), var(--v2-bg);
+  color: var(--v2-ink);
+}
+
+.page-home-v2 .grain {
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+.page-home-v2 .nav {
+  background: rgba(246, 242, 234, 0.9);
+  border-bottom-color: rgba(143, 124, 103, 0.26);
+  backdrop-filter: blur(5px);
+}
+
+.page-home-v2 .nav__name,
+.page-home-v2 .nav__links a,
+.page-home-v2 .kicker,
+.page-home-v2 .section__note,
+.page-home-v2 .record__cat,
+.page-home-v2 .record__summary,
+.page-home-v2 .record__stat-label,
+.page-home-v2 .foot__meta,
+.page-home-v2 .t-card__role,
+.page-home-v2 .cd-case__desc {
+  color: var(--v2-soft);
+}
+
+.page-home-v2 .nav__dot {
+  background: var(--v2-accent);
+  box-shadow: 0 0 0 6px rgba(181, 110, 55, 0.12);
+}
+
+.page-home-v2 .nav__cta {
+  background: var(--v2-surface);
+  color: #3a2c20;
+  border-color: #c8b7a7;
+}
+
+.page-home-v2 .nav__cta:hover {
+  background: #f3ebe0;
+  border-color: #b89a7f;
+}
+
+.page-home-v2 .hero {
+  background: transparent;
+}
+
+.page-home-v2 .hero__vignette {
+  background: linear-gradient(to top, rgba(246, 242, 234, 0.42), rgba(246, 242, 234, 0.06));
+}
+
+.page-home-v2 .hero__title,
+.page-home-v2 .section__title,
+.page-home-v2 .testimonials__title,
+.page-home-v2 .foot__title {
+  color: var(--v2-ink);
+  letter-spacing: -0.01em;
+}
+
+.page-home-v2 .hero__tagline,
+.page-home-v2 .section__lede {
+  color: #4e4339;
+}
+
+.page-home-v2 .artist-card__paper,
+.page-home-v2 .record__face,
+.page-home-v2 .frame--lineup,
+.page-home-v2 .cd-case__jewel,
+.page-home-v2 .t-card {
+  background: var(--v2-surface);
+  border-color: var(--v2-line);
+  box-shadow: var(--v2-shadow);
+}
+
+.page-home-v2 .artist-card__bar--ink {
+  background: #3e342c;
+}
+
+.page-home-v2 .artist-card__bar--peach {
+  background: #d7aa84;
+}
+
+.page-home-v2 .artist-card__bar--ochre {
+  background: #b56e37;
+}
+
+.page-home-v2 .artist-card__hint {
+  background: rgba(255, 253, 248, 0.92);
+  border-color: var(--v2-line);
+  color: #4a3c31;
+}
+
+.page-home-v2 .works,
+.page-home-v2 .lineup,
+.page-home-v2 .ai-shelf,
+.page-home-v2 .testimonials,
+.page-home-v2 .foot {
+  background: transparent;
+}
+
+.page-home-v2 .record__face-foot,
+.page-home-v2 .record__top-bar,
+.page-home-v2 .record__body {
+  border-color: var(--v2-line);
+}
+
+.page-home-v2 .record__title,
+.page-home-v2 .record__client,
+.page-home-v2 .record__stat-num,
+.page-home-v2 .t-card__name,
+.page-home-v2 .cd-case__project {
+  color: var(--v2-ink);
+}
+
+.page-home-v2 .record__pills span {
+  background: #f3ece4;
+  color: #503f31;
+  border: 1px solid #d7c6b5;
+}
+
+.page-home-v2 .record__face-cta,
+.page-home-v2 .ai-shelf__more {
+  background: #f8f3ea;
+  color: #3f2f23;
+  border-color: #ccb8a4;
+}
+
+.page-home-v2 .record__face-cta:hover,
+.page-home-v2 .ai-shelf__more:hover {
+  background: #f2e8db;
+  border-color: #b6967a;
+}
+
+.page-home-v2 .cd-case__label {
+  background: rgba(255, 253, 248, 0.9);
+  color: #2f241b;
+}
+
+.page-home-v2 .t-card__avatar {
+  background: #f0e4d7;
+  color: #4c3a2b;
+  border-color: #d6bfaa;
+}
+
+.page-home-v2 .foot {
+  border-top: 1px solid rgba(155, 137, 118, 0.35);
+}
+
+.page-home-v2 .foot__links a {
+  color: #4a3a2d;
+}
+
+.page-home-v2 .hero__scroll {
+  background: rgba(255, 252, 246, 0.88);
+  border-color: #cebba9;
+  color: #3f3024;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-home-v2 .artist-card,
+  .page-home-v2 .record,
+  .page-home-v2 .t-card,
+  .page-home-v2 .cd-case {
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .page-home-v2 .artist-card:hover,
+  .page-home-v2 .record:hover,
+  .page-home-v2 .t-card:hover,
+  .page-home-v2 .cd-case:hover {
+    transform: translateY(-2px);
+  }
+}

@@ -1,0 +1,153 @@
+/* V3: same layout/components, restrained visual skin only */
+
+body.page-home-v3 {
+  --v3-bg: #f7f5f1;
+  --v3-surface: #efeae3;
+  --v3-text: #171717;
+  --v3-accent: #6f3434;
+  --v3-muted: #7e7a73;
+  --v3-line: rgba(23, 23, 23, 0.16);
+  background: var(--v3-bg);
+  color: var(--v3-text);
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-home-v3 .grain {
+  opacity: 0.018;
+  mix-blend-mode: multiply;
+}
+
+.page-home-v3 .nav {
+  background: color-mix(in srgb, var(--v3-bg) 92%, white 8%);
+  border-bottom-color: var(--v3-line);
+  box-shadow: none;
+}
+
+.page-home-v3 .nav__dot {
+  background: var(--v3-accent);
+  box-shadow: 0 0 0 5px rgba(111, 52, 52, 0.12);
+}
+
+.page-home-v3 .nav__name,
+.page-home-v3 .nav__links a,
+.page-home-v3 .kicker,
+.page-home-v3 .section__note,
+.page-home-v3 .record__cat,
+.page-home-v3 .record__summary,
+.page-home-v3 .record__stat-label,
+.page-home-v3 .cd-case__desc,
+.page-home-v3 .t-card__role,
+.page-home-v3 .foot__meta {
+  color: var(--v3-muted);
+}
+
+.page-home-v3 .hero__title,
+.page-home-v3 .section__title,
+.page-home-v3 .testimonials__title,
+.page-home-v3 .foot__title,
+.page-home-v3 .record__title,
+.page-home-v3 .record__client,
+.page-home-v3 .record__stat-num,
+.page-home-v3 .t-card__name {
+  color: var(--v3-text);
+  font-family: "General Sans", "Manrope", sans-serif;
+}
+
+.page-home-v3 .hero__title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.page-home-v3 .hero__line--italic,
+.page-home-v3 .italic {
+  font-style: normal;
+}
+
+.page-home-v3 .hero__subtitle {
+  color: var(--v3-text);
+  font-weight: 600;
+}
+
+.page-home-v3 .hero__tagline,
+.page-home-v3 .section__lede {
+  color: #59554f;
+}
+
+.page-home-v3 .hero__vignette {
+  background: linear-gradient(to top, rgba(247, 245, 241, 0.26), rgba(247, 245, 241, 0.04));
+}
+
+.page-home-v3 .artist-card__paper,
+.page-home-v3 .record__face,
+.page-home-v3 .frame,
+.page-home-v3 .cd-case__jewel,
+.page-home-v3 .t-card {
+  background: var(--v3-surface);
+  border-color: var(--v3-line);
+  box-shadow: none;
+}
+
+.page-home-v3 .artist-card__bar--ink {
+  background: #2c2c2c;
+}
+
+.page-home-v3 .artist-card__bar--peach {
+  background: #a6a19a;
+}
+
+.page-home-v3 .artist-card__bar--ochre {
+  background: var(--v3-accent);
+}
+
+.page-home-v3 .artist-card__hint {
+  background: rgba(247, 245, 241, 0.95);
+  border-color: var(--v3-line);
+  color: #45413b;
+}
+
+.page-home-v3 .record__top-bar,
+.page-home-v3 .record__body,
+.page-home-v3 .record__face-foot {
+  border-color: var(--v3-line);
+}
+
+.page-home-v3 .record__pills span {
+  background: rgba(247, 245, 241, 0.9);
+  border: 1px solid var(--v3-line);
+  color: #4d4943;
+}
+
+.page-home-v3 .nav__cta,
+.page-home-v3 .record__face-cta,
+.page-home-v3 .ai-shelf__more,
+.page-home-v3 .hero__scroll {
+  background: transparent;
+  border-color: var(--v3-line);
+  color: var(--v3-text);
+  box-shadow: none;
+}
+
+.page-home-v3 .nav__cta:hover,
+.page-home-v3 .record__face-cta:hover,
+.page-home-v3 .ai-shelf__more:hover,
+.page-home-v3 .hero__scroll:hover {
+  border-color: rgba(111, 52, 52, 0.6);
+  color: var(--v3-accent);
+  transform: none;
+}
+
+.page-home-v3 .cd-case__label {
+  background: rgba(239, 234, 227, 0.92);
+  color: var(--v3-text);
+}
+
+.page-home-v3 .t-card__avatar {
+  background: rgba(111, 52, 52, 0.1);
+  border-color: rgba(111, 52, 52, 0.25);
+  color: #402626;
+}
+
+.page-home-v3 .foot {
+  border-top-color: var(--v3-line);
+}
+

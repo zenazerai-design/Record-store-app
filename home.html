@@ -36,13 +36,16 @@
   <title>Zena Zerai | Senior Product Designer</title>
   <meta name="description" content="The portfolio of Zena Zerai, Senior Product Designer. A small, warm record store of selected work." />
 
+  <link rel="preload" as="image" href="assets/hero-home-interior.webp" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Raleway:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="page-home">
+<body class="page-home page-home--intro">
   <!-- If zenazerai.com ever flakes, share: https://zenazerai-design.github.io/Record-store-app/ -->
   <noscript>
     <div class="noscript-banner" role="alert" style="position:relative;z-index:999999;margin:0;padding:14px 18px;background:#1a1510;color:#fce8cf;border-bottom:1px solid rgba(245,234,215,0.14);font:15px/1.45 system-ui,-apple-system,sans-serif;">
@@ -56,7 +59,7 @@
 
   <!-- Top nav: styled like a record sticker / track listing -->
   <header class="nav">
-    <a class="nav__brand" href="#top">
+    <a class="nav__brand" href="#top" aria-label="Zena Zerai home">
       <span class="nav__dot"></span>
       <span class="nav__name">Zena Zerai</span>
     </a>
@@ -103,77 +106,90 @@
   <main id="spa-main" class="spa-main" tabindex="-1">
   <!-- HERO -->
   <section id="top" class="hero hero--hold">
-    <div class="hero__bg" aria-hidden="true">
-      <img src="assets/record-store.png" alt="" fetchpriority="high" decoding="async" />
-      <div class="hero__vignette"></div>
-    </div>
-
-    <div class="hero__content">
-      <h1 class="hero__title">
-        <span class="hero__line">Zena <span class="hero__line--italic">Zerai</span></span>
-      </h1>
-
-      <div class="hero__copy">
-        <p class="hero__subtitle">Senior Product Designer</p>
-        <p class="hero__tagline">Turning complex systems into products people understand</p>
+    <div class="hero__pin">
+      <div class="hero__bg" aria-hidden="true">
+        <picture>
+          <source srcset="assets/hero-home-interior.webp" type="image/webp" />
+          <img src="assets/hero-home-interior.png" alt="" fetchpriority="high" decoding="async" width="1024" height="681" />
+        </picture>
+        <div class="hero__vignette"></div>
       </div>
 
-      <div class="hero__bottom">
-        <span class="kicker kicker--center">Designing for: B2B SaaS · Fintech · Public Sector · Automotive</span>
+      <div class="hero__intro-overlay" aria-hidden="true">
+        <div class="hero__intro-backdrop"></div>
       </div>
-    </div>
 
-    <!-- Right side: artist card -->
-    <div class="hero__right">
-      <!-- Artist card, small mid-century poster, links to LinkedIn -->
-      <a class="artist-card"
-         href="https://www.linkedin.com/in/zenazerai"
-         target="_blank"
-         rel="noopener noreferrer"
-         aria-label="Zena Zerai on LinkedIn">
-        <div class="artist-card__paper">
-          <span class="artist-card__bars" aria-hidden="true">
-            <span class="artist-card__bar artist-card__bar--ink"></span>
-            <span class="artist-card__bar artist-card__bar--peach"></span>
-            <span class="artist-card__bar artist-card__bar--ochre"></span>
-          </span>
+      <div class="hero__content hero__content--vibrant">
+        <div class="hero__lead">
+          <p class="hero__subtitle">Senior Product Designer</p>
+          <h1 class="hero__title hero__title--intro-center">
+            <span class="hero__title-first">Zena</span>
+            <span class="hero__title-accent">Zerai</span>
+          </h1>
+          <p class="hero__tagline">Turning complex systems into<br />products people understand</p>
+        </div>
+      </div>
 
-          <div class="artist-card__frame">
-            <span class="artist-card__circle" aria-hidden="true"></span>
-            <span class="artist-card__square" aria-hidden="true"></span>
-            <div class="artist-card__photo-wrap">
-              <img class="artist-card__photo"
-                   src="assets/zena-profile.png"
-                   alt="Portrait of Zena Zerai" />
+      <div class="hero__right">
+        <a class="artist-card"
+           href="https://www.linkedin.com/in/zenazerai"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Zena Zerai on LinkedIn">
+          <div class="artist-card__paper">
+            <span class="artist-card__bars" aria-hidden="true">
+              <span class="artist-card__bar artist-card__bar--ink"></span>
+              <span class="artist-card__bar artist-card__bar--peach"></span>
+              <span class="artist-card__bar artist-card__bar--ochre"></span>
+            </span>
+
+            <div class="artist-card__frame">
+              <span class="artist-card__circle" aria-hidden="true"></span>
+              <span class="artist-card__square" aria-hidden="true"></span>
+              <div class="artist-card__photo-wrap">
+                <picture>
+                  <source srcset="assets/zena-profile.webp" type="image/webp" />
+                  <img class="artist-card__photo"
+                       src="assets/zena-profile.png"
+                       alt="Portrait of Zena Zerai"
+                       width="120"
+                       height="120"
+                       decoding="async" />
+                </picture>
+              </div>
+            </div>
+
+            <div class="artist-card__foot">
+              <span class="artist-card__sub">
+                Senior<br>Product<br>Designer
+              </span>
+              <span class="artist-card__num">/26</span>
             </div>
           </div>
+          <span class="artist-card__hint" aria-hidden="true">
+            Say hi on LinkedIn
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H8M17 7v9"/>
+            </svg>
+          </span>
+        </a>
+      </div>
 
-          <div class="artist-card__foot">
-            <span class="artist-card__sub">
-              Senior<br>Product<br>Designer
-            </span>
-            <span class="artist-card__num">/26</span>
-          </div>
-        </div>
-        <span class="artist-card__hint" aria-hidden="true">
-          Say hi on LinkedIn
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M7 17L17 7M17 7H8M17 7v9"/>
-          </svg>
-        </span>
+      <p class="hero__bottom">
+        <span class="kicker">B2B SaaS · Fintech · Public Sector · Automotive · B2C</span>
+      </p>
+
+      <div class="hero__top hero__top--oryzo-hidden" hidden aria-hidden="true">
+        <span class="kicker">★ Now Playing</span>
+      </div>
+
+      <a class="hero__scroll" href="#works" aria-label="View my work">
+        <span class="hero__scroll-label">View work</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
       </a>
     </div>
-
-    <div class="hero__top">
-      <span class="kicker">★ Now Playing</span>
-    </div>
-
-    <a class="hero__scroll" href="#works" aria-label="View my work">
-      <span>View my work</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-    </a>
   </section>
 
   <!-- CASE STUDIES -->
@@ -190,13 +206,13 @@
 
     <ul class="crate" role="list">
 
-      <!-- A1 · GWI -->
+      <!-- GWI -->
       <li class="record" data-genre="SaaS" data-case-href="gwi.html">
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #B8446A;">
               <div class="record__top-bar">
-                <span class="record__cat"><span class="record__cat-ndx">A1 · </span>SaaS AI Platform &nbsp;|&nbsp; B2B</span>
+                <span class="record__cat">SaaS AI Platform &nbsp;|&nbsp; B2B</span>
               </div>
               <div class="record__body">
                 <div class="record__title-row">
@@ -214,7 +230,10 @@
                   </div>
                   <div class="record__media">
                     <div class="record__image">
-                      <img src="assets/GWI/API%20cover.png" alt="GWI API and MCP usage dashboard" />
+                      <picture>
+                        <source srcset="assets/GWI/API%20cover.webp" type="image/webp" />
+                        <img src="assets/GWI/API%20cover.png" alt="GWI API and MCP usage dashboard" loading="lazy" decoding="async" />
+                      </picture>
                       <div class="record__face-vinyl" aria-hidden="true">
                         <div class="record__vinyl-label"></div>
                       </div>
@@ -245,13 +264,13 @@
         </div>
       </li>
 
-      <!-- A2 · Planning Inspectorate -->
+      <!-- Planning Inspectorate -->
       <li class="record" data-genre="Public Sector" data-case-href="planning-inspectorate.html">
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #6F6FDE;">
               <div class="record__top-bar">
-                <span class="record__cat"><span class="record__cat-ndx">A2 · </span>Public Sector &nbsp;|&nbsp; B2B</span>
+                <span class="record__cat">Public Sector &nbsp;|&nbsp; B2B</span>
               </div>
               <div class="record__body">
                 <div class="record__title-row">
@@ -269,7 +288,10 @@
                   </div>
                   <div class="record__media">
                     <div class="record__image">
-                      <img src="assets/PINS/PINS cover.png" alt="Planning Inspectorate case management system" />
+                      <picture>
+                        <source srcset="assets/PINS/PINS%20cover.webp" type="image/webp" />
+                        <img src="assets/PINS/PINS cover.png" alt="Planning Inspectorate case management system" loading="lazy" decoding="async" />
+                      </picture>
                       <div class="record__face-vinyl" aria-hidden="true">
                         <div class="record__vinyl-label"></div>
                       </div>
@@ -300,13 +322,13 @@
         </div>
       </li>
 
-      <!-- B1 · Toyota -->
+      <!-- Toyota -->
       <li class="record" data-genre="Automotive" data-case-href="toyota.html">
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #8B6240;">
               <div class="record__top-bar">
-                <span class="record__cat"><span class="record__cat-ndx">B1 · </span>Automotive &nbsp;|&nbsp; B2C</span>
+                <span class="record__cat">Automotive &nbsp;|&nbsp; B2C</span>
               </div>
               <div class="record__body">
                 <div class="record__title-row">
@@ -324,7 +346,10 @@
                   </div>
                   <div class="record__media">
                     <div class="record__image">
-                      <img src="assets/Toyota/343shots_so.png" alt="Toyota product page design" />
+                      <picture>
+                        <source srcset="assets/Toyota/343shots_so.webp" type="image/webp" />
+                        <img src="assets/Toyota/343shots_so.png" alt="Toyota product page design" loading="lazy" decoding="async" />
+                      </picture>
                       <div class="record__face-vinyl" aria-hidden="true">
                         <div class="record__vinyl-label"></div>
                       </div>
@@ -355,13 +380,13 @@
         </div>
       </li>
 
-      <!-- B2 · Hyundai Finance -->
+      <!-- Hyundai Finance -->
       <li class="record" data-genre="Auto Finance" data-case-href="hyundai-finance.html">
         <div class="record__inner">
           <div class="record__front">
             <div class="record__face" style="--accent: #5B7BA8;">
               <div class="record__top-bar">
-                <span class="record__cat"><span class="record__cat-ndx">B2 · </span>Auto Finance &nbsp;|&nbsp; B2B2C</span>
+                <span class="record__cat">Auto Finance &nbsp;|&nbsp; B2B2C</span>
               </div>
               <div class="record__body">
                 <div class="record__title-row">
@@ -379,7 +404,10 @@
                   </div>
                   <div class="record__media">
                     <div class="record__image">
-                      <img src="assets/HCUK/Cover%20image.png" alt="Hyundai Finance dealer portal design" />
+                      <picture>
+                        <source srcset="assets/HCUK/Cover%20image.webp" type="image/webp" />
+                        <img src="assets/HCUK/Cover%20image.png" alt="Hyundai Finance dealer portal design" loading="lazy" decoding="async" />
+                      </picture>
                       <div class="record__face-vinyl" aria-hidden="true">
                         <div class="record__vinyl-label"></div>
                       </div>
@@ -428,11 +456,16 @@
 
     <div class="lineup__floor">
       <figure class="frame frame--lineup">
-        <img
-          src="assets/lineup-poster.png"
-          alt="Client lineup poster, Zena Zerai, Digital Product Designer. Headliners: Google, Barclays, Toyota. Featured acts: Compare the Market, Department for Education, Hyundai Finance. Supporting acts: GWI, Planning Inspectorate, Cazoo, Not on the High Street, RBSI."
-          class="frame__img"
-        />
+        <picture>
+          <source srcset="assets/lineup-poster.webp" type="image/webp" />
+          <img
+            src="assets/lineup-poster.png"
+            alt="Client lineup poster, Zena Zerai, Digital Product Designer. Headliners: Google, Barclays, Toyota. Featured acts: Compare the Market, Department for Education, Hyundai Finance. Supporting acts: GWI, Planning Inspectorate, Cazoo, Not on the High Street, RBSI."
+            class="frame__img"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </figure>
     </div>
 
@@ -566,19 +599,6 @@
 
       <article class="t-card t-card--3">
         <blockquote class="t-card__quote">
-          It's always a pleasure to work with Zena, she is determined, a born and natural leader, and someone whose opinion and feedback I value and constantly seek.
-        </blockquote>
-        <footer class="t-card__foot">
-          <div class="t-card__avatar" aria-hidden="true">FD</div>
-          <div class="t-card__meta">
-            <p class="t-card__name">Frederike De Zutter</p>
-            <p class="t-card__role">Lead UX Designer</p>
-          </div>
-        </footer>
-      </article>
-
-      <article class="t-card t-card--4">
-        <blockquote class="t-card__quote">
           Since joining the HCUK account, Zena has quickly established herself as an invaluable member of the team. Her ability to rapidly grasp the domain and apply her UX expertise in a meaningful and relevant way has been hugely impressive.
         </blockquote>
         <footer class="t-card__foot">
@@ -586,6 +606,19 @@
           <div class="t-card__meta">
             <p class="t-card__name">Tom Dickie</p>
             <p class="t-card__role">Tech Lead</p>
+          </div>
+        </footer>
+      </article>
+
+      <article class="t-card t-card--4">
+        <blockquote class="t-card__quote">
+          What sets her apart is her ability to combine exceptional design craft with strong strategic thinking… Her ability to align diverse perspectives, challenge assumptions, and turn complexity into clarity made her an invaluable partner.
+        </blockquote>
+        <footer class="t-card__foot">
+          <div class="t-card__avatar" aria-hidden="true">GJ</div>
+          <div class="t-card__meta">
+            <p class="t-card__name">Gala Jovanovic</p>
+            <p class="t-card__role">Lead Product Manager</p>
           </div>
         </footer>
       </article>
@@ -628,7 +661,7 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
 </body>
 </html>

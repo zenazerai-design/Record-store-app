@@ -1,0 +1,168 @@
+/* Typography/art-direction refinement only: same structure, calmer finish */
+
+body.page-home-thorgal {
+  --bg: #f5f1eb;
+  --surface: #ece6de;
+  --text: #1a1a1a;
+  --accent: #6d3434;
+  --brand-accent: #6d3434;
+  --muted: #7a746d;
+  --line: rgba(26, 26, 26, 0.16);
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-home-thorgal .nav__name,
+.page-home-thorgal .hero__line {
+  font-family: "General Sans", "Manrope", sans-serif;
+  font-weight: 600;
+}
+
+.page-home-thorgal .hero__top .kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.page-home-thorgal .hero__line {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.page-home-thorgal .grain {
+  opacity: 0.018;
+  mix-blend-mode: multiply;
+}
+
+.page-home-thorgal .nav {
+  background: color-mix(in srgb, var(--bg) 92%, #fff 8%);
+  border-bottom-color: var(--line);
+  box-shadow: none;
+}
+
+.page-home-thorgal .nav__dot {
+  background: var(--brand-accent);
+  box-shadow: 0 0 0 5px rgba(109, 52, 52, 0.1);
+}
+
+/* Force all legacy inline accent hooks away from orange/amber */
+.page-home-thorgal .record__face {
+  --accent: var(--brand-accent) !important;
+}
+
+.page-home-thorgal .nav__links a,
+.page-home-thorgal .kicker,
+.page-home-thorgal .section__lede,
+.page-home-thorgal .section__note,
+.page-home-thorgal .record__summary,
+.page-home-thorgal .record__stat-label,
+.page-home-thorgal .cd-case__desc,
+.page-home-thorgal .t-card__role,
+.page-home-thorgal .foot__meta {
+  color: var(--muted);
+}
+
+.page-home-thorgal .hero__title,
+.page-home-thorgal .section__title,
+.page-home-thorgal .testimonials__title,
+.page-home-thorgal .foot__title,
+.page-home-thorgal .record__title,
+.page-home-thorgal .record__client,
+.page-home-thorgal .record__stat-num,
+.page-home-thorgal .t-card__name {
+  color: var(--text);
+}
+
+.page-home-thorgal .hero__subtitle {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.page-home-thorgal .hero__tagline {
+  color: #5e5952;
+}
+
+.page-home-thorgal .hero {
+  padding-top: clamp(6.5rem, 9vw, 8.2rem);
+  padding-bottom: clamp(3.8rem, 6vw, 5.6rem);
+}
+
+.page-home-thorgal .hero__vignette {
+  background: linear-gradient(to top, rgba(245, 241, 235, 0.24), rgba(245, 241, 235, 0.05));
+}
+
+.page-home-thorgal .artist-card__paper,
+.page-home-thorgal .record__face,
+.page-home-thorgal .frame,
+.page-home-thorgal .cd-case__jewel,
+.page-home-thorgal .t-card {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.page-home-thorgal .artist-card__hint {
+  background: rgba(245, 241, 235, 0.94);
+  border-color: var(--line);
+}
+
+.page-home-thorgal .artist-card__bar--peach {
+  background: #9a8779;
+}
+
+.page-home-thorgal .artist-card__bar--ochre {
+  background: var(--brand-accent);
+}
+
+.page-home-thorgal .record__top-bar,
+.page-home-thorgal .record__body,
+.page-home-thorgal .record__face-foot {
+  border-color: var(--line);
+}
+
+.page-home-thorgal .record__pills span {
+  background: rgba(245, 241, 235, 0.86);
+  border: 1px solid var(--line);
+  color: #4f4a44;
+}
+
+.page-home-thorgal .nav__cta,
+.page-home-thorgal .record__face-cta,
+.page-home-thorgal .hero__scroll,
+.page-home-thorgal .ai-shelf__more {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.page-home-thorgal .nav__cta:hover,
+.page-home-thorgal .record__face-cta:hover,
+.page-home-thorgal .hero__scroll:hover,
+.page-home-thorgal .ai-shelf__more:hover {
+  border-color: rgba(109, 52, 52, 0.58);
+  color: var(--brand-accent);
+  transform: none;
+}
+
+.page-home-thorgal .cd-case__label {
+  background: rgba(236, 230, 222, 0.9);
+  color: var(--text);
+}
+
+.page-home-thorgal .t-card__avatar {
+  background: rgba(109, 52, 52, 0.1);
+  border-color: rgba(109, 52, 52, 0.26);
+  color: #432626;
+}
+
+.page-home-thorgal .works,
+.page-home-thorgal .lineup,
+.page-home-thorgal .ai-shelf,
+.page-home-thorgal .testimonials,
+.page-home-thorgal .foot {
+  background: transparent;
+}
+
+.page-home-thorgal .foot {
+  border-top-color: var(--line);
+}
