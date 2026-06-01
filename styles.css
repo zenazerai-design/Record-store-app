@@ -5448,9 +5448,10 @@ body.page-about .reveal.reveal--stagger.is-in {
   max-width: 38ch;
 }
 
-/* Case studies listing (cs-grid-section only exists on case-studies.html) */
+/* Case studies listing — match homepage catalogue client labels (SPA-safe via .cs-card__client) */
+.cs-card__client,
 .cs-grid-section .cs-card__project {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-weight: 400;
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -5465,6 +5466,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 @media (min-width: 721px) {
+  .cs-card__client,
   .cs-grid-section .cs-card__project {
     font-size: 12px;
     letter-spacing: 0.13em;
