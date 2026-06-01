@@ -152,6 +152,8 @@
             <em class="italic">Name.</em>
           </h1>
 
+          <p class="csd-hero__date">YYYY – YYYY</p>
+
           <div class="csd-hero__body">
             <p class="csd-hero__summary">
               First paragraph, context or client one-liner.
@@ -174,38 +176,20 @@
             <span>Project cover</span>
           </div>
         </div>
-      </section>
-      <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY END, Block: Hero
-           ───────────────────────────────────────────────────────────────────────── -->
 
-      <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY START, Block: Project meta (Category, Sector, Date, Team + Role pills)
-           ───────────────────────────────────────────────────────────────────────── -->
-      <section class="csd-meta" aria-label="Project details">
+        <!-- ─────────────────────────────────────────────────────────────────────────
+             COPY START, Block: Project meta (.csd-hero__date under title; Team + Role pills below)
+             Lives inside hero so metadata reads as part of the intro.
+             ───────────────────────────────────────────────────────────────────────── -->
+        <section class="csd-meta" aria-label="Project details">
         <dl class="csd-meta__grid">
 
           <div class="csd-meta__item">
-            <dt class="csd-meta__label">Category</dt>
-            <dd class="csd-meta__value">…</dd>
-          </div>
-
-          <div class="csd-meta__item">
-            <dt class="csd-meta__label">Sector</dt>
-            <dd class="csd-meta__value">…</dd>
-          </div>
-
-          <div class="csd-meta__item">
-            <dt class="csd-meta__label">Date</dt>
-            <dd class="csd-meta__value">YYYY – YYYY</dd>
-          </div>
-
-          <div class="csd-meta__item">
             <dt class="csd-meta__label">Team</dt>
-            <dd class="csd-meta__value">…</dd>
+            <dd class="csd-meta__value">Role one<span class="csd-meta__dot" aria-hidden="true">·</span>Role two<span class="csd-meta__dot" aria-hidden="true">·</span>Role three</dd>
           </div>
 
-          <div class="csd-meta__item csd-meta__item--full">
+          <div class="csd-meta__item">
             <dt class="csd-meta__label">Role</dt>
             <dd class="csd-meta__value csd-meta__pills">
               <!-- Tip: duplicate/remove <span> tags as needed -->
@@ -216,9 +200,10 @@
           </div>
 
         </dl>
+        </section>
       </section>
       <!-- ─────────────────────────────────────────────────────────────────────────
-           COPY END, Block: Project meta
+           COPY END, Blocks: Hero + Project meta
            ───────────────────────────────────────────────────────────────────────── -->
 
       <!-- ─────────────────────────────────────────────────────────────────────────

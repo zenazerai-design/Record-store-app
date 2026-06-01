@@ -78,7 +78,19 @@ function mountSpotifyFab() {
     /* ignore */
   }
 
+  const CASE_STUDY_DETAIL_PAGES = new Set([
+    'gwi.html',
+    'toyota.html',
+    'hyundai-finance.html',
+    'planning-inspectorate.html',
+  ]);
+
+  function isCaseStudyPageKey(key) {
+    return key === 'case-studies.html' || CASE_STUDY_DETAIL_PAGES.has(key);
+  }
+
   function ensureSpotifyFabReady() {
+    if (document.body.classList.contains('page-case-study')) return;
     mountSpotifyFab();
     initSpotifyFabListeners();
   }
@@ -119,8 +131,6 @@ function mountSpotifyFab() {
     });
     spotifyIntroObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   }
-
-  watchHomeIntroForSpotifyFab();
 
   function deferNonCriticalWork(fn) {
     if ('requestIdleCallback' in window) {
@@ -831,14 +841,8 @@ function mountSpotifyFab() {
     document.body.classList.toggle('page-about', key === 'about.html' || key === 'career-agent-preview.html');
     document.body.classList.toggle('page-career-agent-preview', key === 'career-agent-preview.html');
     document.body.classList.toggle('page-pins', key === 'planning-inspectorate.html');
+    document.body.classList.toggle('page-case-study', isCaseStudyPageKey(key));
   }
-
-  const CASE_STUDY_DETAIL_PAGES = new Set([
-    'gwi.html',
-    'toyota.html',
-    'hyundai-finance.html',
-    'planning-inspectorate.html',
-  ]);
 
   const AI_EXPLORATION_DETAIL_PAGES = new Set([
     'british-airways.html',
@@ -1002,6 +1006,9 @@ function mountSpotifyFab() {
 
     initDynamicPage();
     applyCaseStudyPasswordGate(url.href);
+    if (!document.body.classList.contains('page-case-study') && !document.getElementById('spotify-fab')) {
+      watchHomeIntroForSpotifyFab();
+    }
   }
 
   /* ──────────────────────────────────────────────────────────────────
@@ -3158,5 +3165,6 @@ function mountSpotifyFab() {
 
   updateNavAriaCurrent(window.location.href);
   syncBodyPageClasses(window.location.href);
+  watchHomeIntroForSpotifyFab();
 
 })();
