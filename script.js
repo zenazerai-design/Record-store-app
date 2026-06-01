@@ -130,6 +130,7 @@ function mountSpotifyFab() {
     }
   }
 
+  let testimonialCarouselCleanup = () => {};
   let recordStackCleanup = () => {};
   let flipImagesCleanup  = () => {};
   let fosHotspotCleanup  = () => {};
@@ -210,6 +211,8 @@ function mountSpotifyFab() {
     pinsFlowCleanup = () => {};
     careerAgentCleanup();
     careerAgentCleanup = () => {};
+    testimonialCarouselCleanup();
+    testimonialCarouselCleanup = () => {};
     heroEntranceCleanup();
     heroEntranceCleanup = () => {};
     heroIntroCleanup();
@@ -2274,9 +2277,9 @@ function mountSpotifyFab() {
       el.style.setProperty('--reveal-delay', '300ms');
     });
 
-    document.querySelectorAll('.testimonials .t-card').forEach((card, i) => {
-      card.classList.add('reveal', 'reveal--soft');
-      card.style.setProperty('--reveal-delay', `${i * 85}ms`);
+    document.querySelectorAll('.testimonials__stage').forEach(el => {
+      el.classList.add('reveal', 'reveal--soft');
+      el.style.setProperty('--reveal-delay', '120ms');
     });
 
     document.querySelectorAll('.foot__inner').forEach(el => {
@@ -2646,6 +2649,152 @@ function mountSpotifyFab() {
     };
   }
 
+  function initTestimonialCarousel() {
+    const track = document.getElementById('testimonials-track');
+    const carousel = document.getElementById('testimonials-carousel');
+    if (!track || !carousel) return () => {};
+
+    const slides = Array.from(track.querySelectorAll('.oryzo-t__slide'));
+    const dots = Array.from(document.querySelectorAll('#testimonials-dots .oryzo-t__dot'));
+    const prevBtn = document.getElementById('testimonials-prev');
+    const nextBtn = document.getElementById('testimonials-next');
+    const count = slides.length;
+    if (!count) return () => {};
+
+    let current = 0;
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+    let isDragging = false;
+
+    function mod(n, m) {
+      return ((n % m) + m) % m;
+    }
+
+    function positionSlides(activeIndex) {
+      slides.forEach((slide, i) => {
+        let offset = i - activeIndex;
+        if (offset > count / 2) offset -= count;
+        if (offset < -count / 2) offset += count;
+
+        slide.dataset.offset = String(offset);
+        slide.classList.toggle('is-active', offset === 0);
+        slide.setAttribute('aria-hidden', offset === 0 ? 'false' : 'true');
+
+        const card = slide.querySelector('.oryzo-t__card');
+        if (card) card.setAttribute('tabindex', offset === 0 ? '0' : '-1');
+      });
+
+      track.dataset.active = String(activeIndex);
+    }
+
+    function goTo(index) {
+      const next = mod(index, count);
+      if (next === current) return;
+      current = next;
+      positionSlides(current);
+
+      dots.forEach((dot, i) => {
+        const active = i === current;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function onPrevClick(e) {
+      e.preventDefault();
+      prev();
+    }
+
+    function onNextClick(e) {
+      e.preventDefault();
+      next();
+    }
+
+    function onDotClick(e) {
+      const dot = e.currentTarget;
+      goTo(parseInt(dot.dataset.index, 10));
+    }
+
+    function onCardClick(e) {
+      const slide = e.currentTarget.closest('.oryzo-t__slide');
+      if (!slide) return;
+      const offset = parseInt(slide.dataset.offset, 10);
+      if (offset === 0 || Number.isNaN(offset)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      goTo(current + offset);
+    }
+
+    function onKeydown(e) {
+      if (!document.getElementById('testimonials')) return;
+      if (e.target instanceof HTMLElement && /^(input|textarea|select)$/i.test(e.target.tagName)) return;
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    }
+
+    function onPointerDown(e) {
+      if (e.button !== 0) return;
+      const slide = e.target.closest('.oryzo-t__slide');
+      if (slide && slide.dataset.offset !== '0') return;
+      isDragging = true;
+      touchStartX = e.clientX;
+      touchDeltaX = 0;
+      carousel.setPointerCapture(e.pointerId);
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      touchDeltaX = e.clientX - touchStartX;
+    }
+
+    function onPointerUp(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.releasePointerCapture(e.pointerId);
+      if (Math.abs(touchDeltaX) > 48) {
+        if (touchDeltaX < 0) next();
+        else prev();
+      }
+      touchDeltaX = 0;
+    }
+
+    function onPointerCancel() {
+      isDragging = false;
+      touchDeltaX = 0;
+    }
+
+    prevBtn?.addEventListener('click', onPrevClick);
+    nextBtn?.addEventListener('click', onNextClick);
+    dots.forEach(dot => dot.addEventListener('click', onDotClick));
+    slides.forEach(slide => {
+      slide.querySelector('.oryzo-t__card')?.addEventListener('click', onCardClick);
+    });
+    document.addEventListener('keydown', onKeydown);
+    carousel.addEventListener('pointerdown', onPointerDown);
+    carousel.addEventListener('pointermove', onPointerMove);
+    carousel.addEventListener('pointerup', onPointerUp);
+    carousel.addEventListener('pointercancel', onPointerCancel);
+
+    positionSlides(0);
+
+    return () => {
+      prevBtn?.removeEventListener('click', onPrevClick);
+      nextBtn?.removeEventListener('click', onNextClick);
+      dots.forEach(dot => dot.removeEventListener('click', onDotClick));
+      slides.forEach(slide => {
+        slide.querySelector('.oryzo-t__card')?.removeEventListener('click', onCardClick);
+      });
+      document.removeEventListener('keydown', onKeydown);
+      carousel.removeEventListener('pointerdown', onPointerDown);
+      carousel.removeEventListener('pointermove', onPointerMove);
+      carousel.removeEventListener('pointerup', onPointerUp);
+      carousel.removeEventListener('pointercancel', onPointerCancel);
+    };
+  }
+
   function initDynamicPage() {
     heroIntroCleanup = initHeroIntro();
     heroScrollCollapseCleanup = initHeroScrollCollapse();
@@ -2663,6 +2812,7 @@ function mountSpotifyFab() {
         pivotDropCleanup   = initGwiPivotDrop();
         pinsFlowCleanup    = initPinsPublishFlow();
         careerAgentCleanup = initCareerAgent();
+        testimonialCarouselCleanup = initTestimonialCarousel();
         initTrackCards();
         const runRevealSetup = () => setupRevealOnScroll();
         const deferReveal =

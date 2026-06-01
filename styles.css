@@ -581,7 +581,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-body);
   font-style: normal;
   font-size: clamp(13px, 1.1vw, 15px);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -739,6 +739,8 @@ a { color: inherit; text-decoration: none; }
 
   .page-home .hero__subtitle {
     margin: 0 0 8px;
+    font-size: clamp(11px, 2.8vw, 13px);
+    font-weight: 500;
   }
 
   .page-home.page-home--intro .hero__title,
@@ -768,16 +770,50 @@ a { color: inherit; text-decoration: none; }
     width: 100%;
     font-size: 14px;
     margin-top: clamp(10px, 1.4vh, 14px);
+    margin-bottom: clamp(6px, 1vh, 10px);
+    position: relative;
+    z-index: 2;
   }
 
   .page-home .hero__pin > .hero__right {
     position: static;
-    width: min(200px, 58vw);
-    margin: clamp(28px, 5vh, 40px) auto 0;
+    width: min(168px, 50vw);
+    margin: clamp(36px, 6vh, 52px) auto 0;
     align-self: center;
     justify-self: center;
     grid-column: auto;
     grid-row: auto;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .page-home .hero__pin > .hero__right .artist-card {
+    transform: rotate(2deg);
+    padding: 4px 4px 5px;
+  }
+
+  .page-home .hero__pin > .hero__right .artist-card__paper {
+    padding: 10px 10px 11px;
+    gap: 8px;
+  }
+
+  .page-home .hero__pin > .hero__right .artist-card__bar {
+    width: 13px;
+    height: 3px;
+  }
+
+  .page-home .hero__pin > .hero__right .artist-card__sub {
+    font-size: 7.5px;
+  }
+
+  .page-home .hero__pin > .hero__right .artist-card__num {
+    font-size: 10px;
+  }
+
+  .page-home .hero__pin > .hero__right .artist-card__hint {
+    font-size: 8.5px;
+    padding: 5px 8px 4px;
+    bottom: -12px;
   }
 
   .page-home .hero__bottom {
@@ -2091,19 +2127,23 @@ a { color: inherit; text-decoration: none; }
   gap: 10px;
   flex: none;
   padding: 12px 22px;
-  border-radius: 999px;
-  background: var(--cream);
-  color: #1a1410;
+  border-radius: 3px;
+  background: rgb(247, 226, 198);
+  color: #1a1510;
+  border: 1px solid rgb(247, 226, 198);
+  box-shadow: 0 2px 14px rgba(8, 6, 4, 0.2);
   font-family: var(--sans);
   font-weight: 500;
   font-size: 13.5px;
   letter-spacing: 0.01em;
-  transition: gap .3s var(--ease), background .2s var(--ease), transform .3s var(--ease);
+  transition: gap .3s var(--ease), background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease), transform .3s var(--ease);
 }
 .record__face-cta:hover {
   gap: 16px;
-  background: var(--ink);
-  color: var(--cream);
+  background: rgb(252, 236, 214);
+  color: #1a1510;
+  border-color: rgb(252, 236, 214);
+  box-shadow: 0 4px 20px rgba(8, 6, 4, 0.24);
   transform: translateY(-1px);
 }
 .record__face-cta svg { transition: transform .3s var(--ease); }
@@ -2279,10 +2319,13 @@ a { color: inherit; text-decoration: none; }
   .page-home .works .record__title-row > .record__pills--hero {
     position: relative;
     z-index: 3;
+    gap: clamp(5px, 0.45vw, 8px);
+    padding-bottom: clamp(8px, 0.85vw, 14px);
   }
   .page-home .works .record__title-row > .record__pills--hero span {
-    font-size: 9.5px;
-    padding: 5px 10px 4px;
+    font-size: clamp(9.5px, 0.72vw, 12px);
+    letter-spacing: clamp(0.09em, 0.06em + 0.04vw, 0.12em);
+    padding: clamp(5px, 0.42vw, 7px) clamp(10px, 0.78vw, 14px) clamp(4px, 0.38vw, 6px);
   }
   .page-home .works .record__face-foot {
     margin-top: -12px;
@@ -3684,10 +3727,10 @@ a { color: inherit; text-decoration: none; }
   }
 
   .page-home .works .record__face {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
     row-gap: 0;
-    column-gap: 12px;
+    column-gap: 0;
     padding: 0;
     border: none;
     background: transparent;
@@ -3740,29 +3783,29 @@ a { color: inherit; text-decoration: none; }
 
   .page-home .works .record__client {
     grid-row: 3;
-    grid-column: 1;
+    grid-column: 1 / -1;
     align-self: start;
     padding: 8px 0 0;
     margin: 0;
+    /* Match .cs-card__project (case-studies listing) */
     font-family: var(--serif);
-    /* Match .cs-card__project (case-studies listing) so namerow height matches */
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1;
-    color: var(--cream);
+    color: var(--ink-soft);
   }
 
   .page-home .works .record__face-foot {
     display: flex !important;
-    grid-row: 3;
-    grid-column: 2;
+    grid-row: 6;
+    grid-column: 1 / -1;
     align-self: start;
-    padding: 8px 0 0;
+    padding: 14px 0 0;
     margin: 0;
     border: none;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 0;
   }
@@ -3795,7 +3838,7 @@ a { color: inherit; text-decoration: none; }
   .page-home .works .record__title {
     display: block !important;
     grid-row: 4;
-    grid-column: 1 / -1;
+    grid-column: 1;
     font-family: var(--type-heading-family, var(--serif));
     font-weight: 600;
     font-style: normal;
@@ -3828,7 +3871,7 @@ a { color: inherit; text-decoration: none; }
     padding: 5px 10px 4px;
   }
 
-  .record__face-foot-actions {
+  .page-home .works .record__face-foot-actions {
     align-items: flex-start;
     width: 100%;
   }
@@ -3855,8 +3898,16 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 480px) {
   .nav { grid-template-columns: 1fr auto; }
   .marquee__track { font-size: 32px; gap: 24px; }
-  /* Hero portrait card: stay large on small phones (was 110px card / 120px column) */
   .hero__right { width: min(200px, 64vw); }
+
+  .page-home .hero__pin > .hero__right {
+    width: min(152px, 46vw);
+    margin-top: clamp(40px, 7vh, 56px);
+  }
+
+  .page-home .hero__subtitle {
+    font-size: 11px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4095,24 +4146,9 @@ body.page-home .reveal.reveal--stagger.is-in {
 
 /* Testimonial fan: scroll reveal must keep each card’s tilt (desktop only) */
 @media (min-width: 701px) {
-  .page-home .t-fan .t-card--1.reveal.is-in,
-  .page-home .t-fan .t-card--1.reveal:not(.is-in) {
-    transform: rotate(-9deg) translateY(12px);
-  }
-
-  .page-home .t-fan .t-card--2.reveal.is-in,
-  .page-home .t-fan .t-card--2.reveal:not(.is-in) {
-    transform: rotate(-4deg) translateY(6px);
-  }
-
-  .page-home .t-fan .t-card--3.reveal.is-in,
-  .page-home .t-fan .t-card--3.reveal:not(.is-in) {
-    transform: rotate(2deg) translateY(5px);
-  }
-
-  .page-home .t-fan .t-card--4.reveal.is-in,
-  .page-home .t-fan .t-card--4.reveal:not(.is-in) {
-    transform: rotate(5deg) translateY(8px);
+  .page-home .testimonials__stage.reveal.is-in,
+  .page-home .testimonials__stage.reveal:not(.is-in) {
+    transform: none;
   }
 }
 
@@ -4166,6 +4202,7 @@ body.page-home .reveal.reveal--stagger.is-in {
 .page-home .ai-shelf,
 .page-home .testimonials {
   position: relative;
+  contain-intrinsic-size: auto 920px;
 }
 
 .page-home .works::before,
@@ -4442,18 +4479,26 @@ body.page-about .reveal.reveal--stagger.is-in {
   transform: scale(1.03) rotate(-1deg);
 }
 
-/* ---------- Testimonials (fan stack) ---------- */
+/* ---------- Testimonials carousel ---------- */
 .testimonials {
+  --t-card-w: clamp(72px, 9vw, 104px);
+  --t-card-h: clamp(96px, 12vw, 132px);
+  --t-active-w: clamp(300px, 38vw, 420px);
+  --t-active-h: clamp(360px, 46vw, 480px);
+  --t-gap: clamp(12px, 1.8vw, 24px);
+  --t-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 80px var(--pad) 120px;
+  overflow: hidden;
 }
 
 .testimonials__header {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: clamp(32px, 4vh, 48px);
 }
 
 .testimonials__title {
@@ -4466,181 +4511,482 @@ body.page-about .reveal.reveal--stagger.is-in {
   color: var(--cream);
 }
 
-/* ── Fan container ── */
-.t-fan {
-  display: flex;
-  align-items: flex-end;
-  padding-top: 56px;
-  padding-bottom: 48px;
-  overflow: visible;
-}
-
-/* ── Individual card ── */
-.t-card {
-  --w: clamp(240px, 27vw, 330px);
-  width: var(--w);
-  flex-shrink: 0;
-  min-height: clamp(300px, 30vw, 380px);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: clamp(22px, 2.4vw, 34px) clamp(20px, 2.2vw, 28px) clamp(20px, 2vw, 26px);
+.testimonials__stage {
   position: relative;
-  cursor: default;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
-  transition: transform .55s var(--ease), box-shadow .55s var(--ease);
-  will-change: transform;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* Stagger overlap: each card slides under the next */
-.t-card + .t-card {
-  margin-left: calc(var(--w) * -0.58);
-}
-
-/* Subtle warm tints so each card has its own identity */
-.t-card--1 { background: #191209; z-index: 1; }
-.t-card--2 { background: #1C1410; z-index: 2; }
-.t-card--3 { background: #231912; z-index: 3; }
-.t-card--4 { background: #271A14; z-index: 4; }
-
-/* Fan rotations: leftmost tilts most, rightmost nearly flat */
-.t-card--1 { transform-origin: bottom center; transform: rotate(-9deg) translateY(12px); }
-.t-card--2 { transform-origin: bottom center; transform: rotate(-4deg) translateY(6px); }
-.t-card--3 { transform-origin: bottom center; transform: rotate(2deg)  translateY(5px); }
-.t-card--4 { transform-origin: bottom center; transform: rotate(5deg)  translateY(8px); }
-
-/* Lift card on hover */
-.t-fan .t-card:hover {
-  transform: rotate(0deg) translateY(-30px) !important;
-  z-index: 10;
-  box-shadow:
-    0 32px 80px rgba(0,0,0,0.6),
-    0 0 0 1px rgba(214,123,61,0.45);
-}
-
-/* ── Quote ── */
-.t-card__quote {
-  font-family: var(--font-body);
-  font-style: normal;
-  font-size: clamp(13px, 1.45vw, 15px);
-  line-height: 1.7;
-  color: var(--ink-soft);
-  margin: 0;
-  flex: 1;
+.page-home .testimonials .oryzo-t__carousel {
   position: relative;
-  padding-top: 32px;
+  width: 100%;
+  max-width: 1200px;
+  height: clamp(380px, 48vw, 520px);
+  touch-action: pan-y;
+  user-select: none;
 }
 
-.t-card__quote::before {
-  content: '\201C';
+.page-home .testimonials .oryzo-t__track {
   position: absolute;
-  left: -4px;
-  top: -10px;
-  font-size: 80px;
-  line-height: 1;
-  color: var(--amber);
-  opacity: 0.28;
-  font-family: var(--font-display);
-  font-style: normal;
+  inset: 0;
+}
+
+.page-home .testimonials .oryzo-t__slide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.65s var(--t-ease),
+    opacity 0.55s var(--t-ease);
+  will-change: transform, opacity;
+}
+
+.page-home .testimonials .oryzo-t__slide[data-offset="-3"] {
+  transform: translate(calc(-50% + var(--x, -520px)), -50%) scale(0.5);
+  opacity: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
-/* ── Footer: avatar + attribution ── */
-.t-card__foot {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+.page-home .testimonials .oryzo-t__slide[data-offset="-2"] {
+  --x: calc((var(--t-active-w) * 0.5 + var(--t-gap) * 2 + var(--t-card-w) * 1.5) * -1);
+  transform: translate(calc(-50% + var(--x)), -50%) scale(0.72);
+  opacity: 0.35;
+  z-index: 2;
 }
 
-/* Vinyl-label initials circle */
-.t-card__avatar {
+.page-home .testimonials .oryzo-t__slide[data-offset="-1"] {
+  --x: calc((var(--t-active-w) * 0.5 + var(--t-gap) + var(--t-card-w) * 0.5) * -1);
+  transform: translate(calc(-50% + var(--x)), -50%) scale(0.85);
+  opacity: 0.55;
+  z-index: 6;
+}
+
+.page-home .testimonials .oryzo-t__slide[data-offset="0"] {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 5;
+}
+
+.page-home .testimonials .oryzo-t__slide[data-offset="1"] {
+  --x: calc(var(--t-active-w) * 0.5 + var(--t-gap) + var(--t-card-w) * 0.5);
+  transform: translate(calc(-50% + var(--x)), -50%) scale(0.85);
+  opacity: 0.55;
+  z-index: 6;
+}
+
+.page-home .testimonials .oryzo-t__slide[data-offset="2"] {
+  --x: calc(var(--t-active-w) * 0.5 + var(--t-gap) * 2 + var(--t-card-w) * 1.5);
+  transform: translate(calc(-50% + var(--x)), -50%) scale(0.72);
+  opacity: 0.35;
+  z-index: 2;
+}
+
+.page-home .testimonials .oryzo-t__slide[data-offset="3"] {
+  transform: translate(calc(-50% + 520px), -50%) scale(0.5);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page-home .testimonials .oryzo-t__card {
+  display: block;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: default;
+  border: none;
+  background: none;
+  transition: transform 0.35s var(--t-ease);
+}
+
+.page-home .testimonials .oryzo-t__slide:not(.is-active) .oryzo-t__card:hover {
+  transform: translateY(-4px);
+}
+
+.page-home .testimonials .oryzo-t__slide:not(.is-active) .oryzo-t__card,
+.page-home .testimonials .oryzo-t__slide:not(.is-active) .oryzo-t__peek,
+.page-home .testimonials .oryzo-t__slide:not(.is-active) .oryzo-t__peek .oryzo-t__avatar {
+  cursor: pointer;
+}
+
+.page-home .testimonials .oryzo-t__card:focus-visible {
+  outline: 2px solid var(--amber-2);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.page-home .testimonials .oryzo-t__card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--t-card-w);
+  height: var(--t-card-h);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0a0a0a;
+  gap: 10px;
+  padding-bottom: 4px;
+  transition:
+    width 0.65s var(--t-ease),
+    height 0.65s var(--t-ease),
+    box-shadow 0.55s var(--t-ease);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__card-inner {
+  width: var(--t-active-w);
+  height: var(--t-active-h);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding-bottom: 0;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 237, 215, 0.06);
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__card-inner::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px dashed rgba(247, 226, 198, 0.55);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.page-home .testimonials .oryzo-t__peek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.4s var(--t-ease);
+}
+
+.page-home .testimonials .oryzo-t__peek .oryzo-t__avatar {
+  width: clamp(52px, 6.5vw, 72px);
+  height: clamp(52px, 6.5vw, 72px);
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__peek {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.page-home .testimonials .oryzo-t__avatar {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--bg);
-  border: 1.5px solid var(--line);
+  object-fit: cover;
+  object-position: center 18%;
+  border: 1px solid rgba(247, 226, 198, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.page-home .testimonials .oryzo-t__avatar--louise {
+  object-position: center 42%;
+}
+
+.page-home .testimonials .oryzo-t__avatar--initials {
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.05em;
+  font-size: 11px;
   font-weight: 500;
-  color: var(--muted);
+  letter-spacing: 0.05em;
+  color: rgba(201, 160, 136, 0.85);
+}
+
+.page-home .testimonials .oryzo-t__summary {
   position: relative;
-  transition: border-color .4s var(--ease), color .4s var(--ease);
+  z-index: 2;
+  margin: 0;
+  padding: 0 6px;
+  font-family: var(--font-mono);
+  font-size: 6px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.45s var(--t-ease);
 }
 
-/* Inner groove ring */
-.t-card__avatar::before {
-  content: '';
+.page-home .testimonials .oryzo-t__summary-a {
+  display: none;
+  color: rgba(201, 160, 136, 0.72);
+}
+
+.page-home .testimonials .oryzo-t__summary-b {
+  display: block;
+  color: rgba(247, 226, 198, 0.68);
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__summary {
+  padding: clamp(36px, 3.5vh, 48px) clamp(24px, 3vw, 36px) clamp(10px, 1.2vh, 14px);
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  flex-shrink: 0;
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__summary-a {
+  display: inline;
+  color: rgba(201, 160, 136, 0.82);
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__summary-b {
+  display: inline;
+  margin-left: 0.35em;
+  color: rgba(247, 226, 198, 0.76);
+}
+
+.page-home .testimonials .oryzo-t__card-body {
   position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  transition: border-color .4s var(--ease);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 36px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s var(--t-ease) 0.12s;
+  z-index: 1;
 }
 
-.t-card__meta {
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__card-body {
+  position: relative;
+  inset: auto;
+  flex: unset;
+  min-height: 0;
+  opacity: 1;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(24px, 3vw, 36px);
+}
+
+.page-home .testimonials .oryzo-t__slide.is-active .oryzo-t__foot {
+  padding: clamp(18px, 2.5vh, 24px) clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px);
+}
+
+.page-home .testimonials .oryzo-t__slide:not(.is-active) .oryzo-t__foot {
+  display: none;
+}
+
+.page-home .testimonials .oryzo-t__slide:not(.is-active) .oryzo-t__card-body {
+  visibility: hidden;
+}
+
+.page-home .testimonials .oryzo-t__quote {
+  position: relative;
+  flex: unset;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.page-home .testimonials .oryzo-t__quote p {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(15px, 1.7vw, 19px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  color: var(--cream);
+}
+
+.page-home .testimonials .oryzo-t__quote p::before {
+  content: "\201C";
+  display: block;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 6.5vw, 68px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.68;
+  color: var(--amber);
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.page-home .testimonials .oryzo-t__foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: clamp(18px, 2.5vh, 24px);
+  border-top: 1px solid rgba(247, 226, 198, 0.1);
+}
+
+.page-home .testimonials .oryzo-t__cite {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-style: normal;
   min-width: 0;
 }
 
-.t-card__name {
+.page-home .testimonials .oryzo-t__name {
+  margin: 0;
   font-family: var(--font-display);
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: var(--weight-display-semibold);
-  color: var(--ink);
-  margin: 0 0 2px;
+  font-style: normal;
+  color: var(--ink-soft);
   line-height: 1.25;
 }
 
-.t-card__role {
+.page-home .testimonials .oryzo-t__role {
+  margin: 0;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9px;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  margin: 0;
 }
 
-/* Avatar glow on hover */
-.t-card:hover .t-card__avatar {
-  border-color: var(--amber);
-  color: var(--amber-2);
+.page-home .testimonials .oryzo-t__controls {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(4px, 1vh, 12px);
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: 0;
+  pointer-events: none;
 }
 
-.t-card:hover .t-card__avatar::before {
-  border-color: rgba(217, 106, 91, 0.35);
+.page-home .testimonials .oryzo-t__controls > * {
+  pointer-events: auto;
 }
 
-/* ── Mobile: vertical list ── */
-@media (max-width: 700px) {
-  .t-fan {
-    flex-direction: column;
-    align-items: stretch;
-    padding-top: 16px;
-    padding-bottom: 24px;
-    gap: 12px;
+.page-home .testimonials .oryzo-t__arrow {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 226, 198, 0.18);
+  color: rgba(247, 226, 198, 0.82);
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 0.25s var(--t-ease),
+    border-color 0.25s var(--t-ease),
+    color 0.25s var(--t-ease);
+}
+
+.page-home .testimonials .oryzo-t__arrow:hover {
+  background: rgba(247, 226, 198, 0.06);
+  border-color: rgba(247, 226, 198, 0.32);
+  color: var(--cream);
+}
+
+.page-home .testimonials .oryzo-t__arrow:focus-visible {
+  outline: 2px solid var(--amber-2);
+  outline-offset: 3px;
+}
+
+.page-home .testimonials .oryzo-t__dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-home .testimonials .oryzo-t__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  background: rgba(247, 226, 198, 0.2);
+  cursor: pointer;
+  transition:
+    background 0.3s var(--t-ease),
+    transform 0.3s var(--t-ease);
+}
+
+.page-home .testimonials .oryzo-t__dot.is-active {
+  background: var(--cream);
+  transform: scale(1.2);
+}
+
+.page-home .testimonials .oryzo-t__dot:hover:not(.is-active) {
+  background: rgba(247, 226, 198, 0.45);
+}
+
+.page-home .testimonials .oryzo-t__dot:focus-visible {
+  outline: 2px solid var(--amber-2);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .page-home .testimonials .oryzo-t__slide[data-offset="-2"],
+  .page-home .testimonials .oryzo-t__slide[data-offset="2"] {
+    opacity: 0;
+    pointer-events: none;
   }
-  .t-card {
-    width: 100%;
-    margin-left: 0 !important;
-    min-height: auto;
+
+  .page-home .testimonials .oryzo-t__slide[data-offset="-1"] {
+    --x: calc((var(--t-active-w) * 0.5 + var(--t-gap) + var(--t-card-w) * 0.35) * -1);
   }
-  .t-card--1, .t-card--2, .t-card--3, .t-card--4 {
-    transform: none;
-    z-index: auto;
+
+  .page-home .testimonials .oryzo-t__slide[data-offset="1"] {
+    --x: calc(var(--t-active-w) * 0.5 + var(--t-gap) + var(--t-card-w) * 0.35);
   }
-  .t-fan .t-card:hover {
-    transform: none !important;
-    box-shadow: 0 0 0 1px var(--amber);
+}
+
+@media (max-width: 560px) {
+  .testimonials {
+    --t-active-w: clamp(260px, 82vw, 340px);
+    --t-active-h: clamp(340px, 105vw, 420px);
+    --t-card-w: clamp(64px, 20vw, 88px);
+    --t-card-h: clamp(84px, 26vw, 112px);
+    padding-bottom: 80px;
   }
-  .testimonials { padding-bottom: 80px; }
+
+  .page-home .testimonials .oryzo-t__carousel {
+    height: clamp(360px, 110vw, 460px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .testimonials .oryzo-t__slide,
+  .page-home .testimonials .oryzo-t__card-inner,
+  .page-home .testimonials .oryzo-t__card-body,
+  .page-home .testimonials .oryzo-t__peek {
+    transition: none;
+  }
 }
 
 /* ---------- AI Explorations page ---------- */
@@ -4880,7 +5226,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   font-size: 18px;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: #B98D77;
+  color: var(--ink-soft);
   margin: 0;
 }
 
