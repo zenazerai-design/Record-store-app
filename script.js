@@ -1029,6 +1029,33 @@ function mountSpotifyFab() {
     const mqDesk = window.matchMedia('(min-width: 881px)');
     let removeScrollResize = () => {};
 
+    const REVEAL_CLASSES = [
+      'reveal',
+      'reveal--lift',
+      'reveal--stagger',
+      'reveal--soft',
+      'reveal--slide-right',
+      'reveal--scale',
+    ];
+
+    function stripRecordRevealClasses() {
+      cards.forEach(card => {
+        card.classList.remove(...REVEAL_CLASSES);
+        card.style.removeProperty('--reveal-delay');
+      });
+    }
+
+    function restoreMobileRecordReveal() {
+      cards.forEach((card, i) => {
+        card.classList.add('reveal', 'reveal--lift');
+        card.style.setProperty('--reveal-delay', `${Math.min(i * 100, 380)}ms`);
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.86 && rect.bottom > 0) {
+          card.classList.add('is-in');
+        }
+      });
+    }
+
     function clearStackEffects() {
       removeScrollResize();
       removeScrollResize = () => {};
@@ -1042,7 +1069,12 @@ function mountSpotifyFab() {
 
     function activateStackScroll() {
       clearStackEffects();
-      if (!mqDesk.matches) return;
+      if (!mqDesk.matches) {
+        restoreMobileRecordReveal();
+        return;
+      }
+
+      stripRecordRevealClasses();
 
       const STACK = [
         { ty:  0,  sc: 1.000 },
@@ -1086,9 +1118,6 @@ function mountSpotifyFab() {
         top:         '0',
         height:      '100svh',
         gap:         '0',
-        padding:     '0',
-        maxWidth:    '100%',
-        margin:      '0',
         overflow:    'visible',
         perspective: '2200px',
       });
