@@ -827,8 +827,18 @@ function mountSpotifyFab() {
     requestAnimationFrame(() => input.focus());
   }
 
-  /** Keeps body page classes correct when SPA-swapping (#spa-main shell may stay index.html). */
-  function syncBodyPageClasses(resolvedHref) {
+  const SPA_BODY_PAGE_CLASSES = [
+    'page-home',
+    'page-about',
+    'page-career-agent-preview',
+    'page-pins',
+    'page-case-studies',
+    'page-ai-explorations',
+    'page-case-study',
+  ];
+
+  /** Keeps body page classes correct when SPA-swapping (#spa-main shell may stay home.html). */
+  function syncBodyPageClasses(resolvedHref, sourceDoc) {
     let url;
     try {
       url = new URL(resolvedHref, document.baseURI);
@@ -837,13 +847,25 @@ function mountSpotifyFab() {
     }
     let key = filenameKey(url.pathname);
     if (!key) key = 'index.html';
-    document.body.classList.toggle('page-home', isHomePageKey(key));
-    document.body.classList.toggle('page-about', key === 'about.html' || key === 'career-agent-preview.html');
-    document.body.classList.toggle('page-career-agent-preview', key === 'career-agent-preview.html');
-    document.body.classList.toggle('page-pins', key === 'planning-inspectorate.html');
-    document.body.classList.toggle('page-case-studies', key === 'case-studies.html');
-    document.body.classList.toggle('page-ai-explorations', key === 'ai-explorations.html');
-    document.body.classList.toggle('page-case-study', isCaseStudyPageKey(key));
+
+    const active = new Set();
+    if (isHomePageKey(key)) active.add('page-home');
+    if (key === 'about.html' || key === 'career-agent-preview.html') active.add('page-about');
+    if (key === 'career-agent-preview.html') active.add('page-career-agent-preview');
+    if (key === 'planning-inspectorate.html') active.add('page-pins');
+    if (key === 'case-studies.html') active.add('page-case-studies');
+    if (key === 'ai-explorations.html') active.add('page-ai-explorations');
+    if (isCaseStudyPageKey(key)) active.add('page-case-study');
+
+    if (sourceDoc?.body) {
+      sourceDoc.body.classList.forEach(cls => {
+        if (cls.startsWith('page-')) active.add(cls);
+      });
+    }
+
+    SPA_BODY_PAGE_CLASSES.forEach(cls => {
+      document.body.classList.toggle(cls, active.has(cls));
+    });
   }
 
   const AI_EXPLORATION_DETAIL_PAGES = new Set([
@@ -995,7 +1017,7 @@ function mountSpotifyFab() {
     if (gen !== spaNavGeneration) return;
 
     updateNavAriaCurrent(url.href);
-    syncBodyPageClasses(url.href);
+    syncBodyPageClasses(url.href, doc);
     prepareHomeReturnIfSeen(url.href);
     window.scrollTo(0, 0);
 

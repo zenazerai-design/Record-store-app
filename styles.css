@@ -5289,41 +5289,15 @@ body.page-about .reveal.reveal--stagger.is-in {
   color: var(--cream);
 }
 
-.page-case-studies .cs-page-hero__title,
-.page-ai-explorations .cs-page-hero__title {
+/* Listing heroes: classes live in #spa-main so SPA swaps pick up styles without body.page-* */
+.cs-page-hero--case-studies .cs-page-hero__title,
+.cs-page-hero--ai-explore .cs-page-hero__title {
   font-size: calc(var(--type-display-l-size) - 18px);
 }
 
 @media (min-width: 721px) {
-  .page-ai-explorations .cs-page-hero__inner {
+  .cs-page-hero--ai-explore .cs-page-hero__inner {
     max-width: none;
-  }
-}
-
-.page-case-studies .cs-card__project {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1.35;
-  color: var(--accent, var(--amber));
-}
-
-.page-case-studies .cs-card__title {
-  font-weight: 400;
-  font-size: clamp(15px, 1.55vw, 21px);
-}
-
-@media (min-width: 721px) {
-  .page-case-studies .cs-card__project {
-    font-size: 12px;
-    letter-spacing: 0.13em;
-  }
-
-  .page-case-studies .cs-card__pills span {
-    font-size: 10.5px;
-    padding: 6px 12px 5px;
   }
 }
 .cs-page-hero__lede {
@@ -5472,6 +5446,34 @@ body.page-about .reveal.reveal--stagger.is-in {
   color: var(--cream);
   margin: 0;
   max-width: 38ch;
+}
+
+/* Case studies listing (cs-grid-section only exists on case-studies.html) */
+.cs-grid-section .cs-card__project {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--accent, var(--amber));
+}
+
+.cs-grid-section .cs-card__title {
+  font-weight: 400;
+  font-size: clamp(15px, 1.55vw, 21px);
+}
+
+@media (min-width: 721px) {
+  .cs-grid-section .cs-card__project {
+    font-size: 12px;
+    letter-spacing: 0.13em;
+  }
+
+  .cs-grid-section .cs-card__pills span {
+    font-size: 10.5px;
+    padding: 6px 12px 5px;
+  }
 }
 
 .cs-card__desc {
