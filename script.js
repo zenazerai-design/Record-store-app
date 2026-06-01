@@ -841,6 +841,8 @@ function mountSpotifyFab() {
     document.body.classList.toggle('page-about', key === 'about.html' || key === 'career-agent-preview.html');
     document.body.classList.toggle('page-career-agent-preview', key === 'career-agent-preview.html');
     document.body.classList.toggle('page-pins', key === 'planning-inspectorate.html');
+    document.body.classList.toggle('page-case-studies', key === 'case-studies.html');
+    document.body.classList.toggle('page-ai-explorations', key === 'ai-explorations.html');
     document.body.classList.toggle('page-case-study', isCaseStudyPageKey(key));
   }
 
