@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System | Zena Zerai</title>
+  <meta name="description" content="Typography, colour, layout tokens and UI components for the Zena Zerai portfolio." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+
+  <style id="ds-page-css">
+    /* Design system page layout only — does not alter site components */
+    .page-ds {
+      padding-bottom: clamp(80px, 10vw, 120px);
+    }
+
+    .ds-hero {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: clamp(100px, 14vh, 140px) var(--pad) clamp(48px, 6vw, 72px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ds-hero__title {
+      font-family: var(--type-display-l-family);
+      font-weight: var(--type-display-l-weight);
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      color: var(--cream);
+      margin: 0 0 16px;
+    }
+
+    .ds-hero__lede {
+      max-width: 62ch;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: clamp(15px, 1.25vw, 18px);
+      line-height: 1.65;
+    }
+
+    .ds-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 24px;
+    }
+
+    .ds-copy-btn.is-copied {
+      background: rgb(252, 236, 214);
+    }
+
+    .ds-copy-btn:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .ds-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ds-nav__inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 12px var(--pad);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      align-items: center;
+    }
+
+    .ds-nav__inner a {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s var(--ease);
+    }
+
+    .ds-nav__inner a:hover { color: var(--cream); }
+
+    .ds-section {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: clamp(56px, 8vw, 96px) var(--pad);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ds-section:last-child { border-bottom: none; }
+
+    .ds-section__head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: clamp(32px, 4vw, 48px);
+    }
+
+    .ds-section__title {
+      font-family: var(--type-heading-family);
+      font-weight: var(--type-heading-weight);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .ds-section__note {
+      max-width: 58ch;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .ds-subhead {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: clamp(36px, 4vw, 48px) 0 16px;
+    }
+
+    .ds-subhead:first-child { margin-top: 0; }
+
+    /* Type specimens */
+    .ds-type-row {
+      display: grid;
+      grid-template-columns: minmax(120px, 180px) 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      align-items: start;
+      padding: 20px 0;
+      border-bottom: 1px dotted color-mix(in srgb, var(--line) 80%, transparent);
+    }
+
+    .ds-type-row:last-child { border-bottom: none; }
+
+    .ds-type-meta {
+      display: grid;
+      gap: 6px;
+    }
+
+    .ds-type-meta code {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      padding: 2px 6px;
+      border-radius: 3px;
+      width: fit-content;
+    }
+
+    .ds-type-meta span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .ds-type-sample { min-width: 0; }
+
+    .ds-type-usage {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    /* Colour swatches */
+    .ds-swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .ds-swatch {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .ds-swatch__chip {
+      height: 88px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ds-swatch__body {
+      padding: 14px 16px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .ds-swatch__name {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .ds-swatch__hex {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      margin: 0;
+    }
+
+    .ds-swatch__use {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* Token table */
+    .ds-table-wrap { overflow-x: auto; }
+
+    .ds-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .ds-table th,
+    .ds-table td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .ds-table th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .ds-table td { color: var(--ink-soft); }
+
+    .ds-table code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--cream);
+    }
+
+    /* Component cards */
+    .ds-components {
+      display: grid;
+      gap: clamp(28px, 4vw, 40px);
+    }
+
+    .ds-component {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .ds-component__head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 4px;
+    }
+
+    .ds-component__name {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .ds-component__class {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .ds-component__use {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .ds-component__preview {
+      padding: clamp(24px, 4vw, 40px);
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--amber) 6%, transparent), transparent),
+        var(--bg);
+    }
+
+    .ds-component__preview--dark { background: var(--bg); }
+    .ds-component__preview--surface { background: var(--bg-2); }
+
+    .ds-component__preview--inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .ds-component__preview--stack {
+      display: grid;
+      gap: 20px;
+      max-width: 640px;
+    }
+
+    .ds-component__preview--wide { max-width: none; }
+
+    /* Mini previews that need constrained width */
+    .ds-preview-nav {
+      position: relative;
+      padding: 16px 20px;
+      background: linear-gradient(to bottom, rgba(14, 11, 8, 0.72), rgba(14, 11, 8, 0.4));
+      border-radius: var(--radius);
+    }
+
+    .ds-preview-nav .nav {
+      position: static;
+      padding: 0;
+      background: none;
+      backdrop-filter: none;
+    }
+
+    .ds-mini-record {
+      max-width: 520px;
+    }
+
+    .ds-mini-record .record__face {
+      aspect-ratio: auto;
+      min-height: 280px;
+    }
+
+    .ds-mini-record .record__title-row {
+      grid-template-columns: 1fr;
+    }
+
+    .ds-mini-record .record__media { display: none; }
+
+    .ds-mini-csd-hero {
+      max-width: 720px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+
+    .ds-mini-csd-hero .csd-hero {
+      padding-bottom: 20px;
+      grid-template-columns: 1fr;
+    }
+
+    .ds-mini-csd-hero .csd-hero__cover { display: none; }
+
+    .ds-mini-frame { max-width: 220px; }
+
+    .ds-mini-track { max-width: 480px; }
+
+    .ds-mini-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .ds-mini-image {
+      max-width: 280px;
+    }
+
+    .ds-mini-image .record__image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .ds-mini-image .record__image img {
+      object-fit: cover;
+    }
+
+    .ds-placeholder-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--amber) 30%, var(--surface)), var(--surface));
+    }
+
+    @media (max-width: 720px) {
+      .ds-type-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page-ds">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="ds-hero">
+    <p class="kicker">Reference</p>
+    <h1 class="ds-hero__title">Design system</h1>
+    <p class="ds-hero__lede">
+      Tokens and components extracted from <code>styles.css</code>. The portfolio uses a warm record-store palette, a three-font type system, and reusable blocks for home, about, and case study pages.
+    </p>
+    <div class="ds-hero__actions">
+      <button class="nav__cta ds-copy-btn" id="ds-copy-figma" type="button" aria-label="Copy self-contained HTML for Figma import">
+        <span class="nav__cta-label">Copy for Figma</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+      <button class="nav__cta ds-copy-btn" id="ds-download-figma" type="button" aria-label="Download self-contained HTML for Figma import" style="background: transparent; color: rgb(247, 226, 198); border-color: rgba(247, 226, 198, 0.45);">
+        <span class="nav__cta-label">Download for Figma</span>
+      </button>
+      <button class="nav__cta ds-copy-btn" id="ds-copy-html-body" type="button" aria-label="Copy page HTML for Figma import" style="background: transparent; color: rgb(247, 226, 198); border-color: rgba(247, 226, 198, 0.45);">
+        <span class="nav__cta-label">Copy HTML</span>
+      </button>
+      <button class="nav__cta ds-copy-btn" id="ds-copy-css" type="button" aria-label="Copy flattened CSS for Figma import" style="background: transparent; color: rgb(247, 226, 198); border-color: rgba(247, 226, 198, 0.45);">
+        <span class="nav__cta-label">Copy CSS</span>
+      </button>
+      <button class="nav__cta ds-copy-btn" id="ds-copy-html" type="button" aria-label="Copy design-system.html source to clipboard" style="background: transparent; color: rgb(247, 226, 198); border-color: rgba(247, 226, 198, 0.45);">
+        <span class="nav__cta-label">Copy HTML source</span>
+      </button>
+    </div>
+    <p class="type-small" style="margin-top: 14px; color: var(--muted); max-width: 68ch;">For Figma: use <strong style="color: var(--ink-soft); font-weight: 600;">Copy for Figma</strong> (all-in-one), or paste <strong style="color: var(--ink-soft); font-weight: 600;">Copy CSS</strong> then <strong style="color: var(--ink-soft); font-weight: 600;">Copy HTML</strong> separately. Requires localhost so styles can load.</p>
+  </header>
+
+  <nav class="ds-nav" aria-label="Design system sections">
+    <div class="ds-nav__inner">
+      <a href="#typography">Typography</a>
+      <a href="#colours">Colours</a>
+      <a href="#layout">Layout &amp; motion</a>
+      <a href="#components">Components</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ TYPOGRAPHY ═══════════════════ -->
+  <section class="ds-section" id="typography">
+    <div class="ds-section__head">
+      <h2 class="ds-section__title">Typography</h2>
+      <p class="ds-section__note">Three font families: General Sans for display, Manrope for body, JetBrains Mono for labels and meta. Scale is defined as CSS custom properties on <code>:root</code>.</p>
+    </div>
+
+    <h3 class="ds-subhead">Font families</h3>
+    <div class="ds-table-wrap">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Family</th>
+            <th>Weights used</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--font-display</code></td>
+            <td>General Sans</td>
+            <td>600, 700, 800</td>
+            <td>Hero headlines, section titles, large case study titles, display flourishes</td>
+          </tr>
+          <tr>
+            <td><code>--font-body</code></td>
+            <td>Manrope</td>
+            <td>400, 500, 600</td>
+            <td>Body copy, nav links, card summaries, subtitles, UI labels</td>
+          </tr>
+          <tr>
+            <td><code>--font-mono</code></td>
+            <td>JetBrains Mono</td>
+            <td>400, 500</td>
+            <td>Kickers, eyebrows, pills, footer links, dates, track numbers</td>
+          </tr>
+          <tr>
+            <td><code>--serif</code> / <code>--sans</code> / <code>--mono</code></td>
+            <td>Legacy aliases</td>
+            <td>—</td>
+            <td>Map to display, body, and mono respectively</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="ds-subhead">Type scale</h3>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-display-xl</code>
+        <span>General Sans 800<br>clamp(64px, 11vw, 160px)<br>lh 1 · ls −0.02em</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-display-xl" style="color: var(--cream); font-size: clamp(36px, 8vw, 72px);">Selected work</p>
+        <p class="ds-type-usage">Hero headline (<code>.hero__title</code>). Colour: <code>--cream</code> with text shadow on imagery.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-display-l</code>
+        <span>General Sans 700<br>clamp(52px, 8vw, 110px)<br>lh 0.95 · ls −0.02em</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-display-l" style="color: var(--cream); font-size: clamp(32px, 6vw, 56px);">Case study title</p>
+        <p class="ds-type-usage">Case study hero titles (<code>.csd-hero__title</code>). Colour: <code>--cream</code>.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-heading</code>
+        <span>General Sans 600<br>clamp(24px, 5.5vw − 8px, 64px)<br>lh 1.05 · ls −0.015em</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-heading" style="color: var(--cream);">The catalogue</p>
+        <p class="ds-type-usage">Section headings (<code>.section__title</code>, <code>.testimonials__title</code>, <code>.foot__title</code>). Colour: <code>--cream</code>.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.hero__subtitle</code>
+        <span>Manrope 500<br>clamp(22px, 5vw + 8px, 32px)</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="hero__subtitle" style="text-align: left; margin: 0;">Senior Product Designer</p>
+        <p class="ds-type-usage">Hero secondary line. Colour: <code>--cream</code>.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-body-lg</code>
+        <span>Manrope 500<br>clamp(15px, 3vw + 9px, 18px)<br>lh 1.6</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-body-lg" style="color: var(--ink-soft); max-width: 48ch;">Intro paragraphs and hero taglines. Used for lede copy where body needs slightly more presence.</p>
+        <p class="ds-type-usage"><code>.section__lede</code>, <code>.hero__tagline</code>, <code>.csd-hero__summary</code>. Colour: <code>--ink-soft</code> or <code>--cream</code> at 70% opacity.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-body</code>
+        <span>Manrope 400<br>16px · lh 1.55</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-body" style="color: var(--ink-soft); max-width: 48ch;">Default body text across pages. Case study paragraphs, card summaries, and meta values inherit this scale.</p>
+        <p class="ds-type-usage">Base <code>body</code> styles. Colour: <code>--ink</code> on surfaces, <code>--ink-soft</code> for secondary copy.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-small</code>
+        <span>Manrope 400<br>clamp(12px, 1.1vw, 13px)<br>lh 1.5</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-small" style="color: var(--ink-soft);"><code>.section__note</code> and fine print. Often italic at 60% opacity.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.type-meta</code> / <code>.kicker</code>
+        <span>JetBrains Mono 400<br>11px · ls 0.14em<br>uppercase</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="kicker">Selected works</p>
+        <p class="ds-type-usage">Eyebrows, section labels, nav-adjacent tags. Colour: <code>--muted</code>. Case study hero uses a pill variant (<code>.kicker.csd-hero__kicker</code>) in <code>--cream</code>.</p>
+      </div>
+    </div>
+
+    <h3 class="ds-subhead">Accent &amp; display treatments</h3>
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.italic</code>
+        <span>Italic display flourish</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="type-heading" style="color: var(--cream);">End of <span class="italic">Side B</span></p>
+        <p class="ds-type-usage">Italic emphasis in headlines and CTAs. Colour: <code>--cream</code> (global) or <code>--parchment</code> on hero (<code>.hero__line--italic</code>).</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.record__client-name</code>
+        <span>Manrope 600<br>clamp(15px, 1.25vw, 18px)</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="record__client"><span class="record__client-name">British Airways</span><span class="record__client-sep">·</span><span class="record__sector">Aviation</span></p>
+        <p class="ds-type-usage">Client name uses per-card <code>--accent</code> (falls back to <code>--amber</code>). Sector in muted ink-soft mix.</p>
+      </div>
+    </div>
+
+    <div class="ds-type-row">
+      <div class="ds-type-meta">
+        <code>.csd-statement__text</code>
+        <span>Manrope 600<br>clamp(28px, 4.5vw, 64px)</span>
+      </div>
+      <div class="ds-type-sample">
+        <p class="csd-statement__text" style="font-size: clamp(22px, 4vw, 36px);">A hypothesis stated at editorial scale. <span class="csd-statement__fade">Secondary clause fades to muted.</span></p>
+        <p class="ds-type-usage">Large pull statements on case study pages. Primary: <code>--cream</code>. Fade span: <code>--muted</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ COLOURS ═══════════════════ -->
+  <section class="ds-section" id="colours">
+    <div class="ds-section__head">
+      <h2 class="ds-section__title">Colours</h2>
+      <p class="ds-section__note">Palette inspired by a dim record store: deep crate shadows, cream sleeves, amber chandelier light. Per-case-study accents override <code>--accent</code> on record cards.</p>
+    </div>
+
+    <div class="ds-swatches">
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #0E0B08;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--bg</code></p>
+          <p class="ds-swatch__hex">#0E0B08</p>
+          <p class="ds-swatch__use">Page background, footer, works section base</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #15100B;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--bg-2</code></p>
+          <p class="ds-swatch__hex">#15100B</p>
+          <p class="ds-swatch__use">Alternate section background (e.g. lineup poster)</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #1B140E;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--surface</code></p>
+          <p class="ds-swatch__hex">#1B140E</p>
+          <p class="ds-swatch__use">Cards, record faces, case study image placeholders</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #2A2018;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--line</code></p>
+          <p class="ds-swatch__hex">#2A2018</p>
+          <p class="ds-swatch__use">Borders, dividers, dashed rules on cards</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #F5EFE3;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--ink</code></p>
+          <p class="ds-swatch__hex">#F5EFE3</p>
+          <p class="ds-swatch__use">Primary text on dark surfaces, card body copy</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #C9BEAB;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--ink-soft</code></p>
+          <p class="ds-swatch__hex">#C9BEAB</p>
+          <p class="ds-swatch__use">Secondary body text, summaries, nav-adjacent copy</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #8A7A66;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--muted</code></p>
+          <p class="ds-swatch__hex">#8A7A66</p>
+          <p class="ds-swatch__use">Kickers, meta labels, back links, placeholder text</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #D96A5B;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--amber</code></p>
+          <p class="ds-swatch__hex">#D96A5B</p>
+          <p class="ds-swatch__use">Brand accent, nav dot glow, link hovers, track numbers, marquee stars</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #E26B56;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--amber-2</code></p>
+          <p class="ds-swatch__hex">#E26B56</p>
+          <p class="ds-swatch__use">Secondary accent, gradient endpoints, italic highlight variant</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #EFE4CB;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--cream</code></p>
+          <p class="ds-swatch__hex">#EFE4CB</p>
+          <p class="ds-swatch__use">Headlines on dark backgrounds, section titles, marquee text</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: #EDC3A2;"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name"><code>--parchment</code></p>
+          <p class="ds-swatch__hex">#EDC3A2</p>
+          <p class="ds-swatch__use">Hero italic lines, warm highlight on imagery</p>
+        </div>
+      </article>
+
+      <article class="ds-swatch">
+        <div class="ds-swatch__chip" style="background: rgb(247, 226, 198);"></div>
+        <div class="ds-swatch__body">
+          <p class="ds-swatch__name">CTA cream</p>
+          <p class="ds-swatch__hex">rgb(247, 226, 198)</p>
+          <p class="ds-swatch__use"><code>.nav__cta</code> background. Text on button: <code>#1a1510</code></p>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="ds-subhead">Semantic colour usage</h3>
+    <div class="ds-table-wrap">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Foreground</th>
+            <th>Background</th>
+            <th>Border / accent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Default page</td>
+            <td><code>--ink</code></td>
+            <td><code>--bg</code></td>
+            <td><code>--line</code></td>
+          </tr>
+          <tr>
+            <td>Record / case card</td>
+            <td><code>--ink</code>, client in <code>--accent</code></td>
+            <td><code>--surface</code></td>
+            <td><code>--line</code>, top bar <code>--accent</code></td>
+          </tr>
+          <tr>
+            <td>Hero on imagery</td>
+            <td><code>--cream</code>, italic <code>--parchment</code></td>
+            <td>Photo + vignette overlay</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Nav links</td>
+            <td><code>rgba(255, 237, 215, 0.72)</code></td>
+            <td>Transparent gradient</td>
+            <td>Hover underline <code>--amber</code></td>
+          </tr>
+          <tr>
+            <td>Pills / tags</td>
+            <td><code>--cream</code> or ink-soft mix</td>
+            <td>Accent-tinted surface mix</td>
+            <td>Accent or line mix</td>
+          </tr>
+          <tr>
+            <td>Interactive hover</td>
+            <td><code>--cream</code> or <code>--amber</code></td>
+            <td>Surface lighten</td>
+            <td><code>--amber</code> at 32–55%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ LAYOUT & MOTION ═══════════════════ -->
+  <section class="ds-section" id="layout">
+    <div class="ds-section__head">
+      <h2 class="ds-section__title">Layout &amp; motion</h2>
+      <p class="ds-section__note">Shared spacing, radius, and easing tokens. Case study pages add local <code>--csd-*</code> section padding variables.</p>
+    </div>
+
+    <div class="ds-table-wrap">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Value</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--pad</code></td>
+            <td>clamp(20px, 4vw, 56px)</td>
+            <td>Horizontal page padding, nav inset, section gutters</td>
+          </tr>
+          <tr>
+            <td><code>--maxw</code></td>
+            <td>1280px</td>
+            <td>Content max width for hero, sections, crate, footer</td>
+          </tr>
+          <tr>
+            <td><code>--radius</code></td>
+            <td>14px</td>
+            <td>Record cards, case study covers, general surfaces</td>
+          </tr>
+          <tr>
+            <td><code>--radius-cta</code></td>
+            <td>3px</td>
+            <td>Buttons (<code>.nav__cta</code>), image corners via <code>--radius-image</code></td>
+          </tr>
+          <tr>
+            <td><code>--ease</code></td>
+            <td>cubic-bezier(.2, .7, .15, 1)</td>
+            <td>Default transitions: hovers, reveals, nav</td>
+          </tr>
+          <tr>
+            <td><code>--ease-premium</code></td>
+            <td>cubic-bezier(0.16, 1, 0.3, 1)</td>
+            <td>Hero and premium motion curves</td>
+          </tr>
+          <tr>
+            <td><code>--reveal-duration</code></td>
+            <td>0.75s</td>
+            <td>Scroll reveal animations (<code>.reveal</code>)</td>
+          </tr>
+          <tr>
+            <td><code>--csd-section-pad</code></td>
+            <td>clamp(80px, 7.5vw, 112px)</td>
+            <td>Case study section vertical rhythm</td>
+          </tr>
+          <tr>
+            <td><code>--csd-section-pad-tight</code></td>
+            <td>clamp(40px, 3.8vw, 56px)</td>
+            <td>Tighter gaps between related CSD blocks</td>
+          </tr>
+          <tr>
+            <td><code>--csd-section-pad-loose</code></td>
+            <td>clamp(104px, 9.5vw, 144px)</td>
+            <td>Statement strips, viewport-height sections</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="ds-subhead">Global effects</h3>
+    <div class="ds-table-wrap">
+      <table class="ds-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.grain</code></td>
+            <td>Fixed SVG film grain overlay (opacity ~0.07, mix-blend-mode overlay). Reduced on home hero.</td>
+          </tr>
+          <tr>
+            <td><code>.reveal</code></td>
+            <td>Scroll-triggered fade/slide. Variants: <code>--lift</code>, <code>--slide-right</code>, <code>--scale</code>, <code>--soft</code>, <code>--stagger</code>.</td>
+          </tr>
+          <tr>
+            <td><code>.marquee</code></td>
+            <td>Infinite horizontal scroll banner. Star character uses <code>--amber</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ COMPONENTS ═══════════════════ -->
+  <section class="ds-section" id="components">
+    <div class="ds-section__head">
+      <h2 class="ds-section__title">Components</h2>
+      <p class="ds-section__note">Reusable UI blocks from the portfolio. Live previews use production classes from <code>styles.css</code>.</p>
+    </div>
+
+    <div class="ds-components">
+
+      <!-- Nav -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Navigation</h3>
+          <p class="ds-component__class">.nav · .nav__brand · .nav__links · .nav__cta</p>
+          <p class="ds-component__use">Fixed top bar with brand dot, uppercase links, and cream CTA button. Amber underline on hover/active.</p>
+        </div>
+        <div class="ds-component__preview">
+          <div class="ds-preview-nav">
+            <header class="nav" style="grid-template-columns: 1fr auto auto;">
+              <a class="nav__brand" href="#">
+                <span class="nav__dot"></span>
+                <span class="nav__name">Zena Zerai</span>
+              </a>
+              <nav class="nav__links" aria-label="Preview">
+                <a href="#" aria-current="page">Home</a>
+                <a href="#">About</a>
+                <a href="#">Case Studies</a>
+              </nav>
+              <div class="nav__meta">
+                <button class="nav__cta" type="button">
+                  <span class="nav__cta-label">Get in touch</span>
+                </button>
+              </div>
+            </header>
+          </div>
+        </div>
+      </article>
+
+      <!-- CTA -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Primary CTA button</h3>
+          <p class="ds-component__class">.nav__cta · .foot__cta · .mobile-nav__cta</p>
+          <p class="ds-component__use">Uppercase cream pill on dark UI. 11px Manrope 700, 0.14em tracking, 3px radius.</p>
+        </div>
+        <div class="ds-component__preview ds-component__preview--inline">
+          <button class="nav__cta" type="button">Get in touch</button>
+          <button class="nav__cta" type="button" style="opacity: 0.85;">Hover state (interactive)</button>
+        </div>
+      </article>
+
+      <!-- Section head -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Section heading block</h3>
+          <p class="ds-component__class">.section__head · .section__title · .section__lede · .section__note</p>
+          <p class="ds-component__use">Introduces catalogue, about, testimonials, and lineup sections.</p>
+        </div>
+        <div class="ds-component__preview ds-component__preview--stack">
+          <div class="section__head" style="padding: 0; max-width: none;">
+            <p class="kicker">The catalogue</p>
+            <h2 class="section__title">Selected work</h2>
+            <p class="section__lede">Case studies as flippable vinyl sleeves. Hover to peek the disc and read liner notes.</p>
+            <p class="section__note">Tap records on mobile to flip.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Record card -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Record card (case study sleeve)</h3>
+          <p class="ds-component__class">.record · .record__face · .record__pills--hero · .record__image</p>
+          <p class="ds-component__use">Wide catalogue cards on home and case-studies pages. Top accent bar, dashed dividers, optional vinyl peek on image.</p>
+        </div>
+        <div class="ds-component__preview">
+          <div class="ds-mini-record">
+            <div class="record__front">
+              <div class="record__face" style="--accent: #D96A5B;">
+                <div class="record__top-bar">
+                  <p class="kicker">Case study</p>
+                </div>
+                <div class="record__body">
+                  <div class="record__title-row">
+                    <div class="record__copy-col">
+                      <p class="record__client"><span class="record__client-name">Client name</span><span class="record__client-sep">·</span><span class="record__sector">Sector</span></p>
+                      <div class="record__copy-stack">
+                        <p class="record__summary type-body" style="color: var(--ink-soft); margin: 0;">Short project summary describing outcome and scope.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="record__pills record__pills--hero">
+                    <span>Product design</span>
+                    <span>Research</span>
+                    <span>Prototyping</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Image wrapper -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Record image wrapper</h3>
+          <p class="ds-component__class">.record__media · .record__image · .record__face-vinyl</p>
+          <p class="ds-component__use">Square (or flexible) screenshot frame with dot-grid placeholder, vignette overlay, and optional vinyl disc peeking from bottom-right.</p>
+        </div>
+        <div class="ds-component__preview ds-component__preview--inline">
+          <div class="ds-mini-image">
+            <div class="record__image" style="--accent: #6B8FD9;">
+              <img class="ds-placeholder-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%2318140e' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%238A7A66' font-family='monospace' font-size='14'%3EScreenshot%3C/text%3E%3C/svg%3E" alt="" width="400" height="400">
+              <div class="record__face-vinyl" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pills -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Tag pills</h3>
+          <p class="ds-component__class">.record__pills span · .csd-meta__pills span</p>
+          <p class="ds-component__use">Two variants: accent-tinted mono pills on record cards; cream meta pills on case study hero.</p>
+        </div>
+        <div class="ds-component__preview ds-component__preview--stack">
+          <div>
+            <p class="kicker" style="margin-bottom: 10px;">Record card pills</p>
+            <div class="record__pills ds-mini-pills" style="border: none; padding: 0;">
+              <span>UX</span>
+              <span>Design systems</span>
+              <span>Workshops</span>
+            </div>
+          </div>
+          <div>
+            <p class="kicker" style="margin-bottom: 10px;">Case study meta pills</p>
+            <div class="csd-meta__pills ds-mini-pills">
+              <span>Lead designer</span>
+              <span>6 months</span>
+              <span>Agile</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Track card -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Expandable track card</h3>
+          <p class="ds-component__class">.tracklist-cards · .track-card</p>
+          <p class="ds-component__use">About page accordion rows. Amber track number, chevron rotation on open, dotted separators.</p>
+        </div>
+        <div class="ds-component__preview">
+          <div class="ds-mini-track tracklist-cards">
+            <details class="track-card" open>
+              <summary>
+                <span class="track-card__num">01</span>
+                <span class="track-card__icon" aria-hidden="true">◆</span>
+                <span class="track-card__title">Product strategy</span>
+                <span class="track-card__chevron" aria-hidden="true">▾</span>
+              </summary>
+              <div class="track-card__body" style="grid-template-rows: 1fr;">
+                <div class="track-card__body-inner">
+                  <ul class="track-card__list">
+                    <li>Roadmapping and prioritisation</li>
+                    <li>Stakeholder alignment workshops</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <details class="track-card">
+              <summary>
+                <span class="track-card__num">02</span>
+                <span class="track-card__icon" aria-hidden="true">◆</span>
+                <span class="track-card__title">Interaction design</span>
+                <span class="track-card__chevron" aria-hidden="true">▾</span>
+              </summary>
+              <div class="track-card__body">
+                <div class="track-card__body-inner">
+                  <ul class="track-card__list">
+                    <li>Flows, wireframes, and prototypes</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+      <!-- CD case -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">CD jewel case</h3>
+          <p class="ds-component__class">.cd-case · .cd-case__jewel · .cd-case__label</p>
+          <p class="ds-component__use">AI explorations rack. Physical CD metaphor with spine, cover art, and project info panel.</p>
+        </div>
+        <div class="ds-component__preview ds-component__preview--inline">
+          <article class="cd-case cd-case--peek" style="max-width: 200px;">
+            <div class="cd-case__jewel">
+              <div class="cd-case__spine" aria-hidden="true"></div>
+              <div class="cd-case__front">
+                <div class="cd-case__art" style="background: linear-gradient(145deg, #2a2018, #0e0b08);"></div>
+                <div class="cd-case__label">
+                  <span class="cd-case__label-artist">Project</span>
+                  <span class="cd-case__label-title">Title</span>
+                </div>
+                <div class="cd-case__glare" aria-hidden="true"></div>
+              </div>
+              <div class="cd-case__edge-r" aria-hidden="true"></div>
+            </div>
+            <div class="cd-case__info">
+              <p class="cd-case__project">Exploration name</p>
+              <p class="cd-case__desc">Short description of the AI experiment.</p>
+            </div>
+          </article>
+        </div>
+      </article>
+
+      <!-- Artist card -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Artist card (hero poster)</h3>
+          <p class="ds-component__class">.artist-card · .artist-card__paper · .artist-card__photo-wrap</p>
+          <p class="ds-component__use">Tilted poster card on home hero. Warm paper surface, colour bars, circular photo frame.</p>
+        </div>
+        <div class="ds-component__preview">
+          <a class="artist-card" href="#" style="max-width: 260px; display: block;">
+            <div class="artist-card__paper">
+              <div class="artist-card__bars" aria-hidden="true">
+                <span class="artist-card__bar artist-card__bar--ink"></span>
+                <span class="artist-card__bar artist-card__bar--peach"></span>
+                <span class="artist-card__bar artist-card__bar--ochre"></span>
+              </div>
+              <div class="artist-card__frame">
+                <div class="artist-card__circle"></div>
+                <div class="artist-card__photo-wrap">
+                  <div class="artist-card__photo" style="background: linear-gradient(160deg, #C39444, #E2A28D);"></div>
+                </div>
+              </div>
+              <div class="artist-card__foot">
+                <p class="artist-card__sub">Portfolio</p>
+                <p class="artist-card__num">2024</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </article>
+
+      <!-- Frame -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Lineup poster frame</h3>
+          <p class="ds-component__class">.frame · .frame__img</p>
+          <p class="ds-component__use">Slightly rotated image frame with hard shadow offset. Used in clients lineup section.</p>
+        </div>
+        <div class="ds-component__preview">
+          <figure class="frame ds-mini-frame">
+            <img class="frame__img ds-placeholder-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='420'%3E%3Crect fill='%2315100B' width='320' height='420'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%238A7A66' font-family='monospace' font-size='12'%3EPoster%3C/text%3E%3C/svg%3E" alt="" width="320" height="420">
+          </figure>
+        </div>
+      </article>
+
+      <!-- CSD hero -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Case study hero block</h3>
+          <p class="ds-component__class">.csd-hero · .csd-hero__kicker · .csd-meta</p>
+          <p class="ds-component__use">Two-column editorial intro on case study detail pages. Category pill, display title, summary, and meta grid.</p>
+        </div>
+        <div class="ds-component__preview">
+          <div class="ds-mini-csd-hero">
+            <header class="csd-hero csd-hero--text-only">
+              <div class="csd-hero__inner">
+                <div class="csd-hero__top">
+                  <p class="kicker csd-hero__kicker">Aviation</p>
+                </div>
+                <h1 class="csd-hero__title">Project title</h1>
+                <p class="csd-hero__date">2023 · 8 min read</p>
+                <div class="csd-hero__body">
+                  <p class="csd-hero__summary">Opening summary paragraph for the case study, setting context and outcome.</p>
+                </div>
+              </div>
+              <div class="csd-meta">
+                <dl class="csd-meta__grid">
+                  <div class="csd-meta__item">
+                    <dt class="csd-meta__label">Team</dt>
+                    <dd class="csd-meta__value">Design · Product · Engineering</dd>
+                  </div>
+                  <div class="csd-meta__item">
+                    <dt class="csd-meta__label">Role</dt>
+                    <dd class="csd-meta__value">
+                      <div class="csd-meta__pills">
+                        <span>Lead designer</span>
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </header>
+          </div>
+        </div>
+      </article>
+
+      <!-- CSD full image -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Case study full-width image</h3>
+          <p class="ds-component__class">.csd-fullimg · .csd-fullimg__inner</p>
+          <p class="ds-component__use">16:9 media block with perspective tilt (scroll-linked on live pages). 18px radius, line border.</p>
+        </div>
+        <div class="ds-component__preview">
+          <div class="csd-fullimg" style="padding: 0; border: none;">
+            <div class="csd-fullimg__scene">
+              <div class="csd-fullimg__inner" style="transform: perspective(1400px) rotateX(8deg); max-width: 560px;">
+                <div class="csd-fullimg__placeholder">
+                  <span>Full-width screenshot</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Footer -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Footer</h3>
+          <p class="ds-component__class">.foot · .foot__title · .foot__links</p>
+          <p class="ds-component__use">End-of-page contact block with CTA, mono uppercase links, and meta row.</p>
+        </div>
+        <div class="ds-component__preview ds-component__preview--surface">
+          <footer class="foot" style="padding: 32px 0; border: none; background: transparent;">
+            <div class="foot__inner" style="padding: 0;">
+              <h2 class="foot__title">Let's work together</h2>
+              <button class="nav__cta foot__cta" type="button">Get in touch</button>
+              <div class="foot__row" style="margin-top: 24px; padding-top: 20px;">
+                <nav class="foot__links" aria-label="Footer">
+                  <a href="#">LinkedIn</a>
+                  <a href="#">Email</a>
+                </nav>
+                <div class="foot__meta">
+                  <span class="foot__cursor">© 2024</span>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </article>
+
+      <!-- Vinyl -->
+      <article class="ds-component">
+        <div class="ds-component__head">
+          <h3 class="ds-component__name">Spinning vinyl</h3>
+          <p class="ds-component__class">.vinyl · .vinyl__label</p>
+          <p class="ds-component__use">About page illustration. CSS radial grooves, continuous rotation (disabled with prefers-reduced-motion).</p>
+        </div>
+        <div class="ds-component__preview">
+          <div class="vinyl" style="width: 180px; animation: none;">
+            <div class="vinyl__disc"></div>
+            <div class="vinyl__label" style="background: var(--amber);"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="foot" style="border-top: 1px solid var(--line);">
+    <div class="foot__inner">
+      <p class="kicker">Source of truth</p>
+      <p class="type-body" style="color: var(--ink-soft); margin: 0;">Tokens live in <code>styles.css</code> (<code>:root</code>). Oryzo hero variants add scoped tokens in <code>homepage-oryzo-hero.css</code> and <code>testimonials-oryzo-carousel.css</code>.</p>
+      <p class="type-small" style="margin-top: 12px;"><a href="home.html" style="color: var(--amber);">← Back to site</a></p>
+    </div>
+  </footer>
+
+  <div class="email-toast" id="ds-copy-toast" aria-live="polite">HTML copied to clipboard</div>
+
+  <script>
+  (function () {
+    var btnSource = document.getElementById("ds-copy-html");
+    var btnHtmlBody = document.getElementById("ds-copy-html-body");
+    var btnCss = document.getElementById("ds-copy-css");
+    var btnFigma = document.getElementById("ds-copy-figma");
+    var btnDownload = document.getElementById("ds-download-figma");
+    var toast = document.getElementById("ds-copy-toast");
+    var toastTimer;
+
+    var FONT_LINK =
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n' +
+      '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">\n' +
+      '<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap">\n';
+
+    var FLAT_TOKENS = {
+      "--bg": "#0E0B08",
+      "--bg-2": "#15100B",
+      "--surface": "#1B140E",
+      "--line": "#2A2018",
+      "--ink": "#F5EFE3",
+      "--ink-soft": "#C9BEAB",
+      "--muted": "#8A7A66",
+      "--amber": "#D96A5B",
+      "--amber-2": "#E26B56",
+      "--cream": "#EFE4CB",
+      "--parchment": "#EDC3A2",
+      "--accent": "#D96A5B",
+      "--font-display": '"General Sans", system-ui, sans-serif',
+      "--font-body": '"Manrope", system-ui, sans-serif',
+      "--font-mono": '"JetBrains Mono", ui-monospace, monospace',
+      "--serif": '"General Sans", system-ui, sans-serif',
+      "--sans": '"Manrope", system-ui, sans-serif',
+      "--mono": '"JetBrains Mono", ui-monospace, monospace',
+      "--weight-display-semibold": "600",
+      "--weight-display-bold": "700",
+      "--weight-display-extrabold": "800",
+      "--weight-body-regular": "400",
+      "--weight-body-medium": "500",
+      "--weight-body-semibold": "600",
+      "--type-display-xl-family": '"General Sans", system-ui, sans-serif',
+      "--type-display-xl-weight": "800",
+      "--type-display-xl-size": "72px",
+      "--type-display-xl-leading": "1",
+      "--type-display-xl-tracking": "-0.02em",
+      "--type-display-l-family": '"General Sans", system-ui, sans-serif',
+      "--type-display-l-weight": "700",
+      "--type-display-l-size": "56px",
+      "--type-display-l-leading": "0.95",
+      "--type-display-l-tracking": "-0.02em",
+      "--type-heading-family": '"General Sans", system-ui, sans-serif',
+      "--type-heading-weight": "600",
+      "--type-heading-size": "44px",
+      "--type-heading-leading": "1.05",
+      "--type-heading-tracking": "-0.015em",
+      "--type-body-lg-family": '"Manrope", system-ui, sans-serif',
+      "--type-body-lg-weight": "500",
+      "--type-body-lg-size": "18px",
+      "--type-body-lg-leading": "1.6",
+      "--type-body-family": '"Manrope", system-ui, sans-serif',
+      "--type-body-weight": "400",
+      "--type-body-size": "16px",
+      "--type-body-leading": "1.55",
+      "--type-small-family": '"Manrope", system-ui, sans-serif',
+      "--type-small-weight": "400",
+      "--type-small-size": "13px",
+      "--type-small-leading": "1.5",
+      "--type-meta-family": '"JetBrains Mono", ui-monospace, monospace',
+      "--type-meta-weight": "400",
+      "--type-meta-size": "11px",
+      "--type-meta-leading": "1.45",
+      "--type-meta-tracking": "0.14em",
+      "--pad": "56px",
+      "--maxw": "1280px",
+      "--radius": "14px",
+      "--radius-cta": "3px",
+      "--radius-image": "3px",
+      "--ease": "ease",
+      "--ease-premium": "ease",
+      "--reveal-duration": "0s",
+      "--csd-section-pad": "96px",
+      "--csd-section-pad-tight": "48px",
+      "--csd-section-pad-loose": "120px",
+      "--csd-hero-gap-x": "36px",
+      "--csd-hero-gap-y": "10px"
+    };
+
+    var FIGMA_OVERRIDES =
+      "/* Figma import fixes: flat layout, no motion, no grain */\n" +
+      "html, body { margin: 0; padding: 0; width: 1280px; background: #0E0B08; color: #F5EFE3; }\n" +
+      ".grain, .email-toast, .ds-hero__actions, script { display: none !important; }\n" +
+      ".ds-nav { position: relative !important; top: auto !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }\n" +
+      ".nav { position: relative !important; backdrop-filter: none !important; }\n" +
+      "*, *::before, *::after { animation: none !important; transition: none !important; }\n" +
+      ".vinyl { animation: none !important; }\n" +
+      "a[href^='#'] { pointer-events: none; }\n";
+
+    function showToast(message) {
+      toast.textContent = message || "Copied to clipboard";
+      toast.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toast.classList.remove("is-visible");
+      }, 2800);
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy") ? resolve() : reject();
+        } catch (e) {
+          reject(e);
+        } finally {
+          document.body.removeChild(ta);
+        }
+      });
+    }
+
+    function flattenCss(css) {
+      var out = css;
+      var i;
+      for (i = 0; i < 8; i++) {
+        out = out.replace(/var\(\s*(--[a-zA-Z0-9-]+)\s*\)/g, function (_, name) {
+          return Object.prototype.hasOwnProperty.call(FLAT_TOKENS, name)
+            ? FLAT_TOKENS[name]
+            : "var(" + name + ")";
+        });
+      }
+      out = out.replace(/var\(\s*--accent\s*,\s*var\(\s*--amber\s*\)\s*\)/gi, "#D96A5B");
+      out = out.replace(/var\(\s*--accent\s*,\s*[^)]+\)/gi, "#D96A5B");
+      out = out.replace(/clamp\(\s*[^,]+,\s*[^,]+,\s*([^)]+)\)/gi, "$1");
+      out = out.replace(/color-mix\(\s*in\s+srgb[^)]+\)/gi, "#1B140E");
+      return out;
+    }
+
+    function getPageCss() {
+      var el = document.getElementById("ds-page-css");
+      return el ? el.textContent.trim() : "";
+    }
+
+    function getFigmaBodyHtml() {
+      var clone = document.body.cloneNode(true);
+      clone.querySelectorAll(".grain, .ds-hero__actions, .email-toast, script").forEach(function (node) {
+        if (node && node.parentNode) node.parentNode.removeChild(node);
+      });
+      var hint = clone.querySelector(".ds-hero .type-small");
+      if (hint && hint.parentNode) hint.parentNode.removeChild(hint);
+      return clone.innerHTML;
+    }
+
+    function buildFigmaCss(siteCss) {
+      return flattenCss(siteCss) + "\n" + flattenCss(getPageCss()) + "\n" + FIGMA_OVERRIDES;
+    }
+
+    function buildFigmaCssBundle(siteCss) {
+      return (
+        "<!-- Fonts (paste in head or keep your own links) -->\n" +
+        FONT_LINK +
+        "<style>\n" +
+        buildFigmaCss(siteCss) +
+        "\n</style>\n"
+      );
+    }
+
+    function buildFigmaHtmlBody() {
+      return (
+        '<body class="page-ds">\n' +
+        getFigmaBodyHtml() +
+        "\n</body>\n"
+      );
+    }
+
+    function buildFigmaDocument(siteCss) {
+      return (
+        "<!DOCTYPE html>\n" +
+        '<html lang="en">\n' +
+        "<head>\n" +
+        '<meta charset="utf-8">\n' +
+        '<meta name="viewport" content="width=1280">\n' +
+        "<title>Design system · Figma import</title>\n" +
+        buildFigmaCssBundle(siteCss) +
+        "</head>\n" +
+        buildFigmaHtmlBody() +
+        "</html>\n"
+      );
+    }
+
+    var cachedSiteCss = null;
+    var cssLoadPromise = null;
+
+    function getSiteCssFromStylesheet() {
+      var sheets = document.styleSheets;
+      var i, sheet, rules, j, chunks;
+      for (i = 0; i < sheets.length; i++) {
+        sheet = sheets[i];
+        if (!sheet.href || sheet.href.indexOf("styles.css") === -1) continue;
+        try {
+          rules = sheet.cssRules || sheet.rules;
+          if (!rules) continue;
+          chunks = [];
+          for (j = 0; j < rules.length; j++) {
+            chunks.push(rules[j].cssText);
+          }
+          return chunks.join("\n");
+        } catch (e) {
+          return null;
+        }
+      }
+      return null;
+    }
+
+    function loadSiteCss() {
+      if (cachedSiteCss) {
+        return Promise.resolve(cachedSiteCss);
+      }
+      if (cssLoadPromise) {
+        return cssLoadPromise;
+      }
+      cssLoadPromise = fetch("styles.css", { cache: "no-store" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("styles.css fetch failed");
+          return res.text();
+        })
+        .catch(function () {
+          var fromSheet = getSiteCssFromStylesheet();
+          if (fromSheet) return fromSheet;
+          throw new Error(
+            "Could not load styles.css. Open via http://localhost:8000/design-system.html (double-click Start local site.command)."
+          );
+        })
+        .then(function (text) {
+          cachedSiteCss = text;
+          return text;
+        })
+        .finally(function () {
+          cssLoadPromise = null;
+        });
+      return cssLoadPromise;
+    }
+
+    function loadFigmaBundle() {
+      return loadSiteCss().then(buildFigmaDocument);
+    }
+
+    function setButtonBusy(btn, busy, label) {
+      if (!btn) return;
+      btn.disabled = busy;
+      btn.setAttribute("aria-busy", busy ? "true" : "false");
+      var el = btn.querySelector(".nav__cta-label");
+      if (el && label) el.textContent = label;
+    }
+
+    function flashButton(btn, originalLabel) {
+      var label = btn.querySelector(".nav__cta-label");
+      if (label) label.textContent = "Copied";
+      btn.classList.add("is-copied");
+      setTimeout(function () {
+        if (label) label.textContent = originalLabel;
+        btn.classList.remove("is-copied");
+      }, 2200);
+    }
+
+    function downloadHtml(html) {
+      var blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "design-system-figma-import.html";
+      a.rel = "noopener";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        if (a.parentNode) a.parentNode.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 1500);
+    }
+
+    function runExport(btn, busyLabel, work) {
+      var el = btn.querySelector(".nav__cta-label");
+      var originalLabel = el ? el.textContent : "";
+      setButtonBusy(btn, true, busyLabel);
+      return work().finally(function () {
+        btn.disabled = false;
+        btn.setAttribute("aria-busy", "false");
+        if (el && el.textContent === busyLabel) el.textContent = originalLabel;
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () {
+        loadSiteCss().catch(function () { /* preload when server available */ });
+      });
+    } else {
+      loadSiteCss().catch(function () { /* preload when server available */ });
+    }
+
+    btnFigma.addEventListener("click", function () {
+      var originalLabel = "Copy for Figma";
+      runExport(btnFigma, "Building…", function () {
+        return loadFigmaBundle()
+          .then(copyText)
+          .then(function () {
+            showToast("Copied for Figma — paste into HTML importer");
+            flashButton(btnFigma, originalLabel);
+          });
+      }).catch(function (err) {
+        showToast(err && err.message ? err.message : "Copy failed — use localhost:8000");
+      });
+    });
+
+    btnDownload.addEventListener("click", function () {
+      runExport(btnDownload, "Preparing…", function () {
+        return loadFigmaBundle().then(function (html) {
+          downloadHtml(html);
+          showToast("Saved design-system-figma-import.html");
+        });
+      }).catch(function (err) {
+        showToast(err && err.message ? err.message : "Download failed — use localhost:8000");
+      });
+    });
+
+    btnCss.addEventListener("click", function () {
+      var originalLabel = "Copy CSS";
+      runExport(btnCss, "Building…", function () {
+        return loadSiteCss().then(function (siteCss) {
+          return copyText(buildFigmaCssBundle(siteCss));
+        }).then(function () {
+          showToast("CSS copied — paste into importer head/style field");
+          flashButton(btnCss, originalLabel);
+        });
+      }).catch(function (err) {
+        showToast(err && err.message ? err.message : "Copy failed — use localhost:8000");
+      });
+    });
+
+    btnHtmlBody.addEventListener("click", function () {
+      var originalLabel = "Copy HTML";
+      copyText(buildFigmaHtmlBody())
+        .then(function () {
+          showToast("HTML copied — paste after CSS in importer");
+          flashButton(btnHtmlBody, originalLabel);
+        })
+        .catch(function () {
+          showToast("Copy failed");
+        });
+    });
+
+    btnSource.addEventListener("click", function () {
+      var originalLabel = "Copy HTML source";
+
+      function onSuccess(message) {
+        showToast(message);
+        flashButton(btnSource, originalLabel);
+      }
+
+      fetch("design-system.html", { cache: "no-store" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("fetch failed");
+          return res.text();
+        })
+        .then(copyText)
+        .then(function () {
+          onSuccess("HTML source copied (not for Figma import)");
+        })
+        .catch(function () {
+          copyText("<!DOCTYPE html>\n" + document.documentElement.outerHTML)
+            .then(function () {
+              onSuccess("Copied rendered HTML (use local server for source file)");
+            })
+            .catch(function () {
+              showToast("Copy failed — try again via localhost");
+            });
+        });
+    });
+  })();
+  </script>
+</body>
+</html>

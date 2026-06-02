@@ -716,10 +716,11 @@ a { color: inherit; text-decoration: none; }
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
     padding:
-      clamp(100px, 14vh, 128px)
+      clamp(72px, 11vh, 96px)
       var(--pad)
-      clamp(112px, 12vh, 140px);
+      clamp(72px, 11vh, 96px);
   }
 
   .page-home .hero__content--vibrant {
@@ -2259,6 +2260,13 @@ a { color: inherit; text-decoration: none; }
   color: var(--cream);
 }
 
+/* Optional manual title breaks (home catalogue): flow naturally on small screens */
+@media (max-width: 880px) {
+  .record__title-break {
+    display: none;
+  }
+}
+
 .record__face-foot {
   position: relative;
   z-index: 1;
@@ -2464,15 +2472,19 @@ a { color: inherit; text-decoration: none; }
     column-gap: clamp(36px, 5.2vw, 80px);
   }
   .page-home .works .record .record__title-row .record__title {
-    max-width: min(100%, 38ch);
-    font-size: clamp(19px, 2.65vw, 36px);
+    max-width: min(100%, 34ch);
+    font-size: clamp(21px, 2.9vw, 42px);
     line-height: 1.08;
     font-weight: 600;
   }
   .page-home .works .record .record__summary {
-    max-width: min(50ch, 100%);
-    font-size: clamp(14px, 0.98vw, 16px);
+    max-width: min(44ch, 100%);
+    font-size: clamp(15px, 1.08vw, 17px);
     line-height: 1.68;
+  }
+  .page-home .works .record .record__impact-desc {
+    font-size: clamp(12.5px, 0.9vw, 14px);
+    max-width: 28ch;
   }
   .page-home .works .record .record__impact {
     gap: clamp(10px, 1vw, 16px);
@@ -2486,13 +2498,16 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 0.14em;
   }
   .page-home .works .record .record__client {
-    font-size: clamp(16px, 1.35vw, 20px);
+    font-size: clamp(14px, 1.2vw, 18px);
+  }
+  .page-home .works .record .record__title-row .record__copy-stack {
+    margin-top: -8px;
   }
   .page-home .works .record__body {
     grid-row: 1;
   }
   .page-home .works .record__media {
-    padding: 0;
+    padding: 0 0 clamp(20px, 3vw, 36px);
     align-self: start;
   }
   .page-home .works .record__face {
@@ -2519,7 +2534,9 @@ a { color: inherit; text-decoration: none; }
   }
   .page-home .works .record__face-foot {
     grid-row: 2;
-    margin-top: -12px;
+    position: relative;
+    z-index: 4;
+    margin-top: 0;
   }
 }
 
@@ -6070,6 +6087,27 @@ body.page-about .reveal.reveal--stagger.is-in {
   border-top: none;
 }
 
+.ai-shelf--page .ai-shelf__rack-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(24px, 3vw, 48px);
+}
+
+.ai-shelf--page .ai-shelf__rack-row .cd-rack.cd-rack--ai-row {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ai-shelf--page .ai-shelf__pitch {
+  flex: 0 0 auto;
+  width: clamp(248px, 30vw, 340px);
+  max-width: min(360px, 42vw);
+}
+
+.ai-shelf--page .ai-shelf__rack-row:has(.cd-sleeve.cd-sleeve--expanded) .ai-shelf__pitch {
+  display: none;
+}
+
 /* "View all" link */
 .ai-shelf__more-wrap {
   display: flex;
@@ -6147,13 +6185,6 @@ body.page-about .reveal.reveal--stagger.is-in {
   overflow-x: visible;
 }
 
-.cd-rack.cd-rack--ai-row > li.cd-rack__item--pitch-link {
-  flex: 0 0 auto;
-  margin-left: auto;
-  width: clamp(248px, 30vw, 340px);
-  max-width: min(360px, 42vw);
-}
-
 .cd-case.cd-case--pitch-feature {
   display: flex;
   flex-direction: column;
@@ -6203,12 +6234,6 @@ body.page-about .reveal.reveal--stagger.is-in {
   flex: 0 0 auto;
   width: clamp(168px, 22vw, 232px);
   max-width: min(246px, 31vw);
-}
-
-/* Hide pitch link when a sleeve expands (same focused layout as sibling sleeves) */
-.cd-rack.cd-rack--ai-row:has(.cd-sleeve.cd-sleeve--expanded)
-  > li.cd-rack__item--pitch-link {
-  display: none;
 }
 
 /* Full-width row: chosen CD on the left, expanded panel on the right (crate card width) */
@@ -6430,11 +6455,15 @@ body.page-about .reveal.reveal--stagger.is-in {
     max-width: min(246px, 34vw);
   }
 
-  .cd-rack.cd-rack--ai-row > li.cd-rack__item--pitch-link {
-    flex: 0 0 auto;
-    margin-left: auto;
+  .ai-shelf--page .ai-shelf__rack-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ai-shelf--page .ai-shelf__pitch {
     width: clamp(180px, 48vw, 280px);
     max-width: min(300px, 88vw);
+    align-self: flex-end;
   }
 }
 
