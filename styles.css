@@ -6087,25 +6087,32 @@ body.page-about .reveal.reveal--stagger.is-in {
   border-top: none;
 }
 
-.ai-shelf--page .ai-shelf__rack-row {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(24px, 3vw, 48px);
-}
-
-.ai-shelf--page .ai-shelf__rack-row .cd-rack.cd-rack--ai-row {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.ai-shelf--page .ai-shelf__pitch {
-  flex: 0 0 auto;
-  width: clamp(248px, 30vw, 340px);
-  max-width: min(360px, 42vw);
-}
-
+/* Hide BA pitch while an exploration sleeve is open (all viewports) */
 .ai-shelf--page .ai-shelf__rack-row:has(.cd-sleeve.cd-sleeve--expanded) .ai-shelf__pitch {
   display: none;
+}
+
+/* Web only: lit tray holds the three CDs; BA case sits beside it, same jewel size */
+@media (min-width: 841px) {
+  .ai-shelf--page .ai-shelf__rack-row {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(20px, 2.5vw, 36px);
+  }
+
+  .ai-shelf--page .ai-shelf__rack-row .cd-rack.cd-rack--ai-row {
+    flex: 0 1 auto;
+    width: fit-content;
+    max-width: none;
+    margin-right: 0;
+  }
+
+  .ai-shelf--page .ai-shelf__pitch {
+    flex: 0 0 auto;
+    width: clamp(168px, 22vw, 232px);
+    max-width: min(246px, 31vw);
+    margin: 0;
+  }
 }
 
 /* "View all" link */
@@ -6203,31 +6210,9 @@ body.page-about .reveal.reveal--stagger.is-in {
   line-height: 1.3;
 }
 
-/* Featured pitch jewel: slightly stronger type + padding on cover strip */
-.cd-case.cd-case--pitch-feature .cd-case__label {
-  padding: 9px 12px 11px;
-}
-
-.cd-case.cd-case--pitch-feature .cd-case__label-artist {
-  font-size: 10px;
-  letter-spacing: 0.11em;
-}
-
-.cd-case.cd-case--pitch-feature .cd-case__label-title {
-  font-size: 15px;
-}
-
-.cd-case.cd-case--pitch-feature .cd-case__info {
+/* Featured pitch: same jewel scale as rack CDs; CTA line only extra chrome */
+.ai-shelf--page .cd-case.cd-case--pitch-feature .cd-case__info {
   margin-top: 0;
-}
-
-.cd-case.cd-case--pitch-feature .cd-case__project {
-  font-size: 17px;
-}
-
-.cd-case.cd-case--pitch-feature .cd-case__desc {
-  font-size: 12px;
-  letter-spacing: 0.08em;
 }
 
 .cd-rack.cd-rack--ai-row > li.cd-rack__item--sleeve-wide {
@@ -6456,14 +6441,16 @@ body.page-about .reveal.reveal--stagger.is-in {
   }
 
   .ai-shelf--page .ai-shelf__rack-row {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
+    gap: clamp(20px, 4vw, 28px);
   }
 
   .ai-shelf--page .ai-shelf__pitch {
-    width: clamp(180px, 48vw, 280px);
-    max-width: min(300px, 88vw);
     align-self: flex-end;
+    width: clamp(148px, 40vw, 220px);
+    max-width: min(246px, 72vw);
   }
 }
 
