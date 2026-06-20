@@ -6334,26 +6334,34 @@ body.page-about .reveal.reveal--stagger.is-in {
 .cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
   grid-template-columns: minmax(240px, 1fr) minmax(300px, 1.12fr);
   gap: clamp(12px, 2.2vw, 28px);
-  align-items: stretch;
+  align-items: start;
   position: relative;
   z-index: 1;
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__copy {
   align-self: start;
+  max-height: min(480px, 58vh);
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  justify-content: flex-start;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 10px;
+  scrollbar-width: thin;
 }
 
-/* Polaroid column stretches to text height; mat + rail grow so bottom aligns with copy */
+/* Media column keeps video aspect ratio; does not stretch to match copy height */
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-shell {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  align-self: stretch;
+  align-self: start;
   min-height: 0;
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
-  flex: 1 1 auto;
+  flex: none;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -6365,8 +6373,8 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__polaroid .cd-sleeve__media-strip {
-  flex: 1 1 auto;
-  min-height: min(200px, 28vh);
+  flex: none;
+  min-height: 0;
   touch-action: pan-x;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -6374,7 +6382,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__polaroid .cd-sleeve__media-pane {
-  height: 100%;
+  height: auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -6384,12 +6392,12 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__cover-visual--desktop {
-  flex: 1 1 auto;
+  flex: none;
   width: 100%;
-  min-height: 220px;
-  height: 100%;
-  max-height: none;
-  aspect-ratio: unset;
+  height: auto;
+  min-height: 198px;
+  max-height: min(54vh, 420px);
+  aspect-ratio: 16 / 10;
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-slot {
@@ -6416,7 +6424,11 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__body-scroll {
-  max-height: min(420px, 52vh);
+  max-height: none;
+  overflow-y: visible;
+  flex: none;
+  padding-right: 0;
+  margin-right: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
