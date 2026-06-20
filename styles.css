@@ -14075,6 +14075,15 @@ section.pins-final-designs {
 }
 
 /* GWI: impact header tighter to body (list / narrative intro) */
+.csd-case--gwi .csd-hero__cover {
+  aspect-ratio: 5 / 4;
+}
+
+.csd-case--gwi .csd-hero__cover img {
+  object-fit: contain;
+  object-position: center center;
+}
+
 .csd-case--gwi .csd-impact {
   gap: 22px;
 }
