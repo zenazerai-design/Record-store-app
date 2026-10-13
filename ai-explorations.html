@@ -42,9 +42,9 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261013-ai5" />
+  <link rel="stylesheet" href="styles.css?v=20261013-ai7" />
   <style>
-    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai5 on home) */
+    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai7 on home) */
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured,
     .page-ai-explorations .cd-sleeve__featured--stack {
       display: flex !important;
@@ -56,6 +56,8 @@
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__copy,
     .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__body-scroll,
+    .page-ai-explorations .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy,
+    .page-ai-explorations .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
       width: 100% !important;
       max-width: none !important;
@@ -173,34 +175,6 @@
           </button>
           <div id="panel-reframe" class="cd-sleeve__panel" hidden>
             <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--reframe">
-            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
-              <div class="cd-sleeve__copy">
-                <h3 class="cd-sleeve__headline">Reframe: Making loft planning more tangible</h3>
-                <p class="cd-sleeve__lede">An AI-powered product exploration into how homeowners could visualise what&rsquo;s possible with their loft, grounded in the reality of their space.</p>
-                <div class="cd-sleeve__pills">
-                  <span>AI prototyping</span>
-                  <span>Loft planning</span>
-                  <span>Spatial logic</span>
-                  <span>Rapid prototyping</span>
-                </div>
-                <p class="cd-sleeve__proto-cta-wrap">
-                  <a class="cd-sleeve__proto-cta" href="reframe/index.html" target="_blank" rel="noopener noreferrer">Try the prototype</a>
-                </p>
-                <div class="cd-sleeve__body-scroll" tabindex="-1">
-                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">The problem</strong></p>
-                  <p>Planning a loft conversion can be difficult to visualise before committing to costly professional advice. Generic AI image generators can create convincing interiors, but often ignore the physical constraints that determine what a space can realistically become.</p>
-                  <p>I wanted to explore a different approach: a consumer-facing tool that helps people experiment with loft layouts early in the process, using their actual dimensions and spatial constraints to generate more grounded possibilities.</p>
-                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">The approach</strong></p>
-                  <ul class="cd-sleeve__approach-list">
-                    <li><strong>Designing for exploration:</strong> Helping homeowners define their loft space, capture key dimensions and explore different layout options.</li>
-                    <li><strong>AI-generated mockups:</strong> Exploring how AI could turn layout options into visual representations of potential spaces.</li>
-                    <li><strong>Spatial logic:</strong> Developing an underlying model that accounts for dimensions, roof shape, stair positions and other constraints, keeping generated options grounded in the physical space.</li>
-                    <li><strong>Rapid prototyping:</strong> Using Claude and Cursor to develop the experience and build out the underlying application.</li>
-                  </ul>
-                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">Current status</strong></p>
-                  <p>Reframe is a work in progress. I&rsquo;m developing the application and spatial modelling logic to explore how AI-generated visualisations can become more useful, realistic and constrained by the space they&rsquo;re based on.</p>
-                </div>
-              </div>
               <div class="cd-sleeve__media-shell cd-sleeve__media-shell--reframe">
                 <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
                   <div
@@ -287,7 +261,33 @@
                   </div>
                 </div>
               </div>
-            </div>
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">Reframe: Making loft planning more tangible</h3>
+                <p class="cd-sleeve__lede">An AI-powered product exploration into how homeowners could visualise what&rsquo;s possible with their loft, grounded in the reality of their space.</p>
+                <div class="cd-sleeve__pills">
+                  <span>AI prototyping</span>
+                  <span>Loft planning</span>
+                  <span>Spatial logic</span>
+                  <span>Rapid prototyping</span>
+                </div>
+                <p class="cd-sleeve__proto-cta-wrap">
+                  <a class="cd-sleeve__proto-cta" href="reframe/index.html" target="_blank" rel="noopener noreferrer">Try the prototype</a>
+                </p>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">The problem</strong></p>
+                  <p>Planning a loft conversion can be difficult to visualise before committing to costly professional advice. Generic AI image generators can create convincing interiors, but often ignore the physical constraints that determine what a space can realistically become.</p>
+                  <p>I wanted to explore a different approach: a consumer-facing tool that helps people experiment with loft layouts early in the process, using their actual dimensions and spatial constraints to generate more grounded possibilities.</p>
+                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">The approach</strong></p>
+                  <ul class="cd-sleeve__approach-list">
+                    <li><strong>Designing for exploration:</strong> Helping homeowners define their loft space, capture key dimensions and explore different layout options.</li>
+                    <li><strong>AI-generated mockups:</strong> Exploring how AI could turn layout options into visual representations of potential spaces.</li>
+                    <li><strong>Spatial logic:</strong> Developing an underlying model that accounts for dimensions, roof shape, stair positions and other constraints, keeping generated options grounded in the physical space.</li>
+                    <li><strong>Rapid prototyping:</strong> Using Claude and Cursor to develop the experience and build out the underlying application.</li>
+                  </ul>
+                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">Current status</strong></p>
+                  <p>Reframe is a work in progress. I&rsquo;m developing the application and spatial modelling logic to explore how AI-generated visualisations can become more useful, realistic and constrained by the space they&rsquo;re based on.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
