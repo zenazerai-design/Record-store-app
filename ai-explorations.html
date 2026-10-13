@@ -42,9 +42,9 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261013-ai7" />
+  <link rel="stylesheet" href="styles.css?v=20261013-ai8" />
   <style>
-    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai7 on home) */
+    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai8 on home) */
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured,
     .page-ai-explorations .cd-sleeve__featured--stack {
       display: flex !important;
@@ -56,6 +56,8 @@
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__copy,
     .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__body-scroll,
+    .page-ai-explorations .cd-sleeve__panel-stack--ai-page > .cd-sleeve__copy,
+    .page-ai-explorations .cd-sleeve__panel-stack--ai-page > .cd-sleeve__copy .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy,
     .page-ai-explorations .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
@@ -174,7 +176,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-reframe" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--reframe">
+            <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--ai-page cd-sleeve__panel-stack--reframe">
               <div class="cd-sleeve__media-shell cd-sleeve__media-shell--reframe">
                 <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
                   <div
@@ -316,28 +318,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-stride" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
-              <div class="cd-sleeve__copy">
-                <h3 class="cd-sleeve__headline">Stride: Designing a simpler path to financial independence</h3>
-                <p class="cd-sleeve__lede">A side project inspired by my own frustration with spreadsheets, pension portals and compound interest calculators. Designed and tested a simpler way to understand progress towards financial independence and explore how today&rsquo;s financial decisions shape future freedom.</p>
-                <div class="cd-sleeve__pills">
-                  <span>AI prototyping</span>
-                  <span>Financial planning</span>
-                  <span>Behaviour change</span>
-                  <span>Mobile</span>
-                </div>
-                <p class="cd-sleeve__proto-cta-wrap">
-                  <a class="cd-sleeve__proto-cta" href="https://stride-five-flame.vercel.app/" target="_blank" rel="noopener noreferrer">Try the prototype</a>
-                </p>
-                <h4 class="cd-sleeve__detail-lead">What I did</h4>
-                <div class="cd-sleeve__body-scroll" tabindex="-1">
-                  <p><strong class="cd-sleeve__label">Research &amp; validation</strong> Used ChatGPT and Claude to explore the financial independence landscape, analyse existing tools, and validate the opportunity space.</p>
-                  <p><strong class="cd-sleeve__label">AI-assisted product development</strong> Used Claude and Cursor to rapidly ideate, prototype and iterate concepts from initial ideas through to a functional mobile experience.</p>
-                  <p><strong class="cd-sleeve__label">Product strategy</strong> Defined the value proposition, planning model and information architecture, focusing on trust, motivation and financial decision-making.</p>
-                  <p><strong class="cd-sleeve__label">Interaction design</strong> Designed onboarding, projections and scenario modelling experiences to make complex financial concepts easier to understand and act on.</p>
-                  <p><strong class="cd-sleeve__label">User research</strong> Conducted interviews with investors to validate assumptions, uncover trust barriers and refine the product direction through real user feedback.</p>
-                </div>
-              </div>
+            <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--ai-page">
               <div class="cd-sleeve__media-shell">
                 <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
                   <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="Stride mobile prototype walkthrough.">
@@ -358,6 +339,27 @@
                     </div>
                   </div>
                   <p class="cd-sleeve__cover-mat-caption">Stride · AI prototyping</p>
+                </div>
+              </div>
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">Stride: Designing a simpler path to financial independence</h3>
+                <p class="cd-sleeve__lede">A side project inspired by my own frustration with spreadsheets, pension portals and compound interest calculators. Designed and tested a simpler way to understand progress towards financial independence and explore how today&rsquo;s financial decisions shape future freedom.</p>
+                <div class="cd-sleeve__pills">
+                  <span>AI prototyping</span>
+                  <span>Financial planning</span>
+                  <span>Behaviour change</span>
+                  <span>Mobile</span>
+                </div>
+                <p class="cd-sleeve__proto-cta-wrap">
+                  <a class="cd-sleeve__proto-cta" href="https://stride-five-flame.vercel.app/" target="_blank" rel="noopener noreferrer">Try the prototype</a>
+                </p>
+                <h4 class="cd-sleeve__detail-lead">What I did</h4>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p><strong class="cd-sleeve__label">Research &amp; validation</strong> Used ChatGPT and Claude to explore the financial independence landscape, analyse existing tools, and validate the opportunity space.</p>
+                  <p><strong class="cd-sleeve__label">AI-assisted product development</strong> Used Claude and Cursor to rapidly ideate, prototype and iterate concepts from initial ideas through to a functional mobile experience.</p>
+                  <p><strong class="cd-sleeve__label">Product strategy</strong> Defined the value proposition, planning model and information architecture, focusing on trust, motivation and financial decision-making.</p>
+                  <p><strong class="cd-sleeve__label">Interaction design</strong> Designed onboarding, projections and scenario modelling experiences to make complex financial concepts easier to understand and act on.</p>
+                  <p><strong class="cd-sleeve__label">User research</strong> Conducted interviews with investors to validate assumptions, uncover trust barriers and refine the product direction through real user feedback.</p>
                 </div>
               </div>
             </div>
@@ -395,23 +397,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-valtech" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
-              <div class="cd-sleeve__copy">
-                <h3 class="cd-sleeve__headline">AI Workflow Tool: designing the idea and how it lands</h3>
-                <p class="cd-sleeve__lede">A Valtech hackathon project with a newly formed team; the entry took second place. The work focused on making AI genuinely useful in day-to-day workflows. Alongside the product, I used storytelling to help the audience feel empathy with the users.</p>
-                <div class="cd-sleeve__pills">
-                  <span>Designing for AI</span>
-                  <span>Lovable</span>
-                  <span>Perplexity</span>
-                </div>
-                <h4 class="cd-sleeve__detail-lead">What I did</h4>
-                <div class="cd-sleeve__body-scroll" tabindex="-1">
-                  <p><strong class="cd-sleeve__label">Usefulness</strong> Turned prompts into structured, actionable workflows.</p>
-                  <p><strong class="cd-sleeve__label">Speed</strong> Shaped and prototyped side-of-desk using AI tools.</p>
-                  <p><strong class="cd-sleeve__label">Experience</strong> Combined conversational input with clear UI outputs.</p>
-                  <p><strong class="cd-sleeve__label">Narrative</strong> Created a short, trailer-style video to communicate the idea quickly.</p>
-                </div>
-              </div>
+            <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--ai-page">
               <div class="cd-sleeve__media-shell">
                 <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
                   <div
@@ -471,6 +457,22 @@
                   <p class="cd-sleeve__cover-mat-caption">Valtech · Hackathon</p>
                 </div>
               </div>
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">AI Workflow Tool: designing the idea and how it lands</h3>
+                <p class="cd-sleeve__lede">A Valtech hackathon project with a newly formed team; the entry took second place. The work focused on making AI genuinely useful in day-to-day workflows. Alongside the product, I used storytelling to help the audience feel empathy with the users.</p>
+                <div class="cd-sleeve__pills">
+                  <span>Designing for AI</span>
+                  <span>Lovable</span>
+                  <span>Perplexity</span>
+                </div>
+                <h4 class="cd-sleeve__detail-lead">What I did</h4>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p><strong class="cd-sleeve__label">Usefulness</strong> Turned prompts into structured, actionable workflows.</p>
+                  <p><strong class="cd-sleeve__label">Speed</strong> Shaped and prototyped side-of-desk using AI tools.</p>
+                  <p><strong class="cd-sleeve__label">Experience</strong> Combined conversational input with clear UI outputs.</p>
+                  <p><strong class="cd-sleeve__label">Narrative</strong> Created a short, trailer-style video to communicate the idea quickly.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -499,23 +501,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-google-ccai" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
-              <div class="cd-sleeve__copy">
-                <h3 class="cd-sleeve__headline">Google CCAI &times; Tide: conversational UX that completes journeys</h3>
-                <p class="cd-sleeve__lede">Designed a conversational UX for SMB banking using Google CCAI, focused on helping users resolve tasks end-to-end in-channel. Built on structured, intent-led flows to ensure clarity, reliability, and control.</p>
-                <div class="cd-sleeve__pills">
-                  <span>Conversational UX</span>
-                  <span>Dialogflow</span>
-                  <span>CCAI</span>
-                </div>
-                <h4 class="cd-sleeve__detail-lead">What I did</h4>
-                <div class="cd-sleeve__body-scroll" tabindex="-1">
-                  <p><strong class="cd-sleeve__label">Context</strong> Intent-based (pre-LLM) conversational AI.</p>
-                  <p><strong class="cd-sleeve__label">UX</strong> Designed dialogue patterns, prompts, and system responses.</p>
-                  <p><strong class="cd-sleeve__label">Flows</strong> Structured journeys aligned to Tide&rsquo;s product experience.</p>
-                  <p><strong class="cd-sleeve__label">Trust</strong> Made intent, next steps, and escalation explicit.</p>
-                </div>
-              </div>
+            <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--ai-page">
               <div class="cd-sleeve__media-shell">
                 <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
                   <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="Google CCAI and Tide conversational UX walkthrough.">
@@ -536,6 +522,22 @@
                     </div>
                   </div>
                   <p class="cd-sleeve__cover-mat-caption">Google &amp; Tide · Conversational UX</p>
+                </div>
+              </div>
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">Google CCAI &times; Tide: conversational UX that completes journeys</h3>
+                <p class="cd-sleeve__lede">Designed a conversational UX for SMB banking using Google CCAI, focused on helping users resolve tasks end-to-end in-channel. Built on structured, intent-led flows to ensure clarity, reliability, and control.</p>
+                <div class="cd-sleeve__pills">
+                  <span>Conversational UX</span>
+                  <span>Dialogflow</span>
+                  <span>CCAI</span>
+                </div>
+                <h4 class="cd-sleeve__detail-lead">What I did</h4>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p><strong class="cd-sleeve__label">Context</strong> Intent-based (pre-LLM) conversational AI.</p>
+                  <p><strong class="cd-sleeve__label">UX</strong> Designed dialogue patterns, prompts, and system responses.</p>
+                  <p><strong class="cd-sleeve__label">Flows</strong> Structured journeys aligned to Tide&rsquo;s product experience.</p>
+                  <p><strong class="cd-sleeve__label">Trust</strong> Made intent, next steps, and escalation explicit.</p>
                 </div>
               </div>
             </div>

@@ -6620,29 +6620,39 @@ body.page-about .reveal.reveal--stagger.is-in {
   margin-right: 0;
 }
 
-/* Reframe: media on top, copy full panel width (no .cd-sleeve__featured grid) */
+/* AI explorations panels: media on top, copy full width (no .cd-sleeve__featured grid) */
+.cd-sleeve__panel-stack--ai-page,
 .cd-sleeve__panel-stack--reframe {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
   gap: clamp(18px, 3vw, 28px);
   position: relative;
   z-index: 1;
+  width: 100%;
+  align-items: stretch;
 }
 
+.cd-sleeve__panel-stack--ai-page > .cd-sleeve__copy,
+.cd-sleeve__panel-stack--ai-page > .cd-sleeve__media-shell,
 .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy,
 .cd-sleeve__panel-stack--reframe > .cd-sleeve__media-shell {
-  width: 100%;
-  max-width: none;
-  overflow: visible;
-  align-self: stretch;
+  width: 100% !important;
+  max-width: none !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  align-self: stretch !important;
   box-sizing: border-box;
+  grid-column: 1 / -1;
 }
 
+.cd-sleeve__panel-stack--ai-page > .cd-sleeve__copy .cd-sleeve__body-scroll,
 .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy .cd-sleeve__body-scroll {
-  width: 100%;
-  max-width: none;
-  max-height: none;
-  overflow: visible;
+  width: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
   box-sizing: border-box;
 }
 
@@ -6655,11 +6665,17 @@ body.page-about .reveal.reveal--stagger.is-in {
   box-sizing: border-box;
 }
 
+.cd-rack.cd-rack--ai-page .cd-sleeve__panel-stack--ai-page > .cd-sleeve__media-shell .cd-sleeve__cover-wrap,
 .cd-rack.cd-rack--ai-page .cd-sleeve__panel-stack--reframe > .cd-sleeve__media-shell .cd-sleeve__cover-wrap,
+.cd-sleeve__panel-stack--ai-page > .cd-sleeve__media-shell .cd-sleeve__cover-wrap,
 .cd-sleeve__panel-stack--reframe > .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
   margin-left: 0;
   max-width: none;
   width: 100%;
+}
+
+.cd-rack.cd-rack--ai-page .cd-sleeve__panel .cd-sleeve__copy {
+  padding-right: clamp(8px, 1.8vw, 18px);
 }
 
 .cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__copy {
@@ -7153,7 +7169,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   display: block !important;
 }
 
-.cd-sleeve__featured:not(.cd-sleeve__featured--stack) {
+.cd-rack:not(.cd-rack--ai-page) .cd-sleeve__featured:not(.cd-sleeve__featured--stack) {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(260px, 1.12fr);
   gap: clamp(18px, 3.8vw, 40px);
@@ -7191,6 +7207,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 .cd-rack.cd-rack--ai-page .cd-sleeve__media-shell .cd-sleeve__cover-wrap,
+.cd-sleeve__panel-stack--ai-page .cd-sleeve__media-shell .cd-sleeve__cover-wrap,
 .cd-sleeve__panel-stack--reframe .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
   margin-left: 0;
   max-width: none;
@@ -7766,7 +7783,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 @media (max-width: 720px) {
-  .cd-sleeve__featured:not(.cd-sleeve__featured--stack) {
+  .cd-rack:not(.cd-rack--ai-page) .cd-sleeve__featured:not(.cd-sleeve__featured--stack) {
     grid-template-columns: 1fr;
     gap: 18px;
   }
@@ -16774,6 +16791,8 @@ html.case-study-locked body > *:not(#case-study-lock-root) {
 .page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__body-scroll,
 .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__copy,
 .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__body-scroll,
+.page-ai-explorations .cd-sleeve__panel-stack--ai-page > .cd-sleeve__copy,
+.page-ai-explorations .cd-sleeve__panel-stack--ai-page > .cd-sleeve__copy .cd-sleeve__body-scroll,
 .page-ai-explorations .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy,
 .page-ai-explorations .cd-sleeve__panel-stack--reframe > .cd-sleeve__copy .cd-sleeve__body-scroll,
 .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
