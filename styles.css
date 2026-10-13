@@ -16671,3 +16671,32 @@ html.case-study-locked body > *:not(#case-study-lock-root) {
 .csd-context__image .csd-ds-split__components-inner img {
   border-radius: inherit;
 }
+
+/* AI explorations — full-width copy (override .cd-sleeve__featured two-column grid) */
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: unset !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__media-shell {
+  order: -1;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy,
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__body-scroll,
+.page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
+  width: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+  box-sizing: border-box;
+}
+
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy {
+  align-self: stretch !important;
+}

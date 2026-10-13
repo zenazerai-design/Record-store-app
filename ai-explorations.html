@@ -42,21 +42,22 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261013-ai3" />
+  <link rel="stylesheet" href="styles.css?v=20261013-ai4" />
   <style>
-    /* Full-width copy on AI explorations (also when opened directly; SPA uses styles.css) */
+    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai4 on home) */
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: unset !important;
+      width: 100% !important;
     }
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__copy,
     .page-ai-explorations .cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
-      width: 100%;
-      max-width: none;
-      max-height: none;
-      overflow: visible;
+      width: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      overflow: visible !important;
     }
     /* Cream sleeve panels: never use page --ink (light) for body copy */
     .page-ai-explorations .cd-sleeve__panel {
