@@ -6085,11 +6085,157 @@ body.page-about .reveal.reveal--stagger.is-in {
   margin: 0 auto;
   padding: 32px var(--pad) 80px;
   border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 64px);
 }
 
-/* Hide BA pitch while an exploration sleeve is open (all viewports) */
-.ai-shelf--page .ai-shelf__rack-row:has(.cd-sleeve.cd-sleeve--expanded) .ai-shelf__pitch {
-  display: none;
+.ai-shelf__group {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.5vw, 22px);
+  min-width: 0;
+}
+
+.ai-shelf__group-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* AI explorations page: no lit tray — rack is layout only (homepage keeps .ai-shelf .cd-rack) */
+.ai-shelf--page .cd-rack.cd-rack--ai-page {
+  flex-wrap: wrap;
+  overflow-x: visible;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  position: static;
+  isolation: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page:has(.cd-sleeve.cd-sleeve--expanded) {
+  flex-wrap: wrap;
+  overflow-x: visible;
+  max-width: 100%;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page > li.cd-rack__item--sleeve-wide:has(.cd-sleeve.cd-sleeve--expanded) {
+  width: 100%;
+  max-width: 100%;
+}
+
+/*
+ * AI explorations (expanded): one column — media on top, copy full panel width
+ * (overrides .cd-rack--ai-row two-column .cd-sleeve__featured at all breakpoints).
+ */
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: unset;
+  gap: clamp(18px, 2.8vw, 28px);
+  align-items: stretch;
+  width: 100%;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__media-shell {
+  order: -1;
+  align-items: stretch;
+  width: 100%;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__copy {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__body-scroll {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.ai-shelf--page .cd-sleeve--reframe .cd-sleeve__approach-list {
+  width: 100%;
+  max-width: none;
+  padding-right: 0;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__cover-visual--desktop {
+  min-height: 240px;
+  max-height: min(78vh, 680px);
+  aspect-ratio: 16 / 9;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__cover-visual--desktop.cd-sleeve__cover-visual--portrait {
+  aspect-ratio: 9 / 16;
+  max-height: min(82vh, 780px);
+  max-width: min(440px, 100%);
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* UI screenshots: frame fits image (no 16:10 letterboxing) */
+.ai-shelf--page
+  .cd-rack.cd-rack--ai-row
+  .cd-sleeve--expanded
+  .cd-sleeve__cover-visual--desktop:has(.cd-sleeve__cover-shot) {
+  aspect-ratio: unset;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  background: #0b0908;
+}
+
+.ai-shelf--page
+  .cd-rack.cd-rack--ai-row
+  .cd-sleeve--expanded
+  .cd-sleeve__cover-visual--desktop:has(.cd-sleeve__cover-shot)
+  .cd-sleeve__cover-stack {
+  position: relative;
+  inset: auto;
+  height: auto;
+  min-height: 0;
+}
+
+.ai-shelf--page
+  .cd-rack.cd-rack--ai-row
+  .cd-sleeve--expanded
+  .cd-sleeve__cover-visual--desktop:has(.cd-sleeve__cover-shot)
+  .cd-sleeve__cover-shot {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  max-height: min(78vh, 720px);
+  object-fit: contain;
+  object-position: center top;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__cover-visual--desktop {
+  max-height: min(78vh, 720px);
 }
 
 /* Web only: lit tray holds the three CDs; BA case sits beside it, same jewel size */
@@ -6331,7 +6477,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   color: color-mix(in srgb, var(--muted) 92%, var(--ink) 8%);
 }
 
-.cd-rack.cd-rack--ai-row .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+.cd-rack.cd-rack--ai-row:not(.cd-rack--ai-page) .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
   grid-template-columns: minmax(240px, 1fr) minmax(300px, 1.12fr);
   gap: clamp(12px, 2.2vw, 28px);
   align-items: start;
@@ -6339,7 +6485,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   z-index: 1;
 }
 
-.cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__copy {
+.cd-rack.cd-rack--ai-row:not(.cd-rack--ai-page) .cd-sleeve--expanded .cd-sleeve__copy {
   align-self: start;
   max-height: min(480px, 58vh);
   overflow-y: auto;
@@ -6431,14 +6577,246 @@ body.page-about .reveal.reveal--stagger.is-in {
   margin-right: 0;
 }
 
+/* Reframe: top row matches other AI sleeves; “How it works” full width below */
+.cd-sleeve__panel-stack--reframe {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 3vw, 28px);
+  position: relative;
+  z-index: 1;
+}
+
+.cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__copy {
+  max-height: none;
+  overflow: visible;
+}
+
+.cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__body-scroll {
+  max-height: none;
+  overflow-y: visible;
+  flex: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
+  max-width: 100%;
+}
+
+.cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__cover-visual--desktop {
+  max-height: min(58vh, 500px);
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__cover-visual--desktop:has(.cd-sleeve__cover-shot) {
+  max-height: none;
+}
+
+.cd-sleeve--reframe .cd-sleeve__copy-section {
+  margin: 0 0 6px;
+}
+
+.cd-sleeve--reframe .cd-sleeve__copy-section + p,
+.cd-sleeve--reframe .cd-sleeve__copy-section + ul {
+  margin-top: 0;
+}
+
+.cd-sleeve--reframe .cd-sleeve__approach-list {
+  margin: 0 0 14px;
+  padding: 0 0 0 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cd-sleeve--reframe .cd-sleeve__approach-list li {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #383028;
+}
+
+/* AI explorations cream panels: page --ink is light; lock dark type on Reframe + siblings */
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve__panel .cd-sleeve__copy .cd-sleeve__headline {
+  color: #13100c;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve__panel .cd-sleeve__copy .cd-sleeve__lede {
+  color: #4f4438;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve__panel .cd-sleeve__body-scroll p,
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve__panel .cd-sleeve__copy .cd-sleeve__approach-list li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #383028;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve__panel .cd-sleeve__label,
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve__panel .cd-sleeve__copy .cd-sleeve__label {
+  color: #221c17;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-row .cd-sleeve--reframe.cd-sleeve--expanded .cd-sleeve__copy {
+  max-height: none;
+  overflow: visible;
+}
+
+.cd-sleeve--reframe .cd-sleeve__approach-list li strong {
+  font-weight: 600;
+  color: #221c17;
+}
+
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__copy,
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__body-scroll,
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__body-scroll p,
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__approach-list,
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__approach-list li {
+  color: #383028;
+}
+
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__headline {
+  color: #13100c;
+}
+
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__lede {
+  color: #4f4438;
+}
+
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__label {
+  color: #221c17;
+}
+
+.cd-sleeve--reframe .cd-sleeve__media-strip-hint--sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-caption-rail {
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 4.5rem;
+  margin: 0;
+  padding: clamp(12px, 2vw, 16px) clamp(10px, 1.8vw, 14px);
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: color-mix(in srgb, #f7f0e4 88%, #d4c8b8 12%);
+  border: 1px solid color-mix(in srgb, #3a2a18 18%, transparent 82%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-caption-rail[hidden] {
+  display: none;
+}
+
+.cd-sleeve--reframe .cd-sleeve__media-pane-caption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 14px;
+  align-items: start;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-caption-pane[hidden] {
+  display: none;
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-caption-pane.is-active {
+  display: grid;
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-step-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #6b4a28;
+  padding-top: 3px;
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-step-text strong {
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1410;
+  margin-bottom: 6px;
+}
+
+.cd-sleeve--reframe .cd-sleeve__reframe-step-text p {
+  margin: 0;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #2a2319;
+}
+
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__reframe-step-text strong,
+.cd-sleeve--reframe .cd-sleeve__panel .cd-sleeve__reframe-step-text p {
+  color: #2a2319;
+}
+
+/* Side projects: prototype CTA under tags */
+.cd-sleeve__proto-cta-wrap {
+  margin: 0 0 clamp(18px, 2.5vw, 24px);
+}
+
+.cd-sleeve__proto-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 22px 11px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--amber) 55%, #6a4a32 45%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--amber) 92%, #fff 8%) 0%,
+    color-mix(in srgb, var(--amber) 78%, #3a2418 22%) 100%
+  );
+  box-shadow:
+    0 10px 28px -12px rgba(25, 18, 12, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fffef9;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cd-sleeve__proto-cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 14px 32px -12px rgba(25, 18, 12, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.cd-sleeve__proto-cta:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--amber) 70%, transparent);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__polaroid .cd-sleeve__media-strip {
     scroll-behavior: auto;
   }
+
+  .cd-sleeve__proto-cta {
+    transition: none;
+  }
 }
 
 @media (max-width: 840px) {
-  .cd-rack.cd-rack--ai-row {
+  .cd-rack.cd-rack--ai-row:not(.cd-rack--ai-page) {
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: flex-start;
@@ -6446,23 +6824,22 @@ body.page-about .reveal.reveal--stagger.is-in {
     gap: clamp(10px, 2.5vw, 16px);
   }
 
-  .cd-rack.cd-rack--ai-row > li.cd-rack__item--sleeve-wide {
+  .cd-rack.cd-rack--ai-row:not(.cd-rack--ai-page) > li.cd-rack__item--sleeve-wide {
     flex: 0 0 auto;
     width: clamp(148px, 26vw, 220px);
     max-width: min(246px, 34vw);
   }
 
-  .ai-shelf--page .ai-shelf__rack-row {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: clamp(20px, 4vw, 28px);
+  .ai-shelf--page .cd-rack.cd-rack--ai-page {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: clamp(14px, 3vw, 22px);
   }
 
-  .ai-shelf--page .ai-shelf__pitch {
-    align-self: flex-end;
-    width: clamp(148px, 40vw, 220px);
-    max-width: min(246px, 72vw);
+  .ai-shelf--page .cd-rack.cd-rack--ai-page > li.cd-rack__item--sleeve-wide {
+    flex: 0 0 auto;
+    width: clamp(148px, 42vw, 220px);
+    max-width: min(246px, 46vw);
   }
 }
 
@@ -6633,6 +7010,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   padding: clamp(22px, 3.8vw, 38px) clamp(18px, 3.2vw, 34px);
   border-radius: 3px;
   border: none;
+  color: #383028;
   background:
     linear-gradient(
       168deg,
@@ -6707,6 +7085,25 @@ body.page-about .reveal.reveal--stagger.is-in {
   grid-template-columns: minmax(0, 1.02fr) minmax(260px, 1.12fr);
   gap: clamp(18px, 3.8vw, 40px);
   align-items: start;
+}
+
+/* After base .cd-sleeve__featured grid — AI explorations page uses full-width stacked layout */
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: unset;
+  gap: clamp(18px, 2.8vw, 28px);
+  align-items: stretch;
+  width: 100%;
+}
+
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy,
+.ai-shelf--page .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__body-scroll {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 .cd-sleeve__media-shell {
@@ -6931,6 +7328,17 @@ body.page-about .reveal.reveal--stagger.is-in {
   z-index: 4;
 }
 
+.cd-sleeve__cover-visual--desktop .cd-sleeve__cover-stack > .cd-sleeve__cover-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+  z-index: 4;
+}
+
 /* Center-crop taller iframe vertically to hide VEED / letterbox bars at top & bottom */
 .cd-sleeve__cover-visual--desktop .cd-sleeve__cover-stack > .cd-sleeve__embed-crop-y {
   position: absolute;
@@ -7107,7 +7515,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   font-size: clamp(1.15rem, 2.35vw, 1.78rem);
   font-weight: 600;
   line-height: 1.28;
-  color: var(--ink);
+  color: #13100c;
   margin: 0 0 clamp(11px, 2vw, 16px);
   letter-spacing: -0.032em;
 }
@@ -7117,7 +7525,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   font-size: clamp(13.75px, 1.72vw, 15px);
   font-weight: 400;
   line-height: 1.62;
-  color: color-mix(in srgb, var(--muted) 52%, var(--ink) 48%);
+  color: #4f4438;
   margin: 0 0 clamp(16px, 2.8vw, 22px);
 }
 
@@ -7150,7 +7558,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   font-weight: 600;
   letter-spacing: 0.055em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--muted) 68%, var(--ink) 32%);
+  color: rgba(73, 64, 52, 0.88);
   margin: 0 0 10px;
   line-height: 1.35;
 }
@@ -7176,9 +7584,9 @@ body.page-about .reveal.reveal--stagger.is-in {
 
 .cd-sleeve__body-scroll p {
   font-family: inherit;
-  font-size: 12.5px;
-  line-height: 1.58;
-  color: color-mix(in srgb, var(--ink-soft) 92%, var(--ink) 8%);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #383028;
   margin: 0 0 11px;
 }
 
@@ -7189,7 +7597,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 .cd-sleeve__label {
   font-family: inherit;
   font-weight: 600;
-  color: var(--ink);
+  color: #221c17;
 }
 
 /* Light “print on cream mat” typography inside the floating card */
@@ -7211,6 +7619,19 @@ body.page-about .reveal.reveal--stagger.is-in {
 
 .cd-sleeve__panel .cd-sleeve__label {
   color: #221c17;
+}
+
+/* Cream panel sits on dark page (--ink is light); keep all copy column text readable */
+.cd-sleeve__panel .cd-sleeve__copy {
+  color: #383028;
+}
+
+.cd-sleeve__panel .cd-sleeve__copy .cd-sleeve__headline {
+  color: #13100c;
+}
+
+.cd-sleeve__panel .cd-sleeve__copy .cd-sleeve__lede {
+  color: #4f4438;
 }
 
 /* Expanded AI sleeves: must override two-column .cd-sleeve__featured (higher-specificity desktop grid) */
@@ -7270,14 +7691,14 @@ body.page-about .reveal.reveal--stagger.is-in {
     gap: 18px;
   }
 
-  /* AI explorations: expanded card spans shelf inset (full mobile width) */
+  /* AI explorations: expanded card uses section width (no tray bleed hack) */
   .ai-shelf--page
-    .cd-rack.cd-rack--ai-row
+    .cd-rack.cd-rack--ai-page
     > li.cd-rack__item--sleeve-wide:has(.cd-sleeve.cd-sleeve--expanded) {
-    width: calc(100% + 2 * var(--pad));
-    max-width: none;
-    margin-left: calc(-1 * var(--pad));
-    margin-right: calc(-1 * var(--pad));
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {

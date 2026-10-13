@@ -42,7 +42,43 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261013-ai3" />
+  <style>
+    /* Full-width copy on AI explorations (also when opened directly; SPA uses styles.css) */
+    .page-ai-explorations .cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .page-ai-explorations .cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__copy,
+    .page-ai-explorations .cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__body-scroll,
+    .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
+      width: 100%;
+      max-width: none;
+      max-height: none;
+      overflow: visible;
+    }
+    /* Cream sleeve panels: never use page --ink (light) for body copy */
+    .page-ai-explorations .cd-sleeve__panel {
+      color: #383028;
+    }
+    .page-ai-explorations .cd-sleeve__panel .cd-sleeve__headline {
+      color: #13100c;
+    }
+    .page-ai-explorations .cd-sleeve__panel .cd-sleeve__lede {
+      color: #4f4438;
+    }
+    .page-ai-explorations .cd-sleeve__panel .cd-sleeve__body-scroll p,
+    .page-ai-explorations .cd-sleeve__panel .cd-sleeve__approach-list li {
+      color: #383028;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .page-ai-explorations .cd-sleeve__panel .cd-sleeve__label,
+    .page-ai-explorations .cd-sleeve__panel .cd-sleeve__approach-list li strong {
+      color: #221c17;
+    }
+  </style>
 </head>
 <body class="page-ai-explorations">
   <div class="grain" aria-hidden="true"></div>
@@ -99,15 +135,159 @@
       <h1 class="cs-page-hero__title">
         <span>AI </span><span class="italic">explorations.</span>
       </h1>
-      <p class="cs-page-hero__lede">A space to see how I’ve been dabbling in AI, using it and designing for it.</p>
-      <p class="cs-page-hero__lede">Including this portfolio, vibe-coded with Cursor.</p>
+      <p class="cs-page-hero__lede">A space to see how I’ve been dabbling in AI, using it and designing for it. Including this portfolio, vibe-coded with Cursor.</p>
     </div>
   </section>
 
-  <!-- CD rack: four expandable sleeves + BA/FOS pitch beside the tray -->
+  <!-- CD racks: side projects and work projects (no horizontal scroll tray) -->
   <section class="ai-shelf ai-shelf--page">
-    <div class="ai-shelf__rack-row">
-    <ul class="cd-rack cd-rack--ai-row" role="list">
+    <div class="ai-shelf__group">
+      <h2 class="ai-shelf__group-title">Side projects</h2>
+      <ul class="cd-rack cd-rack--ai-row cd-rack--ai-page" role="list">
+
+      <li id="cd-sleeve-reframe" class="cd-rack__item cd-rack__item--sleeve-wide">
+        <div class="cd-sleeve cd-sleeve--reframe">
+          <button type="button" class="cd-case cd-case__toggle cd-case--no-link" aria-expanded="false" aria-controls="panel-reframe" id="toggle-reframe" aria-label="Reframe, AI powered loft planning. Tap to expand a short summary and scrollable notes.">
+            <div class="cd-case__jewel">
+              <div class="cd-case__spine" aria-hidden="true"></div>
+              <div class="cd-case__front cd-case__front--cover-photo" style="--cd-a:#2a3544;--cd-b:#5a7a9a;--cd-c:#a8c4dc;">
+                <img class="cd-case__cover-photo" src="assets/reframe/reframe-cover.jpg" alt="" decoding="async" loading="lazy" />
+                <div class="cd-case__label">
+                  <strong class="cd-case__label-artist">REFRAME</strong>
+                  <span class="cd-case__label-title">AI powered loft planning</span>
+                </div>
+              </div>
+              <div class="cd-case__glare" aria-hidden="true"></div>
+              <div class="cd-case__edge-r" aria-hidden="true"></div>
+            </div>
+            <span class="cd-case__toggle-chevron" aria-hidden="true"></span>
+            <span class="cd-case__info">
+              <span class="cd-case__project">Reframe</span>
+              <span class="cd-case__desc">AI powered loft planning</span>
+            </span>
+            <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
+          </button>
+          <div id="panel-reframe" class="cd-sleeve__panel" hidden>
+            <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--reframe">
+            <div class="cd-sleeve__featured">
+              <div class="cd-sleeve__copy">
+                <h3 class="cd-sleeve__headline">Reframe: Making loft planning more tangible</h3>
+                <p class="cd-sleeve__lede">An AI-powered product exploration into how homeowners could visualise what&rsquo;s possible with their loft, grounded in the reality of their space.</p>
+                <div class="cd-sleeve__pills">
+                  <span>AI prototyping</span>
+                  <span>Loft planning</span>
+                  <span>Spatial logic</span>
+                  <span>Rapid prototyping</span>
+                </div>
+                <p class="cd-sleeve__proto-cta-wrap">
+                  <a class="cd-sleeve__proto-cta" href="reframe/index.html" target="_blank" rel="noopener noreferrer">Try the prototype</a>
+                </p>
+                <div class="cd-sleeve__body-scroll" tabindex="-1">
+                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">The problem</strong></p>
+                  <p>Planning a loft conversion can be difficult to visualise before committing to costly professional advice. Generic AI image generators can create convincing interiors, but often ignore the physical constraints that determine what a space can realistically become.</p>
+                  <p>I wanted to explore a different approach: a consumer-facing tool that helps people experiment with loft layouts early in the process, using their actual dimensions and spatial constraints to generate more grounded possibilities.</p>
+                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">The approach</strong></p>
+                  <ul class="cd-sleeve__approach-list">
+                    <li><strong>Designing for exploration:</strong> Helping homeowners define their loft space, capture key dimensions and explore different layout options.</li>
+                    <li><strong>AI-generated mockups:</strong> Exploring how AI could turn layout options into visual representations of potential spaces.</li>
+                    <li><strong>Spatial logic:</strong> Developing an underlying model that accounts for dimensions, roof shape, stair positions and other constraints, keeping generated options grounded in the physical space.</li>
+                    <li><strong>Rapid prototyping:</strong> Using Claude and Cursor to develop the experience and build out the underlying application.</li>
+                  </ul>
+                  <p class="cd-sleeve__copy-section"><strong class="cd-sleeve__label">Current status</strong></p>
+                  <p>Reframe is a work in progress. I&rsquo;m developing the application and spatial modelling logic to explore how AI-generated visualisations can become more useful, realistic and constrained by the space they&rsquo;re based on.</p>
+                </div>
+              </div>
+              <div class="cd-sleeve__media-shell cd-sleeve__media-shell--reframe">
+                <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
+                  <div
+                    class="cd-sleeve__media-strip"
+                    role="region"
+                    tabindex="0"
+                    aria-label="Reframe product screens. Scroll horizontally, use the arrows below, or press arrow keys when this strip is focused."
+                  >
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#2a3544;--cd-b:#5a7a9a;--cd-c:#a8c4dc;">
+                        <div class="cd-sleeve__cover-stack">
+                          <img
+                            class="cd-sleeve__cover-shot"
+                            src="assets/reframe/intro-home-before-after.jpg"
+                            alt="Reframe home screen: sketch-to-render comparison for a loft bedroom."
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#2a3544;--cd-b:#5a7a9a;--cd-c:#a8c4dc;">
+                        <div class="cd-sleeve__cover-stack">
+                          <img
+                            class="cd-sleeve__cover-shot"
+                            src="assets/reframe/step-01-define-space.png"
+                            alt="Step 1: roof plan with dimensions and ridge height."
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#2a3544;--cd-b:#5a7a9a;--cd-c:#a8c4dc;">
+                        <div class="cd-sleeve__cover-stack">
+                          <img
+                            class="cd-sleeve__cover-shot"
+                            src="assets/reframe/step-02-explore-layout-3d.png"
+                            alt="Step 2: 3D layout with room tabs."
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#2a3544;--cd-b:#5a7a9a;--cd-c:#a8c4dc;">
+                        <div class="cd-sleeve__cover-stack">
+                          <img
+                            class="cd-sleeve__cover-shot"
+                            src="assets/reframe/step-03-saved-renders.jpg"
+                            alt="Step 3: AI render with style controls and saved versions."
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cd-sleeve__reframe-caption-rail" aria-live="polite" hidden>
+                    <div class="cd-sleeve__media-pane-caption cd-sleeve__reframe-caption-pane" data-strip-index="1" hidden>
+                      <span class="cd-sleeve__reframe-step-num">01</span>
+                      <div class="cd-sleeve__reframe-step-text">
+                        <strong>Define your space</strong>
+                        <p>Describe the loft, confirm roof shape and estimated ridge height, and mark what sits below—so every later option respects the real footprint.</p>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane-caption cd-sleeve__reframe-caption-pane" data-strip-index="2" hidden>
+                      <span class="cd-sleeve__reframe-step-num">02</span>
+                      <div class="cd-sleeve__reframe-step-text">
+                        <strong>Explore layouts</strong>
+                        <p>After choosing a layout, move through the loft in 3D—switch between rooms, check furniture and headroom, and sense how each option uses the volume before you render.</p>
+                      </div>
+                    </div>
+                    <div class="cd-sleeve__media-pane-caption cd-sleeve__reframe-caption-pane" data-strip-index="3" hidden>
+                      <span class="cd-sleeve__reframe-step-num">03</span>
+                      <div class="cd-sleeve__reframe-step-text">
+                        <strong>Visualise possibilities</strong>
+                        <p>Generate AI renders locked to your plan—flip between layout and render, adjust style and mood, and keep saved versions to compare.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </li>
 
       <li id="cd-sleeve-stride" class="cd-rack__item cd-rack__item--sleeve-wide">
         <div class="cd-sleeve">
@@ -142,6 +322,9 @@
                   <span>Behaviour change</span>
                   <span>Mobile</span>
                 </div>
+                <p class="cd-sleeve__proto-cta-wrap">
+                  <a class="cd-sleeve__proto-cta" href="https://stride-five-flame.vercel.app/" target="_blank" rel="noopener noreferrer">Try the prototype</a>
+                </p>
                 <h4 class="cd-sleeve__detail-lead">What I did</h4>
                 <div class="cd-sleeve__body-scroll" tabindex="-1">
                   <p><strong class="cd-sleeve__label">Research &amp; validation</strong> Used ChatGPT and Claude to explore the financial independence landscape, analyse existing tools, and validate the opportunity space.</p>
@@ -155,7 +338,7 @@
                 <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
                   <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="Stride mobile prototype walkthrough.">
                     <div class="cd-sleeve__media-pane">
-                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#5c2e1a;--cd-b:#c4623a;--cd-c:#f0a88a;">
+                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop cd-sleeve__cover-visual--portrait" style="--cd-a:#5c2e1a;--cd-b:#c4623a;--cd-c:#f0a88a;">
                         <div class="cd-sleeve__cover-stack">
                           <iframe
                             class="cd-sleeve__cover-embed"
@@ -178,73 +361,12 @@
         </div>
       </li>
 
-      <li id="cd-sleeve-gwi" class="cd-rack__item cd-rack__item--sleeve-wide">
-        <div class="cd-sleeve">
-          <button type="button" class="cd-case cd-case__toggle cd-case--no-link" aria-expanded="false" aria-controls="panel-gwi" id="toggle-gwi" aria-label="GWI, collaborative workshop for self-serve AI. Tap to expand a short summary and scrollable notes.">
-            <div class="cd-case__jewel">
-              <div class="cd-case__spine" aria-hidden="true"></div>
-              <div class="cd-case__front" style="--cd-a:#4a1a2e;--cd-b:#8B3052;--cd-c:#B8446A;">
-                <div class="cd-case__art" aria-hidden="true"></div>
-                <div class="cd-case__label">
-                  <strong class="cd-case__label-artist">GWI</strong>
-                  <span class="cd-case__label-title">Workshop</span>
-                </div>
-              </div>
-              <div class="cd-case__glare" aria-hidden="true"></div>
-              <div class="cd-case__edge-r" aria-hidden="true"></div>
-            </div>
-            <span class="cd-case__toggle-chevron" aria-hidden="true"></span>
-            <span class="cd-case__info">
-              <span class="cd-case__project">GWI</span>
-              <span class="cd-case__desc">Collaborative vibe coding</span>
-            </span>
-            <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
-          </button>
-          <div id="panel-gwi" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured">
-              <div class="cd-sleeve__copy">
-                <h3 class="cd-sleeve__headline">GWI: collaborative workshop to shape self-serve AI</h3>
-                <p class="cd-sleeve__lede">Ran a cross-functional &ldquo;vibe coding&rdquo; workshop with developers, using Figma designs as a starting point to define and prototype a self-serve experience.</p>
-                <div class="cd-sleeve__pills">
-                  <span>Figma Make</span>
-                  <span>Cursor</span>
-                  <span>Engineer collaboration</span>
-                </div>
-                <h4 class="cd-sleeve__detail-lead">What I did</h4>
-                <div class="cd-sleeve__body-scroll" tabindex="-1">
-                  <p><strong class="cd-sleeve__label">Design explorations</strong> Using ChatGPT to create prompts and Figma Make for designs.</p>
-                  <p><strong class="cd-sleeve__label">UX + Dev</strong> Built and aligned on user stories collaboratively in Cursor and using Figma MCP.</p>
-                  <p><strong class="cd-sleeve__label">Feasibility</strong> Scoped front-end vs backend dependencies.</p>
-                  <p><strong class="cd-sleeve__label">Build</strong> Rapid prototyping and repo integration via Cursor.</p>
-                  <p><strong class="cd-sleeve__label">Insight</strong> Surfaced gaps in access, ownership, and flows.</p>
-                </div>
-              </div>
-              <div class="cd-sleeve__media-shell">
-                <div class="cd-sleeve__cover-wrap cd-sleeve__polaroid">
-                  <div class="cd-sleeve__media-strip" role="region" tabindex="0" aria-label="GWI self-serve prototype demo (Manage users walkthrough).">
-                    <div class="cd-sleeve__media-pane">
-                      <div class="cd-sleeve__cover-visual cd-sleeve__cover-visual--desktop" style="--cd-a:#4a1a2e;--cd-b:#8B3052;--cd-c:#B8446A;">
-                        <div class="cd-sleeve__cover-stack">
-                          <iframe
-                            class="cd-sleeve__cover-embed"
-                            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=Manage_users_demo_owolqn"
-                            title="GWI self-serve prototype walkthrough (Manage users)"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen
-                            loading="lazy"
-                          ></iframe>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="cd-sleeve__cover-mat-caption">GWI · Workshop</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
+      </ul>
+    </div>
+
+    <div class="ai-shelf__group">
+      <h2 class="ai-shelf__group-title">Work projects</h2>
+      <ul class="cd-rack cd-rack--ai-row cd-rack--ai-page" role="list">
 
       <li id="cd-sleeve-valtech" class="cd-rack__item cd-rack__item--sleeve-wide">
         <div class="cd-sleeve">
@@ -342,7 +464,6 @@
                       </div>
                     </div>
                   </div>
-                  <p class="cd-sleeve__media-strip-hint">Use the scrollbar under the rail, the prev/next buttons below, or focus this area and press arrow keys</p>
                   <p class="cd-sleeve__cover-mat-caption">Valtech · Hackathon</p>
                 </div>
               </div>
@@ -418,29 +539,29 @@
         </div>
       </li>
 
-    </ul>
-
-    <aside class="ai-shelf__pitch">
-      <a class="cd-case cd-case--pitch-feature" href="ba-fo.html" aria-label="Read case study: British Airways and Financial Ombudsman, Designing for AI pitch">
-        <span class="cd-rack__pitch-cta">Read case study</span>
-        <div class="cd-case__jewel">
-          <div class="cd-case__spine" aria-hidden="true"></div>
-          <div class="cd-case__front cd-case__front--cover-photo" style="--cd-a:#00247D;--cd-b:#1e4fa3;--cd-c:#8e4a6b;">
-            <img class="cd-case__cover-photo" src="assets/BA/BA%20cover%20image.png" alt="" decoding="async" loading="lazy" />
-            <div class="cd-case__label">
-              <strong class="cd-case__label-artist">BA &amp; Fin. Ombudsman</strong>
-              <span class="cd-case__label-title">Designing for AI</span>
+      <li id="cd-sleeve-ba-fos" class="cd-rack__item cd-rack__item--sleeve-wide">
+        <a class="cd-case cd-case--pitch-feature" href="ba-fo.html" aria-label="Read case study: British Airways and Financial Ombudsman, Designing for AI pitch">
+          <span class="cd-rack__pitch-cta">Read case study</span>
+          <div class="cd-case__jewel">
+            <div class="cd-case__spine" aria-hidden="true"></div>
+            <div class="cd-case__front cd-case__front--cover-photo" style="--cd-a:#00247D;--cd-b:#1e4fa3;--cd-c:#8e4a6b;">
+              <img class="cd-case__cover-photo" src="assets/BA/BA%20cover%20image.png" alt="" decoding="async" loading="lazy" />
+              <div class="cd-case__label">
+                <strong class="cd-case__label-artist">BA &amp; Fin. Ombudsman</strong>
+                <span class="cd-case__label-title">Designing for AI</span>
+              </div>
             </div>
+            <div class="cd-case__glare" aria-hidden="true"></div>
+            <div class="cd-case__edge-r" aria-hidden="true"></div>
           </div>
-          <div class="cd-case__glare" aria-hidden="true"></div>
-          <div class="cd-case__edge-r" aria-hidden="true"></div>
-        </div>
-        <div class="cd-case__info">
-          <p class="cd-case__project">BA &amp; FOS pitch</p>
-          <p class="cd-case__desc">Designing for AI</p>
-        </div>
-      </a>
-    </aside>
+          <div class="cd-case__info">
+            <p class="cd-case__project">BA &amp; FOS pitch</p>
+            <p class="cd-case__desc">Designing for AI</p>
+          </div>
+        </a>
+      </li>
+
+      </ul>
     </div>
   </section>
 

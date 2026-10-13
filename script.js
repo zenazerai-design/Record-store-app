@@ -308,7 +308,11 @@ function mountSpotifyFab() {
       });
     }
 
-    const aiRack = main.querySelector('.cd-rack.cd-rack--ai-row');
+    const aiRacks = main.querySelectorAll('.cd-rack.cd-rack--ai-row');
+    function sleeveInAiRack(sleeve) {
+      if (!sleeve) return false;
+      return Array.from(aiRacks).some((rack) => rack.contains(sleeve));
+    }
     let aiDockRaf = 0;
 
     const stripNavCleanups = [];
@@ -318,14 +322,20 @@ function mountSpotifyFab() {
      * controls and keyboard support so users can reliably move between clips.
      */
     function initAISleeveStripNavigation() {
-      if (!aiRack) return;
-      aiRack.querySelectorAll('.cd-sleeve__media-strip').forEach((strip) => {
+      if (!aiRacks.length) return;
+      aiRacks.forEach((rack) => {
+        rack.querySelectorAll('.cd-sleeve__media-strip').forEach((strip) => {
         const wrap = strip.parentElement;
         if (!wrap || !wrap.classList.contains('cd-sleeve__cover-wrap')) return;
 
         const panes = strip.querySelectorAll(':scope > .cd-sleeve__media-pane');
         if (panes.length < 2) return;
         if (strip.nextElementSibling?.classList?.contains('cd-sleeve__strip-nav')) return;
+
+        const captionRail = wrap.querySelector('.cd-sleeve__reframe-caption-rail');
+        const captionPanes = captionRail
+          ? captionRail.querySelectorAll('.cd-sleeve__reframe-caption-pane')
+          : [];
 
         const reduced = prefersReducedMotion();
 
@@ -391,11 +401,25 @@ function mountSpotifyFab() {
           });
         }
 
+        function syncReframeCaptions() {
+          if (!captionRail || captionPanes.length === 0) return;
+          const i = currentPaneIndex();
+          const showSteps = i > 0;
+          captionRail.hidden = !showSteps;
+          captionPanes.forEach((el) => {
+            const idx = Number.parseInt(el.dataset.stripIndex, 10);
+            const active = showSteps && idx === i;
+            el.hidden = !active;
+            el.classList.toggle('is-active', active);
+          });
+        }
+
         function syncChrome() {
           const i = currentPaneIndex();
           prevBtn.disabled = i <= 0;
           nextBtn.disabled = i >= panes.length - 1;
           statusEl.textContent = `${i + 1} / ${panes.length}`;
+          syncReframeCaptions();
         }
 
         function syncStripCoverEmbeds(activeIndex) {
@@ -442,7 +466,8 @@ function mountSpotifyFab() {
         nextBtn.innerHTML = '<span aria-hidden="true">\u2192</span>';
 
         nav.append(prevBtn, statusEl, nextBtn);
-        strip.insertAdjacentElement('afterend', nav);
+        const navAnchor = captionRail || strip;
+        navAnchor.insertAdjacentElement('afterend', nav);
 
         const onPrev = () => go(-1);
         const onNext = () => go(1);
@@ -488,13 +513,14 @@ function mountSpotifyFab() {
           nav.remove();
         });
       });
+      });
     }
 
     initAISleeveStripNavigation();
 
     /** AI row: clear legacy inline panel metrics (layout is flex in CSS) */
     function alignAiExploreDockedPanel() {
-      if (!aiRack) return;
+      if (!aiRacks.length) return;
       cancelAnimationFrame(aiDockRaf);
       aiDockRaf = requestAnimationFrame(() => {
         aiDockRaf = 0;
@@ -503,13 +529,15 @@ function mountSpotifyFab() {
     }
 
     function dockAiExplorePanelFrame() {
-      if (!aiRack) return;
+      if (!aiRacks.length) return;
 
       /* Clear legacy absolute-position vars if present (layout is flex in CSS) */
-      aiRack.querySelectorAll('.cd-sleeve__panel').forEach(p => {
+      aiRacks.forEach((rack) => {
+        rack.querySelectorAll('.cd-sleeve__panel').forEach((p) => {
         p.style.removeProperty('--ai-panel-left');
         p.style.removeProperty('--ai-panel-width');
         p.style.removeProperty('--ai-panel-top');
+        });
       });
     }
 
@@ -600,7 +628,7 @@ function mountSpotifyFab() {
 
       /* AI rack: side-by-side layout uses CSS flex; skip FLIP (jewel stays visible) */
       const openDockedAiRackInstantly =
-        !instant && aiRack && sleeve && aiRack.contains(sleeve);
+        !instant && sleeve && sleeveInAiRack(sleeve);
 
       if (!open) {
         clearSleeveFlipTimers(btn);
@@ -682,7 +710,7 @@ function mountSpotifyFab() {
 
     main.addEventListener('click', onClick);
 
-    if (aiRack) {
+    if (aiRacks.length) {
       window.addEventListener('resize', onAiRackRelayout);
     }
 
