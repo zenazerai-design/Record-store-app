@@ -6136,6 +6136,49 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 /*
+ * AI explorations page: single-column featured (does not depend on .cd-sleeve--expanded).
+ * Beats default .cd-sleeve__featured grid if cache or timing misses expanded-only rules.
+ */
+.cd-rack.cd-rack--ai-page .cd-sleeve__featured,
+.cd-sleeve__featured--stack {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: unset;
+  align-items: stretch;
+  width: 100%;
+  gap: clamp(18px, 2.8vw, 28px);
+}
+
+.cd-rack.cd-rack--ai-page .cd-sleeve__featured > .cd-sleeve__media-shell,
+.cd-sleeve__featured--stack > .cd-sleeve__media-shell {
+  order: -1;
+  align-items: stretch;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+}
+
+.cd-rack.cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__media-shell .cd-sleeve__cover-wrap,
+.cd-sleeve__featured--stack .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+}
+
+.cd-rack.cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__copy,
+.cd-rack.cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__body-scroll,
+.cd-sleeve__featured--stack .cd-sleeve__copy,
+.cd-sleeve__featured--stack .cd-sleeve__body-scroll,
+.cd-sleeve__featured--stack .cd-sleeve__approach-list {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+  align-self: stretch;
+  box-sizing: border-box;
+}
+
+/*
  * AI explorations (expanded): one column — media on top, copy full panel width
  * (overrides .cd-rack--ai-row two-column .cd-sleeve__featured at all breakpoints).
  */
@@ -6498,7 +6541,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 /* Media column keeps video aspect ratio; does not stretch to match copy height */
-.cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-shell {
+.cd-rack.cd-rack--ai-row:not(.cd-rack--ai-page) .cd-sleeve--expanded .cd-sleeve__media-shell {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -6506,7 +6549,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   min-height: 0;
 }
 
-.cd-rack.cd-rack--ai-row .cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
+.cd-rack.cd-rack--ai-row:not(.cd-rack--ai-page) .cd-sleeve--expanded .cd-sleeve__media-shell .cd-sleeve__cover-wrap {
   flex: none;
   display: flex;
   flex-direction: column;
@@ -7080,7 +7123,7 @@ body.page-about .reveal.reveal--stagger.is-in {
   display: block !important;
 }
 
-.cd-sleeve__featured {
+.cd-sleeve__featured:not(.cd-sleeve__featured--stack) {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(260px, 1.12fr);
   gap: clamp(18px, 3.8vw, 40px);
@@ -7686,7 +7729,7 @@ body.page-about .reveal.reveal--stagger.is-in {
 }
 
 @media (max-width: 720px) {
-  .cd-sleeve__featured {
+  .cd-sleeve__featured:not(.cd-sleeve__featured--stack) {
     grid-template-columns: 1fr;
     gap: 18px;
   }
@@ -16673,7 +16716,8 @@ html.case-study-locked body > *:not(#case-study-lock-root) {
 }
 
 /* AI explorations — full-width copy (override .cd-sleeve__featured two-column grid) */
-.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve__featured,
+.page-ai-explorations .cd-sleeve__featured--stack {
   display: flex !important;
   flex-direction: column !important;
   grid-template-columns: unset !important;
@@ -16681,22 +16725,23 @@ html.case-study-locked body > *:not(#case-study-lock-root) {
   width: 100% !important;
 }
 
-.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__media-shell {
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve__featured > .cd-sleeve__media-shell,
+.page-ai-explorations .cd-sleeve__featured--stack > .cd-sleeve__media-shell {
   order: -1;
   width: 100% !important;
   max-width: none !important;
+  margin-left: 0 !important;
 }
 
-.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy,
-.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__body-scroll,
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__copy,
+.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__body-scroll,
+.page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__copy,
+.page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__body-scroll,
 .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
   width: 100% !important;
   max-width: none !important;
   max-height: none !important;
   overflow: visible !important;
   box-sizing: border-box;
-}
-
-.page-ai-explorations .cd-rack.cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__copy {
   align-self: stretch !important;
 }

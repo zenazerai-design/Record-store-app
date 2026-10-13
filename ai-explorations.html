@@ -42,17 +42,20 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261013-ai4" />
+  <link rel="stylesheet" href="styles.css?v=20261013-ai5" />
   <style>
-    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai4 on home) */
-    .page-ai-explorations .cd-rack--ai-page .cd-sleeve.cd-sleeve--expanded .cd-sleeve__featured {
+    /* Full-width copy (direct page load; SPA uses styles.css?v=20261013-ai5 on home) */
+    .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured,
+    .page-ai-explorations .cd-sleeve__featured--stack {
       display: flex !important;
       flex-direction: column !important;
       grid-template-columns: unset !important;
       width: 100% !important;
     }
-    .page-ai-explorations .cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__copy,
-    .page-ai-explorations .cd-rack--ai-page .cd-sleeve--expanded .cd-sleeve__body-scroll,
+    .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__copy,
+    .page-ai-explorations .cd-rack--ai-page .cd-sleeve__featured .cd-sleeve__body-scroll,
+    .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__copy,
+    .page-ai-explorations .cd-sleeve__featured--stack .cd-sleeve__body-scroll,
     .page-ai-explorations .cd-sleeve--reframe .cd-sleeve__approach-list {
       width: 100% !important;
       max-width: none !important;
@@ -170,7 +173,7 @@
           </button>
           <div id="panel-reframe" class="cd-sleeve__panel" hidden>
             <div class="cd-sleeve__panel-stack cd-sleeve__panel-stack--reframe">
-            <div class="cd-sleeve__featured">
+            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
               <div class="cd-sleeve__copy">
                 <h3 class="cd-sleeve__headline">Reframe: Making loft planning more tangible</h3>
                 <p class="cd-sleeve__lede">An AI-powered product exploration into how homeowners could visualise what&rsquo;s possible with their loft, grounded in the reality of their space.</p>
@@ -313,7 +316,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-stride" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured">
+            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
               <div class="cd-sleeve__copy">
                 <h3 class="cd-sleeve__headline">Stride: Designing a simpler path to financial independence</h3>
                 <p class="cd-sleeve__lede">A side project inspired by my own frustration with spreadsheets, pension portals and compound interest calculators. Designed and tested a simpler way to understand progress towards financial independence and explore how today&rsquo;s financial decisions shape future freedom.</p>
@@ -392,7 +395,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-valtech" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured">
+            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
               <div class="cd-sleeve__copy">
                 <h3 class="cd-sleeve__headline">AI Workflow Tool: designing the idea and how it lands</h3>
                 <p class="cd-sleeve__lede">A Valtech hackathon project with a newly formed team; the entry took second place. The work focused on making AI genuinely useful in day-to-day workflows. Alongside the product, I used storytelling to help the audience feel empathy with the users.</p>
@@ -496,7 +499,7 @@
             <span class="cd-case__collapse-fab-label" aria-hidden="true">Close</span>
           </button>
           <div id="panel-google-ccai" class="cd-sleeve__panel" hidden>
-            <div class="cd-sleeve__featured">
+            <div class="cd-sleeve__featured cd-sleeve__featured--stack">
               <div class="cd-sleeve__copy">
                 <h3 class="cd-sleeve__headline">Google CCAI &times; Tide: conversational UX that completes journeys</h3>
                 <p class="cd-sleeve__lede">Designed a conversational UX for SMB banking using Google CCAI, focused on helping users resolve tasks end-to-end in-channel. Built on structured, intent-led flows to ensure clarity, reliability, and control.</p>
