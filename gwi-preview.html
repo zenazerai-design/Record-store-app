@@ -49,8 +49,30 @@
       display: none !important;
     }
 
+    .csd-case--gwi-preview .gwi-prev-section:has(+ .csd-editorial) {
+      border-bottom: none;
+    }
+
+    .csd-case--gwi-preview .csd-editorial {
+      border-bottom: none;
+      padding-bottom: clamp(28px, 4vw, 48px);
+    }
+
+    body:has(article.csd-case--gwi-preview) .foot {
+      border-top: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      article.csd.csd-case--gwi-preview > section.reveal:not(.gwi-pivot-drop) {
+        transform: translateY(10px);
+        transition:
+          opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+    }
+
     .csd-case--gwi-preview .gwi-prev-section {
-      padding: var(--csd-section-pad) 0;
+      padding: clamp(112px, 11vw, 168px) 0;
       border-bottom: 1px solid var(--line);
       display: grid;
       gap: clamp(56px, 7vw, 96px);
@@ -412,7 +434,7 @@
       font-size: clamp(20px, 1.8vw, 26px);
       line-height: 1;
       letter-spacing: -0.03em;
-      color: var(--muted);
+      color: var(--cream);
     }
 
     .csd-case--gwi-preview .gwi-prev-opps h3 {
@@ -641,7 +663,7 @@
       justify-content: center;
       padding: 20px 16px;
       border-radius: var(--radius);
-      border: 1px solid color-mix(in srgb, var(--cream) 18%, var(--line));
+      border: 1px solid var(--amber);
       background: var(--surface);
       text-align: center;
       font-size: clamp(14px, 1.05vw, 16px);
@@ -770,7 +792,7 @@
     }
 
     .csd-case--gwi-preview .gwi-prev-matrix__mark--yes {
-      color: var(--cream);
+      color: var(--amber);
     }
 
     .csd-case--gwi-preview .gwi-prev-matrix__mark--no {
@@ -888,7 +910,7 @@
     }
 
     .csd-case--gwi-preview .gwi-prev-outcomes__row:last-child {
-      border-bottom: 1px solid var(--line);
+      border-bottom: none;
     }
 
     .csd-case--gwi-preview .gwi-prev-outcomes__row h3 {
@@ -908,69 +930,316 @@
       color: var(--ink-soft);
     }
 
+    .csd-case--gwi-preview .gwi-prev-section--measures {
+      gap: clamp(32px, 4vw, 52px);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__intro {
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__eyebrow {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__callout {
+      margin: 6px 0 0;
+      max-width: 38rem;
+      padding: 0;
+      border: 0;
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.05vw, 16px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
     .csd-case--gwi-preview .gwi-prev-measures {
       display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: repeat(5, auto);
       margin: 0;
-      padding: 0;
-      list-style: none;
       min-width: 0;
       max-width: 100%;
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures > li {
+    .csd-case--gwi-preview .gwi-prev-measures__col {
       display: grid;
-      gap: 14px;
-      margin: 0;
+      grid-row: 1 / -1;
+      grid-template-rows: subgrid;
       min-width: 0;
-      max-width: 100%;
-      padding: clamp(22px, 2.6vw, 32px) 0;
-      border-top: 1px solid var(--line);
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures > li:last-child {
-      border-bottom: 1px solid var(--line);
+    .csd-case--gwi-preview .gwi-prev-measures__col:first-child {
+      grid-column: 1;
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures h3 {
+    .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col {
+      grid-column: 2;
+      border-left: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__index,
+    .csd-case--gwi-preview .gwi-prev-measures__col h3,
+    .csd-case--gwi-preview .gwi-prev-measures__row {
+      padding-right: clamp(16px, 2.6vw, 40px);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col > .gwi-prev-measures__index,
+    .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col > h3,
+    .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col > .gwi-prev-measures__row {
+      padding-right: 0;
+      padding-left: clamp(16px, 2.6vw, 40px);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__index {
       margin: 0;
+      align-self: end;
+      padding-bottom: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__col h3 {
+      margin: 0;
+      align-self: start;
+      padding-bottom: clamp(20px, 2.2vw, 28px);
       font-family: var(--font-display);
       font-weight: 600;
-      font-size: clamp(20px, 2vw, 26px);
-      line-height: 1.2;
+      font-size: clamp(22px, 2.05vw, 28px);
+      line-height: 1.18;
       letter-spacing: -0.02em;
       color: var(--cream);
       overflow-wrap: break-word;
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures h3 span {
-      margin-right: 0.35em;
-      font-style: italic;
-      font-weight: 600;
+    .csd-case--gwi-preview .gwi-prev-measures__row {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      align-self: stretch;
+      min-width: 0;
+      padding-top: clamp(16px, 1.8vw, 22px);
+      padding-bottom: clamp(16px, 1.8vw, 22px);
+      border-top: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__cat {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--muted);
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures ul {
+    .csd-case--gwi-preview .gwi-prev-measures__cat--experience {
+      color: var(--amber);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__value {
       display: grid;
-      gap: 8px;
+      gap: 3px;
       margin: 0;
+      min-width: 0;
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.12vw, 17px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+      overflow-wrap: break-word;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-measures__note {
+      margin: 0;
+      max-width: 78ch;
+      font-family: var(--font-body);
+      font-size: clamp(13px, 1vw, 15px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      .csd-case--gwi-preview .gwi-prev-measures {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-measures__col,
+      .csd-case--gwi-preview .gwi-prev-measures__col:first-child,
+      .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col {
+        display: grid;
+        grid-column: auto;
+        grid-row: auto;
+        grid-template-rows: none;
+        border-left: none;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col {
+        margin-top: clamp(28px, 7vw, 40px);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-measures__index,
+      .csd-case--gwi-preview .gwi-prev-measures__col h3,
+      .csd-case--gwi-preview .gwi-prev-measures__row,
+      .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col > .gwi-prev-measures__index,
+      .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col > h3,
+      .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col > .gwi-prev-measures__row {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial {
+      gap: clamp(28px, 3.6vw, 48px);
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__copy {
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__lead {
+      margin: 4px 0 0;
+      max-width: 100%;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 3.1vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__lead span {
+      color: var(--amber);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__support,
+    .csd-case--gwi-preview .gwi-prev-commercial__teams {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(15px, 1.05vw, 17px);
+      line-height: 1.45;
+      color: var(--ink-soft);
+      overflow-wrap: break-word;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__support {
+      max-width: 42rem;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__teams {
+      margin-top: 10px;
+      max-width: 62rem;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__markers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      margin: 2px 0 0;
       padding: 0;
       list-style: none;
       min-width: 0;
       max-width: 100%;
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures li li {
+    .csd-case--gwi-preview .gwi-prev-commercial__markers li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__markers li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cream);
+      flex: 0 0 auto;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__outcome {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 16px;
+      row-gap: 6px;
+      align-items: baseline;
+      margin: 8px 0 0;
+      min-width: 0;
+      max-width: 68rem;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__status {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__status-note {
       margin: 0;
       min-width: 0;
-      font-size: clamp(15px, 1.1vw, 17px);
-      line-height: 1.65;
-      color: var(--ink-soft);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--muted);
       overflow-wrap: break-word;
     }
 
-    .csd-case--gwi-preview .gwi-prev-measures strong {
-      font-weight: 600;
-      color: var(--cream);
+    .csd-case--gwi-preview .gwi-prev-commercial__model {
+      margin: 0;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-commercial__model img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
     }
 
     @media (max-width: 960px) {
@@ -1043,6 +1312,17 @@
 
       .csd-case--gwi-preview .gwi-prev-matrix tbody th {
         font-size: 13px;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-commercial__outcome {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-commercial__lead,
+      .csd-case--gwi-preview .gwi-prev-commercial__support,
+      .csd-case--gwi-preview .gwi-prev-commercial__teams {
+        max-width: none;
+        width: 100%;
       }
 
     }
@@ -1296,10 +1576,7 @@
         </div>
       </div>
 
-      <div class="gwi-prev-prose">
-        <p>These findings revealed that the challenge went beyond individual interfaces. Commercial agreements, organisational structures, access management and usage data needed to work together more reliably.</p>
-        <p>Four opportunity areas emerged:</p>
-      </div>
+      <h3 class="gwi-prev-subhead">Four opportunity areas</h3>
 
       <ol class="gwi-prev-opps">
         <li>
@@ -1648,48 +1925,78 @@
       </div>
     </section>
 
-    <section class="gwi-prev-section" aria-labelledby="gwi-prev-billing">
-      <div class="gwi-prev-prose">
+    <section class="gwi-prev-section gwi-prev-commercial" aria-labelledby="gwi-prev-billing">
+      <div class="gwi-prev-commercial__copy">
         <h2 id="gwi-prev-billing" class="csd-context__title">Connecting usage to the commercial model</h2>
-        <p>Alongside the dashboard work, I contributed to cross-functional discovery into API/MCP billing.</p>
-        <p>Usage, products, organisations and commercial agreements need to connect across the platform to support future consumption-based billing. Customer-facing usage visibility was only one part of that challenge.</p>
+        <p class="gwi-prev-commercial__lead">The ambition: <span>monetise API/MCP consumption.</span></p>
+        <p class="gwi-prev-commercial__support">Supporting consumption-based billing meant connecting usage data to products, organisations and commercial agreements across the platform.</p>
+        <p class="gwi-prev-commercial__teams">Brought together Salesforce, Customer Success and Analytics to map dependencies and identify foundational gaps.</p>
+        <ul class="gwi-prev-commercial__markers">
+          <li>Salesforce</li>
+          <li>Customer Success</li>
+          <li>Analytics</li>
+        </ul>
+        <p class="gwi-prev-commercial__outcome">
+          <span class="gwi-prev-commercial__status">Foundational work underway</span>
+          <span class="gwi-prev-commercial__status-note">Foundational work on Salesforce mapping and organisational hierarchy is now underway.</span>
+        </p>
       </div>
 
-      <figure class="gwi-prev-shot">
-        <div class="gwi-prev-placeholder">
-          <p>BILLING DISCOVERY AND METRONOME DATA MODEL — REPLACE WITH PRESENTATION SLIDE 21</p>
-        </div>
+      <figure class="gwi-prev-commercial__model">
+        <img
+          src="assets/GWI/metronome-data-model.png"
+          alt="Metronome data model linking ingest API events to billable metrics, a product catalog, a rate card, contracts, customers and invoices."
+          width="1024"
+          height="565"
+          loading="lazy"
+          decoding="async"
+        >
       </figure>
-
-      <div class="gwi-prev-prose">
-        <p>I advocated for foundational Salesforce mapping and organisational hierarchy work before a broader consumption-based billing rollout. That work is now underway.</p>
-      </div>
     </section>
 
-    <section class="gwi-prev-section" aria-labelledby="gwi-prev-measures">
-      <div class="gwi-prev-prose">
-        <h2 id="gwi-prev-measures" class="csd-context__title">Measuring success ahead of rollout</h2>
-        <p>Success measures were defined with Analytics to evaluate whether the new experiences delivered business, product and customer value.</p>
+    <section class="gwi-prev-section gwi-prev-section--measures" aria-labelledby="gwi-prev-measures">
+      <header class="gwi-prev-measures__intro">
+        <p class="gwi-prev-measures__eyebrow">What’s next</p>
+        <h2 id="gwi-prev-measures" class="csd-context__title">Defining how we’ll measure<br>success</h2>
+        <p class="gwi-prev-measures__callout">Success measures and instrumentation were defined with Analytics and Engineering during build. On rollout, we’ll use these to evaluate whether the new experiences deliver business, product and customer value.</p>
+      </header>
+
+      <div class="gwi-prev-measures">
+        <article class="gwi-prev-measures__col">
+          <p class="gwi-prev-measures__index">01 - Self-serve</p>
+          <h3>Reduce reliance on Customer Success for routine administration</h3>
+          <div class="gwi-prev-measures__row">
+            <p class="gwi-prev-measures__cat">Business</p>
+            <p class="gwi-prev-measures__value">Fewer relevant support requests through Intercom</p>
+          </div>
+          <div class="gwi-prev-measures__row">
+            <p class="gwi-prev-measures__cat">Product</p>
+            <p class="gwi-prev-measures__value"><span>Self-service adoption</span><span>Key admin tasks completed self-serve</span></p>
+          </div>
+          <div class="gwi-prev-measures__row">
+            <p class="gwi-prev-measures__cat gwi-prev-measures__cat--experience">Experience</p>
+            <p class="gwi-prev-measures__value"><span>Task success</span><span>Drop-off and errors</span></p>
+          </div>
+        </article>
+        <article class="gwi-prev-measures__col">
+          <p class="gwi-prev-measures__index">02 - API &amp; MCP</p>
+          <h3>Give customers trustworthy visibility into their usage</h3>
+          <div class="gwi-prev-measures__row">
+            <p class="gwi-prev-measures__cat">Business</p>
+            <p class="gwi-prev-measures__value">Fewer manual reporting requests through Intercom</p>
+          </div>
+          <div class="gwi-prev-measures__row">
+            <p class="gwi-prev-measures__cat">Product</p>
+            <p class="gwi-prev-measures__value"><span>Usage dashboard adoption</span><span>Reporting interactions</span></p>
+          </div>
+          <div class="gwi-prev-measures__row">
+            <p class="gwi-prev-measures__cat gwi-prev-measures__cat--experience">Experience</p>
+            <p class="gwi-prev-measures__value"><span>Usability of the key reporting tasks</span><span>Can customers answer their core usage questions?</span></p>
+          </div>
+        </article>
       </div>
 
-      <ol class="gwi-prev-measures">
-        <li>
-          <h3><span>01 -</span> Self-serve administration</h3>
-          <ul>
-            <li><strong>Business:</strong> Reduction in seat-change support requests</li>
-            <li><strong>Product:</strong> Self-serve adoption; key admin tasks completed independently</li>
-            <li><strong>Experience:</strong> Task success rate; errors and drop-off</li>
-          </ul>
-        </li>
-        <li>
-          <h3><span>02 -</span> API/MCP usage dashboard</h3>
-          <ul>
-            <li><strong>Business:</strong> Reduction in manual usage-reporting requests</li>
-            <li><strong>Product:</strong> Dashboard adoption; engagement with reporting features</li>
-            <li><strong>Experience:</strong> Success completing key reporting tasks; ability to answer core usage questions</li>
-          </ul>
-        </li>
-      </ol>
+      <p class="gwi-prev-measures__note">Measurement approach defined with Analytics; usability testing and product instrumentation would validate the experience once live.</p>
     </section>
 
     <section class="gwi-prev-section" aria-labelledby="gwi-prev-outcomes">
@@ -1725,6 +2032,30 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="cs-explore" aria-labelledby="cs-explore-heading">
+      <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
+      <ul class="cs-explore__grid" role="list">
+        <li>
+          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate: Reducing file processing from days to minutes">
+            <img class="cs-explore__img" src="assets/PINS/PINS cover.png" alt="" />
+            <span class="cs-explore__title">Reducing file processing from days to minutes</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="toyota.html" aria-label="Toyota experimentation">
+            <img class="cs-explore__img" src="assets/Toyota/343shots_so.png" alt="" />
+            <span class="cs-explore__title">Toyota experimentation</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="hyundai-finance.html" aria-label="Hyundai Finance: Enabling car dealers to do soft credit checks">
+            <img class="cs-explore__img" src="assets/HCUK covr.png" alt="" />
+            <span class="cs-explore__title">Enabling car dealers to do soft credit checks</span>
+          </a>
+        </li>
+      </ul>
     </section>
 
   </article>
