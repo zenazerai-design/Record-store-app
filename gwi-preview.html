@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Unlinked preview of a new GWI case study. Not in navigation or project listings. -->
+  <script>
+  (function () {
+    function insertBase(href) {
+      if (document.querySelector("base")) return;
+      var b = document.createElement("base");
+      b.href = href;
+      var head = document.head;
+      var cs = head.querySelector("meta[charset]");
+      if (!cs) { head.insertBefore(b, head.firstChild); return; }
+      if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+      else head.appendChild(b);
+    }
+    if (location.protocol === "file:") {
+      try {
+        var u = new URL(location.href);
+        if (/\.html?$/i.test(u.pathname)) {
+          u.pathname = u.pathname.replace(/\/[^/]*$/, "/");
+          u.search = "";
+          u.hash = "";
+          insertBase(u.href);
+        }
+      } catch (e) {}
+      return;
+    }
+    var prefix = "/Record-store-app/";
+    var p = location.pathname;
+    if (p === "/Record-store-app" || p.indexOf(prefix) === 0) insertBase(prefix);
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Building the foundations for GWI’s next stage of enterprise growth | GWI preview | Zena Zerai</title>
+  <meta name="description" content="Building the foundations for GWI’s next stage of enterprise growth. Unpublished case study preview." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body:has(article.csd-case--gwi-preview) #spotify-fab {
+      display: none !important;
+    }
+
+    .csd-case--gwi-preview .csd-hero__summary--lead {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(18px, 1.55vw, 22px);
+      line-height: 1.4;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .csd-hero__summary--lead strong {
+      font-weight: 600;
+    }
+
+    .csd-case--gwi-preview > .csd-hero > .csd-meta .csd-meta__grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1.45fr);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-section {
+      padding: var(--csd-section-pad) 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: clamp(28px, 3.6vw, 48px);
+      min-width: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-section .csd-context {
+      padding: 0;
+      border-bottom: none;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-prose {
+      max-width: 68ch;
+      display: grid;
+      gap: 18px;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-prose p,
+    .csd-case--gwi-preview .gwi-prev-decision p,
+    .csd-case--gwi-preview .gwi-prev-diagram__note {
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-subhead,
+    .csd-case--gwi-preview .gwi-prev-decision h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-subhead {
+      font-size: clamp(22px, 2.4vw, 32px);
+      line-height: 1.15;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-decision h3 {
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.25;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-decision {
+      display: grid;
+      gap: 16px;
+      max-width: 68ch;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metrics,
+    .csd-case--gwi-preview .gwi-prev-opps,
+    .csd-case--gwi-preview .gwi-prev-questions {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metrics {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: clamp(28px, 3vw, 40px) clamp(20px, 2.4vw, 32px);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metrics > li {
+      grid-column: span 2;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metrics > li:nth-child(n + 4) {
+      grid-column: span 3;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metric__title {
+      position: relative;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metric__sep {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metric__figure {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(36px, 3.8vw, 52px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--amber);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metric__name {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 600;
+      font-size: clamp(16px, 1.2vw, 18px);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-metric__desc {
+      margin: 0;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-discovery {
+      padding: 0;
+      border-bottom: none;
+      gap: clamp(18px, 2.4vw, 28px);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-discovery .csd-iterate__title {
+      font-size: clamp(22px, 2.4vw, 32px);
+      max-width: 22ch;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 16px;
+      row-gap: 8px;
+      align-items: start;
+      margin: 0;
+      padding: clamp(18px, 2.2vw, 26px);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps__num {
+      grid-row: 1 / span 2;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(20px, 1.8vw, 26px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: color-mix(in srgb, var(--amber) 62%, var(--muted));
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.45vw, 21px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps p {
+      margin: 0;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-questions {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px clamp(16px, 2vw, 28px);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-questions li {
+      margin: 0;
+      padding-top: 12px;
+      border-top: 2px solid var(--amber);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-shot {
+      margin: 0;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-shot:not(.gwi-prev-shot--centrepiece) {
+      max-width: 780px;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-band {
+      width: 100%;
+      max-width: 100%;
+      margin-inline: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-placeholder {
+      display: flex;
+      align-items: flex-end;
+      aspect-ratio: 16 / 10;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-shot--detail .gwi-prev-placeholder {
+      aspect-ratio: 16 / 9;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-placeholder p {
+      margin: 0;
+      max-width: 36ch;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-shot--centrepiece .gwi-prev-placeholder {
+      aspect-ratio: 16 / 9;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-shot.gwi-prev-shot--quiet {
+      max-width: 640px;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-note {
+      margin: 0;
+      max-width: 68ch;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-compare {
+      display: grid;
+      gap: 12px;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-compare h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-compare > p {
+      margin: 0;
+      max-width: 68ch;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-compare__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 4px 0 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-compare__pair figure {
+      margin: 0;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-compare__pair .gwi-prev-placeholder {
+      aspect-ratio: 16 / 10;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-tradeoff {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(18px, 2.4vw, 32px);
+      margin: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-tradeoff h4 {
+      margin: 0 0 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-tradeoff p {
+      margin: 0;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-concept {
+      margin: 0;
+      display: grid;
+      gap: 12px;
+      justify-items: start;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-concept-label {
+      display: inline-flex;
+      margin: 0;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--amber) 45%, var(--line));
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-concept .csd-video__frame {
+      width: 100%;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-outcomes {
+      display: grid;
+      margin: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-outcomes__row {
+      display: grid;
+      grid-template-columns: minmax(8.5rem, 13rem) minmax(0, 1fr);
+      gap: 12px clamp(24px, 4vw, 56px);
+      align-items: start;
+      padding: clamp(22px, 2.6vw, 32px) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-outcomes__row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-outcomes__row h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-outcomes__row p {
+      margin: 0;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    @media (max-width: 960px) {
+      .csd-case--gwi-preview > .csd-hero > .csd-meta .csd-meta__grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .csd-case--gwi-preview > .csd-hero > .csd-meta .csd-meta__item,
+      .csd-case--gwi-preview > .csd-hero > .csd-meta .csd-meta__item:nth-child(even) {
+        border-right: none;
+        margin-right: 0;
+        padding: 18px 0 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .csd-case--gwi-preview > .csd-hero > .csd-meta .csd-meta__item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-questions {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .csd-case--gwi-preview .gwi-prev-metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-metrics > li,
+      .csd-case--gwi-preview .gwi-prev-metrics > li:nth-child(n + 4) {
+        grid-column: auto;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-tradeoff {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .csd-case--gwi-preview .gwi-prev-opps,
+      .csd-case--gwi-preview .gwi-prev-questions,
+      .csd-case--gwi-preview .gwi-prev-outcomes__row,
+      .csd-case--gwi-preview .gwi-prev-metrics,
+      .csd-case--gwi-preview .gwi-prev-compare__pair {
+        grid-template-columns: 1fr;
+      }
+
+    }
+  </style>
+</head>
+<body>
+<div id="case-study-lock-root" class="case-study-lock-root" hidden aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="home.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <button class="nav__cta" id="nav-copy-email" type="button" aria-label="Copy email address">
+        <span class="nav__cta-label">Get in touch</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+  <article class="csd csd-case--gwi-preview">
+
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="case-studies.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Case Studies
+      </a>
+    </div>
+
+    <section class="csd-hero">
+      <div class="csd-hero__inner">
+
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">Global Web Index</span>
+        </div>
+
+        <h1 class="csd-hero__title">
+          Building the foundations for GWI’s next stage of <em class="italic">enterprise growth</em>
+        </h1>
+
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary csd-hero__summary--lead">Connecting API usage to the commercial model</p>
+          <p class="csd-hero__summary">
+            GWI was evolving from a traditional SaaS business towards an AI-powered, API-first platform. As the product offering expanded, the systems supporting enterprise customers needed to evolve too.
+          </p>
+          <p class="csd-hero__summary">
+            I led cross-functional discovery into GWI’s enterprise administration platform, designed GWI’s first customer-facing API/MCP usage dashboard, and contributed to wider billing discovery that helped shape the foundational work needed to support future consumption-based billing.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="csd-hero__cover">
+        <div class="csd-hero__cover-inner">
+          <img
+            src="assets/GWI/API%20cover.png"
+            width="1024"
+            height="819"
+            alt="GWI API and MCP usage dashboard"
+          />
+        </div>
+      </div>
+
+      <section class="csd-meta" aria-label="Project details">
+        <dl class="csd-meta__grid">
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Role</dt>
+            <dd class="csd-meta__value">Senior Product Designer · 2026</dd>
+          </div>
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Team</dt>
+            <dd class="csd-meta__value">Product, Engineering, Analytics</dd>
+          </div>
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Collaboration</dt>
+            <dd class="csd-meta__value">Customer Success, Product Experience, Revenue, Account Management and API/MCP teams</dd>
+          </div>
+        </dl>
+      </section>
+    </section>
+
+    <section class="csd-context" aria-labelledby="gwi-prev-business">
+      <div class="csd-context__text">
+        <h2 id="gwi-prev-business" class="csd-context__title">The business was changing faster than the platform</h2>
+        <div class="csd-context__body">
+          <p>GWI’s ambition was to grow Enterprise ARR to £50m within 24 months by expanding its AI product offering.</p>
+          <p>As the business evolved towards an AI-powered, API-first platform, its enterprise capabilities needed to evolve alongside it. Supporting this growth meant rethinking how enterprise customers managed their accounts, accessed products and interacted with the platform.</p>
+          <p>I joined to help modernise User Management. Before proposing solutions, I needed to understand how the existing platform worked, where it was falling short, and what would be needed to support the business’s next stage of growth.</p>
+        </div>
+      </div>
+      <div class="csd-context__image">
+        <img src="assets/GWI/Current%20GWI.png" alt="GWI Admin Organisations screen: sidebar navigation, filter panel for id, name, Salesforce ID, bundles, tier, and a table of organisations with row actions." width="2644" height="1560" loading="lazy" decoding="async" />
+      </div>
+    </section>
+
+    <section class="gwi-prev-section" aria-labelledby="gwi-prev-problems">
+      <div class="gwi-prev-prose">
+        <h2 id="gwi-prev-problems" class="csd-context__title">Finding the problems behind the interface</h2>
+        <p>I led cross-functional discovery across five teams to understand how enterprise administration worked in practice. Through stakeholder mapping, workshops and interviews, I explored how teams managed customers, where manual processes had become embedded, and how the systems supporting enterprise accounts connected.</p>
+        <p>The research exposed several significant operational challenges.</p>
+      </div>
+
+      <ul class="gwi-prev-metrics">
+        <li>
+          <h3 class="gwi-prev-metric__title">
+            <span class="gwi-prev-metric__figure">£36m</span><span class="gwi-prev-metric__sep"> — </span>
+            <span class="gwi-prev-metric__name">Commercial misalignment</span>
+          </h3>
+          <p class="gwi-prev-metric__desc">Revenue associated with discrepancies between what had been sold in Salesforce and what had been provisioned in the admin system.</p>
+        </li>
+        <li>
+          <h3 class="gwi-prev-metric__title">
+            <span class="gwi-prev-metric__figure">~500 hours</span><span class="gwi-prev-metric__sep"> — </span>
+            <span class="gwi-prev-metric__name">Manual administration</span>
+          </h3>
+          <p class="gwi-prev-metric__desc">Time spent on manual administration and support over six months.</p>
+        </li>
+        <li>
+          <h3 class="gwi-prev-metric__title">
+            <span class="gwi-prev-metric__figure">24%</span><span class="gwi-prev-metric__sep"> — </span>
+            <span class="gwi-prev-metric__name">Repetitive support requests</span>
+          </h3>
+          <p class="gwi-prev-metric__desc">The share of Customer Success Intercom tickets relating to seat-change requests.</p>
+        </li>
+        <li>
+          <h3 class="gwi-prev-metric__title">
+            <span class="gwi-prev-metric__figure">80m API calls</span><span class="gwi-prev-metric__sep"> — </span>
+            <span class="gwi-prev-metric__name">Limited usage visibility</span>
+          </h3>
+          <p class="gwi-prev-metric__desc">API calls recorded in a single day. Customers lacked visibility into their usage, leaving internal teams to investigate queries.</p>
+        </li>
+        <li>
+          <h3 class="gwi-prev-metric__title">
+            <span class="gwi-prev-metric__figure">2,600 organisations</span><span class="gwi-prev-metric__sep"> — </span>
+            <span class="gwi-prev-metric__name">Organisational complexity</span>
+          </h3>
+          <p class="gwi-prev-metric__desc">2,600 organisations associated with one enterprise client, illustrating the complexity of managing enterprise structures.</p>
+        </li>
+      </ul>
+
+      <div class="gwi-prev-prose">
+        <p>These findings revealed that the challenge went beyond individual interfaces. Commercial agreements, organisational structures, access management and usage data needed to work together more reliably.</p>
+      </div>
+
+      <div class="csd-iterate gwi-discovery-visuals gwi-prev-discovery">
+        <div class="csd-iterate__intro gwi-discovery-visuals__intro">
+          <h3 id="gwi-prev-shared" class="csd-iterate__title">Building a shared understanding</h3>
+          <p class="gwi-discovery-visuals__body">I brought together perspectives from across the business to understand how enterprise administration worked in practice. Stakeholder mapping, workshops and interviews helped uncover the dependencies between teams, systems and customer workflows.</p>
+        </div>
+        <div class="csd-iterate__scroll-wrap gwi-discovery-visuals__scroll-wrap">
+          <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Discovery artefacts, horizontal scroll">
+            <article class="csd-iterate__card">
+              <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+                <img src="assets/GWI/Key%20player%20mapping.png" alt="Stakeholder map: key players and ownership across teams." width="1666" height="1392" loading="lazy" decoding="async" />
+              </div>
+              <div class="csd-iterate__card-body">
+                <h4 class="csd-iterate__card-title">Stakeholder mapping</h4>
+                <p class="csd-iterate__card-desc">Who owned which workflows, who needed to be involved and who needed to be informed.</p>
+              </div>
+            </article>
+            <article class="csd-iterate__card">
+              <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+                <img src="assets/GWI/Proto%20persona%20workshop.png" alt="Workshop board mapping direct and indirect users of admin across teams." width="1698" height="1144" loading="lazy" decoding="async" />
+              </div>
+              <div class="csd-iterate__card-body">
+                <h4 class="csd-iterate__card-title">Proto-persona workshop</h4>
+                <p class="csd-iterate__card-desc">Lightweight profiles to give us direction on information to validate with users.</p>
+              </div>
+            </article>
+            <article class="csd-iterate__card">
+              <div class="csd-iterate__thumb csd-iterate__thumb--photo csd-iterate__thumb--photo-anchor-right">
+                <img src="assets/GWI/User%20interview.png" alt="Discovery workshop whiteboard: org setup flow with team collaboration." width="1954" height="1082" loading="lazy" decoding="async" />
+              </div>
+              <div class="csd-iterate__card-body">
+                <h4 class="csd-iterate__card-title">Interviews</h4>
+                <p class="csd-iterate__card-desc">13 interviews across RevOps, Enterprise CS, Product, Engineering, AI, and Legal.</p>
+              </div>
+            </article>
+            <article class="csd-iterate__card">
+              <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+                <img src="assets/GWI/Service%20mapping.png" alt="Service map: tools, teams, and handoffs across admin and operations." width="2734" height="1352" loading="lazy" decoding="async" />
+              </div>
+              <div class="csd-iterate__card-body">
+                <h4 class="csd-iterate__card-title">Service mapping</h4>
+                <p class="csd-iterate__card-desc">How work moved between systems and owners.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="gwi-prev-prose">
+        <p>Four opportunity areas emerged:</p>
+      </div>
+
+      <ol class="gwi-prev-opps">
+        <li>
+          <span class="gwi-prev-opps__num" aria-hidden="true">01</span>
+          <h3>Build an enterprise operating model:</h3>
+          <p>create an organisational structure that reflects how enterprise customers buy, manage and delegate access.</p>
+        </li>
+        <li>
+          <span class="gwi-prev-opps__num" aria-hidden="true">02</span>
+          <h3>Enable self-service administration:</h3>
+          <p>allow enterprise administrators to manage users without relying on Customer Success.</p>
+        </li>
+        <li>
+          <span class="gwi-prev-opps__num" aria-hidden="true">03</span>
+          <h3>Make API/MCP usage visible:</h3>
+          <p>give customers a way to understand and monitor their usage.</p>
+        </li>
+        <li>
+          <span class="gwi-prev-opps__num" aria-hidden="true">04</span>
+          <h3>Align access with contracts:</h3>
+          <p>connect customer access and permissions to the commercial relationships that govern them.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="gwi-prev-section" aria-labelledby="gwi-prev-model">
+      <div class="gwi-prev-prose">
+        <h2 id="gwi-prev-model" class="csd-context__title">Modelling the system before designing the interface</h2>
+        <p>As discovery progressed, it became clear that many of the challenges stemmed from the way the platform represented organisations, users, permissions and products.</p>
+        <p>Before designing new experiences, I used object-oriented UX techniques to map the key entities and their relationships, creating a shared language across teams.</p>
+        <p>This helped make the underlying complexity tangible: what belonged to an organisation, how access should be governed, and where the existing model fell short of enterprise requirements.</p>
+        <p>It also helped distinguish between problems that could be addressed through interface design and those that depended on changes to the underlying platform.</p>
+      </div>
+
+      <figure class="gwi-prev-shot">
+        <img
+          class="gwi-prev-photo"
+          src="assets/GWI/OOUX%20entity%20map.png"
+          alt="OOUX object map: four cards defining Organisation (Parent), Organisation (Child), Team, and User, with anatomy tags, object relationships, and notes for each entity."
+          width="1024"
+          height="682"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="gwi-prev-prose">
+        <p>The model informed a longer-term vision for enterprise administration, including clearer organisational relationships, delegated access and more scalable governance.</p>
+      </div>
+
+      <figure class="gwi-prev-concept">
+        <p class="gwi-prev-concept-label" id="gwi-prev-concept-label">Concept, not a shipped product</p>
+        <div class="csd-video__frame">
+          <video
+            src="https://res.cloudinary.com/dp9szpkig/video/upload/Future_vision_qzclh0.mp4"
+            title="Organisation Control Centre future-state concept"
+            aria-describedby="gwi-prev-concept-label"
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="metadata"
+            disablepictureinpicture
+          ></video>
+        </div>
+      </figure>
+    </section>
+
+    <section class="gwi-prev-section" aria-labelledby="gwi-prev-delivery">
+      <div class="gwi-prev-prose">
+        <h2 id="gwi-prev-delivery" class="csd-context__title">Self-serve administration</h2>
+        <p>Working with engineers, I explored how roles, permissions and access controls could support enterprise requirements within the platform’s constraints.</p>
+        <p>Before designing the interface, we agreed the underlying permission rules. These included protecting organisations by ensuring they retained an administrator, preventing administrators from removing or changing their own roles, supporting internal operations, and keeping administrator access separate from paid seats.</p>
+      </div>
+
+      <p class="gwi-prev-note">Design iterations from the narrower initiative, which did not launch to customers.</p>
+
+      <div class="gwi-prev-compare">
+        <h3>Making role changes explicit</h3>
+        <p>The original role-management design did not make role changes sufficiently clear. The revision made those changes more explicit and legible.</p>
+        <div class="gwi-prev-compare__pair">
+          <figure>
+            <div class="gwi-prev-placeholder">
+              <p>BEFORE — Making role changes explicit</p>
+            </div>
+          </figure>
+          <figure>
+            <div class="gwi-prev-placeholder">
+              <p>AFTER — Making role changes explicit</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="gwi-prev-compare">
+        <h3>Making removal consequences clear</h3>
+        <p>The original user-removal design did not make the consequences of removing a user clear. The revision made those consequences clearer.</p>
+        <div class="gwi-prev-compare__pair">
+          <figure>
+            <div class="gwi-prev-placeholder">
+              <p>BEFORE — Making removal consequences clear</p>
+            </div>
+          </figure>
+          <figure>
+            <div class="gwi-prev-placeholder">
+              <p>AFTER — Making removal consequences clear</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="gwi-prev-prose">
+        <p>I translated these rules into user flows and explored how the experience should handle different states, decisions and edge cases.</p>
+      </div>
+
+      <figure class="gwi-prev-shot gwi-prev-shot--quiet">
+        <div class="gwi-prev-placeholder">
+          <p>User flow · slide 13</p>
+        </div>
+      </figure>
+
+      <div class="gwi-prev-prose">
+        <h3 class="gwi-prev-subhead">The trade-off: immediate delivery vs foundational architecture</h3>
+      </div>
+
+      <div class="gwi-prev-tradeoff">
+        <div>
+          <h4>The constraint</h4>
+          <p>WorkOS introduced constraints around the organisational hierarchy we needed to support. The business moved towards a narrower self-service administration initiative, Octopus U, rather than addressing the wider hierarchy problem immediately.</p>
+        </div>
+        <div>
+          <h4>The risk</h4>
+          <p>I raised the risk that improving self-service without resolving the underlying organisational hierarchy could leave important enterprise requirements unsupported. The interface could improve individual workflows, but it couldn’t resolve the missing relationships in the platform model.</p>
+        </div>
+        <div>
+          <h4>The outcome</h4>
+          <p>The business proceeded with the narrower initiative, which was ultimately scrapped. It did not launch to customers. The work helped expose the gap between the immediate delivery scope and the foundational capabilities the wider enterprise platform needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gwi-prev-section" aria-labelledby="gwi-prev-dashboard">
+      <div class="gwi-prev-prose">
+        <h2 id="gwi-prev-dashboard" class="csd-context__title">Giving enterprise customers visibility into API/MCP usage</h2>
+        <p>As GWI expanded its API and MCP offering, customer-facing usage visibility became an important part of the wider platform experience.</p>
+        <p>The research had exposed a practical problem: customers couldn’t easily see how they were using the APIs, and internal teams had to investigate usage queries. The dashboard needed to give customers clearer information without making them interpret unreliable or confusing data.</p>
+        <p>I designed GWI’s first customer-facing API/MCP usage dashboard around four core customer questions:</p>
+      </div>
+
+      <ul class="gwi-prev-questions">
+        <li>Are we approaching our limits?</li>
+        <li>What caused that spike?</li>
+        <li>How is usage trending?</li>
+        <li>Who is consuming the shared allocation?</li>
+      </ul>
+
+      <figure class="gwi-prev-shot gwi-prev-shot--centrepiece gwi-prev-band">
+        <div class="gwi-prev-placeholder">
+          <p>API/MCP USAGE DASHBOARD — REPLACE WITH PRESENTATION SLIDE 18</p>
+        </div>
+      </figure>
+
+      <div class="gwi-prev-prose">
+        <h3 class="gwi-prev-subhead">Turning customer questions into trustworthy reporting</h3>
+        <p>Three design decisions shaped the reporting experience.</p>
+      </div>
+
+      <div class="gwi-prev-decision">
+        <h3>1. Separate API from MCP</h3>
+        <p>The design separates API and MCP usage so customers can understand distinct consumption patterns.</p>
+      </div>
+
+      <div class="gwi-prev-decision">
+        <h3>2. Show meaningful usage</h3>
+        <p>The reporting prioritises meaningful usage information rather than simply showing requested data.</p>
+      </div>
+
+      <div class="gwi-prev-decision">
+        <h3>3. Flexibility without a filter wall</h3>
+        <p>The design provides flexibility without overwhelming customers with a wall of filters.</p>
+      </div>
+
+      <figure class="gwi-prev-shot gwi-prev-shot--detail">
+        <div class="gwi-prev-placeholder">
+          <p>DESIGN DECISIONS — REPLACE WITH PRESENTATION SLIDE 19</p>
+        </div>
+      </figure>
+
+      <div class="gwi-prev-prose">
+        <h3 class="gwi-prev-subhead">Bridging design and implementation</h3>
+        <p>A further challenge was finding a charting pattern that worked across Figma and React.</p>
+        <p>I worked through the product use case, component design and implementation requirements to agree the chart behaviour, states and flexibility. This helped connect the design intent to a pattern that could be implemented consistently.</p>
+      </div>
+
+      <figure class="gwi-prev-shot gwi-prev-shot--detail">
+        <div class="gwi-prev-placeholder">
+          <p>FIGMA-TO-REACT CHARTING PATTERN — REPLACE WITH PRESENTATION SLIDE 20</p>
+        </div>
+      </figure>
+
+      <div class="gwi-prev-prose">
+        <p>The dashboard has been technically delivered but is undergoing usage-data QA before customer release. Customer adoption and commercial impact have not yet been established.</p>
+      </div>
+    </section>
+
+    <section class="gwi-prev-section" aria-labelledby="gwi-prev-billing">
+      <div class="gwi-prev-prose">
+        <h2 id="gwi-prev-billing" class="csd-context__title">Connecting usage to the commercial model</h2>
+        <p>Alongside the dashboard work, I contributed to cross-functional discovery into API/MCP billing.</p>
+        <p>Usage, products, organisations and commercial agreements need to connect across the platform to support future consumption-based billing. Customer-facing usage visibility was only one part of that challenge.</p>
+      </div>
+
+      <figure class="gwi-prev-shot">
+        <div class="gwi-prev-placeholder">
+          <p>BILLING DISCOVERY AND METRONOME DATA MODEL — REPLACE WITH PRESENTATION SLIDE 21</p>
+        </div>
+      </figure>
+
+      <div class="gwi-prev-prose">
+        <p>I advocated for foundational Salesforce mapping and organisational hierarchy work before a broader consumption-based billing rollout. That work is now underway.</p>
+      </div>
+    </section>
+
+    <section class="gwi-prev-section" aria-labelledby="gwi-prev-outcomes">
+      <h2 id="gwi-prev-outcomes" class="csd-context__title">Outcomes and impact</h2>
+
+      <div class="gwi-prev-outcomes">
+        <div class="gwi-prev-outcomes__row">
+          <h3>Delivered</h3>
+          <p>Designed and built GWI’s first customer-facing API/MCP usage dashboard, now undergoing data QA before customer release.</p>
+        </div>
+        <div class="gwi-prev-outcomes__row">
+          <h3>Discovered</h3>
+          <p>Identified £36m in revenue misalignment and around 500 hours of manual administration and support over six months.</p>
+        </div>
+        <div class="gwi-prev-outcomes__row">
+          <h3>Influenced</h3>
+          <p>Helped shape priorities around organisational hierarchy, Salesforce mapping and the foundations for consumption-based billing.</p>
+        </div>
+        <div class="gwi-prev-outcomes__row">
+          <h3>Next steps</h3>
+          <p>Foundational platform work is underway. Customer adoption and commercial impact are yet to be established.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-editorial" aria-labelledby="gwi-prev-reflection">
+      <div class="csd-editorial__inner">
+        <div class="csd-editorial__chunk">
+          <h2 id="gwi-prev-reflection" class="csd-editorial__title">Reflection: Designing systems, not just interfaces</h2>
+          <div class="csd-editorial__body">
+            <p>This work reinforced how closely enterprise UX is tied to the systems and commercial relationships behind it. Designing a better interface can improve a workflow, but it can’t resolve missing relationships between organisations, products, access and usage.</p>
+            <p>My role was to make those dependencies visible, deliver a useful customer-facing capability, and help the business understand which foundational problems needed to be addressed next.</p>
+            <p>The dashboard was a tangible delivery, while the wider discovery helped clarify the operational and commercial foundations needed for GWI’s enterprise platform to scale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </article>
+
+  <footer id="contact" class="foot">
+    <div class="foot__inner">
+      <span class="kicker">06 · End of Side A</span>
+      <h2 class="foot__title">
+        <span>Got a record </span>
+        <span class="italic">worth pressing?</span>
+      </h2>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
+
+      <div class="foot__row">
+        <div class="foot__links">
+          <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="foot__meta">
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
+        </div>
+      </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>
