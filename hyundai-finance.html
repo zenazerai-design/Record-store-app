@@ -34,7 +34,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyundai Finance | Zena Zerai</title>
-  <meta name="description" content="Case study: soft search MVP across Hyundai Capital UK, Santander Consumer UK &amp; eApply, Hyundai Finance." />
+  <meta name="description" content="Hyundai Finance case study: Soft Search MVP and measurement strategy." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,12 +43,1629 @@
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    body:has(article.csd-case--hcuk-preview) #spotify-fab {
+      display: none !important;
+    }
+
+    .csd-case--hcuk-preview {
+      overflow-x: clip;
+    }
+
+    .csd-case--hcuk-preview .csd-hero__summary strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .csd-case--hcuk-preview .hfp-section {
+      padding: clamp(72px, 8vw, 120px) 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: clamp(36px, 5vw, 64px);
+      min-width: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-outcome {
+      border-bottom: none;
+      padding-bottom: clamp(36px, 5vw, 56px);
+    }
+
+    .csd-case--hcuk-preview .hfp-challenge--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .csd-case--hcuk-preview .hfp-lead {
+      display: grid;
+      gap: 14px;
+      max-width: 40rem;
+      min-width: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-lead .kicker,
+    .csd-case--hcuk-preview .hfp-subhead .kicker {
+      margin: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-lead p,
+    .csd-case--hcuk-preview .hfp-prose p {
+      margin: 0;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .csd-case--hcuk-preview .hfp-prose {
+      display: grid;
+      gap: 14px;
+      max-width: 42rem;
+    }
+
+    .csd-case--hcuk-preview .hfp-prose strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .csd-case--hcuk-preview .hfp-subhead {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Shared illustrative product chrome */
+    .csd-case--hcuk-preview {
+      --p-bg: #F3EEE4;
+      --p-panel: #FFFCF7;
+      --p-ink: #1C1814;
+      --p-muted: #5C534C;
+      --p-line: #E3D9CC;
+      --p-soft: #EFE4D6;
+      --p-harsh: #6E302C;
+    }
+
+    .hfp-app {
+      background: var(--p-bg);
+      color: var(--p-ink);
+      border-radius: 12px;
+      border: 1px solid rgba(239, 228, 203, 0.16);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+      min-width: 0;
+      font-family: var(--font-body);
+    }
+
+    .csd-case--hcuk-preview .csd-hero__cover .hfp-app {
+      height: 100%;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hfp-app__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 14px;
+      background: var(--p-panel);
+      border-bottom: 1px solid var(--p-line);
+    }
+
+    .hfp-app__product {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: -0.02em;
+    }
+
+    .hfp-app__tag,
+    .hfp-app__eyebrow {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--p-muted);
+    }
+
+    .hfp-app__split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      min-height: 0;
+      height: 100%;
+    }
+
+    .hfp-app__col,
+    .hfp-app__panel {
+      padding: 16px 16px 18px;
+      min-width: 0;
+    }
+
+    .hfp-app__panel {
+      background: var(--p-panel);
+      border-left: 1px solid var(--p-line);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hfp-app__h {
+      margin: 6px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.6vw, 20px);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .hfp-app__facts {
+      display: grid;
+      gap: 0;
+      margin: 14px 0 0;
+    }
+
+    .hfp-app__facts div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px solid var(--p-line);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .hfp-app__facts dt {
+      color: var(--p-muted);
+    }
+
+    .hfp-app__facts dd {
+      margin: 0;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .hfp-app__status {
+      margin: 2px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .hfp-app__note {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--p-muted);
+    }
+
+    .hfp-app__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      align-self: flex-start;
+      background: var(--p-ink);
+      color: #F3EEE4;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .hfp-app--hero {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hfp-app--hero .hfp-app__split {
+      flex: 1;
+    }
+
+    .hfp-app--hero .hfp-app__col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @container (max-width: 460px) {
+      .hfp-app--hero .hfp-app__split {
+        grid-template-columns: 1fr;
+      }
+
+      .hfp-app--hero .hfp-app__panel {
+        border-left: 0;
+        border-top: 1px solid var(--p-line);
+      }
+    }
+
+    /* Ecosystem */
+    .hfp-eco {
+      display: grid;
+      justify-items: center;
+      gap: 0;
+      margin: 0;
+      min-width: 0;
+    }
+
+    .hfp-eco__node {
+      text-align: center;
+      max-width: 36rem;
+    }
+
+    .hfp-eco__tier {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-eco__name {
+      margin: 6px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--cream);
+    }
+
+    .hfp-eco__detail {
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .hfp-eco__stem {
+      width: 1px;
+      height: 28px;
+      background: var(--line);
+    }
+
+    .hfp-eco__node--platform {
+      width: min(100%, 640px);
+      padding: 18px 12px 16px;
+      border-top: 1px solid color-mix(in srgb, var(--amber) 50%, var(--line));
+      border-bottom: 1px solid color-mix(in srgb, var(--amber) 50%, var(--line));
+    }
+
+    .hfp-eco__brands-wrap {
+      width: min(100%, 760px);
+      margin-top: 0;
+      display: grid;
+      justify-items: center;
+      gap: 0;
+    }
+
+    .hfp-eco__brands-label {
+      margin: 26px 0 18px;
+    }
+
+    .hfp-eco__brands {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      width: 100%;
+      margin: 0;
+      padding: 28px 0 0;
+      list-style: none;
+    }
+
+    .hfp-eco__brands::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16.5%;
+      right: 16.5%;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .hfp-eco__brands li {
+      position: relative;
+      margin: 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.6vw, 20px);
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-eco__brands li::before {
+      content: "";
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      width: 1px;
+      height: 28px;
+      background: var(--line);
+    }
+
+    .hfp-eco__node--dealers .hfp-eco__name {
+      font-size: clamp(20px, 2.2vw, 28px);
+    }
+
+    /* Challenge */
+    .hfp-challenge {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-width: 0;
+      border: 1px solid var(--line);
+    }
+
+    .hfp-challenge article {
+      min-width: 0;
+      min-height: 280px;
+      padding: clamp(28px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .hfp-challenge article + article {
+      border-left: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .hfp-challenge article:first-child {
+      background: var(--surface);
+    }
+
+    .hfp-challenge__index {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .hfp-challenge h3 {
+      margin: 10px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .hfp-challenge p {
+      margin: 0;
+      max-width: 38ch;
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    /* Soft Search business objectives only: smaller cards, always one row */
+    .csd-case--hcuk-preview .hfp-challenge--objectives {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .csd-case--hcuk-preview .hfp-challenge--objectives article {
+      min-height: 0;
+      padding: 18px 16px;
+      gap: 12px;
+      justify-content: flex-start;
+      overflow-wrap: break-word;
+    }
+
+    .csd-case--hcuk-preview .hfp-challenge--objectives article + article {
+      border-top: 0;
+      border-left: 1px solid var(--line);
+    }
+
+    .csd-case--hcuk-preview .hfp-challenge--objectives .hfp-challenge__index {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    .csd-case--hcuk-preview .hfp-challenge--objectives h3 {
+      margin: 4px 0 0;
+      font-size: 17px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .csd-case--hcuk-preview .hfp-challenge--objectives p {
+      max-width: none;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    /* Metric decision */
+    .hfp-block {
+      display: grid;
+      gap: clamp(18px, 2vw, 24px);
+      min-width: 0;
+    }
+
+    .hfp-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      min-width: 0;
+    }
+
+    .hfp-flow__step {
+      margin: 0;
+      min-width: 0;
+      min-height: 210px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--bg-2);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    .hfp-flow__step--mid {
+      background: transparent;
+    }
+
+    .hfp-flow__step--chosen {
+      background: var(--cream);
+      border-color: var(--cream);
+      color: #1C1814;
+    }
+
+    .hfp-flow__label {
+      margin: 0;
+      width: 100%;
+      min-height: 1.55em;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      line-height: 1.55;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-flow__step--chosen .hfp-flow__label {
+      color: #5C5148;
+    }
+
+    .hfp-flow__name {
+      margin: 0;
+      width: 100%;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(24px, 2.4vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .hfp-flow__step--mid .hfp-flow__name {
+      font-size: clamp(20px, 2vw, 26px);
+    }
+
+    .hfp-flow__step--chosen .hfp-flow__name {
+      color: #1C1814;
+    }
+
+    .hfp-flow__aside {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .hfp-arrow {
+      align-self: center;
+      color: var(--muted);
+      display: flex;
+    }
+
+    .hfp-objectives {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(28px, 4vw, 64px);
+    }
+
+    .hfp-objectives li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 16px 22px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      min-width: 0;
+    }
+
+    .hfp-objectives__num {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+      color: var(--amber);
+    }
+
+    .hfp-objectives p {
+      margin: 0;
+      font-size: clamp(15px, 1.15vw, 17px);
+      line-height: 1.45;
+      color: var(--cream);
+    }
+
+    .hfp-layers {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      min-width: 0;
+    }
+
+    .hfp-layers li {
+      min-width: 0;
+      padding: 18px 18px 4px 0;
+      border-top: 2px solid var(--cream);
+    }
+
+    .hfp-layers li + li {
+      padding-left: 18px;
+      border-left: 1px solid var(--line);
+    }
+
+    .hfp-layers__num {
+      display: block;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .hfp-layers p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-caption {
+      margin: 14px 0 0;
+      max-width: 46rem;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    /* Journey */
+    .hfp-journey {
+      list-style: none;
+      margin: 0;
+      padding: 28px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      position: relative;
+      min-width: 0;
+    }
+
+    .hfp-journey::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .hfp-journey li {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .hfp-journey li::before {
+      content: "";
+      position: absolute;
+      top: -26px;
+      left: 0;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--cream);
+      box-shadow: 0 0 0 4px var(--bg);
+    }
+
+    .hfp-journey li.is-focus::before {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .hfp-journey h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(18px, 1.7vw, 24px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-friction {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .hfp-focus-note {
+      margin: 4px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid color-mix(in srgb, var(--amber) 45%, var(--line));
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--cream);
+    }
+
+    /* Before / after */
+    .hfp-compare {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 16px 18px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hfp-compare__col {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .hfp-compare__label {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-compare__label span {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-shift {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+    }
+
+    .hfp-shift svg {
+      transform: rotate(180deg);
+    }
+
+    .hfp-screen {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hfp-screen__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .hfp-harsh {
+      flex: 1;
+      margin: 14px;
+      background: var(--p-harsh);
+      color: #F6F1E8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 18px 16px;
+      min-height: 280px;
+    }
+
+    .hfp-harsh__word {
+      margin: auto 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(40px, 4vw, 56px);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+
+    .hfp-harsh__fine {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hfp-harsh .hfp-app__btn {
+      margin-top: 0;
+      align-self: stretch;
+      background: #F6F1E8;
+      color: var(--p-harsh);
+    }
+
+    .hfp-refined {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .hfp-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .hfp-status-row .hfp-app__status {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .hfp-chip {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: var(--p-soft);
+      color: #4A342C;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .hfp-callout {
+      margin: 0;
+      padding: 16px;
+      background: var(--p-panel);
+      border: 1px solid var(--p-line);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--p-ink);
+    }
+
+    .hfp-step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding-top: 4px;
+      border-top: 1px solid var(--p-line);
+    }
+
+    .hfp-step__num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--p-muted);
+      padding-top: 4px;
+    }
+
+    .hfp-step__title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .hfp-step__body {
+      margin: 4px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--p-muted);
+    }
+
+    .hfp-app__btn--quiet {
+      margin-top: 4px;
+      background: transparent;
+      color: var(--p-ink);
+      border: 1px solid var(--p-ink);
+    }
+
+    .hfp-refined .hfp-app__btn--quiet {
+      margin-top: auto;
+    }
+
+    .hfp-notes {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-notes li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: baseline;
+      font-size: 13.5px;
+      line-height: 1.4;
+      color: var(--ink-soft);
+    }
+
+    .hfp-notes span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .hfp-quote {
+      margin: 8px 0 0;
+      max-width: 38rem;
+      display: grid;
+      gap: 14px;
+    }
+
+    .hfp-quote p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: var(--cream);
+    }
+
+    .hfp-quote p::before {
+      content: "\201C";
+      color: var(--amber);
+      font-style: normal;
+      margin-right: 0.08em;
+    }
+
+    .hfp-quote figcaption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Delivery */
+    .hfp-brands {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hfp-brands li {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-devices {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.72fr);
+      gap: 18px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    .hfp-devices__side {
+      display: grid;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .hfp-device {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .hfp-device__label {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-device--phone {
+      width: min(100%, 280px);
+      justify-self: end;
+    }
+
+    .hfp-desk {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: 12px;
+      padding: 12px;
+      align-items: start;
+      background: #E7E0D4;
+    }
+
+    .hfp-desk__side,
+    .hfp-desk__main {
+      padding: 18px;
+      min-width: 0;
+      background: var(--p-panel);
+      border-radius: 8px;
+    }
+
+    .hfp-desk__main {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hfp-tab {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid var(--p-line);
+    }
+
+    .hfp-tab div {
+      padding: 10px 8px 12px;
+      text-align: center;
+    }
+
+    .hfp-tab dt {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--p-muted);
+    }
+
+    .hfp-tab dd {
+      margin: 4px 0 0;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hfp-phone .hfp-refined,
+    .hfp-tablet .hfp-stack {
+      padding: 14px;
+    }
+
+    .hfp-phone .hfp-app__btn,
+    .hfp-tablet .hfp-app__btn {
+      align-self: stretch;
+      margin-top: 4px;
+    }
+
+    .hfp-system {
+      margin: 0;
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hfp-system > figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 18px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .hfp-system > figcaption strong {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-board {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px 40px;
+      padding: clamp(22px, 3vw, 36px);
+      background: #F3EEE4;
+      color: #1C1814;
+      border-radius: 12px;
+      min-width: 0;
+    }
+
+    .hfp-board h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5C534C;
+    }
+
+    .hfp-board__wide {
+      grid-column: 1 / -1;
+    }
+
+    .hfp-board__col {
+      display: grid;
+      gap: 28px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .hfp-board .hfp-app__btn {
+      justify-self: start;
+      width: auto;
+      margin-top: 0;
+    }
+
+    .hfp-swatches,
+    .hfp-controls,
+    .hfp-chips,
+    .hfp-bits {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hfp-swatches {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hfp-swatches li {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hfp-swatches i {
+      display: block;
+      height: 52px;
+      border-radius: 6px;
+    }
+
+    .hfp-swatch--surface { background: #FFFCF7; border: 1px solid #E3D9CC; }
+    .hfp-swatch--text { background: #1C1814; }
+    .hfp-swatch--accent { background: #9E4638; }
+    .hfp-swatch--status { background: #E7D7C8; }
+
+    .hfp-type {
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-type__display {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .hfp-type__body {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .hfp-type__meta {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5C534C;
+    }
+
+    .hfp-controls {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hfp-controls .hfp-app__btn {
+      margin-top: 0;
+    }
+
+    .hfp-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .hfp-field span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5C534C;
+    }
+
+    .hfp-field b {
+      display: block;
+      padding: 9px 10px;
+      border: 1px solid #D9CFC2;
+      border-radius: 4px;
+      background: #FFFCF7;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .hfp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hfp-chips li {
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #EFE4D6;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hfp-bits {
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-bit {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 12px;
+      background: #FFFCF7;
+      border: 1px solid #E3D9CC;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .hfp-bit span {
+      color: #5C534C;
+    }
+
+    /* Outcome */
+    .hfp-outcome__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+      gap: clamp(20px, 3vw, 40px);
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .hfp-metric {
+      background: var(--cream);
+      color: #1C1814;
+      border-radius: 12px;
+      padding: clamp(28px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+    }
+
+    .hfp-metric__value {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(96px, 12vw, 156px);
+      line-height: 0.82;
+      letter-spacing: -0.045em;
+    }
+
+    .hfp-metric__value span {
+      font-size: 0.42em;
+      letter-spacing: -0.04em;
+      margin-left: 0.04em;
+    }
+
+    .hfp-metric__label {
+      margin: 0;
+      max-width: 16ch;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hfp-metric__caption {
+      margin: 0;
+      max-width: 36ch;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #3F3832;
+    }
+
+    .hfp-outcome__aside {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 12px;
+      padding-bottom: 6px;
+      min-width: 0;
+    }
+
+    .hfp-outcome__aside h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(24px, 2.4vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .hfp-outcome__aside p {
+      margin: 0;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .hfp-context {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: clamp(28px, 4vw, 56px);
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hfp-context .hfp-lead {
+      max-width: none;
+    }
+
+    .hfp-frame,
+    .hfp-shots figure,
+    .hfp-ds figure {
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hfp-frame img,
+    .hfp-shots img,
+    .hfp-ds img,
+    .hfp-wide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .hfp-shots {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(14px, 2vw, 24px);
+      min-width: 0;
+    }
+
+    .hfp-shots-hint {
+      display: none;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .csd-case--hcuk-preview .hfp-shots figcaption,
+    .csd-case--hcuk-preview .hfp-frame figcaption,
+    .csd-case--hcuk-preview .hfp-ds figcaption,
+    .csd-case--hcuk-preview .hfp-wide figcaption,
+    .csd-case--hcuk-preview .hfp-flowfig figcaption,
+    .csd-case--hcuk-preview .hfp-wide .csd-video__caption {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .csd-case--hcuk-preview .hfp-wide + .hfp-block {
+      margin-top: clamp(36px, 5vw, 64px);
+    }
+
+    .hfp-flowfig {
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hfp-flowfig__scroll {
+      overflow: auto;
+      max-height: min(72vh, 680px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .hfp-flowfig__scroll img {
+      display: block;
+      width: auto;
+      max-width: none;
+      height: min(68vh, 620px);
+    }
+
+    .hfp-ds {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(18px, 2.4vw, 28px);
+      min-width: 0;
+    }
+
+    .hfp-ds__pair {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hfp-wide {
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .csd-case--hcuk-preview .csd-pullquote {
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 960px) {
+      .hfp-challenge,
+      .hfp-flow,
+      .hfp-devices,
+      .hfp-outcome__grid,
+      .hfp-board,
+      .hfp-compare {
+        grid-template-columns: 1fr;
+      }
+
+      .hfp-challenge article + article {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .csd-case--hcuk-preview .hfp-challenge--objectives {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .csd-case--hcuk-preview .hfp-challenge--objectives article {
+        padding: 7px 6px;
+        gap: 6px;
+      }
+
+      .csd-case--hcuk-preview .hfp-challenge--objectives article + article {
+        border-left: 1px solid var(--line);
+        border-top: 0;
+      }
+
+      .csd-case--hcuk-preview .hfp-challenge--objectives .hfp-challenge__index {
+        font-size: 10px;
+        letter-spacing: 0.06em;
+      }
+
+      .csd-case--hcuk-preview .hfp-challenge--objectives h3 {
+        margin-top: 3px;
+        font-size: 12px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .csd-case--hcuk-preview .hfp-challenge--objectives p {
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .hfp-flow__step {
+        min-height: 0;
+      }
+
+      .hfp-arrow svg {
+        transform: rotate(90deg);
+      }
+
+      .hfp-shift {
+        writing-mode: horizontal-tb;
+        transform: none;
+        flex-direction: row;
+        white-space: nowrap;
+        padding: 4px 0;
+      }
+
+      .hfp-shift svg {
+        transform: rotate(90deg);
+      }
+
+      .hfp-device--phone {
+        justify-self: start;
+      }
+
+      .hfp-context,
+      .hfp-ds {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hfp-objectives,
+      .hfp-layers,
+      .hfp-journey,
+      .hfp-swatches,
+      .hfp-desk,
+      .hfp-ds {
+        grid-template-columns: 1fr;
+      }
+
+      .csd-case--hcuk-preview .hfp-shots-hint {
+        display: block;
+      }
+
+      .csd-case--hcuk-preview .hfp-shots {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+
+      .csd-case--hcuk-preview .hfp-shots::-webkit-scrollbar {
+        display: none;
+      }
+
+      .csd-case--hcuk-preview .hfp-shots > li {
+        flex: 0 0 86%;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-width: 0;
+      }
+
+      .hfp-layers li + li {
+        border-left: 0;
+        padding-left: 0;
+        margin-top: 16px;
+      }
+
+      .hfp-journey {
+        padding: 0 0 0 22px;
+        gap: 26px;
+      }
+
+      .hfp-journey::before {
+        top: 0;
+        bottom: 0;
+        left: 4px;
+        right: auto;
+        width: 1px;
+        height: auto;
+      }
+
+      .hfp-journey li::before {
+        top: 6px;
+        left: -22px;
+      }
+
+      .hfp-desk__main {
+        border-top: 0;
+      }
+
+      .hfp-eco__brands {
+        grid-template-columns: 1fr;
+        padding-top: 12px;
+        gap: 14px;
+      }
+
+      .hfp-eco__brands::before,
+      .hfp-eco__brands li::before {
+        display: none;
+      }
+
+      .hfp-eco__brands li {
+        text-align: center;
+      }
+
+      .hfp-metric {
+        min-height: 0;
+      }
+
+      .hfp-outcome__aside {
+        justify-content: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-<div id="case-study-lock-root" class="case-study-lock-root" hidden aria-hidden="true"></div>
-<script>
-/* Password gate runs in script.js so a missing script.js does not leave a blank page. */
-</script>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
@@ -96,7 +1713,7 @@
   </div>
 
   <main id="spa-main" class="spa-main" tabindex="-1">
-  <article class="csd">
+  <article class="csd csd-case--hcuk-preview">
 
     <div class="csd-back-wrap">
       <a class="csd-back" href="case-studies.html">
@@ -105,7 +1722,6 @@
       </a>
     </div>
 
-    <!-- Hero, aligns with index / case-studies card headline -->
     <section class="csd-hero">
       <div class="csd-hero__inner">
         <div class="csd-hero__top">
@@ -118,41 +1734,39 @@
         <p class="csd-hero__date">May 2025 – Jul 2025</p>
         <div class="csd-hero__body">
           <p class="csd-hero__summary">
-            <strong>Enabling car dealers to do soft credit checks</strong>, so they could see indicative affordability early in the conversation, without slowing the showroom down or jumping through tools that weren’t built for that moment.
+            <strong>Enabling car dealers to do soft credit checks</strong>, so they could see indicative affordability early in the showroom conversation.
           </p>
           <p class="csd-hero__summary">
-            I led the design and delivery of a <strong>dealer-led soft search MVP</strong>, from discovery through to pilot launch, to help dealers save time and improve customer conversion on car finance.
+            I led the design and delivery of a Soft Search MVP, combining dealer-led discovery with a more measurable approach to product improvement.
           </p>
         </div>
       </div>
-      <div class="csd-hero__cover" aria-hidden="true">
+      <div class="csd-hero__cover">
         <div class="csd-hero__cover-inner">
-          <img src="assets/HCUK covr.png" alt="Hyundai Finance, dealer soft search MVP interface" />
+          <img src="assets/HCUK covr.png" width="5760" height="5760" alt="Hyundai Finance, dealer soft search MVP interface" />
         </div>
       </div>
 
-      <!-- Meta, consistent with record card pills where possible -->
       <section class="csd-meta" aria-label="Project details">
-      <dl class="csd-meta__grid">
-        <div class="csd-meta__item">
-          <dt class="csd-meta__label">Team</dt>
-          <dd class="csd-meta__value">Product<span class="csd-meta__dot" aria-hidden="true">·</span>engineering &amp; design<span class="csd-meta__dot" aria-hidden="true">·</span>HCUK squad</dd>
-        </div>
-        <div class="csd-meta__item">
-          <dt class="csd-meta__label">Role</dt>
-          <dd class="csd-meta__value csd-meta__pills">
-            <span>SaaS design</span>
-            <span>User research</span>
-            <span>Responsive prototype</span>
-            <span>Initial design system</span>
-            <span>MVP delivery</span>
-          </dd>
-        </div>
-      </dl>
+        <dl class="csd-meta__grid">
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Team</dt>
+            <dd class="csd-meta__value">1x Digital Director, 1 x ADL, 4 x FE + BE Engineers, 1 x Data engineer</dd>
+          </div>
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Role</dt>
+            <dd class="csd-meta__value csd-meta__pills">
+              <span>SaaS design</span>
+              <span>User research</span>
+              <span>Responsive prototype</span>
+              <span>Initial design system</span>
+              <span>MVP delivery</span>
+            </dd>
+          </div>
+        </dl>
       </section>
     </section>
 
-    <!-- Impact -->
     <section class="csd-impact" aria-labelledby="hcuk-impact-heading">
       <div class="csd-impact__header">
         <h2 id="hcuk-impact-heading" class="csd-impact__title">Impact</h2>
@@ -160,148 +1774,221 @@
       <ul class="csd-impact__list csd-impact__list--lead-icons">
         <li>
           <span class="csd-impact__lead-icon" aria-hidden="true">🛳️</span>
-          <span>Designed and shipped the soft search MVP</span>
+          <span>Designed and shipped the Soft Search MVP.</span>
         </li>
         <li>
           <span class="csd-impact__lead-icon" aria-hidden="true">📱</span>
-          <span>Delivered live, responsive designs across web, tablet, and mobile</span>
+          <span>Delivered responsive designs across web, tablet and mobile.</span>
         </li>
         <li>
           <span class="csd-impact__lead-icon" aria-hidden="true">🟦</span>
-          <span>Branded for three OEMs: Genesis, Hyundai, and Kia</span>
+          <span>Branded the experience for three OEMs: Genesis, Hyundai and Kia.</span>
         </li>
         <li>
           <span class="csd-impact__lead-icon" aria-hidden="true">💶</span>
-          <span>Finance compliance sign off to meet regulatory requirements</span>
+          <span>Secured finance compliance sign-off to meet regulatory requirements.</span>
         </li>
         <li>
           <span class="csd-impact__lead-icon" aria-hidden="true">🗺️</span>
-          <span>Set direction for future phases beyond MVP</span>
+          <span>Set direction for future phases beyond the MVP.</span>
         </li>
         <li>
           <span class="csd-impact__lead-icon" aria-hidden="true">🏗️</span>
-          <span>Established a lightweight initial design system to enable speed</span>
+          <span>Established a lightweight initial design system to enable faster delivery.</span>
+        </li>
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">📊</span>
+          <span>Facilitated cross-functional KPI workshops, connecting five business objectives to KPIs and UX-focused behavioural metrics.</span>
         </li>
       </ul>
     </section>
 
-    <!-- Context, HCUK / SCUK / eApply (source slide) -->
-    <section class="csd-context">
-      <div class="csd-context__text">
-        <span class="kicker">Context</span>
-        <h2 class="csd-context__title">Hyundai Capital UK (HCUK), Santander Consumer UK (SCUK), and the eApply ecosystem.</h2>
-        <div class="csd-context__body">
-          <p>
-            Dealers were spending significant time preparing quotes for customers who were later rejected. At the same time, the system landscape was fragmented: multiple tools and duplicated workflows.
-          </p>
-          <p><strong>This created:</strong></p>
-          <ul class="csd-impact__list">
-            <li>Missed sales opportunities due to hesitant customers</li>
-            <li>Time lost on applications that wouldn’t convert</li>
-            <li>Manual re-entry of data across systems</li>
+    <section class="hfp-section" aria-labelledby="hfp-context">
+      <div class="hfp-context">
+        <header class="hfp-lead">
+          <span class="kicker">Context</span>
+          <h2 id="hfp-context" class="csd-context__title">One platform. Three brands.</h2>
+          <p>eApply is HCUK’s strategic platform for managing dealer leads and progressing vehicle finance applications across Genesis, Hyundai and Kia.</p>
+        </header>
+        <figure class="hfp-frame">
+          <img src="assets/HCUK/Cover%20image.png" width="5760" height="4320" alt="eApply Kia Finance vehicle configuration flow: Sportage trim steps with exterior colour selection." loading="lazy" decoding="async" />
+        </figure>
+      </div>
+      <figure class="hfp-eco">
+        <div class="hfp-eco__node">
+          <p class="hfp-eco__tier">Parent organisation</p>
+          <p class="hfp-eco__name">HCUK</p>
+        </div>
+        <div class="hfp-eco__stem" aria-hidden="true"></div>
+        <div class="hfp-eco__node hfp-eco__node--platform">
+          <p class="hfp-eco__tier">Shared platform</p>
+          <p class="hfp-eco__name">eApply</p>
+          <p class="hfp-eco__detail">Dealer leads and vehicle finance applications</p>
+        </div>
+        <div class="hfp-eco__stem" aria-hidden="true"></div>
+        <div class="hfp-eco__brands-wrap">
+          <p class="hfp-eco__tier hfp-eco__brands-label">Customer-facing brands</p>
+          <ul class="hfp-eco__brands">
+            <li>Genesis Finance</li>
+            <li>Hyundai Finance</li>
+            <li>Kia Finance</li>
           </ul>
-          <p>
-            The challenge was not just designing a feature, but creating a flow that reduced friction while fitting into a complex, multi-system ecosystem.
-          </p>
+        </div>
+        <div class="hfp-eco__stem" aria-hidden="true"></div>
+        <div class="hfp-eco__node hfp-eco__node--dealers">
+          <p class="hfp-eco__tier">Dealer teams</p>
+          <p class="hfp-eco__name">Manage leads and progress applications</p>
+        </div>
+      </figure>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-challenge">
+      <header class="hfp-lead">
+        <span class="kicker">The challenge</span>
+        <h2 id="hfp-challenge" class="csd-context__title">Shipping features wasn’t enough.</h2>
+        <p>eApply had been evolving for years, with new features being shipped to support dealers managing finance applications. But HCUK was under pressure to demonstrate the value of its investment in the platform, including the engineering effort and consultancy spend behind it.</p>
+        <p>I identified a gap: the team needed a clearer way to connect product development to measurable business outcomes and understand where the dealer experience could improve. Shipping features alone wasn’t enough to demonstrate impact.</p>
+      </header>
+      <div class="hfp-challenge">
+        <article>
+          <div>
+            <p class="hfp-challenge__index">01</p>
+            <h3>Improve the experience</h3>
+          </div>
+          <p>Reduce friction in the dealer-led finance journey, helping dealers progress applications and customers make more confident decisions.</p>
+        </article>
+        <article>
+          <div>
+            <p class="hfp-challenge__index">02</p>
+            <h3>Demonstrate business value</h3>
+          </div>
+          <p>Connect product objectives to measurable business outcomes and user behaviour, creating a clearer basis for evaluating product performance and future investment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-kpi">
+      <header class="hfp-lead">
+        <span class="kicker">Measurement</span>
+        <h2 id="hfp-kpi" class="csd-context__title">Connecting product goals to measurable outcomes.</h2>
+      </header>
+      <div class="hfp-prose">
+        <p>I facilitated cross-functional workshops with client, data and engineering stakeholders to connect business objectives to KPIs and UX-focused behavioural metrics.</p>
+        <p>The work helped establish a clearer framework for measuring product performance, with an analytics consultant subsequently brought in to develop the platform’s instrumentation.</p>
+      </div>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">A shift in the North Star</h3>
+        <div class="hfp-flow">
+          <div class="hfp-flow__step">
+            <p class="hfp-flow__label">Initial proposal</p>
+            <p class="hfp-flow__name">Proposals accepted per month</p>
+          </div>
+          <div class="hfp-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="hfp-flow__step hfp-flow__step--mid">
+            <p class="hfp-flow__label">Stakeholder discussion</p>
+            <p class="hfp-flow__name">Client, data and engineering</p>
+          </div>
+          <div class="hfp-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="hfp-flow__step hfp-flow__step--chosen">
+            <p class="hfp-flow__label">Prioritised metric</p>
+            <p class="hfp-flow__name">Finance penetration</p>
+          </div>
         </div>
       </div>
-      <div class="csd-context__image">
-        <img src="assets/HCUK/Cover%20image.png" alt="eApply Kia Finance vehicle configuration flow: Sportage trim steps with exterior colour selection." loading="lazy" decoding="async" />
-        <p class="csd-context__caption">Quotes and applications scattered across disjoint tools instead of one coherent flow.</p>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">Five business objectives</h3>
+        <ol class="hfp-objectives">
+          <li>
+            <span class="hfp-objectives__num">01</span>
+            <p>Increase the number of customers who convert from a quote to a submitted proposal.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">02</span>
+            <p>Increase dealer usage of the eApply platform.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">03</span>
+            <p>Increase the used car acceptance rate.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">04</span>
+            <p>Increase usage of the inline EV tool.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">05</span>
+            <p>Increase usage of the standalone EV tool.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">How the layers connect</h3>
+        <ol class="hfp-layers" aria-label="Measurement framework, from business objectives through to instrumentation">
+          <li>
+            <span class="hfp-layers__num">01</span>
+            <p>Business objectives</p>
+          </li>
+          <li>
+            <span class="hfp-layers__num">02</span>
+            <p>KPIs</p>
+          </li>
+          <li>
+            <span class="hfp-layers__num">03</span>
+            <p>UX-focused behavioural metrics</p>
+          </li>
+          <li>
+            <span class="hfp-layers__num">04</span>
+            <p>Instrumentation</p>
+          </li>
+        </ol>
+        <p class="hfp-caption">This framework connected business priorities to the product behaviours that could help explain performance. It illustrates the approach. Individual metric definitions are not reproduced here, and it does not show metrics that were already implemented or being tracked.</p>
       </div>
     </section>
 
-    <!-- Goal -->
-    <section class="csd-statement">
-      <span class="kicker">The goal</span>
-      <p class="csd-statement__text">
-        Put a compliant soft search in dealers’ hands at the right point in the sale, <span class="csd-statement__fade">fast enough for the forecourt, clear enough that customers know what’s happening.</span>
-      </p>
-    </section>
-
-    <!-- How I worked, matches index liner “tracklist” -->
-    <section class="csd-findings">
-      <div class="csd-findings__header">
-        <span class="kicker">How I worked</span>
-        <h2 class="csd-findings__title">Discovery through <em class="italic">MVP launch.</em></h2>
-        <p class="csd-findings__intro">
-          The programme moved in stages, each step grounded in what dealers told us, then validated in prototype form before we locked scope for a consistent MVP launch.
-        </p>
-      </div>
-      <div class="csd-findings__grid">
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">01</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Discovery &amp; research</h3>
-            <p class="csd-finding__desc">Workshops and conversations with dealers and stakeholders to learn when a soft search should surface, what “good” looks like on screen, and where people dropped off today.</p>
-          </div>
-        </article>
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">02</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Responsive prototype</h3>
-            <p class="csd-finding__desc">End-to-end flows tested on realistic devices, dealers aren’t always at a desk, and clarity on a smaller screen mattered as much as desktop.</p>
-          </div>
-        </article>
-        <article class="csd-finding">
-          <span class="csd-finding__num" aria-hidden="true">03</span>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">MVP launch</h3>
-            <p class="csd-finding__desc">A pilot-ready MVP tied to a live rollout plan, narrowing scope to what dealers needed first, then iterating after real usage.</p>
-          </div>
-        </article>
+    <section class="hfp-section" aria-labelledby="hfp-bridge">
+      <header class="hfp-lead">
+        <span class="kicker">Soft Search</span>
+        <h2 id="hfp-bridge" class="csd-context__title">Turning business objectives into product decisions.</h2>
+        <p>Soft Search was an opportunity to use the finance journey to address the business goals identified during discovery: improving customer conversion, increasing acceptance rates for used cars, and giving dealers greater clarity without discouraging customers from proceeding.</p>
+        <p>These objectives helped frame what the feature needed to achieve before we defined the MVP scope.</p>
+      </header>
+      <div class="hfp-block">
+        <header class="hfp-lead">
+          <h3 class="hfp-subhead">Business objectives</h3>
+          <p>Stakeholder framing from discovery: what the Soft Search work needed to move, before we locked MVP scope.</p>
+        </header>
+        <div class="hfp-challenge hfp-challenge--three hfp-challenge--objectives">
+          <article>
+            <div>
+              <p class="hfp-challenge__index">01</p>
+              <h3>Increase customer conversion</h3>
+            </div>
+            <p>Move more customers from a quote to a submitted proposal.</p>
+          </article>
+          <article>
+            <div>
+              <p class="hfp-challenge__index">02</p>
+              <h3>Improve acceptance rates</h3>
+            </div>
+            <p>Focus on acceptance rates for used cars in particular.</p>
+          </article>
+          <article>
+            <div>
+              <p class="hfp-challenge__index">03</p>
+              <h3>Provide dealers with clarity</h3>
+            </div>
+            <p>Help dealers understand a customer’s indicative affordability without deterring them from proceeding with a proposal.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- Business objectives (Template.html: csd-findings + icon cards) -->
-    <section class="csd-findings csd-findings--objectives" aria-labelledby="hcuk-objectives-heading">
-      <div class="csd-findings__header">
-        <span class="kicker">North star</span>
-        <h2 id="hcuk-objectives-heading" class="csd-findings__title">Business <em class="italic">objectives.</em></h2>
-        <p class="csd-findings__intro">
-          Stakeholder framing from discovery: what the soft-search work needed to move, before we locked MVP scope.
-        </p>
-      </div>
-      <div class="csd-findings__grid">
-        <article class="csd-finding csd-finding--objective">
-          <div class="csd-finding__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
-          </div>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Increase customer conversion</h3>
-            <p class="csd-finding__desc">From quote → to proposal</p>
-          </div>
-        </article>
-        <article class="csd-finding csd-finding--objective">
-          <div class="csd-finding__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12l2 2 4-4"/>
-              <circle cx="12" cy="12" r="9"/>
-            </svg>
-          </div>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Improve acceptance rates</h3>
-            <p class="csd-finding__desc">For used cars in particular</p>
-          </div>
-        </article>
-        <article class="csd-finding csd-finding--objective">
-          <div class="csd-finding__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </div>
-          <div class="csd-finding__content">
-            <h3 class="csd-finding__title">Provide dealers with clarity</h3>
-            <p class="csd-finding__desc">Without deterring proposals</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Dealer pain from discovery: thread / timeline, not the objective card pattern -->
     <section class="csd-dealer-pain" aria-labelledby="hcuk-dealer-pain-heading">
       <header class="csd-dealer-pain__head">
         <span class="kicker">From discovery</span>
@@ -333,95 +2020,60 @@
       </ol>
     </section>
 
-    <!-- Journey mapping: soft search happy path -->
-    <section class="csd-context" aria-labelledby="hcuk-flow-mapping-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Mapping out the flow</span>
-        <h2 id="hcuk-flow-mapping-heading" class="csd-context__title">Designing for dealer <em class="italic">reality.</em></h2>
-        <div class="csd-context__body">
-          <p>I mapped the end-to-end journey, focusing on:</p>
-          <ul class="csd-impact__list">
-            <li>Minimising manual input (especially for returning customers)</li>
-            <li>Supporting both new and existing user paths</li>
-            <li>Anticipating edge cases (e.g.&nbsp;incomplete data, uncertain results)</li>
-          </ul>
-          <p>
-            Rather than optimise for a &ldquo;perfect&rdquo; flow, I prioritised speed, clarity, and real-world usability in dealership environments.
-          </p>
+    <section class="hfp-section" aria-labelledby="hfp-discovery">
+      <header class="hfp-lead">
+        <span class="kicker">Journey</span>
+        <h2 id="hfp-discovery" class="csd-context__title">The friction was happening in the showroom.</h2>
+      </header>
+      <figure class="hfp-flowfig">
+        <div class="hfp-flowfig__scroll" tabindex="0" role="region" aria-label="Dealer soft search journey. Scroll horizontally to see the full flow.">
+          <img
+            src="assets/HCUK/Soft%20search%20-%20user%20flow%20happy%20path.png"
+            width="15960"
+            height="2568"
+            alt="User flow diagram: dealer soft search happy path from eApply dashboard through customer profile, application steps, address history decisions, review, and results."
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-      </div>
-      <div class="csd-context__image">
-        <div class="hcuk-soft-search-flow-wrap">
-          <p class="csd-iterate__hint" id="hcuk-flow-scroll-hint">Scroll to step through the flow</p>
-          <div class="hcuk-soft-search-flow-viewport">
-            <div
-              class="csd-context__image-scroll hcuk-soft-search-flow-scroll"
-              tabindex="0"
-              role="region"
-              aria-labelledby="hcuk-flow-scroll-hint"
-            >
-              <img
-                src="assets/HCUK/Soft%20search%20-%20user%20flow%20happy%20path.png"
-                alt="User flow diagram: dealer soft search happy path from eApply dashboard through customer profile, application steps, address history decisions, review, and results."
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
-        <p class="csd-context__caption">Happy path from dashboard to results. Use the frame above to scroll sideways and vertically for the full flow. Includes address history when occupation is under three years.</p>
+        <figcaption class="hfp-caption">Happy path from the dashboard to results. Scroll sideways for the full flow, including address history when occupation is under three years.</figcaption>
+      </figure>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-design">
+      <header class="hfp-lead">
+        <span class="kicker">Design</span>
+        <h2 id="hfp-design" class="csd-context__title">Making the results easier to understand.</h2>
+        <p>Dealer feedback showed that results could feel too harsh and important information could be missed. I refined the hierarchy, introduced more reassuring cues and added an explanatory step.</p>
+      </header>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">When dealers took the wheel</h3>
+        <p class="hfp-shots-hint">Swipe</p>
+        <ul class="hfp-shots" tabindex="0" aria-label="Early Soft Search screens. Swipe sideways.">
+          <li>
+            <figure>
+              <img src="assets/HCUK/New%20Soft%20search%20low.png" width="1560" height="1497" alt="Soft search results: circular gauge showing low likelihood of receiving finance." loading="lazy" decoding="async" />
+              <figcaption>Results felt too harsh</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="assets/HCUK/New%20Indicative.png" width="1560" height="1497" alt="Pre-qualification results modal with explanatory copy and indicative-results disclaimer." loading="lazy" decoding="async" />
+              <figcaption>Important copy was missed</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="assets/HCUK/New%20Insufficient.png" width="1560" height="1497" alt="System feedback: please check the details submitted, with return and review actions." loading="lazy" decoding="async" />
+              <figcaption>System feedback was unclear</figcaption>
+            </figure>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Initial designs, testing iterations -->
-    <section class="csd-iterate hcuk-iterate-visuals" aria-labelledby="hcuk-iterate-heading">
-      <div class="csd-iterate__intro">
-        <span class="kicker">User testing &amp; iterations</span>
-        <h2 id="hcuk-iterate-heading" class="csd-iterate__title">When dealers took the wheel.</h2>
-        <p class="csd-iterate__lead">I tested early concepts with dealers, uncovering key issues.</p>
-        <p class="csd-iterate__shift">
-          Those insights pushed the design past binary pass/fail screens toward <strong>guided, contextual decision-making</strong>, still honest about outcomes, but kinder and clearer to use on the forecourt.
-        </p>
-      </div>
-
-      <div class="csd-iterate__scroll-wrap">
-        <p class="csd-iterate__hint">Scroll sideways</p>
-        <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Initial design iterations, scroll horizontally">
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
-              <img src="./assets/HCUK/New Soft search low.png" alt="Soft search results: circular gauge showing low likelihood of receiving finance." loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">Results too harsh</h3>
-              <p class="csd-iterate__card-desc">Strong colours for high scores landed well, but low scores felt brutal. Dealers worried about embarrassing customers in front of them.</p>
-            </div>
-          </article>
-
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
-              <img src="./assets/HCUK/New Indicative.png" alt="Pre-qualification results modal with explanatory copy and indicative-results disclaimer." loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">Copy missed</h3>
-              <p class="csd-iterate__card-desc">Dealers weren’t clocking that outcomes were indicative; the caveat had to be visible in the scan pattern, not footer-smallprint.</p>
-            </div>
-          </article>
-
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
-              <img src="./assets/HCUK/New Insufficient.png" alt="System feedback: please check the details submitted, with return and review actions." loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">System feedback unclear</h3>
-              <p class="csd-iterate__card-desc">When retrieval failed, the message sounded like user error. Dealers weren’t sure whether to retry, fix data, or escalate, and trust dipped.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dealer quote: after user testing visuals, before refined iterations -->
-    <section class="csd-pullquote">
+    <section class="csd-pullquote" aria-label="Dealer feedback">
       <span class="kicker csd-pullquote__kicker">User testing feedback</span>
       <figure class="csd-pullquote__inner">
         <blockquote class="csd-pullquote__text">
@@ -434,232 +2086,103 @@
       </figure>
     </section>
 
-    <!-- Refined iterations: harsh → gentle (same layout as user testing block) -->
-    <section class="csd-iterate hcuk-iterate-visuals" aria-labelledby="hcuk-iterate-refined-heading">
-      <div class="csd-iterate__intro">
-        <span class="kicker">Iterating towards better outcomes</span>
-        <h2 id="hcuk-iterate-refined-heading" class="csd-iterate__title">From harsh to gentle results</h2>
-        <p class="csd-iterate__lead">
-          I refined the experience to introduce more neutral, reassuring result states, clarify messaging to highlight indicative outcomes, and give dealers control over what to share with customers.
-        </p>
-        <p class="csd-iterate__shift">
-          That improved confidence in using the tool, dealer–customer conversations, and alignment with real-world workflows.
-        </p>
-      </div>
-
-      <div class="csd-iterate__scroll-wrap">
-        <p class="csd-iterate__hint">Scroll sideways</p>
-        <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Refined iterations from harsh to gentle results, scroll horizontally">
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
-              <img src="./assets/HCUK/New Muted pallette.png" alt="Refined soft search gauges using a muted peach and orange palette for low likelihood states." loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">Subtle palette to ease concerns</h3>
-              <p class="csd-iterate__card-desc">Based on feedback we wanted to keep low scores but make them less alarming. I opted for a muted palette which balanced the low messaging.</p>
-            </div>
-          </article>
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
-              <img src="./assets/HCUK/New Insufficent iteration.png" alt="Iteration of insufficient trace messaging: clearer copy and stronger friction before continuing." loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">Adding friction to take notice</h3>
-              <p class="csd-iterate__card-desc">I added friction to the insufficient trace message to ensure it was read by users and added clarifying copy and more relevant CTAs.</p>
-            </div>
-          </article>
-          <article class="csd-iterate__card">
-            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
-              <img src="./assets/HCUK/New Indicative.png" alt="Pre-qualification results with indicative disclaimer highlighted for visibility." loading="lazy" decoding="async" />
-            </div>
-            <div class="csd-iterate__card-body">
-              <h3 class="csd-iterate__card-title">Key information made prominent</h3>
-              <p class="csd-iterate__card-desc">Included the results messaging in a separate card with an information icon to make it stand out.</p>
-            </div>
-          </article>
-        </div>
-      </div>
+    <section class="hfp-section" aria-labelledby="hfp-refined">
+      <header class="hfp-lead">
+        <span class="kicker">Iteration</span>
+        <h2 id="hfp-refined" class="csd-context__title">From harsh to gentle results.</h2>
+      </header>
+      <p class="hfp-shots-hint">Swipe</p>
+      <ul class="hfp-shots" tabindex="0" aria-label="Refined Soft Search screens. Swipe sideways.">
+        <li>
+          <figure>
+            <img src="assets/HCUK/New%20Muted%20pallette.png" width="1560" height="1497" alt="Refined soft search gauges using a muted peach and orange palette for low likelihood states." loading="lazy" decoding="async" />
+            <figcaption>A more reassuring result</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="assets/HCUK/New%20Insufficent%20iteration.png" width="1560" height="1497" alt="Iteration of insufficient trace messaging: clearer copy and stronger friction before continuing." loading="lazy" decoding="async" />
+            <figcaption>An explanatory step</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="assets/HCUK/New%20Indicative.png" width="1560" height="1497" alt="Pre-qualification results with indicative disclaimer highlighted for visibility." loading="lazy" decoding="async" />
+            <figcaption>Clearer results and messaging</figcaption>
+          </figure>
+        </li>
+      </ul>
     </section>
 
-    <!-- Design system: text left; right column = GWI-style swipe rail (tokens → components) -->
-    <section class="csd-context hcuk-design-system-gallery" aria-labelledby="hcuk-ds-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Scaling beyond the feature</span>
-        <h2 id="hcuk-ds-heading" class="csd-context__title">Building a lightweight <em class="italic">initial</em> design system</h2>
-        <div class="csd-context__body">
-          <p>
-            Post-MVP, inconsistent Figma work across Hyundai, Kia, and Genesis meant duplicated components and no shared tokens, which made scaling difficult. I tightened that into a <strong>lightweight initial layer</strong>: semantic tokens (colour, spacing, type), Figma variables, and auto-layout for reusable, responsive components built for what we shipped, not an exhaustive catalogue. Honest framing: a practical baseline for consistency and faster cross-brand iteration, with room to extend, not pretending to be a full design system.
-          </p>
-        </div>
+    <section class="hfp-section" aria-labelledby="hfp-delivery">
+      <header class="hfp-lead">
+        <span class="kicker">Delivery</span>
+        <h2 id="hfp-delivery" class="csd-context__title">A consistent experience across three brands.</h2>
+      </header>
+      <div class="hfp-prose">
+        <p>I worked with the wider team to deliver responsive Soft Search experiences across Genesis, Hyundai and Kia, including refined results and error states, and finance compliance sign-off.</p>
+        <p>I also established an initial lightweight design system using semantic tokens and reusable responsive components.</p>
       </div>
 
-      <div class="csd-context__image hcuk-design-system-gallery__rail hcuk-ds-swipe">
-        <figure class="hcuk-ds-swipe__figure">
-          <p class="csd-iterate__hint">Swipe or scroll</p>
-          <div class="csd-iterate__scroll-wrap gwi-iterate__scroll-wrap--nested">
-            <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Design system: semantic tokens, then shared components">
-              <article class="csd-iterate__card">
-                <div class="csd-iterate__thumb csd-iterate__thumb--photo hcuk-ds-swipe__thumb hcuk-ds-swipe__thumb--tokens">
-                  <span class="csd-ds-split__eyebrow">Tokens</span>
-                  <div class="csd-ds-split__tokens-mosaic" role="group" aria-label="Figma variables: alias palettes and semantic mappings">
-                    <img
-                      src="assets/HCUK/Token%201.png"
-                      alt="Figma Alias variables: primary colour scales for Kia, Hyundai, and Genesis."
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <img
-                      src="assets/HCUK/Token%202.png"
-                      alt="Figma Mapped variables: semantic text and icon tokens."
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </div>
-                <div class="csd-iterate__card-body">
-                  <h3 class="csd-iterate__card-title">Semantic tokens</h3>
-                  <p class="csd-iterate__card-desc">Brand modes for palette aliases, then semantic mappings so UI roles stay stable across Hyundai, Kia, and Genesis.</p>
-                </div>
-              </article>
-              <article class="csd-iterate__card">
-                <div class="csd-iterate__thumb csd-iterate__thumb--photo hcuk-ds-swipe__thumb hcuk-ds-swipe__thumb--components">
-                  <span class="csd-ds-split__eyebrow">Components</span>
-                  <div class="csd-ds-split__components-inner csd-ds-split__components-inner--pair">
-                    <img
-                      src="assets/HCUK/Component%201.png"
-                      alt="Design system UI: primary, secondary, and text link components."
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <img
-                      src="assets/HCUK/Component%202.png"
-                      alt="Design system UI: text input patterns and states."
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </div>
-                <div class="csd-iterate__card-body">
-                  <h3 class="csd-iterate__card-title">Shared components</h3>
-                  <p class="csd-iterate__card-desc">Reusable buttons, links, and inputs with variables and auto-layout so flows stayed consistent without rebuilding every screen.</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </figure>
-      </div>
+      <figure class="hfp-wide">
+        <img src="assets/HCUK/Branded%20mockups.png" width="4800" height="3600" alt="Pre-qualification results shown for Hyundai Finance and Genesis Finance." loading="lazy" decoding="async" />
+        <figcaption>The same results screen, carried across the finance brands.</figcaption>
+      </figure>
 
-      <div class="csd-context__image hcuk-design-system-responsive">
-        <img
-          src="assets/HCUK/Responsive%20mockups.png"
-          alt="Kia Finance preApply pre-qualification results on desktop, tablet, and mobile."
-          loading="lazy"
-          decoding="async"
-        />
-        <p class="csd-context__caption">Responsive designs for mobile, tablet and web</p>
-      </div>
-    </section>
+      <figure class="hfp-wide">
+        <img src="assets/HCUK/Responsive%20mockups.png" width="1024" height="394" alt="Kia Finance pre-qualification results on desktop, tablet, and mobile." loading="lazy" decoding="async" />
+        <figcaption>Responsive layouts for web, tablet and mobile.</figcaption>
+      </figure>
 
-    <!-- What was delivered -->
-    <section class="csd-beforeafter" aria-label="What was delivered">
-      <div class="csd-beforeafter__intro">
-        <span class="kicker">What was delivered</span>
-        <p class="csd-statement__text">
-          A dealer-led soft search MVP, <span class="csd-statement__fade">flows and patterns tuned for real showroom use.</span>
-        </p>
-      </div>
-      <div class="hcuk-delivered-video-stack">
+      <figure class="hfp-wide">
         <div class="csd-video__frame">
-          <iframe
-            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=440_720x30_shots_so_hcg8fn"
-            title="Hyundai Finance dealer soft search prototype (video)"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+          <video src="assets/HCUK/440_720x30_shots_so.mp4" controls playsinline preload="metadata" title="Hyundai Finance dealer soft search prototype"></video>
         </div>
-        <p class="csd-video__caption">Prototype of self-serve journey</p>
+        <figcaption class="csd-video__caption">Prototype of self-serve journey</figcaption>
+      </figure>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">Initial design system</h3>
+        <div class="hfp-ds">
+          <figure>
+            <div class="hfp-ds__pair">
+              <img src="assets/HCUK/Token%201.png" width="2330" height="1086" alt="Figma Alias variables: primary colour scales for Kia, Hyundai, and Genesis." loading="lazy" decoding="async" />
+              <img src="assets/HCUK/Token%202.png" width="1575" height="1380" alt="Figma Mapped variables: semantic text and icon tokens." loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Semantic tokens</figcaption>
+          </figure>
+          <figure>
+            <div class="hfp-ds__pair">
+              <img src="assets/HCUK/Component%201.png" width="1575" height="1380" alt="Design system UI: primary, secondary, and text link components." loading="lazy" decoding="async" />
+              <img src="assets/HCUK/Component%202.png" width="2001" height="750" alt="Design system UI: text input patterns and states." loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Shared components</figcaption>
+          </figure>
+        </div>
+        <p class="hfp-caption">A practical baseline for what we shipped, not a full design system.</p>
+      </div>
+
+    </section>
+
+    <section class="hfp-section hfp-outcome" aria-labelledby="hfp-outcome">
+      <header class="hfp-lead">
+        <span class="kicker">Outcome</span>
+        <h2 id="hfp-outcome" class="csd-context__title">A positive signal, with clearer measurement priorities.</h2>
+        <p>The pilot went live across Genesis, Hyundai and Kia.</p>
+      </header>
+      <div class="hfp-outcome__grid">
+        <div class="hfp-metric">
+          <p class="hfp-metric__value">4<span>%</span></p>
+          <p class="hfp-metric__label">Reported uplift in proposal acceptance.</p>
+          <p class="hfp-metric__caption">A reported 4% uplift in proposal acceptance following the pilot.</p>
+        </div>
+        <div class="hfp-outcome__aside">
+          <h3>Clearer measurement priorities</h3>
+          <p>Business objectives, KPIs and UX-focused behavioural metrics were mapped, with subsequent instrumentation work to be developed by an analytics consultant.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Launch outcomes: narrative left, success metrics as cards right -->
-    <section class="csd-context hcuk-launch-outcomes" aria-labelledby="hcuk-launch-heading">
-      <div class="csd-context__text">
-        <span class="kicker">Iterating from insights</span>
-        <h2 id="hcuk-launch-heading" class="csd-context__title">Going live across three brands</h2>
-        <div class="csd-context__body">
-          <p>
-            The MVP has just launched for Genesis, Hyundai, and Kia with responsive web, tablet, and mobile layouts, balancing branding and functionality.
-          </p>
-          <p class="hcuk-iterate-expand__intro-lead">Key highlights:</p>
-          <ul class="csd-impact__list">
-            <li>Streamlined dealer workflows, reducing manual effort</li>
-            <li>Refined results screens and error states based on pilot feedback</li>
-            <li>Finance Compliance sign-off ensured all flows, copy, and data handling met regulatory requirements</li>
-            <li>Ready for future expansion: proposals, customer self-serve, and 3rd-party integration</li>
-          </ul>
-        </div>
-      </div>
-
-      <aside class="csd-context__image hcuk-success-metrics" aria-label="Success metrics">
-        <p class="kicker hcuk-success-metrics__kicker">Success metrics</p>
-        <div class="hcuk-success-metrics__stack">
-          <article class="hcuk-metric-card">
-            <span class="hcuk-metric-card__glyph" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20v-6M18 13V8M6 13V4"/>
-              </svg>
-            </span>
-            <div class="hcuk-metric-card__copy">
-              <h3 class="hcuk-metric-card__title">Feature uptake</h3>
-              <p class="hcuk-metric-card__desc">Initial uptake of the soft search feature in the pilot rollout.</p>
-            </div>
-          </article>
-          <article class="hcuk-metric-card hcuk-metric-card--accent">
-            <span class="hcuk-metric-card__glyph" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2l2.5 7h8l-6.5 5 2.5 8L12 17l-5.5 5 2.5-8L2 9h8z"/>
-              </svg>
-            </span>
-            <div class="hcuk-metric-card__copy">
-              <h3 class="hcuk-metric-card__title">Proposal momentum</h3>
-              <p class="hcuk-metric-card__desc">Early indicators suggest around a <strong class="hcuk-metric-card__highlight">4% uplift</strong> in proposal acceptance approval.</p>
-            </div>
-          </article>
-          <article class="hcuk-metric-card">
-            <span class="hcuk-metric-card__glyph" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-              </svg>
-            </span>
-            <div class="hcuk-metric-card__copy">
-              <h3 class="hcuk-metric-card__title">Three OEM brands</h3>
-              <p class="hcuk-metric-card__desc">Designs branded and aligned for Hyundai, Genesis, and Kia.</p>
-            </div>
-          </article>
-        </div>
-      </aside>
-    </section>
-
-    <section class="csd-statement csd-statement--compact">
-      <span class="kicker">Scope note</span>
-      <div class="csd-statement__stack">
-        <p class="csd-statement__text csd-statement__text--compact">
-          This case study focuses on the soft search MVP: one slice of broader HCUK work, including KPI and strategy workshops.
-        </p>
-        <p class="csd-statement__note">Reach out to learn more.</p>
-        <button class="nav__cta nav__cta--scope-note" id="scope-copy-email" type="button" aria-label="Copy email address">
-          <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="9" y="9" width="13" height="13" rx="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-          </svg>
-          <span class="nav__cta-label">zenazerai@gmail.com</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- More case studies -->
     <section class="cs-explore" aria-labelledby="cs-explore-heading">
       <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
       <ul class="cs-explore__grid" role="list">
@@ -686,7 +2209,6 @@
 
   </article>
 
-  <!-- CONTACT / FOOTER -->
   <footer id="contact" class="foot">
     <div class="foot__inner">
       <span class="kicker">06 · End of Side A</span>

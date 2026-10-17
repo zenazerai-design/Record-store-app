@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Resolve assets for file:// opens and GitHub Pages /Record-store-app/ (not http folder-name paths). -->
+  <script>
+  (function () {
+    function insertBase(href) {
+      if (document.querySelector("base")) return;
+      var b = document.createElement("base");
+      b.href = href;
+      var head = document.head;
+      var cs = head.querySelector("meta[charset]");
+      if (!cs) { head.insertBefore(b, head.firstChild); return; }
+      if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+      else head.appendChild(b);
+    }
+    if (location.protocol === "file:") {
+      try {
+        var u = new URL(location.href);
+        if (/\.html?$/i.test(u.pathname)) {
+          u.pathname = u.pathname.replace(/\/[^/]*$/, "/");
+          u.search = "";
+          u.hash = "";
+          insertBase(u.href);
+        }
+      } catch (e) {}
+      return;
+    }
+    var prefix = "/Record-store-app/";
+    var p = location.pathname;
+    if (p === "/Record-store-app" || p.indexOf(prefix) === 0) insertBase(prefix);
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hyundai Finance | Zena Zerai | Archive</title>
+  <meta name="description" content="Case study: soft search MVP across Hyundai Capital UK, Santander Consumer UK &amp; eApply, Hyundai Finance." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="case-study-lock-root" class="case-study-lock-root" hidden aria-hidden="true"></div>
+<script>
+/* Password gate runs in script.js so a missing script.js does not leave a blank page. */
+</script>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="home.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <button class="nav__cta" id="nav-copy-email" type="button" aria-label="Copy email address">
+        <span class="nav__cta-label">Get in touch</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+  <article class="csd">
+
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="case-studies.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Case Studies
+      </a>
+    </div>
+
+    <!-- Hero, aligns with index / case-studies card headline -->
+    <section class="csd-hero">
+      <div class="csd-hero__inner">
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">Auto Finance &nbsp;·&nbsp; B2B2C</span>
+        </div>
+        <h1 class="csd-hero__title">
+          Hyundai<br>
+          <em class="italic">Finance.</em>
+        </h1>
+        <p class="csd-hero__date">May 2025 – Jul 2025</p>
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary">
+            <strong>Enabling car dealers to do soft credit checks</strong>, so they could see indicative affordability early in the conversation, without slowing the showroom down or jumping through tools that weren’t built for that moment.
+          </p>
+          <p class="csd-hero__summary">
+            I led the design and delivery of a <strong>dealer-led soft search MVP</strong>, from discovery through to pilot launch, to help dealers save time and improve customer conversion on car finance.
+          </p>
+        </div>
+      </div>
+      <div class="csd-hero__cover" aria-hidden="true">
+        <div class="csd-hero__cover-inner">
+          <img src="assets/HCUK covr.png" alt="Hyundai Finance, dealer soft search MVP interface" />
+        </div>
+      </div>
+
+      <!-- Meta, consistent with record card pills where possible -->
+      <section class="csd-meta" aria-label="Project details">
+      <dl class="csd-meta__grid">
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Team</dt>
+          <dd class="csd-meta__value">Product<span class="csd-meta__dot" aria-hidden="true">·</span>engineering &amp; design<span class="csd-meta__dot" aria-hidden="true">·</span>HCUK squad</dd>
+        </div>
+        <div class="csd-meta__item">
+          <dt class="csd-meta__label">Role</dt>
+          <dd class="csd-meta__value csd-meta__pills">
+            <span>SaaS design</span>
+            <span>User research</span>
+            <span>Responsive prototype</span>
+            <span>Initial design system</span>
+            <span>MVP delivery</span>
+          </dd>
+        </div>
+      </dl>
+      </section>
+    </section>
+
+    <!-- Impact -->
+    <section class="csd-impact" aria-labelledby="hcuk-impact-heading">
+      <div class="csd-impact__header">
+        <h2 id="hcuk-impact-heading" class="csd-impact__title">Impact</h2>
+      </div>
+      <ul class="csd-impact__list csd-impact__list--lead-icons">
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">🛳️</span>
+          <span>Designed and shipped the soft search MVP</span>
+        </li>
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">📱</span>
+          <span>Delivered live, responsive designs across web, tablet, and mobile</span>
+        </li>
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">🟦</span>
+          <span>Branded for three OEMs: Genesis, Hyundai, and Kia</span>
+        </li>
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">💶</span>
+          <span>Finance compliance sign off to meet regulatory requirements</span>
+        </li>
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">🗺️</span>
+          <span>Set direction for future phases beyond MVP</span>
+        </li>
+        <li>
+          <span class="csd-impact__lead-icon" aria-hidden="true">🏗️</span>
+          <span>Established a lightweight initial design system to enable speed</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Context, HCUK / SCUK / eApply (source slide) -->
+    <section class="csd-context">
+      <div class="csd-context__text">
+        <span class="kicker">Context</span>
+        <h2 class="csd-context__title">Hyundai Capital UK (HCUK), Santander Consumer UK (SCUK), and the eApply ecosystem.</h2>
+        <div class="csd-context__body">
+          <p>
+            Dealers were spending significant time preparing quotes for customers who were later rejected. At the same time, the system landscape was fragmented: multiple tools and duplicated workflows.
+          </p>
+          <p><strong>This created:</strong></p>
+          <ul class="csd-impact__list">
+            <li>Missed sales opportunities due to hesitant customers</li>
+            <li>Time lost on applications that wouldn’t convert</li>
+            <li>Manual re-entry of data across systems</li>
+          </ul>
+          <p>
+            The challenge was not just designing a feature, but creating a flow that reduced friction while fitting into a complex, multi-system ecosystem.
+          </p>
+        </div>
+      </div>
+      <div class="csd-context__image">
+        <img src="assets/HCUK/Cover%20image.png" alt="eApply Kia Finance vehicle configuration flow: Sportage trim steps with exterior colour selection." loading="lazy" decoding="async" />
+        <p class="csd-context__caption">Quotes and applications scattered across disjoint tools instead of one coherent flow.</p>
+      </div>
+    </section>
+
+    <!-- Goal -->
+    <section class="csd-statement">
+      <span class="kicker">The goal</span>
+      <p class="csd-statement__text">
+        Put a compliant soft search in dealers’ hands at the right point in the sale, <span class="csd-statement__fade">fast enough for the forecourt, clear enough that customers know what’s happening.</span>
+      </p>
+    </section>
+
+    <!-- How I worked, matches index liner “tracklist” -->
+    <section class="csd-findings">
+      <div class="csd-findings__header">
+        <span class="kicker">How I worked</span>
+        <h2 class="csd-findings__title">Discovery through <em class="italic">MVP launch.</em></h2>
+        <p class="csd-findings__intro">
+          The programme moved in stages, each step grounded in what dealers told us, then validated in prototype form before we locked scope for a consistent MVP launch.
+        </p>
+      </div>
+      <div class="csd-findings__grid">
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">01</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Discovery &amp; research</h3>
+            <p class="csd-finding__desc">Workshops and conversations with dealers and stakeholders to learn when a soft search should surface, what “good” looks like on screen, and where people dropped off today.</p>
+          </div>
+        </article>
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">02</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Responsive prototype</h3>
+            <p class="csd-finding__desc">End-to-end flows tested on realistic devices, dealers aren’t always at a desk, and clarity on a smaller screen mattered as much as desktop.</p>
+          </div>
+        </article>
+        <article class="csd-finding">
+          <span class="csd-finding__num" aria-hidden="true">03</span>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">MVP launch</h3>
+            <p class="csd-finding__desc">A pilot-ready MVP tied to a live rollout plan, narrowing scope to what dealers needed first, then iterating after real usage.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Business objectives (Template.html: csd-findings + icon cards) -->
+    <section class="csd-findings csd-findings--objectives" aria-labelledby="hcuk-objectives-heading">
+      <div class="csd-findings__header">
+        <span class="kicker">North star</span>
+        <h2 id="hcuk-objectives-heading" class="csd-findings__title">Business <em class="italic">objectives.</em></h2>
+        <p class="csd-findings__intro">
+          Stakeholder framing from discovery: what the soft-search work needed to move, before we locked MVP scope.
+        </p>
+      </div>
+      <div class="csd-findings__grid">
+        <article class="csd-finding csd-finding--objective">
+          <div class="csd-finding__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Increase customer conversion</h3>
+            <p class="csd-finding__desc">From quote → to proposal</p>
+          </div>
+        </article>
+        <article class="csd-finding csd-finding--objective">
+          <div class="csd-finding__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+          </div>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Improve acceptance rates</h3>
+            <p class="csd-finding__desc">For used cars in particular</p>
+          </div>
+        </article>
+        <article class="csd-finding csd-finding--objective">
+          <div class="csd-finding__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <div class="csd-finding__content">
+            <h3 class="csd-finding__title">Provide dealers with clarity</h3>
+            <p class="csd-finding__desc">Without deterring proposals</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Dealer pain from discovery: thread / timeline, not the objective card pattern -->
+    <section class="csd-dealer-pain" aria-labelledby="hcuk-dealer-pain-heading">
+      <header class="csd-dealer-pain__head">
+        <span class="kicker">From discovery</span>
+        <h2 id="hcuk-dealer-pain-heading" class="csd-dealer-pain__title">Pain points dealers <em class="italic">kept repeating.</em></h2>
+        <p class="csd-dealer-pain__lede">Themes from calls and workshops: the friction on the forecourt behind the business case.</p>
+      </header>
+      <ol class="csd-dealer-pain__list">
+        <li class="csd-dealer-pain__item">
+          <span class="csd-dealer-pain__marker" aria-hidden="true"></span>
+          <div class="csd-dealer-pain__body">
+            <span class="csd-dealer-pain__tag">Showroom hesitation</span>
+            <p class="csd-dealer-pain__text">Customers hesitant to apply for finance, resulting in missed sales opportunities.</p>
+          </div>
+        </li>
+        <li class="csd-dealer-pain__item">
+          <span class="csd-dealer-pain__marker" aria-hidden="true"></span>
+          <div class="csd-dealer-pain__body">
+            <span class="csd-dealer-pain__tag">Negotiation dead-ends</span>
+            <p class="csd-dealer-pain__text">Time wasted &ldquo;haggling&rdquo; with customers whose applications were later rejected.</p>
+          </div>
+        </li>
+        <li class="csd-dealer-pain__item">
+          <span class="csd-dealer-pain__marker" aria-hidden="true"></span>
+          <div class="csd-dealer-pain__body">
+            <span class="csd-dealer-pain__tag">Broken hand-offs</span>
+            <p class="csd-dealer-pain__text">Painful double-keying of customer information into multiple systems.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Journey mapping: soft search happy path -->
+    <section class="csd-context" aria-labelledby="hcuk-flow-mapping-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Mapping out the flow</span>
+        <h2 id="hcuk-flow-mapping-heading" class="csd-context__title">Designing for dealer <em class="italic">reality.</em></h2>
+        <div class="csd-context__body">
+          <p>I mapped the end-to-end journey, focusing on:</p>
+          <ul class="csd-impact__list">
+            <li>Minimising manual input (especially for returning customers)</li>
+            <li>Supporting both new and existing user paths</li>
+            <li>Anticipating edge cases (e.g.&nbsp;incomplete data, uncertain results)</li>
+          </ul>
+          <p>
+            Rather than optimise for a &ldquo;perfect&rdquo; flow, I prioritised speed, clarity, and real-world usability in dealership environments.
+          </p>
+        </div>
+      </div>
+      <div class="csd-context__image">
+        <div class="hcuk-soft-search-flow-wrap">
+          <p class="csd-iterate__hint" id="hcuk-flow-scroll-hint">Scroll to step through the flow</p>
+          <div class="hcuk-soft-search-flow-viewport">
+            <div
+              class="csd-context__image-scroll hcuk-soft-search-flow-scroll"
+              tabindex="0"
+              role="region"
+              aria-labelledby="hcuk-flow-scroll-hint"
+            >
+              <img
+                src="assets/HCUK/Soft%20search%20-%20user%20flow%20happy%20path.png"
+                alt="User flow diagram: dealer soft search happy path from eApply dashboard through customer profile, application steps, address history decisions, review, and results."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+        <p class="csd-context__caption">Happy path from dashboard to results. Use the frame above to scroll sideways and vertically for the full flow. Includes address history when occupation is under three years.</p>
+      </div>
+    </section>
+
+    <!-- Initial designs, testing iterations -->
+    <section class="csd-iterate hcuk-iterate-visuals" aria-labelledby="hcuk-iterate-heading">
+      <div class="csd-iterate__intro">
+        <span class="kicker">User testing &amp; iterations</span>
+        <h2 id="hcuk-iterate-heading" class="csd-iterate__title">When dealers took the wheel.</h2>
+        <p class="csd-iterate__lead">I tested early concepts with dealers, uncovering key issues.</p>
+        <p class="csd-iterate__shift">
+          Those insights pushed the design past binary pass/fail screens toward <strong>guided, contextual decision-making</strong>, still honest about outcomes, but kinder and clearer to use on the forecourt.
+        </p>
+      </div>
+
+      <div class="csd-iterate__scroll-wrap">
+        <p class="csd-iterate__hint">Scroll sideways</p>
+        <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Initial design iterations, scroll horizontally">
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="./assets/HCUK/New Soft search low.png" alt="Soft search results: circular gauge showing low likelihood of receiving finance." loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Results too harsh</h3>
+              <p class="csd-iterate__card-desc">Strong colours for high scores landed well, but low scores felt brutal. Dealers worried about embarrassing customers in front of them.</p>
+            </div>
+          </article>
+
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="./assets/HCUK/New Indicative.png" alt="Pre-qualification results modal with explanatory copy and indicative-results disclaimer." loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Copy missed</h3>
+              <p class="csd-iterate__card-desc">Dealers weren’t clocking that outcomes were indicative; the caveat had to be visible in the scan pattern, not footer-smallprint.</p>
+            </div>
+          </article>
+
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="./assets/HCUK/New Insufficient.png" alt="System feedback: please check the details submitted, with return and review actions." loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">System feedback unclear</h3>
+              <p class="csd-iterate__card-desc">When retrieval failed, the message sounded like user error. Dealers weren’t sure whether to retry, fix data, or escalate, and trust dipped.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dealer quote: after user testing visuals, before refined iterations -->
+    <section class="csd-pullquote">
+      <span class="kicker csd-pullquote__kicker">User testing feedback</span>
+      <figure class="csd-pullquote__inner">
+        <blockquote class="csd-pullquote__text">
+          “We don’t want to embarrass the customer, particularly if we’re presenting this in the showroom. Showing someone a low score could make them walk out and be embarrassed.”
+        </blockquote>
+        <figcaption class="csd-pullquote__attr">
+          <span class="csd-pullquote__name">Dealer</span>
+          <span class="csd-pullquote__role">Kia dealership</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Refined iterations: harsh → gentle (same layout as user testing block) -->
+    <section class="csd-iterate hcuk-iterate-visuals" aria-labelledby="hcuk-iterate-refined-heading">
+      <div class="csd-iterate__intro">
+        <span class="kicker">Iterating towards better outcomes</span>
+        <h2 id="hcuk-iterate-refined-heading" class="csd-iterate__title">From harsh to gentle results</h2>
+        <p class="csd-iterate__lead">
+          I refined the experience to introduce more neutral, reassuring result states, clarify messaging to highlight indicative outcomes, and give dealers control over what to share with customers.
+        </p>
+        <p class="csd-iterate__shift">
+          That improved confidence in using the tool, dealer–customer conversations, and alignment with real-world workflows.
+        </p>
+      </div>
+
+      <div class="csd-iterate__scroll-wrap">
+        <p class="csd-iterate__hint">Scroll sideways</p>
+        <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Refined iterations from harsh to gentle results, scroll horizontally">
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="./assets/HCUK/New Muted pallette.png" alt="Refined soft search gauges using a muted peach and orange palette for low likelihood states." loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Subtle palette to ease concerns</h3>
+              <p class="csd-iterate__card-desc">Based on feedback we wanted to keep low scores but make them less alarming. I opted for a muted palette which balanced the low messaging.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="./assets/HCUK/New Insufficent iteration.png" alt="Iteration of insufficient trace messaging: clearer copy and stronger friction before continuing." loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Adding friction to take notice</h3>
+              <p class="csd-iterate__card-desc">I added friction to the insufficient trace message to ensure it was read by users and added clarifying copy and more relevant CTAs.</p>
+            </div>
+          </article>
+          <article class="csd-iterate__card">
+            <div class="csd-iterate__thumb csd-iterate__thumb--photo">
+              <img src="./assets/HCUK/New Indicative.png" alt="Pre-qualification results with indicative disclaimer highlighted for visibility." loading="lazy" decoding="async" />
+            </div>
+            <div class="csd-iterate__card-body">
+              <h3 class="csd-iterate__card-title">Key information made prominent</h3>
+              <p class="csd-iterate__card-desc">Included the results messaging in a separate card with an information icon to make it stand out.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design system: text left; right column = GWI-style swipe rail (tokens → components) -->
+    <section class="csd-context hcuk-design-system-gallery" aria-labelledby="hcuk-ds-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Scaling beyond the feature</span>
+        <h2 id="hcuk-ds-heading" class="csd-context__title">Building a lightweight <em class="italic">initial</em> design system</h2>
+        <div class="csd-context__body">
+          <p>
+            Post-MVP, inconsistent Figma work across Hyundai, Kia, and Genesis meant duplicated components and no shared tokens, which made scaling difficult. I tightened that into a <strong>lightweight initial layer</strong>: semantic tokens (colour, spacing, type), Figma variables, and auto-layout for reusable, responsive components built for what we shipped, not an exhaustive catalogue. Honest framing: a practical baseline for consistency and faster cross-brand iteration, with room to extend, not pretending to be a full design system.
+          </p>
+        </div>
+      </div>
+
+      <div class="csd-context__image hcuk-design-system-gallery__rail hcuk-ds-swipe">
+        <figure class="hcuk-ds-swipe__figure">
+          <p class="csd-iterate__hint">Swipe or scroll</p>
+          <div class="csd-iterate__scroll-wrap gwi-iterate__scroll-wrap--nested">
+            <div class="csd-iterate__rail" tabindex="0" role="region" aria-label="Design system: semantic tokens, then shared components">
+              <article class="csd-iterate__card">
+                <div class="csd-iterate__thumb csd-iterate__thumb--photo hcuk-ds-swipe__thumb hcuk-ds-swipe__thumb--tokens">
+                  <span class="csd-ds-split__eyebrow">Tokens</span>
+                  <div class="csd-ds-split__tokens-mosaic" role="group" aria-label="Figma variables: alias palettes and semantic mappings">
+                    <img
+                      src="assets/HCUK/Token%201.png"
+                      alt="Figma Alias variables: primary colour scales for Kia, Hyundai, and Genesis."
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <img
+                      src="assets/HCUK/Token%202.png"
+                      alt="Figma Mapped variables: semantic text and icon tokens."
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+                <div class="csd-iterate__card-body">
+                  <h3 class="csd-iterate__card-title">Semantic tokens</h3>
+                  <p class="csd-iterate__card-desc">Brand modes for palette aliases, then semantic mappings so UI roles stay stable across Hyundai, Kia, and Genesis.</p>
+                </div>
+              </article>
+              <article class="csd-iterate__card">
+                <div class="csd-iterate__thumb csd-iterate__thumb--photo hcuk-ds-swipe__thumb hcuk-ds-swipe__thumb--components">
+                  <span class="csd-ds-split__eyebrow">Components</span>
+                  <div class="csd-ds-split__components-inner csd-ds-split__components-inner--pair">
+                    <img
+                      src="assets/HCUK/Component%201.png"
+                      alt="Design system UI: primary, secondary, and text link components."
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <img
+                      src="assets/HCUK/Component%202.png"
+                      alt="Design system UI: text input patterns and states."
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+                <div class="csd-iterate__card-body">
+                  <h3 class="csd-iterate__card-title">Shared components</h3>
+                  <p class="csd-iterate__card-desc">Reusable buttons, links, and inputs with variables and auto-layout so flows stayed consistent without rebuilding every screen.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </figure>
+      </div>
+
+      <div class="csd-context__image hcuk-design-system-responsive">
+        <img
+          src="assets/HCUK/Responsive%20mockups.png"
+          alt="Kia Finance preApply pre-qualification results on desktop, tablet, and mobile."
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="csd-context__caption">Responsive designs for mobile, tablet and web</p>
+      </div>
+    </section>
+
+    <!-- What was delivered -->
+    <section class="csd-beforeafter" aria-label="What was delivered">
+      <div class="csd-beforeafter__intro">
+        <span class="kicker">What was delivered</span>
+        <p class="csd-statement__text">
+          A dealer-led soft search MVP, <span class="csd-statement__fade">flows and patterns tuned for real showroom use.</span>
+        </p>
+      </div>
+      <div class="hcuk-delivered-video-stack">
+        <div class="csd-video__frame">
+          <iframe
+            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=440_720x30_shots_so_hcg8fn"
+            title="Hyundai Finance dealer soft search prototype (video)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="csd-video__caption">Prototype of self-serve journey</p>
+      </div>
+    </section>
+
+    <!-- Launch outcomes: narrative left, success metrics as cards right -->
+    <section class="csd-context hcuk-launch-outcomes" aria-labelledby="hcuk-launch-heading">
+      <div class="csd-context__text">
+        <span class="kicker">Iterating from insights</span>
+        <h2 id="hcuk-launch-heading" class="csd-context__title">Going live across three brands</h2>
+        <div class="csd-context__body">
+          <p>
+            The MVP has just launched for Genesis, Hyundai, and Kia with responsive web, tablet, and mobile layouts, balancing branding and functionality.
+          </p>
+          <p class="hcuk-iterate-expand__intro-lead">Key highlights:</p>
+          <ul class="csd-impact__list">
+            <li>Streamlined dealer workflows, reducing manual effort</li>
+            <li>Refined results screens and error states based on pilot feedback</li>
+            <li>Finance Compliance sign-off ensured all flows, copy, and data handling met regulatory requirements</li>
+            <li>Ready for future expansion: proposals, customer self-serve, and 3rd-party integration</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="csd-context__image hcuk-success-metrics" aria-label="Success metrics">
+        <p class="kicker hcuk-success-metrics__kicker">Success metrics</p>
+        <div class="hcuk-success-metrics__stack">
+          <article class="hcuk-metric-card">
+            <span class="hcuk-metric-card__glyph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20v-6M18 13V8M6 13V4"/>
+              </svg>
+            </span>
+            <div class="hcuk-metric-card__copy">
+              <h3 class="hcuk-metric-card__title">Feature uptake</h3>
+              <p class="hcuk-metric-card__desc">Initial uptake of the soft search feature in the pilot rollout.</p>
+            </div>
+          </article>
+          <article class="hcuk-metric-card hcuk-metric-card--accent">
+            <span class="hcuk-metric-card__glyph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l2.5 7h8l-6.5 5 2.5 8L12 17l-5.5 5 2.5-8L2 9h8z"/>
+              </svg>
+            </span>
+            <div class="hcuk-metric-card__copy">
+              <h3 class="hcuk-metric-card__title">Proposal momentum</h3>
+              <p class="hcuk-metric-card__desc">Early indicators suggest around a <strong class="hcuk-metric-card__highlight">4% uplift</strong> in proposal acceptance approval.</p>
+            </div>
+          </article>
+          <article class="hcuk-metric-card">
+            <span class="hcuk-metric-card__glyph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            </span>
+            <div class="hcuk-metric-card__copy">
+              <h3 class="hcuk-metric-card__title">Three OEM brands</h3>
+              <p class="hcuk-metric-card__desc">Designs branded and aligned for Hyundai, Genesis, and Kia.</p>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </section>
+
+    <section class="csd-statement csd-statement--compact">
+      <span class="kicker">Scope note</span>
+      <div class="csd-statement__stack">
+        <p class="csd-statement__text csd-statement__text--compact">
+          This case study focuses on the soft search MVP: one slice of broader HCUK work, including KPI and strategy workshops.
+        </p>
+        <p class="csd-statement__note">Reach out to learn more.</p>
+        <button class="nav__cta nav__cta--scope-note" id="scope-copy-email" type="button" aria-label="Copy email address">
+          <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+          <span class="nav__cta-label">zenazerai@gmail.com</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- More case studies -->
+    <section class="cs-explore" aria-labelledby="cs-explore-heading">
+      <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
+      <ul class="cs-explore__grid" role="list">
+        <li>
+          <a class="cs-explore__card" href="gwi.html" aria-label="GWI, Reimagining user management for an AI-driven platform">
+            <img class="cs-explore__img" src="assets/GWI/API%20cover.png" alt="" />
+            <span class="cs-explore__title">Reimagining user management for an AI-driven platform</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate, Reducing file processing from days to minutes">
+            <img class="cs-explore__img" src="assets/PINS/PINS cover.png" alt="" />
+            <span class="cs-explore__title">Reducing file processing from days to minutes</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="toyota.html" aria-label="Toyota experimentation">
+            <img class="cs-explore__img" src="assets/Toyota/343shots_so.png" alt="" />
+            <span class="cs-explore__title">Toyota experimentation</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="foot">
+    <div class="foot__inner">
+      <span class="kicker">06 · End of Side A</span>
+      <h2 class="foot__title">
+        <span>Got a record </span>
+        <span class="italic">worth pressing?</span>
+      </h2>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
+
+      <div class="foot__row">
+        <div class="foot__links">
+          <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="foot__meta">
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
+        </div>
+      </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>
