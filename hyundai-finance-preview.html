@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Unlinked preview of a revised Hyundai Finance case study. Not in navigation or project listings. -->
+  <script>
+  (function () {
+    function insertBase(href) {
+      if (document.querySelector("base")) return;
+      var b = document.createElement("base");
+      b.href = href;
+      var head = document.head;
+      var cs = head.querySelector("meta[charset]");
+      if (!cs) { head.insertBefore(b, head.firstChild); return; }
+      if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+      else head.appendChild(b);
+    }
+    if (location.protocol === "file:") {
+      try {
+        var u = new URL(location.href);
+        if (/\.html?$/i.test(u.pathname)) {
+          u.pathname = u.pathname.replace(/\/[^/]*$/, "/");
+          u.search = "";
+          u.hash = "";
+          insertBase(u.href);
+        }
+      } catch (e) {}
+      return;
+    }
+    var prefix = "/Record-store-app/";
+    var p = location.pathname;
+    if (p === "/Record-store-app" || p.indexOf(prefix) === 0) insertBase(prefix);
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hyundai Finance | Preview | Zena Zerai</title>
+  <meta name="description" content="Unpublished preview. Hyundai Finance case study: Soft Search MVP and measurement strategy." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body:has(article.csd-case--hcuk-preview) #spotify-fab {
+      display: none !important;
+    }
+
+    .csd-case--hcuk-preview {
+      overflow-x: clip;
+    }
+
+    .csd-case--hcuk-preview .csd-hero__summary strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .csd-case--hcuk-preview .hfp-section {
+      padding: clamp(72px, 8vw, 120px) 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: clamp(36px, 5vw, 64px);
+      min-width: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-outcome {
+      border-bottom: none;
+      padding-bottom: clamp(36px, 5vw, 56px);
+    }
+
+    .csd-case--hcuk-preview .hfp-bridge {
+      padding-bottom: clamp(8px, 1.5vw, 16px);
+      border-bottom: none;
+      gap: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-bridge + .hfp-section {
+      padding-top: clamp(28px, 4vw, 48px);
+    }
+
+    .csd-case--hcuk-preview .hfp-lead {
+      display: grid;
+      gap: 14px;
+      max-width: 40rem;
+      min-width: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-lead .kicker,
+    .csd-case--hcuk-preview .hfp-subhead .kicker {
+      margin: 0;
+    }
+
+    .csd-case--hcuk-preview .hfp-lead p,
+    .csd-case--hcuk-preview .hfp-prose p {
+      margin: 0;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .csd-case--hcuk-preview .hfp-prose {
+      display: grid;
+      gap: 14px;
+      max-width: 42rem;
+    }
+
+    .csd-case--hcuk-preview .hfp-prose strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .csd-case--hcuk-preview .hfp-subhead {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Shared illustrative product chrome */
+    .csd-case--hcuk-preview {
+      --p-bg: #F3EEE4;
+      --p-panel: #FFFCF7;
+      --p-ink: #1C1814;
+      --p-muted: #5C534C;
+      --p-line: #E3D9CC;
+      --p-soft: #EFE4D6;
+      --p-harsh: #6E302C;
+    }
+
+    .hfp-app {
+      background: var(--p-bg);
+      color: var(--p-ink);
+      border-radius: 12px;
+      border: 1px solid rgba(239, 228, 203, 0.16);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+      min-width: 0;
+      font-family: var(--font-body);
+    }
+
+    .csd-case--hcuk-preview .csd-hero__cover .hfp-app {
+      height: 100%;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hfp-app__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 14px;
+      background: var(--p-panel);
+      border-bottom: 1px solid var(--p-line);
+    }
+
+    .hfp-app__product {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: -0.02em;
+    }
+
+    .hfp-app__tag,
+    .hfp-app__eyebrow {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--p-muted);
+    }
+
+    .hfp-app__split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      min-height: 0;
+      height: 100%;
+    }
+
+    .hfp-app__col,
+    .hfp-app__panel {
+      padding: 16px 16px 18px;
+      min-width: 0;
+    }
+
+    .hfp-app__panel {
+      background: var(--p-panel);
+      border-left: 1px solid var(--p-line);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hfp-app__h {
+      margin: 6px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.6vw, 20px);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .hfp-app__facts {
+      display: grid;
+      gap: 0;
+      margin: 14px 0 0;
+    }
+
+    .hfp-app__facts div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px solid var(--p-line);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .hfp-app__facts dt {
+      color: var(--p-muted);
+    }
+
+    .hfp-app__facts dd {
+      margin: 0;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .hfp-app__status {
+      margin: 2px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .hfp-app__note {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--p-muted);
+    }
+
+    .hfp-app__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      align-self: flex-start;
+      background: var(--p-ink);
+      color: #F3EEE4;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .hfp-app--hero {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hfp-app--hero .hfp-app__split {
+      flex: 1;
+    }
+
+    .hfp-app--hero .hfp-app__col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @container (max-width: 460px) {
+      .hfp-app--hero .hfp-app__split {
+        grid-template-columns: 1fr;
+      }
+
+      .hfp-app--hero .hfp-app__panel {
+        border-left: 0;
+        border-top: 1px solid var(--p-line);
+      }
+    }
+
+    /* Ecosystem */
+    .hfp-eco {
+      display: grid;
+      justify-items: center;
+      gap: 0;
+      margin: 0;
+      min-width: 0;
+    }
+
+    .hfp-eco__node {
+      text-align: center;
+      max-width: 36rem;
+    }
+
+    .hfp-eco__tier {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-eco__name {
+      margin: 6px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--cream);
+    }
+
+    .hfp-eco__detail {
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .hfp-eco__stem {
+      width: 1px;
+      height: 28px;
+      background: var(--line);
+    }
+
+    .hfp-eco__node--platform {
+      width: min(100%, 640px);
+      padding: 18px 12px 16px;
+      border-top: 1px solid color-mix(in srgb, var(--amber) 50%, var(--line));
+      border-bottom: 1px solid color-mix(in srgb, var(--amber) 50%, var(--line));
+    }
+
+    .hfp-eco__brands-wrap {
+      width: min(100%, 760px);
+      margin-top: 0;
+      display: grid;
+      justify-items: center;
+      gap: 0;
+    }
+
+    .hfp-eco__brands-label {
+      margin: 26px 0 18px;
+    }
+
+    .hfp-eco__brands {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      width: 100%;
+      margin: 0;
+      padding: 28px 0 0;
+      list-style: none;
+    }
+
+    .hfp-eco__brands::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 16.5%;
+      right: 16.5%;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .hfp-eco__brands li {
+      position: relative;
+      margin: 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.6vw, 20px);
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-eco__brands li::before {
+      content: "";
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      width: 1px;
+      height: 28px;
+      background: var(--line);
+    }
+
+    .hfp-eco__node--dealers .hfp-eco__name {
+      font-size: clamp(20px, 2.2vw, 28px);
+    }
+
+    /* Challenge */
+    .hfp-challenge {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-width: 0;
+      border: 1px solid var(--line);
+    }
+
+    .hfp-challenge article {
+      min-width: 0;
+      min-height: 280px;
+      padding: clamp(28px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .hfp-challenge article + article {
+      border-left: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .hfp-challenge article:first-child {
+      background: var(--surface);
+    }
+
+    .hfp-challenge__index {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .hfp-challenge h3 {
+      margin: 10px 0 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .hfp-challenge p {
+      margin: 0;
+      max-width: 38ch;
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    /* Metric decision */
+    .hfp-block {
+      display: grid;
+      gap: clamp(18px, 2vw, 24px);
+      min-width: 0;
+    }
+
+    .hfp-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      min-width: 0;
+    }
+
+    .hfp-flow__step {
+      margin: 0;
+      min-width: 0;
+      min-height: 210px;
+      padding: 22px 22px 24px;
+      border: 1px solid var(--line);
+      background: var(--bg-2);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .hfp-flow__step--mid {
+      background: transparent;
+      justify-content: center;
+    }
+
+    .hfp-flow__step--chosen {
+      background: var(--cream);
+      border-color: var(--cream);
+      color: #1C1814;
+    }
+
+    .hfp-flow__label {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-flow__step--chosen .hfp-flow__label {
+      color: #5C5148;
+    }
+
+    .hfp-flow__name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(24px, 2.4vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .hfp-flow__step--mid .hfp-flow__name {
+      font-size: clamp(20px, 2vw, 26px);
+    }
+
+    .hfp-flow__step--chosen .hfp-flow__name {
+      color: #1C1814;
+    }
+
+    .hfp-flow__aside {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .hfp-arrow {
+      align-self: center;
+      color: var(--muted);
+      display: flex;
+    }
+
+    .hfp-objectives {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(28px, 4vw, 64px);
+    }
+
+    .hfp-objectives li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 16px 22px;
+      align-items: baseline;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      min-width: 0;
+    }
+
+    .hfp-objectives__num {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+      color: var(--amber);
+    }
+
+    .hfp-objectives p {
+      margin: 0;
+      font-size: clamp(15px, 1.15vw, 17px);
+      line-height: 1.45;
+      color: var(--cream);
+    }
+
+    .hfp-layers {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      min-width: 0;
+    }
+
+    .hfp-layers li {
+      min-width: 0;
+      padding: 18px 18px 4px 0;
+      border-top: 2px solid var(--cream);
+    }
+
+    .hfp-layers li + li {
+      padding-left: 18px;
+      border-left: 1px solid var(--line);
+    }
+
+    .hfp-layers__num {
+      display: block;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .hfp-layers p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-caption {
+      margin: 14px 0 0;
+      max-width: 46rem;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    /* Journey */
+    .hfp-journey {
+      list-style: none;
+      margin: 0;
+      padding: 28px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      position: relative;
+      min-width: 0;
+    }
+
+    .hfp-journey::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .hfp-journey li {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .hfp-journey li::before {
+      content: "";
+      position: absolute;
+      top: -26px;
+      left: 0;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--cream);
+      box-shadow: 0 0 0 4px var(--bg);
+    }
+
+    .hfp-journey li.is-focus::before {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .hfp-journey h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(18px, 1.7vw, 24px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-friction {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .hfp-focus-note {
+      margin: 4px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid color-mix(in srgb, var(--amber) 45%, var(--line));
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--cream);
+    }
+
+    /* Before / after */
+    .hfp-compare {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 16px 18px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hfp-compare__col {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .hfp-compare__label {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-compare__label span {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-shift {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+    }
+
+    .hfp-shift svg {
+      transform: rotate(180deg);
+    }
+
+    .hfp-screen {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hfp-screen__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .hfp-harsh {
+      flex: 1;
+      margin: 14px;
+      background: var(--p-harsh);
+      color: #F6F1E8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 18px 16px;
+      min-height: 280px;
+    }
+
+    .hfp-harsh__word {
+      margin: auto 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(40px, 4vw, 56px);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+
+    .hfp-harsh__fine {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hfp-harsh .hfp-app__btn {
+      margin-top: 0;
+      align-self: stretch;
+      background: #F6F1E8;
+      color: var(--p-harsh);
+    }
+
+    .hfp-refined {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .hfp-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .hfp-status-row .hfp-app__status {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .hfp-chip {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: var(--p-soft);
+      color: #4A342C;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .hfp-callout {
+      margin: 0;
+      padding: 16px;
+      background: var(--p-panel);
+      border: 1px solid var(--p-line);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--p-ink);
+    }
+
+    .hfp-step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding-top: 4px;
+      border-top: 1px solid var(--p-line);
+    }
+
+    .hfp-step__num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--p-muted);
+      padding-top: 4px;
+    }
+
+    .hfp-step__title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .hfp-step__body {
+      margin: 4px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--p-muted);
+    }
+
+    .hfp-app__btn--quiet {
+      margin-top: 4px;
+      background: transparent;
+      color: var(--p-ink);
+      border: 1px solid var(--p-ink);
+    }
+
+    .hfp-refined .hfp-app__btn--quiet {
+      margin-top: auto;
+    }
+
+    .hfp-notes {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-notes li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: baseline;
+      font-size: 13.5px;
+      line-height: 1.4;
+      color: var(--ink-soft);
+    }
+
+    .hfp-notes span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .hfp-quote {
+      margin: 8px 0 0;
+      max-width: 38rem;
+      display: grid;
+      gap: 14px;
+    }
+
+    .hfp-quote p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: var(--cream);
+    }
+
+    .hfp-quote p::before {
+      content: "\201C";
+      color: var(--amber);
+      font-style: normal;
+      margin-right: 0.08em;
+    }
+
+    .hfp-quote figcaption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Delivery */
+    .hfp-brands {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hfp-brands li {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-devices {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.72fr);
+      gap: 18px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    .hfp-devices__side {
+      display: grid;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .hfp-device {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .hfp-device__label {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-device--phone {
+      width: min(100%, 280px);
+      justify-self: end;
+    }
+
+    .hfp-desk {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: 12px;
+      padding: 12px;
+      align-items: start;
+      background: #E7E0D4;
+    }
+
+    .hfp-desk__side,
+    .hfp-desk__main {
+      padding: 18px;
+      min-width: 0;
+      background: var(--p-panel);
+      border-radius: 8px;
+    }
+
+    .hfp-desk__main {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hfp-tab {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid var(--p-line);
+    }
+
+    .hfp-tab div {
+      padding: 10px 8px 12px;
+      text-align: center;
+    }
+
+    .hfp-tab dt {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--p-muted);
+    }
+
+    .hfp-tab dd {
+      margin: 4px 0 0;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hfp-phone .hfp-refined,
+    .hfp-tablet .hfp-stack {
+      padding: 14px;
+    }
+
+    .hfp-phone .hfp-app__btn,
+    .hfp-tablet .hfp-app__btn {
+      align-self: stretch;
+      margin-top: 4px;
+    }
+
+    .hfp-system {
+      margin: 0;
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hfp-system > figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 18px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .hfp-system > figcaption strong {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-board {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px 40px;
+      padding: clamp(22px, 3vw, 36px);
+      background: #F3EEE4;
+      color: #1C1814;
+      border-radius: 12px;
+      min-width: 0;
+    }
+
+    .hfp-board h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5C534C;
+    }
+
+    .hfp-board__wide {
+      grid-column: 1 / -1;
+    }
+
+    .hfp-board__col {
+      display: grid;
+      gap: 28px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .hfp-board .hfp-app__btn {
+      justify-self: start;
+      width: auto;
+      margin-top: 0;
+    }
+
+    .hfp-swatches,
+    .hfp-controls,
+    .hfp-chips,
+    .hfp-bits {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hfp-swatches {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hfp-swatches li {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hfp-swatches i {
+      display: block;
+      height: 52px;
+      border-radius: 6px;
+    }
+
+    .hfp-swatch--surface { background: #FFFCF7; border: 1px solid #E3D9CC; }
+    .hfp-swatch--text { background: #1C1814; }
+    .hfp-swatch--accent { background: #9E4638; }
+    .hfp-swatch--status { background: #E7D7C8; }
+
+    .hfp-type {
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-type__display {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .hfp-type__body {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .hfp-type__meta {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5C534C;
+    }
+
+    .hfp-controls {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hfp-controls .hfp-app__btn {
+      margin-top: 0;
+    }
+
+    .hfp-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .hfp-field span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5C534C;
+    }
+
+    .hfp-field b {
+      display: block;
+      padding: 9px 10px;
+      border: 1px solid #D9CFC2;
+      border-radius: 4px;
+      background: #FFFCF7;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .hfp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hfp-chips li {
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #EFE4D6;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .hfp-bits {
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-bit {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 12px;
+      background: #FFFCF7;
+      border: 1px solid #E3D9CC;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .hfp-bit span {
+      color: #5C534C;
+    }
+
+    /* Outcome */
+    .hfp-outcome__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+      gap: clamp(20px, 3vw, 40px);
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .hfp-metric {
+      background: var(--cream);
+      color: #1C1814;
+      border-radius: 12px;
+      padding: clamp(28px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+    }
+
+    .hfp-metric__value {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(96px, 12vw, 156px);
+      line-height: 0.82;
+      letter-spacing: -0.045em;
+    }
+
+    .hfp-metric__value span {
+      font-size: 0.42em;
+      letter-spacing: -0.04em;
+      margin-left: 0.04em;
+    }
+
+    .hfp-metric__label {
+      margin: 0;
+      max-width: 16ch;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hfp-metric__caption {
+      margin: 0;
+      max-width: 36ch;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #3F3832;
+    }
+
+    .hfp-outcome__aside {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 12px;
+      padding-bottom: 6px;
+      min-width: 0;
+    }
+
+    .hfp-outcome__aside h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(24px, 2.4vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+    }
+
+    .hfp-outcome__aside p {
+      margin: 0;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .hfp-context {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: clamp(28px, 4vw, 56px);
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hfp-context .hfp-lead {
+      max-width: none;
+    }
+
+    .hfp-frame,
+    .hfp-shots figure,
+    .hfp-ds figure {
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hfp-frame img,
+    .hfp-shots img,
+    .hfp-ds img,
+    .hfp-wide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .hfp-shots {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(14px, 2vw, 24px);
+      min-width: 0;
+    }
+
+    .hfp-shots figcaption,
+    .hfp-frame figcaption,
+    .hfp-ds figcaption,
+    .hfp-wide figcaption {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-flowfig {
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hfp-flowfig__scroll {
+      overflow: auto;
+      max-height: min(72vh, 680px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .hfp-flowfig__scroll img {
+      display: block;
+      width: auto;
+      max-width: none;
+      height: min(68vh, 620px);
+    }
+
+    .hfp-ds {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(18px, 2.4vw, 28px);
+      min-width: 0;
+    }
+
+    .hfp-ds__pair {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hfp-wide {
+      margin: 0;
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .csd-case--hcuk-preview .csd-pullquote {
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 960px) {
+      .hfp-challenge,
+      .hfp-flow,
+      .hfp-devices,
+      .hfp-outcome__grid,
+      .hfp-board,
+      .hfp-compare {
+        grid-template-columns: 1fr;
+      }
+
+      .hfp-challenge article + article {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .hfp-flow__step {
+        min-height: 0;
+      }
+
+      .hfp-arrow svg {
+        transform: rotate(90deg);
+      }
+
+      .hfp-shift {
+        writing-mode: horizontal-tb;
+        transform: none;
+        flex-direction: row;
+        white-space: nowrap;
+        padding: 4px 0;
+      }
+
+      .hfp-shift svg {
+        transform: rotate(90deg);
+      }
+
+      .hfp-device--phone {
+        justify-self: start;
+      }
+
+      .hfp-context,
+      .hfp-ds {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hfp-objectives,
+      .hfp-layers,
+      .hfp-journey,
+      .hfp-swatches,
+      .hfp-desk,
+      .hfp-shots,
+      .hfp-ds {
+        grid-template-columns: 1fr;
+      }
+
+      .hfp-layers li + li {
+        border-left: 0;
+        padding-left: 0;
+        margin-top: 16px;
+      }
+
+      .hfp-journey {
+        padding: 0 0 0 22px;
+        gap: 26px;
+      }
+
+      .hfp-journey::before {
+        top: 0;
+        bottom: 0;
+        left: 4px;
+        right: auto;
+        width: 1px;
+        height: auto;
+      }
+
+      .hfp-journey li::before {
+        top: 6px;
+        left: -22px;
+      }
+
+      .hfp-desk__main {
+        border-top: 0;
+      }
+
+      .hfp-eco__brands {
+        grid-template-columns: 1fr;
+        padding-top: 12px;
+        gap: 14px;
+      }
+
+      .hfp-eco__brands::before,
+      .hfp-eco__brands li::before {
+        display: none;
+      }
+
+      .hfp-eco__brands li {
+        text-align: center;
+      }
+
+      .hfp-metric {
+        min-height: 0;
+      }
+
+      .hfp-outcome__aside {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="home.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <button class="nav__cta" id="nav-copy-email" type="button" aria-label="Copy email address">
+        <span class="nav__cta-label">Get in touch</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html" aria-current="page">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+  <article class="csd csd-case--hcuk-preview">
+
+    <div class="csd-back-wrap">
+      <a class="csd-back" href="case-studies.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Case Studies
+      </a>
+    </div>
+
+    <section class="csd-hero">
+      <div class="csd-hero__inner">
+        <div class="csd-hero__top">
+          <span class="kicker csd-hero__kicker">Auto Finance &nbsp;·&nbsp; B2B2C</span>
+        </div>
+        <h1 class="csd-hero__title">
+          Hyundai<br>
+          <em class="italic">Finance.</em>
+        </h1>
+        <p class="csd-hero__date">May 2025 – Jul 2025</p>
+        <div class="csd-hero__body">
+          <p class="csd-hero__summary">
+            <strong>Enabling car dealers to do soft credit checks</strong>, so they could see indicative affordability early in the showroom conversation.
+          </p>
+          <p class="csd-hero__summary">
+            I led the design and delivery of a Soft Search MVP, combining dealer-led discovery with a more measurable approach to product improvement.
+          </p>
+        </div>
+      </div>
+      <div class="csd-hero__cover">
+        <div class="csd-hero__cover-inner">
+          <img src="assets/HCUK covr.png" width="5760" height="5760" alt="Hyundai Finance, dealer soft search MVP interface" />
+        </div>
+      </div>
+
+      <section class="csd-meta" aria-label="Project details">
+        <dl class="csd-meta__grid">
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Team</dt>
+            <dd class="csd-meta__value">Product<span class="csd-meta__dot" aria-hidden="true">·</span>engineering &amp; design<span class="csd-meta__dot" aria-hidden="true">·</span>HCUK squad</dd>
+          </div>
+          <div class="csd-meta__item">
+            <dt class="csd-meta__label">Role</dt>
+            <dd class="csd-meta__value csd-meta__pills">
+              <span>SaaS design</span>
+              <span>User research</span>
+              <span>Responsive prototype</span>
+              <span>Initial design system</span>
+              <span>MVP delivery</span>
+            </dd>
+          </div>
+        </dl>
+      </section>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-context">
+      <div class="hfp-context">
+        <header class="hfp-lead">
+          <span class="kicker">Context</span>
+          <h2 id="hfp-context" class="csd-context__title">One platform. Three brands.</h2>
+          <p>eApply is HCUK’s strategic platform for managing dealer leads and progressing vehicle finance applications across Genesis, Hyundai and Kia.</p>
+        </header>
+        <figure class="hfp-frame">
+          <img src="assets/HCUK/Cover%20image.png" width="5760" height="4320" alt="eApply Kia Finance vehicle configuration flow: Sportage trim steps with exterior colour selection." loading="lazy" decoding="async" />
+        </figure>
+      </div>
+      <figure class="hfp-eco">
+        <div class="hfp-eco__node">
+          <p class="hfp-eco__tier">Parent organisation</p>
+          <p class="hfp-eco__name">HCUK</p>
+        </div>
+        <div class="hfp-eco__stem" aria-hidden="true"></div>
+        <div class="hfp-eco__node hfp-eco__node--platform">
+          <p class="hfp-eco__tier">Shared platform</p>
+          <p class="hfp-eco__name">eApply</p>
+          <p class="hfp-eco__detail">Dealer leads and vehicle finance applications</p>
+        </div>
+        <div class="hfp-eco__stem" aria-hidden="true"></div>
+        <div class="hfp-eco__brands-wrap">
+          <p class="hfp-eco__tier hfp-eco__brands-label">Customer-facing brands</p>
+          <ul class="hfp-eco__brands">
+            <li>Genesis Finance</li>
+            <li>Hyundai Finance</li>
+            <li>Kia Finance</li>
+          </ul>
+        </div>
+        <div class="hfp-eco__stem" aria-hidden="true"></div>
+        <div class="hfp-eco__node hfp-eco__node--dealers">
+          <p class="hfp-eco__tier">Dealer teams</p>
+          <p class="hfp-eco__name">Manage leads and progress applications</p>
+        </div>
+      </figure>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-challenge">
+      <header class="hfp-lead">
+        <span class="kicker">The challenge</span>
+        <h2 id="hfp-challenge" class="csd-context__title">Shipping features wasn’t enough.</h2>
+        <p>eApply had been evolving for years, with new features being shipped to support dealers managing finance applications. But HCUK was under pressure to demonstrate the value of its investment in the platform, including the engineering effort and consultancy spend behind it.</p>
+        <p>I identified a gap: the team needed a clearer way to connect product development to measurable business outcomes and understand where the dealer experience could improve. Shipping features alone wasn’t enough to demonstrate impact.</p>
+      </header>
+      <div class="hfp-challenge">
+        <article>
+          <div>
+            <p class="hfp-challenge__index">01</p>
+            <h3>Improve the experience</h3>
+          </div>
+          <p>Reduce friction in the dealer-led finance journey, helping dealers progress applications and customers make more confident decisions.</p>
+        </article>
+        <article>
+          <div>
+            <p class="hfp-challenge__index">02</p>
+            <h3>Demonstrate business value</h3>
+          </div>
+          <p>Connect product objectives to measurable business outcomes and user behaviour, creating a clearer basis for evaluating product performance and future investment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-kpi">
+      <header class="hfp-lead">
+        <span class="kicker">Measurement</span>
+        <h2 id="hfp-kpi" class="csd-context__title">Connecting product goals to measurable outcomes.</h2>
+      </header>
+      <div class="hfp-prose">
+        <p>I facilitated workshops with client, data and engineering stakeholders to establish five business objectives and map them to KPIs and UX-focused behavioural metrics.</p>
+        <p>We initially proposed <strong>proposals accepted per month</strong> as the North Star Metric. Through stakeholder discussion, we shifted the focus to <strong>finance penetration</strong>, a broader measure more closely aligned with the business outcome HCUK wanted to understand.</p>
+        <p>An analytics consultant was subsequently hired to develop the platform’s instrumentation, helping establish the foundations for measuring performance.</p>
+      </div>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">A shift in the North Star</h3>
+        <div class="hfp-flow">
+          <div class="hfp-flow__step">
+            <p class="hfp-flow__label">Initial proposal</p>
+            <p class="hfp-flow__name">Proposals accepted per month</p>
+          </div>
+          <div class="hfp-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="hfp-flow__step hfp-flow__step--mid">
+            <p class="hfp-flow__label">Stakeholder discussion</p>
+            <p class="hfp-flow__name">Client, data and engineering</p>
+          </div>
+          <div class="hfp-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div class="hfp-flow__step hfp-flow__step--chosen">
+            <p class="hfp-flow__label">Prioritised metric</p>
+            <p class="hfp-flow__name">Finance penetration</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">Five business objectives</h3>
+        <ol class="hfp-objectives">
+          <li>
+            <span class="hfp-objectives__num">01</span>
+            <p>Increase the number of customers who convert from a quote to a submitted proposal.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">02</span>
+            <p>Increase dealer usage of the eApply platform.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">03</span>
+            <p>Increase the used car acceptance rate.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">04</span>
+            <p>Increase usage of the inline EV tool.</p>
+          </li>
+          <li>
+            <span class="hfp-objectives__num">05</span>
+            <p>Increase usage of the standalone EV tool.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">How the layers connect</h3>
+        <ol class="hfp-layers" aria-label="Measurement framework, from business objectives through to instrumentation">
+          <li>
+            <span class="hfp-layers__num">01</span>
+            <p>Business objectives</p>
+          </li>
+          <li>
+            <span class="hfp-layers__num">02</span>
+            <p>KPIs</p>
+          </li>
+          <li>
+            <span class="hfp-layers__num">03</span>
+            <p>UX-focused behavioural metrics</p>
+          </li>
+          <li>
+            <span class="hfp-layers__num">04</span>
+            <p>Instrumentation</p>
+          </li>
+        </ol>
+        <p class="hfp-caption">This framework connected business priorities to the product behaviours that could help explain performance. It illustrates the approach. Individual metric definitions are not reproduced here, and it does not show metrics that were already implemented or being tracked.</p>
+      </div>
+    </section>
+
+    <section class="hfp-section hfp-bridge" aria-labelledby="hfp-bridge">
+      <header class="hfp-lead">
+        <span class="kicker">Discovery</span>
+        <h2 id="hfp-bridge" class="csd-context__title">Turning product priorities into a better dealer experience.</h2>
+        <p>With the wider challenge of improving the dealer experience in mind, I turned to Soft Search, an initiative already on HCUK’s roadmap. The opportunity was to make the finance conversation less intimidating for customers and reduce friction for dealers before a full application was submitted.</p>
+        <p>Dealer conversations highlighted the practical challenges behind this opportunity: customer hesitation, concerns about rejection and repeated data entry.</p>
+      </header>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-discovery">
+      <header class="hfp-lead">
+        <span class="kicker">Journey</span>
+        <h2 id="hfp-discovery" class="csd-context__title">The friction was happening in the showroom.</h2>
+      </header>
+      <figure class="hfp-flowfig">
+        <div class="hfp-flowfig__scroll" tabindex="0" role="region" aria-label="Dealer soft search journey. Scroll horizontally to see the full flow.">
+          <img
+            src="assets/HCUK/Soft%20search%20-%20user%20flow%20happy%20path.png"
+            width="15960"
+            height="2568"
+            alt="User flow diagram: dealer soft search happy path from eApply dashboard through customer profile, application steps, address history decisions, review, and results."
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="hfp-caption">Happy path from the dashboard to results. Scroll sideways for the full flow, including address history when occupation is under three years.</figcaption>
+      </figure>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-design">
+      <header class="hfp-lead">
+        <span class="kicker">Design</span>
+        <h2 id="hfp-design" class="csd-context__title">Making the results easier to understand.</h2>
+        <p>Dealer feedback showed that results could feel too harsh and important information could be missed. I refined the hierarchy, introduced more reassuring cues and added an explanatory step.</p>
+      </header>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">When dealers took the wheel</h3>
+        <ul class="hfp-shots">
+          <li>
+            <figure>
+              <img src="assets/HCUK/New%20Soft%20search%20low.png" width="1560" height="1497" alt="Soft search results: circular gauge showing low likelihood of receiving finance." loading="lazy" decoding="async" />
+              <figcaption>Results felt too harsh</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="assets/HCUK/New%20Indicative.png" width="1560" height="1497" alt="Pre-qualification results modal with explanatory copy and indicative-results disclaimer." loading="lazy" decoding="async" />
+              <figcaption>Important copy was missed</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="assets/HCUK/New%20Insufficient.png" width="1560" height="1497" alt="System feedback: please check the details submitted, with return and review actions." loading="lazy" decoding="async" />
+              <figcaption>System feedback was unclear</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="csd-pullquote" aria-label="Dealer feedback">
+      <span class="kicker csd-pullquote__kicker">User testing feedback</span>
+      <figure class="csd-pullquote__inner">
+        <blockquote class="csd-pullquote__text">
+          “We don’t want to embarrass the customer, particularly if we’re presenting this in the showroom. Showing someone a low score could make them walk out and be embarrassed.”
+        </blockquote>
+        <figcaption class="csd-pullquote__attr">
+          <span class="csd-pullquote__name">Dealer</span>
+          <span class="csd-pullquote__role">Kia dealership</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-refined">
+      <header class="hfp-lead">
+        <span class="kicker">Iteration</span>
+        <h2 id="hfp-refined" class="csd-context__title">From harsh to gentle results.</h2>
+      </header>
+      <ul class="hfp-shots">
+        <li>
+          <figure>
+            <img src="assets/HCUK/New%20Muted%20pallette.png" width="1560" height="1497" alt="Refined soft search gauges using a muted peach and orange palette for low likelihood states." loading="lazy" decoding="async" />
+            <figcaption>A more reassuring result</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="assets/HCUK/New%20Insufficent%20iteration.png" width="1560" height="1497" alt="Iteration of insufficient trace messaging: clearer copy and stronger friction before continuing." loading="lazy" decoding="async" />
+            <figcaption>An explanatory step</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="assets/HCUK/New%20Indicative.png" width="1560" height="1497" alt="Pre-qualification results with indicative disclaimer highlighted for visibility." loading="lazy" decoding="async" />
+            <figcaption>Clearer results and messaging</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-delivery">
+      <header class="hfp-lead">
+        <span class="kicker">Delivery</span>
+        <h2 id="hfp-delivery" class="csd-context__title">A consistent experience across three brands.</h2>
+      </header>
+      <div class="hfp-prose">
+        <p>I worked with the wider team to deliver responsive Soft Search experiences across Genesis, Hyundai and Kia, including refined results and error states, and finance compliance sign-off.</p>
+        <p>I also established an initial lightweight design system using semantic tokens and reusable responsive components.</p>
+      </div>
+
+      <figure class="hfp-wide">
+        <img src="assets/HCUK/Branded%20mockups.png" width="4800" height="3600" alt="Pre-qualification results shown for Hyundai Finance and Genesis Finance." loading="lazy" decoding="async" />
+        <figcaption>The same results screen, carried across the finance brands.</figcaption>
+      </figure>
+
+      <figure class="hfp-wide">
+        <img src="assets/HCUK/Responsive%20mockups.png" width="1024" height="394" alt="Kia Finance pre-qualification results on desktop, tablet, and mobile." loading="lazy" decoding="async" />
+        <figcaption>Responsive layouts for web, tablet and mobile.</figcaption>
+      </figure>
+
+      <figure class="hfp-wide">
+        <div class="csd-video__frame">
+          <video src="assets/HCUK/440_720x30_shots_so.mp4" controls playsinline preload="metadata" title="Hyundai Finance dealer soft search prototype"></video>
+        </div>
+        <figcaption class="csd-video__caption">Prototype of self-serve journey</figcaption>
+      </figure>
+
+      <div class="hfp-block">
+        <h3 class="hfp-subhead">Initial design system</h3>
+        <div class="hfp-ds">
+          <figure>
+            <div class="hfp-ds__pair">
+              <img src="assets/HCUK/Token%201.png" width="2330" height="1086" alt="Figma Alias variables: primary colour scales for Kia, Hyundai, and Genesis." loading="lazy" decoding="async" />
+              <img src="assets/HCUK/Token%202.png" width="1575" height="1380" alt="Figma Mapped variables: semantic text and icon tokens." loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Semantic tokens</figcaption>
+          </figure>
+          <figure>
+            <div class="hfp-ds__pair">
+              <img src="assets/HCUK/Component%201.png" width="1575" height="1380" alt="Design system UI: primary, secondary, and text link components." loading="lazy" decoding="async" />
+              <img src="assets/HCUK/Component%202.png" width="2001" height="750" alt="Design system UI: text input patterns and states." loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Shared components</figcaption>
+          </figure>
+        </div>
+        <p class="hfp-caption">A practical baseline for what we shipped, not a full design system.</p>
+      </div>
+
+    </section>
+
+    <section class="hfp-section hfp-outcome" aria-labelledby="hfp-outcome">
+      <header class="hfp-lead">
+        <span class="kicker">Outcome</span>
+        <h2 id="hfp-outcome" class="csd-context__title">A positive signal, with clearer measurement priorities.</h2>
+        <p>The pilot went live across Genesis, Hyundai and Kia.</p>
+      </header>
+      <div class="hfp-outcome__grid">
+        <div class="hfp-metric">
+          <p class="hfp-metric__value">4<span>%</span></p>
+          <p class="hfp-metric__label">Reported uplift in proposal acceptance.</p>
+          <p class="hfp-metric__caption">Reported following the pilot; attribution and measurement details are not established in this case study.</p>
+        </div>
+        <div class="hfp-outcome__aside">
+          <h3>Clearer measurement priorities</h3>
+          <p>Business objectives, KPIs and UX-focused behavioural metrics were mapped, with subsequent instrumentation work to be developed by an analytics consultant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-explore" aria-labelledby="cs-explore-heading">
+      <h2 id="cs-explore-heading" class="cs-explore__heading">More to explore.</h2>
+      <ul class="cs-explore__grid" role="list">
+        <li>
+          <a class="cs-explore__card" href="gwi.html" aria-label="GWI, Reimagining user management for an AI-driven platform">
+            <img class="cs-explore__img" src="assets/GWI/API%20cover.png" alt="" />
+            <span class="cs-explore__title">Reimagining user management for an AI-driven platform</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="planning-inspectorate.html" aria-label="Planning Inspectorate, Reducing file processing from days to minutes">
+            <img class="cs-explore__img" src="assets/PINS/PINS cover.png" alt="" />
+            <span class="cs-explore__title">Reducing file processing from days to minutes</span>
+          </a>
+        </li>
+        <li>
+          <a class="cs-explore__card" href="toyota.html" aria-label="Toyota experimentation">
+            <img class="cs-explore__img" src="assets/Toyota/343shots_so.png" alt="" />
+            <span class="cs-explore__title">Toyota experimentation</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </article>
+
+  <footer id="contact" class="foot">
+    <div class="foot__inner">
+      <span class="kicker">06 · End of Side A</span>
+      <h2 class="foot__title">
+        <span>Got a record </span>
+        <span class="italic">worth pressing?</span>
+      </h2>
+      <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+        <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        <span class="nav__cta-label">zenazerai@gmail.com</span>
+      </button>
+
+      <div class="foot__row">
+        <div class="foot__links">
+          <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="foot__meta">
+          <span class="kicker">© Zena Zerai · 2026</span>
+          <span class="kicker">London</span>
+        </div>
+      </div>
+      <div class="foot__cursor">
+        <span class="kicker">Built with</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="kicker">Cursor</span>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>
