@@ -1200,7 +1200,7 @@ function mountSpotifyFab() {
 
         const GONE_Y = -(window.innerHeight * 0.55 + 600);
 
-        cards.forEach((card, i) => {
+        const frames = cards.map((card, i) => {
           let ty, sc, op = 1, ro = 0, zi, pe;
 
           if (i < front) {
@@ -1226,11 +1226,40 @@ function mountSpotifyFab() {
             pe = 'auto';
           }
 
+          return { ty, sc, op, ro, zi, pe };
+        });
+
+        /* Sleeve heights differ. A taller card further back (Planning
+           Inspectorate) otherwise extends above a shorter card in front
+           (Hyundai). The 4px accent plus the 14px corner radius still
+           read as a colored top edge unless the card behind is tucked
+           well below the one in front.
+           Keep each card's top at least TOP_COVER below the card in front,
+           and its bottom just below that card so the deck lip stays at
+           the bottom. DOM order stays the stack order. */
+        const PEEK = 20;
+        const TOP_COVER = 36;
+        let prevTop = null;
+        let prevBottom = null;
+        for (let i = front; i < N; i++) {
+          const frame = frames[i];
+          const half = (cards[i].offsetHeight * frame.sc) / 2;
+          if (!(half > 0)) continue;
+          if (prevTop != null) {
+            const minTy = Math.max(prevTop + TOP_COVER + half, prevBottom + PEEK - half);
+            if (frame.ty < minTy) frame.ty = minTy;
+          }
+          prevTop = frame.ty - half;
+          prevBottom = frame.ty + half;
+        }
+
+        frames.forEach((frame, i) => {
+          const card = cards[i];
           card.style.transform =
-            `translate(-50%, calc(-50% + ${ty}px)) scale(${sc}) rotate(${ro}deg)`;
-          card.style.opacity       = String(Math.max(0, op));
-          card.style.zIndex        = String(zi);
-          card.style.pointerEvents = pe;
+            `translate(-50%, calc(-50% + ${frame.ty}px)) scale(${frame.sc}) rotate(${frame.ro}deg)`;
+          card.style.opacity       = String(Math.max(0, frame.op));
+          card.style.zIndex        = String(frame.zi);
+          card.style.pointerEvents = frame.pe;
         });
       }
 
