@@ -165,6 +165,7 @@
 
     .csd-case--gwi-preview .gwi-prev-report-split .gwi-prev-decision {
       max-width: none;
+      gap: 8px;
     }
 
     .csd-case--gwi-preview .gwi-prev-bridge {
@@ -223,10 +224,23 @@
     .csd-case--gwi-preview .gwi-prev-opps,
     .csd-case--gwi-preview .gwi-prev-questions,
     .csd-case--gwi-preview .gwi-prev-themes,
+    .csd-case--gwi-preview .gwi-prev-rules__principles,
     .csd-case--gwi-preview .gwi-prev-audiences ul {
       list-style: none;
       margin: 0;
       padding: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps > li,
+    .csd-case--gwi-preview .gwi-prev-themes > li,
+    .csd-case--gwi-preview .gwi-prev-rules__principles > li {
+      list-style: none;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-opps > li::marker,
+    .csd-case--gwi-preview .gwi-prev-themes > li::marker,
+    .csd-case--gwi-preview .gwi-prev-rules__principles > li::marker {
+      content: none;
     }
 
     .csd-case--gwi-preview .gwi-prev-lead {
@@ -264,6 +278,8 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: clamp(16px, 2vw, 24px);
+      min-width: 0;
+      max-width: 100%;
     }
 
     .csd-case--gwi-preview .gwi-prev-process__card {
@@ -274,23 +290,20 @@
     }
 
     .csd-case--gwi-preview .gwi-prev-process__frame {
-      aspect-ratio: 16 / 10;
       overflow: hidden;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: var(--surface);
+      min-width: 0;
     }
 
     .csd-case--gwi-preview .gwi-prev-process__frame img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
       object-position: center;
       display: block;
-    }
-
-    .csd-case--gwi-preview .gwi-prev-process__frame--board img {
-      object-position: left center;
     }
 
     .csd-case--gwi-preview .gwi-prev-process__card h3 {
@@ -384,6 +397,31 @@
       gap: 14px;
       align-content: start;
       min-width: 0;
+      padding: clamp(14px, 1.6vw, 20px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-audiences__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-prev-audiences__name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-audiences__icon {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+      color: var(--muted);
     }
 
     .csd-case--gwi-preview .gwi-prev-audiences li {
@@ -587,6 +625,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 14px;
       margin: 4px 0 0;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .csd-case--gwi-preview .gwi-prev-compare__pair figure {
@@ -604,15 +644,9 @@
       width: 100%;
       max-width: 100%;
       height: auto;
-      aspect-ratio: 1024 / 879;
       object-fit: contain;
       object-position: center;
       border-radius: var(--radius);
-      background-color: #7c7e93;
-    }
-
-    .csd-case--gwi-preview .gwi-prev-compare__pair img[src*="role-consequences-before"] {
-      background-color: #181430;
     }
 
     .csd-case--gwi-preview .gwi-prev-eyebrow--muted {
@@ -806,7 +840,6 @@
     }
 
     .csd-case--gwi-preview .gwi-prev-rules__principles {
-      list-style: none;
       margin: 0;
       padding: 0;
       display: grid;
@@ -887,8 +920,22 @@
       text-transform: uppercase;
     }
 
-    .csd-case--gwi-preview .gwi-prev-concept .csd-video__frame {
+    .csd-case--gwi-preview .gwi-prev-concept .csd-video__frame,
+    .csd-case--gwi-preview .gwi-prev-shot--centrepiece .csd-video__frame {
       width: 100%;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .csd-case--gwi-preview .gwi-prev-decision__num {
+      margin: 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--muted);
     }
 
     .csd-case--gwi-preview .gwi-prev-shot--centrepiece .gwi-prev-concept-label {
@@ -920,7 +967,7 @@
       font-size: clamp(20px, 2vw, 26px);
       line-height: 1.15;
       letter-spacing: -0.02em;
-      color: var(--cream);
+      color: var(--amber);
     }
 
     .csd-case--gwi-preview .gwi-prev-outcomes__row p {
@@ -1038,7 +1085,7 @@
     }
 
     .csd-case--gwi-preview .gwi-prev-measures__row:last-child {
-      border-bottom: 1px solid var(--line);
+      border-bottom: none;
     }
 
     .csd-case--gwi-preview .gwi-prev-measures__cat {
@@ -1082,6 +1129,7 @@
       .csd-case--gwi-preview .gwi-prev-measures {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: none;
+        gap: 14px;
       }
 
       .csd-case--gwi-preview .gwi-prev-measures__col,
@@ -1092,10 +1140,14 @@
         grid-row: auto;
         grid-template-rows: none;
         border-left: none;
+        padding: 16px 16px 4px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
       }
 
       .csd-case--gwi-preview .gwi-prev-measures__col + .gwi-prev-measures__col {
-        margin-top: clamp(28px, 7vw, 40px);
+        margin-top: 0;
       }
 
       .csd-case--gwi-preview .gwi-prev-measures__index,
@@ -1230,12 +1282,20 @@
       max-width: 100%;
     }
 
+    .csd-case--gwi-preview .gwi-prev-report-split img,
+    .csd-case--gwi-preview .gwi-prev-bridge__shots img,
+    .csd-case--gwi-preview .gwi-prev-commercial__model img,
+    .csd-case--gwi-preview .gwi-prev-compare__pair img,
+    .csd-case--gwi-preview .gwi-prev-process__frame img {
+      max-width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+    }
+
     .csd-case--gwi-preview .gwi-prev-commercial__model img {
       display: block;
       width: 100%;
-      max-width: 100%;
-      height: auto;
-      object-fit: contain;
       object-position: center;
       border-radius: var(--radius);
       border: 1px solid var(--line);
@@ -1256,6 +1316,33 @@
       .csd-case--gwi-preview .gwi-prev-rules__layout {
         grid-template-columns: 1fr;
       }
+
+      .csd-case--gwi-preview .gwi-prev-report-split__statements {
+        gap: 12px;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-report-split .gwi-prev-decision {
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 14px;
+        row-gap: 6px;
+        align-items: start;
+        max-width: none;
+        padding: 16px 18px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-report-split .gwi-prev-decision__num {
+        grid-row: 1 / span 2;
+        font-size: clamp(20px, 1.8vw, 26px);
+        color: var(--cream);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-report-split .gwi-prev-decision h3,
+      .csd-case--gwi-preview .gwi-prev-report-split .gwi-prev-decision > p:not(.gwi-prev-decision__num) {
+        grid-column: 2;
+      }
     }
 
     @media (max-width: 800px) {
@@ -1263,7 +1350,6 @@
         min-height: 0;
       }
 
-      .csd-case--gwi-preview .gwi-prev-process__grid,
       .csd-case--gwi-preview .gwi-prev-themes,
       .csd-case--gwi-preview .gwi-prev-audiences__cols {
         grid-template-columns: 1fr 1fr;
@@ -1278,13 +1364,43 @@
       .csd-case--gwi-preview .gwi-prev-opps,
       .csd-case--gwi-preview .gwi-prev-questions,
       .csd-case--gwi-preview .gwi-prev-outcomes__row,
-      .csd-case--gwi-preview .gwi-prev-process__grid,
       .csd-case--gwi-preview .gwi-prev-themes,
       .csd-case--gwi-preview .gwi-prev-audiences__cols,
-      .csd-case--gwi-preview .gwi-prev-compare__pair,
-      .csd-case--gwi-preview .gwi-prev-bridge__shots,
       .csd-case--gwi-preview .gwi-prev-rules__principles {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-pivot__block {
+        gap: 12px;
+        padding: 16px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-pivot__chips {
+        gap: 8px;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-pivot__chips li {
+        min-height: 72px;
+        padding: 14px 12px;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-rules__principles li {
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 12px;
+        row-gap: 6px;
+        align-items: start;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-rules__principles .gwi-prev-rules__num {
+        grid-row: 1 / span 2;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-rules__principles h3,
+      .csd-case--gwi-preview .gwi-prev-rules__principles li > p:not(.gwi-prev-rules__num) {
+        grid-column: 2;
       }
 
       .csd-case--gwi-preview .gwi-prev-rules__credit,
@@ -1293,21 +1409,44 @@
         letter-spacing: 0.08em;
       }
 
+      .csd-case--gwi-preview .gwi-prev-matrix {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-matrix table {
+        width: max-content;
+        min-width: 100%;
+        table-layout: auto;
+      }
+
       .csd-case--gwi-preview .gwi-prev-matrix th,
       .csd-case--gwi-preview .gwi-prev-matrix td {
-        padding: 12px 4px;
+        padding: 11px 8px;
       }
 
       .csd-case--gwi-preview .gwi-prev-matrix thead th {
         font-size: 10px;
-        letter-spacing: 0.06em;
-        padding-top: 14px;
-        padding-bottom: 14px;
+        letter-spacing: 0.08em;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        white-space: nowrap;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-matrix thead th:first-child {
+        width: auto;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-matrix thead th:not(:first-child) {
+        width: auto;
+        min-width: 4.6rem;
       }
 
       .csd-case--gwi-preview .gwi-prev-matrix thead th:first-child,
       .csd-case--gwi-preview .gwi-prev-matrix tbody th {
-        padding-left: 12px;
+        padding-left: 8px;
       }
 
       .csd-case--gwi-preview .gwi-prev-matrix tbody th {
@@ -1325,6 +1464,110 @@
         width: 100%;
       }
 
+    }
+
+    @media (max-width: 900px) {
+      .csd-case--gwi-preview .gwi-prev-process,
+      .csd-case--gwi-preview .gwi-prev-compare,
+      .csd-case--gwi-preview .gwi-prev-bridge {
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: clip;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-process__grid,
+      .csd-case--gwi-preview .gwi-prev-compare__pair,
+      .csd-case--gwi-preview .gwi-prev-bridge__shots {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        grid-template-columns: none;
+        gap: 12px;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-process__grid::-webkit-scrollbar,
+      .csd-case--gwi-preview .gwi-prev-compare__pair::-webkit-scrollbar,
+      .csd-case--gwi-preview .gwi-prev-bridge__shots::-webkit-scrollbar {
+        display: none;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-process__card,
+      .csd-case--gwi-preview .gwi-prev-compare__pair figure,
+      .csd-case--gwi-preview .gwi-prev-bridge__shots figure {
+        flex: 0 0 82%;
+        width: 82%;
+        max-width: 82%;
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-process__frame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-process__frame img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-compare__pair figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+
+      .csd-case--gwi-preview .gwi-prev-compare__pair img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 0;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-bridge__shots figure {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .csd-case--gwi-preview .gwi-prev-bridge__shots img {
+        display: block;
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        max-width: 100%;
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
+        background: var(--surface);
+      }
     }
   </style>
 </head>
@@ -1544,31 +1787,52 @@
         </div>
         <div class="gwi-prev-audiences__cols">
           <div>
-            <p class="gwi-prev-eyebrow">External</p>
+            <p class="gwi-prev-eyebrow gwi-prev-audiences__kicker">
+              <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.6 3.6 9s-1.2 6.4-3.6 9c-2.4-2.6-3.6-5.6-3.6-9s1.2-6.4 3.6-9z"/></svg>
+              External
+            </p>
             <ul>
               <li>
-                <strong>Account administrators</strong>
+                <span class="gwi-prev-audiences__name">
+                  <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.2-2.5 3.5-4 7-4s5.8 1.5 7 4"/></svg>
+                  <strong>Account administrators</strong>
+                </span>
                 <span class="gwi-prev-audiences__outcome">Self-serve control over users and access.</span>
               </li>
               <li>
-                <strong>API customers and developers</strong>
+                <span class="gwi-prev-audiences__name">
+                  <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8L5 12l3 4M16 8l3 4-3 4"/></svg>
+                  <strong>API customers and developers</strong>
+                </span>
                 <span class="gwi-prev-audiences__outcome">Visibility into API/MCP usage.</span>
               </li>
             </ul>
           </div>
           <div>
-            <p class="gwi-prev-eyebrow">Internal</p>
+            <p class="gwi-prev-eyebrow gwi-prev-audiences__kicker">
+              <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V7l8-3 8 3v13"/><path d="M9 20v-5h6v5M4 20h16"/></svg>
+              Internal
+            </p>
             <ul>
               <li>
-                <strong>Customer Success and Product Experience</strong>
+                <span class="gwi-prev-audiences__name">
+                  <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14v8H8l-3 3V7z"/></svg>
+                  <strong>Customer Success and Product Experience</strong>
+                </span>
                 <span class="gwi-prev-audiences__outcome">Less manual administration.</span>
               </li>
               <li>
-                <strong>Account managers</strong>
+                <span class="gwi-prev-audiences__name">
+                  <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18"/></svg>
+                  <strong>Account managers</strong>
+                </span>
                 <span class="gwi-prev-audiences__outcome">Better insight into customer usage.</span>
               </li>
               <li>
-                <strong>Engineering and Product</strong>
+                <span class="gwi-prev-audiences__name">
+                  <svg class="gwi-prev-audiences__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5L12 12 4 7.5 12 3zM4 12l8 4.5L20 12M4 16.5L12 21l8-4.5"/></svg>
+                  <strong>Engineering and Product</strong>
+                </span>
                 <span class="gwi-prev-audiences__outcome">Scalable platform governance.</span>
               </li>
             </ul>
@@ -1842,7 +2106,7 @@
       <figure class="gwi-prev-shot gwi-prev-shot--centrepiece gwi-prev-band">
         <div class="csd-video__frame">
           <iframe
-            src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=API_walkthrough_gambrv"
+              src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=API_walkthrough_gambrv&amp;player%5Bautoplay%5D=true&amp;player%5Bmuted%5D=true&amp;player%5Bloop%5D=true&amp;player%5Bplaysinline%5D=true&amp;player%5Bcontrols%5D=true"
             title="Shipped API dashboard walkthrough"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -1871,17 +2135,20 @@
           </figure>
           <div class="gwi-prev-report-split__statements">
             <div class="gwi-prev-decision">
-              <h3>1. Separate API from MCP</h3>
+              <p class="gwi-prev-decision__num">01</p>
+              <h3>Separate API from MCP</h3>
               <p>The design separates API and MCP usage so customers can understand distinct consumption patterns.</p>
             </div>
 
             <div class="gwi-prev-decision">
-              <h3>2. Show meaningful usage</h3>
+              <p class="gwi-prev-decision__num">02</p>
+              <h3>Show meaningful usage</h3>
               <p>The reporting prioritises meaningful usage information rather than simply showing requested data.</p>
             </div>
 
             <div class="gwi-prev-decision">
-              <h3>3. Flexibility without a filter wall</h3>
+              <p class="gwi-prev-decision__num">03</p>
+              <h3>Flexibility without a filter wall</h3>
               <p>The design provides flexibility without overwhelming customers with a wall of filters.</p>
             </div>
           </div>
