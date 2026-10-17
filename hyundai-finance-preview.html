@@ -71,14 +71,8 @@
       padding-bottom: clamp(36px, 5vw, 56px);
     }
 
-    .csd-case--hcuk-preview .hfp-bridge {
-      padding-bottom: clamp(8px, 1.5vw, 16px);
-      border-bottom: none;
-      gap: 0;
-    }
-
-    .csd-case--hcuk-preview .hfp-bridge + .hfp-section {
-      padding-top: clamp(28px, 4vw, 48px);
+    .csd-case--hcuk-preview .hfp-challenge--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .csd-case--hcuk-preview .hfp-lead {
@@ -1448,6 +1442,7 @@
 
     @media (max-width: 960px) {
       .hfp-challenge,
+      .csd-case--hcuk-preview .hfp-challenge--three,
       .hfp-flow,
       .hfp-devices,
       .hfp-outcome__grid,
@@ -1807,13 +1802,73 @@
       </div>
     </section>
 
-    <section class="hfp-section hfp-bridge" aria-labelledby="hfp-bridge">
+    <section class="hfp-section" aria-labelledby="hfp-bridge">
       <header class="hfp-lead">
-        <span class="kicker">Discovery</span>
-        <h2 id="hfp-bridge" class="csd-context__title">Turning product priorities into a better dealer experience.</h2>
-        <p>With the wider challenge of improving the dealer experience in mind, I turned to Soft Search, an initiative already on HCUK’s roadmap. The opportunity was to make the finance conversation less intimidating for customers and reduce friction for dealers before a full application was submitted.</p>
-        <p>Dealer conversations highlighted the practical challenges behind this opportunity: customer hesitation, concerns about rejection and repeated data entry.</p>
+        <span class="kicker">Soft Search</span>
+        <h2 id="hfp-bridge" class="csd-context__title">Turning business objectives into product decisions.</h2>
+        <p>Soft Search was an opportunity to use the finance journey to address the business goals identified during discovery: improving customer conversion, increasing acceptance rates for used cars, and giving dealers greater clarity without discouraging customers from proceeding.</p>
+        <p>These objectives helped frame what the feature needed to achieve before we defined the MVP scope.</p>
       </header>
+      <div class="hfp-block">
+        <header class="hfp-lead">
+          <h3 class="hfp-subhead">Business objectives</h3>
+          <p>Stakeholder framing from discovery: what the Soft Search work needed to move, before we locked MVP scope.</p>
+        </header>
+        <div class="hfp-challenge hfp-challenge--three">
+          <article>
+            <div>
+              <p class="hfp-challenge__index">01</p>
+              <h3>Increase customer conversion</h3>
+            </div>
+            <p>Move more customers from a quote to a submitted proposal.</p>
+          </article>
+          <article>
+            <div>
+              <p class="hfp-challenge__index">02</p>
+              <h3>Improve acceptance rates</h3>
+            </div>
+            <p>Focus on acceptance rates for used cars in particular.</p>
+          </article>
+          <article>
+            <div>
+              <p class="hfp-challenge__index">03</p>
+              <h3>Provide dealers with clarity</h3>
+            </div>
+            <p>Help dealers understand a customer’s indicative affordability without deterring them from proceeding with a proposal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-dealer-pain" aria-labelledby="hcuk-dealer-pain-heading">
+      <header class="csd-dealer-pain__head">
+        <span class="kicker">From discovery</span>
+        <h2 id="hcuk-dealer-pain-heading" class="csd-dealer-pain__title">Pain points dealers <em class="italic">kept repeating.</em></h2>
+        <p class="csd-dealer-pain__lede">Themes from calls and workshops: the friction on the forecourt behind the business case.</p>
+      </header>
+      <ol class="csd-dealer-pain__list">
+        <li class="csd-dealer-pain__item">
+          <span class="csd-dealer-pain__marker" aria-hidden="true"></span>
+          <div class="csd-dealer-pain__body">
+            <span class="csd-dealer-pain__tag">Showroom hesitation</span>
+            <p class="csd-dealer-pain__text">Customers hesitant to apply for finance, resulting in missed sales opportunities.</p>
+          </div>
+        </li>
+        <li class="csd-dealer-pain__item">
+          <span class="csd-dealer-pain__marker" aria-hidden="true"></span>
+          <div class="csd-dealer-pain__body">
+            <span class="csd-dealer-pain__tag">Negotiation dead-ends</span>
+            <p class="csd-dealer-pain__text">Time wasted &ldquo;haggling&rdquo; with customers whose applications were later rejected.</p>
+          </div>
+        </li>
+        <li class="csd-dealer-pain__item">
+          <span class="csd-dealer-pain__marker" aria-hidden="true"></span>
+          <div class="csd-dealer-pain__body">
+            <span class="csd-dealer-pain__tag">Broken hand-offs</span>
+            <p class="csd-dealer-pain__text">Painful double-keying of customer information into multiple systems.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <section class="hfp-section" aria-labelledby="hfp-discovery">
