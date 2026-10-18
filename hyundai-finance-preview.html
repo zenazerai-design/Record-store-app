@@ -1407,6 +1407,8 @@
       display: block;
       width: 100%;
       height: auto;
+      object-fit: contain;
+      object-position: center;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: var(--surface);
@@ -1472,6 +1474,13 @@
       width: auto;
       max-width: none;
       height: min(68vh, 620px);
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .hfp-pan__scroll {
+      min-width: 0;
+      max-width: 100%;
     }
 
     .hfp-ds {
@@ -1573,26 +1582,36 @@
       }
     }
 
-    @media (max-width: 720px) {
-      .hfp-objectives,
-      .hfp-layers,
-      .hfp-journey,
-      .hfp-swatches,
-      .hfp-desk,
-      .hfp-ds {
-        grid-template-columns: 1fr;
+    /* Same mobile image treatment as the GWI case study: groups become
+       scroll-snap carousels; very wide assets stay in a sideways scroller.
+       Image boxes keep their intrinsic ratio (height: auto, object-fit: contain). */
+    @media (max-width: 900px) {
+      .csd-case--hcuk-preview .hfp-block:has(.hfp-shots),
+      .csd-case--hcuk-preview .hfp-block:has(.hfp-ds),
+      .csd-case--hcuk-preview .hfp-flowfig,
+      .csd-case--hcuk-preview .hfp-pan,
+      .csd-case--hcuk-preview .hfp-context {
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: clip;
       }
 
       .csd-case--hcuk-preview .hfp-shots-hint {
         display: block;
       }
 
-      .csd-case--hcuk-preview .hfp-shots {
+      .csd-case--hcuk-preview .hfp-shots,
+      .csd-case--hcuk-preview .hfp-ds__pair {
         display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        grid-template-columns: none;
         gap: 12px;
         width: 100%;
+        min-width: 0;
         max-width: 100%;
         overflow-x: auto;
+        overflow-y: hidden;
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         scroll-padding-inline: 0;
@@ -1601,15 +1620,74 @@
         padding-bottom: 4px;
       }
 
-      .csd-case--hcuk-preview .hfp-shots::-webkit-scrollbar {
+      .csd-case--hcuk-preview .hfp-shots::-webkit-scrollbar,
+      .csd-case--hcuk-preview .hfp-ds__pair::-webkit-scrollbar {
         display: none;
       }
 
       .csd-case--hcuk-preview .hfp-shots > li {
-        flex: 0 0 86%;
+        flex: 0 0 82%;
+        width: 82%;
+        max-width: 82%;
+        min-width: 0;
         scroll-snap-align: start;
         scroll-snap-stop: always;
+      }
+
+      .csd-case--hcuk-preview .hfp-ds__pair img {
+        flex: 0 0 82%;
+        width: 82%;
+        max-width: 82%;
         min-width: 0;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+
+      .csd-case--hcuk-preview .hfp-shots img,
+      .csd-case--hcuk-preview .hfp-frame img,
+      .csd-case--hcuk-preview .hfp-wide:not(.hfp-pan) img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .csd-case--hcuk-preview .hfp-flowfig__scroll,
+      .csd-case--hcuk-preview .hfp-pan__scroll {
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--line) transparent;
+      }
+
+      .csd-case--hcuk-preview .hfp-flowfig__scroll img,
+      .csd-case--hcuk-preview .hfp-pan__scroll img {
+        width: auto;
+        max-width: none;
+        height: auto;
+        max-height: min(42vh, 260px);
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hfp-objectives,
+      .hfp-layers,
+      .hfp-journey,
+      .hfp-swatches,
+      .hfp-desk,
+      .hfp-ds {
+        grid-template-columns: 1fr;
       }
 
       .hfp-layers li + li {
@@ -2130,8 +2208,10 @@
         <figcaption>The same results screen, carried across the finance brands.</figcaption>
       </figure>
 
-      <figure class="hfp-wide">
-        <img src="assets/HCUK/Responsive%20mockups.png" width="1024" height="394" alt="Kia Finance pre-qualification results on desktop, tablet, and mobile." loading="lazy" decoding="async" />
+      <figure class="hfp-wide hfp-pan">
+        <div class="hfp-pan__scroll" tabindex="0" role="region" aria-label="Kia Finance pre-qualification results on desktop, tablet, and mobile. Scroll sideways.">
+          <img src="assets/HCUK/Responsive%20mockups.png" width="1024" height="394" alt="Kia Finance pre-qualification results on desktop, tablet, and mobile." loading="lazy" decoding="async" />
+        </div>
         <figcaption>Responsive layouts for web, tablet and mobile.</figcaption>
       </figure>
 
@@ -2144,6 +2224,7 @@
 
       <div class="hfp-block">
         <h3 class="hfp-subhead">Initial design system</h3>
+        <p class="hfp-shots-hint">Swipe</p>
         <div class="hfp-ds">
           <figure>
             <div class="hfp-ds__pair">
