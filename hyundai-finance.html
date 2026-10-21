@@ -417,12 +417,12 @@
 
     .hfp-challenge article {
       min-width: 0;
-      min-height: 280px;
-      padding: clamp(28px, 4vw, 48px);
+      min-height: 0;
+      padding: clamp(22px, 2.6vw, 32px);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
+      justify-content: flex-start;
+      gap: 16px;
     }
 
     .hfp-challenge article + article {
@@ -665,6 +665,189 @@
       max-width: 46rem;
       font-size: 13px;
       line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    /* Soft Search placement options */
+    .hfp-options {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .hfp-options__item {
+      margin: 0;
+      min-width: 0;
+      padding: 22px 20px 16px;
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--bg);
+    }
+
+    .hfp-options__item--chosen {
+      border-top-color: var(--cream);
+      background: color-mix(in srgb, var(--cream) 6%, var(--bg));
+    }
+
+    .hfp-options__index {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .hfp-options__choice {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      text-align: right;
+    }
+
+    .hfp-options h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(20px, 1.8vw, 26px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-options__desc {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    .hfp-options__consider {
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .hfp-options__consider summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0 2px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hfp-options__consider summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .hfp-options__consider summary::marker {
+      content: "";
+    }
+
+    .hfp-options__consider summary::after {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: -3px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .hfp-options__consider[open] summary::after {
+      margin-top: 2px;
+      transform: rotate(225deg);
+    }
+
+    .hfp-options__consider summary:focus-visible {
+      outline: 1px solid var(--cream);
+      outline-offset: 3px;
+    }
+
+    .hfp-options__consider ul {
+      list-style: none;
+      margin: 12px 0 4px;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .hfp-options__consider li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .hfp-options__consider li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      margin-top: calc(0.5lh - 3px);
+      border-radius: 50%;
+      background: var(--amber);
+      opacity: 0.85;
+    }
+
+    .hfp-decision {
+      display: grid;
+      grid-template-columns: minmax(14rem, 0.85fr) minmax(0, 1.5fr);
+      gap: clamp(18px, 3vw, 40px);
+      align-items: start;
+      padding: clamp(22px, 3vw, 32px);
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--cream);
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--cream) 8%, transparent) 0%,
+        transparent 160px
+      );
+      min-width: 0;
+    }
+
+    .hfp-decision h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .hfp-decision__body {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .hfp-decision__body p {
+      margin: 0;
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.6;
       color: var(--ink-soft);
     }
 
@@ -1523,6 +1706,48 @@
         border-top: 1px solid var(--line);
       }
 
+      .csd-case--hcuk-preview .hfp-options-hint {
+        display: block;
+      }
+
+      .hfp-options {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        gap: 12px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+
+      .hfp-options::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hfp-options__item {
+        flex: 0 0 calc(100% - 32px);
+        width: calc(100% - 32px);
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        box-shadow: none;
+      }
+
+      .hfp-decision {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 4px 0 0;
+        border: 0;
+        background: none;
+      }
+
+      .hfp-decision h3 {
+        font-size: 22px;
+      }
+
       .csd-case--hcuk-preview .hfp-challenge--objectives {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
@@ -2037,7 +2262,6 @@
         <span class="kicker">Soft Search</span>
         <h2 id="hfp-bridge" class="csd-context__title">Turning business objectives into product decisions.</h2>
         <p>Soft Search was an opportunity to use the finance journey to address the business goals identified during discovery: improving customer conversion, increasing acceptance rates for used cars, and giving dealers greater clarity without discouraging customers from proceeding.</p>
-        <p>These objectives helped frame what the feature needed to achieve before we defined the MVP scope.</p>
       </header>
       <div class="hfp-block">
         <header class="hfp-lead">
@@ -2099,6 +2323,62 @@
           </div>
         </li>
       </ol>
+    </section>
+
+    <section class="hfp-section" aria-labelledby="hfp-approach">
+      <header class="hfp-lead">
+        <span class="kicker">Soft Search / Product strategy</span>
+        <h2 id="hfp-approach" class="csd-context__title">Finding the right place for soft credit searches.</h2>
+        <p>Soft Search offered dealers an early read on indicative affordability, before a full application.</p>
+        <p>The challenge was deciding where in the customer journey to introduce it.</p>
+        <p>I worked with engineering and the Director of Innovation to work through the options.</p>
+      </header>
+      <p class="hfp-shots-hint hfp-options-hint">Swipe</p>
+      <ol class="hfp-options">
+        <li class="hfp-options__item">
+          <p class="hfp-options__index"><span>Option 01</span></p>
+          <h3>Self-serve on brand websites</h3>
+          <p class="hfp-options__desc">Customers check affordability before a dealership visit.</p>
+          <details class="hfp-options__consider">
+            <summary>Considerations</summary>
+            <ul>
+              <li>Reaches customers earlier in the journey.</li>
+              <li>Lead capture, dealer matching and follow-through get more complex.</li>
+            </ul>
+          </details>
+        </li>
+        <li class="hfp-options__item">
+          <p class="hfp-options__index"><span>Option 02</span></p>
+          <h3>Within the eApply journey</h3>
+          <p class="hfp-options__desc">Add the check to the existing finance application.</p>
+          <details class="hfp-options__consider">
+            <summary>Considerations</summary>
+            <ul>
+              <li>Builds on a platform and journey dealers already use.</li>
+              <li>Too late to ease hesitation before an application starts.</li>
+            </ul>
+          </details>
+        </li>
+        <li class="hfp-options__item hfp-options__item--chosen">
+          <p class="hfp-options__index"><span>Option 03</span><span class="hfp-options__choice">Initial MVP</span></p>
+          <h3>Dealer-led Soft Search</h3>
+          <p class="hfp-options__desc">Dealers introduce the check in the showroom conversation.</p>
+          <details class="hfp-options__consider">
+            <summary>Considerations</summary>
+            <ul>
+              <li>They explain the indicative result in context.</li>
+              <li>A controlled first step before a fully self-serve journey.</li>
+            </ul>
+          </details>
+        </li>
+      </ol>
+      <div class="hfp-decision">
+        <h3>Start with the dealer conversation.</h3>
+        <div class="hfp-decision__body">
+          <p>A dealer-led MVP: ease hesitation earlier, keep the first release focused, and learn before a broader self-serve journey.</p>
+          <p>I mapped the path from the eApply dashboard to the results, then refined it with dealer feedback.</p>
+        </div>
+      </div>
     </section>
 
     <section class="hfp-section" aria-labelledby="hfp-discovery">
