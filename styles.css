@@ -8312,7 +8312,8 @@ article.csd .csd-hero .kicker.csd-hero__kicker {
   margin: 0 0.45em;
   font-size: 1.65em;
   line-height: 0;
-  vertical-align: 0.12em;
+  /* Manrope middle dot sits high in the em; -0.1em centers it on the cap height */
+  vertical-align: -0.1em;
   color: var(--muted);
   font-weight: 600;
 }
