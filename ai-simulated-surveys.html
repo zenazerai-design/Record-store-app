@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+  (function () {
+    function insertBase(href) {
+      if (document.querySelector("base")) return;
+      var b = document.createElement("base");
+      b.href = href;
+      var head = document.head;
+      var cs = head.querySelector("meta[charset]");
+      if (!cs) { head.insertBefore(b, head.firstChild); return; }
+      if (cs.nextElementSibling) head.insertBefore(b, cs.nextElementSibling);
+      else head.appendChild(b);
+    }
+    if (location.protocol === "file:") {
+      try {
+        var u = new URL(location.href);
+        if (/\.html?$/i.test(u.pathname)) {
+          u.pathname = u.pathname.replace(/\/[^/]*$/, "/");
+          u.search = "";
+          u.hash = "";
+          insertBase(u.href);
+        }
+      } catch (e) {}
+      return;
+    }
+    var prefix = "/Record-store-app/";
+    var p = location.pathname;
+    if (p === "/Record-store-app" || p.indexOf(prefix) === 0) insertBase(prefix);
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self-serve AI-simulated research | Zena Zerai</title>
+  <meta name="description" content="In-flight work at GWI: shaping a self-serve AI-simulated research product, from survey creation and results to consumption, access and the questions still to test with customers." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body:has(article.survey-flight) #spotify-fab {
+      display: none !important;
+    }
+
+    .survey-flight {
+      padding-bottom: clamp(56px, 6vw, 88px);
+    }
+
+    .survey-flight .csd-hero {
+      row-gap: clamp(22px, 2.6vw, 36px);
+      padding-bottom: clamp(28px, 3.4vw, 44px);
+    }
+
+    .survey-flight .csd-hero__title {
+      font-size: clamp(32px, 4.2vw, 56px);
+      max-width: 22ch;
+    }
+
+    .survey-flight .csd-hero__body {
+      max-width: 66ch;
+    }
+
+    .survey-flight__byline {
+      margin: 2px 0 0;
+      max-width: 62ch;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .survey-visual {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .survey-visual--hero .survey-visual__frame {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+      line-height: 0;
+    }
+
+    .survey-visual__img {
+      width: 100%;
+      display: block;
+    }
+
+    .survey-visual--hero .survey-visual__img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .survey-flight__section {
+      display: grid;
+      gap: clamp(14px, 1.8vw, 20px);
+      padding: clamp(28px, 3.4vw, 44px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .survey-flight__section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .survey-flight__section > .csd-context__title,
+    .survey-flight__head .csd-context__title {
+      max-width: 20ch;
+    }
+
+    .survey-flight__head {
+      display: grid;
+      gap: 6px;
+    }
+
+    .survey-flight__head .kicker,
+    .survey-flight__status,
+    .survey-flight__collab,
+    .survey-flight__next {
+      margin: 0;
+    }
+
+    .survey-flight__split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(18px, 2.6vw, 36px);
+    }
+
+    .survey-flight__split > article {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .survey-flight__split > article + article {
+      padding-left: clamp(16px, 2vw, 28px);
+      border-left: 1px solid var(--line);
+    }
+
+    .survey-flight__split h3,
+    .survey-flight__list h3,
+    .survey-flight__explore h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(17px, 1.35vw, 21px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .survey-flight__split p,
+    .survey-flight__close,
+    .survey-flight__section > p,
+    .survey-flight__caption,
+    .survey-flight__list p {
+      margin: 0;
+      max-width: 66ch;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .survey-flight__close,
+    .survey-flight__caption {
+      max-width: 62ch;
+    }
+
+    .survey-flight__section > .survey-flight__close {
+      max-width: min(34ch, 100%);
+      margin-top: clamp(40px, 5vw, 72px);
+      padding: 0;
+      border: none;
+      background: none;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(26px, 2.8vw, 36px);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .survey-flight__note {
+      margin: 0;
+      max-width: 66ch;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    [aria-labelledby="survey-next"] > .survey-flight__note {
+      margin: 0;
+      max-width: 66ch;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .survey-flight__section > .survey-flight__intro {
+      margin: 0 0 clamp(8px, 1vw, 14px);
+      max-width: 68ch;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .survey-role {
+      margin: 0;
+      width: min(340px, 100%);
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .survey-role__frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 758 / 1022;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+
+    .survey-role__frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .survey-flight__roles {
+      min-width: 0;
+    }
+
+    .survey-flight__roles > article + article {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .survey-needs {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 7px;
+    }
+
+    .survey-needs li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .survey-needs li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+
+    .survey-flight__explore {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: clamp(26px, 3vw, 36px);
+    }
+
+    .survey-flight__explore > li {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .survey-flight__explore-label {
+      display: grid;
+      gap: 4px;
+    }
+
+    .survey-flight__num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--amber);
+    }
+
+    .survey-shots {
+      display: grid;
+      gap: 14px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .survey-shot {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .survey-shot__frame {
+      position: relative;
+      aspect-ratio: 1024 / 640;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .survey-shot__frame .survey-visual__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .survey-flight__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(14px, 2vw, 24px);
+    }
+
+    .survey-flight__list li {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      min-width: 0;
+      padding-top: 12px;
+      border-top: 1px solid color-mix(in srgb, var(--line) 62%, var(--amber) 38%);
+    }
+
+    .survey-flight__list p {
+      max-width: none;
+    }
+
+    .survey-flight__video {
+      margin: 0;
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .survey-flight__video .csd-video__frame {
+      border-radius: var(--radius);
+    }
+
+    @media (min-width: 760px) {
+      .survey-shots--pair {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .survey-shots--single {
+        width: calc((100% - 14px) / 2);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .survey-flight__split,
+      .survey-flight__list {
+        grid-template-columns: 1fr;
+      }
+
+      .survey-flight__split > article + article {
+        padding-left: 0;
+        padding-top: 16px;
+        border-left: none;
+        border-top: 1px solid var(--line);
+      }
+
+      .survey-flight__roles {
+        display: flex;
+        grid-template-columns: none;
+        gap: 14px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 2px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .survey-flight__roles::-webkit-scrollbar {
+        display: none;
+      }
+
+      .survey-flight__roles > article {
+        flex: 0 0 86%;
+        width: 86%;
+        max-width: 86%;
+        scroll-snap-align: start;
+        min-width: 0;
+      }
+
+      .survey-flight__roles > article + article {
+        padding-top: 0;
+        border-top: none;
+      }
+
+      .survey-flight__roles .survey-role {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .survey-flight .csd-hero__title {
+        font-size: clamp(30px, 8.5vw, 40px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="home.html">
+      <span class="nav__dot"></span>
+      <span class="nav__name">Zena Zerai</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <div class="nav__meta">
+      <button class="nav__cta" id="nav-copy-email" type="button" aria-label="Copy email address">
+        <span class="nav__cta-label">Get in touch</span>
+        <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="1"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="nav__hamburger" id="nav-hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="ai-explorations.html">AI Explorations</a>
+    </nav>
+    <button class="nav__cta mobile-nav__cta" id="mobile-copy-email" type="button" aria-label="Copy email address">
+      <span class="nav__cta-label">Get in touch</span>
+      <svg class="nav__cta-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="1"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
+  </div>
+
+  <main id="spa-main" class="spa-main" tabindex="-1">
+    <article class="csd survey-flight">
+      <div class="csd-back-wrap">
+        <a class="csd-back" href="gwi.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          GWI
+        </a>
+      </div>
+
+      <header class="csd-hero csd-hero--text-only">
+        <div class="csd-hero__inner">
+          <span class="kicker">In flight project · GWI</span>
+          <h1 class="csd-hero__title">Designing self-serve AI-simulated research</h1>
+          <div class="csd-hero__body">
+            <p class="csd-hero__summary">GWI is exploring a move towards self-serve AI-simulated research, enabling customers to create surveys using respondents modelled on GWI’s consumer data.</p>
+            <p class="csd-hero__summary">The challenge is balancing a straightforward research experience with the consumption-based model behind it — from understanding results to managing credits, access and usage.</p>
+          </div>
+          <p class="survey-flight__byline">Working with User Management, Data and engineering across both teams.</p>
+        </div>
+        <figure class="survey-visual survey-visual--hero">
+          <div class="survey-visual__frame">
+            <img class="survey-visual__img" src="assets/GWI/ai-survey-hero.jpg" width="1024" height="682" alt="Survey creation screen for self-serve AI-simulated research, showing a question, a sample result and organisation credits.">
+          </div>
+        </figure>
+      </header>
+
+      <section class="survey-flight__section" aria-labelledby="survey-needs">
+        <div class="survey-flight__head">
+          <h2 id="survey-needs" class="csd-context__title">Different users, different needs</h2>
+          <p class="kicker">Needs being explored</p>
+        </div>
+        <div class="survey-flight__split survey-flight__roles" role="region" aria-label="Researcher and administrator">
+          <article>
+            <figure class="survey-role">
+              <div class="survey-role__frame">
+                <img src="assets/GWI/ai-survey-researcher.png" width="758" height="1022" alt="Researcher creating a survey.">
+              </div>
+            </figure>
+            <h3>Researcher / survey creator</h3>
+            <ul class="survey-needs">
+              <li>Create useful surveys independently</li>
+              <li>Configure audiences and questions</li>
+              <li>Understand and interpret results</li>
+            </ul>
+          </article>
+          <article>
+            <figure class="survey-role">
+              <div class="survey-role__frame">
+                <img src="assets/GWI/ai-survey-admin.png" width="755" height="1024" alt="An administrator reviewing usage, credits and access.">
+              </div>
+            </figure>
+            <h3>Organisation / account administrator</h3>
+            <ul class="survey-needs">
+              <li>Understand consumption and usage</li>
+              <li>Allocate credits across users</li>
+              <li>Manage access and sharing</li>
+            </ul>
+          </article>
+        </div>
+        <p class="survey-flight__close">The challenge is making research creation feel effortless while giving organisations the visibility and control they need over a consumption-based product.</p>
+      </section>
+
+      <section class="survey-flight__section" aria-labelledby="survey-product">
+        <h2 id="survey-product" class="csd-context__title">Understanding the underlying product</h2>
+        <p class="kicker survey-flight__collab">User Management × Data × Engineering</p>
+        <p class="survey-flight__intro">Working across User Management and Data, I’m connecting both sides of the product: understanding what customers need from an AI research experience, and what’s needed to make self-serve work within GWI’s wider platform and commercial model.</p>
+        <div class="survey-flight__split">
+          <article>
+            <h3>Understanding the AI</h3>
+            <p>Working with Data and engineering to understand the model’s capabilities and limitations, and what those mean for survey creation and interpreting results.</p>
+          </article>
+          <article>
+            <h3>Making self-serve work</h3>
+            <p>Building on existing User Management discovery and working with engineers across both teams to explore usage caps, credit allocation and access controls.</p>
+          </article>
+        </div>
+        <p class="survey-flight__note">This builds on earlier API/MCP usage dashboard work. Once the commercial model and requirements are agreed, there may be an opportunity to extend that experience for visibility of simulated survey consumption.</p>
+      </section>
+
+      <section class="survey-flight__section" aria-labelledby="survey-explore">
+        <div class="survey-flight__head">
+          <h2 id="survey-explore" class="csd-context__title">Design explorations</h2>
+          <p class="kicker">Prototype</p>
+        </div>
+        <ol class="survey-flight__explore">
+          <li>
+            <div class="survey-flight__explore-label">
+              <span class="survey-flight__num">01</span>
+              <h3>Survey management</h3>
+            </div>
+            <div class="survey-shots survey-shots--single">
+              <figure class="survey-shot">
+                <div class="survey-shot__frame">
+                  <img class="survey-visual__img" src="assets/GWI/ai-survey-my-surveys.png" width="1024" height="640" alt="Prototype survey list with statuses and an organisation credit summary.">
+                </div>
+              </figure>
+            </div>
+            <p class="survey-flight__caption">Exploring how to make survey setup clear and manageable.</p>
+          </li>
+          <li>
+            <div class="survey-flight__explore-label">
+              <span class="survey-flight__num">02</span>
+              <h3>Results and notifications</h3>
+            </div>
+            <div class="survey-shots survey-shots--pair">
+              <figure class="survey-shot">
+                <div class="survey-shot__frame">
+                  <img class="survey-visual__img" src="assets/GWI/ai-survey-notification.png" width="1024" height="640" alt="Prototype home screen with a notification that survey results are ready.">
+                </div>
+              </figure>
+              <figure class="survey-shot">
+                <div class="survey-shot__frame">
+                  <img class="survey-visual__img" src="assets/GWI/ai-survey-platform.png" width="1024" height="640" alt="Prototype dialog that a published audience is ready to use in Platform.">
+                </div>
+              </figure>
+            </div>
+            <p class="survey-flight__caption">Exploring how to make simulated results understandable and useful.</p>
+          </li>
+          <li>
+            <div class="survey-flight__explore-label">
+              <span class="survey-flight__num">03</span>
+              <h3>Credits and consumption messaging</h3>
+            </div>
+            <div class="survey-shots survey-shots--pair">
+              <figure class="survey-shot">
+                <div class="survey-shot__frame">
+                  <img class="survey-visual__img" src="assets/GWI/ai-survey-credits.png" width="1024" height="640" alt="Prototype credit dialog over survey setup.">
+                </div>
+              </figure>
+              <figure class="survey-shot">
+                <div class="survey-shot__frame">
+                  <img class="survey-visual__img" src="assets/GWI/ai-survey-credits-messaging.png" width="1024" height="640" alt="Prototype survey setup with a message that free credits have been used.">
+                </div>
+              </figure>
+            </div>
+            <p class="survey-flight__caption">Credits and consumption messaging exploration.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="survey-flight__section" aria-labelledby="survey-walkthrough">
+        <h2 id="survey-walkthrough" class="csd-context__title">Prototype walkthrough</h2>
+        <p>A working prototype exploring the journey from panels and survey setup through to results.</p>
+        <figure class="survey-flight__video">
+          <div class="csd-video__frame">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dp9szpkig&amp;public_id=Screen_Recording_2026-10-21_at_20.18.07_vmr46t&amp;player%5Bcontrols%5D=true&amp;player%5Bplaysinline%5D=true"
+              title="Prototype walkthrough from panels and survey setup through to results"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <figcaption class="csd-video__caption">Panels · Survey setup · Results</figcaption>
+        </figure>
+      </section>
+
+      <section class="survey-flight__section" aria-labelledby="survey-next">
+        <h2 id="survey-next" class="csd-context__title">What happens next</h2>
+        <p class="kicker survey-flight__status">Planned next steps</p>
+        <ol class="survey-flight__list">
+          <li>
+            <span class="survey-flight__num">01</span>
+            <h3>Align on the commercial model</h3>
+            <p>Work with the business to understand how simulated survey consumption will work. Will usage be tied to existing product consumption or billed separately?</p>
+          </li>
+          <li>
+            <span class="survey-flight__num">02</span>
+            <h3>Work through the platform implications</h3>
+            <p>Collaborate with engineers across User Management and Data to explore what the agreed model means for usage caps, credit allocation across users and access controls.</p>
+          </li>
+          <li>
+            <span class="survey-flight__num">03</span>
+            <h3>Validate with customers</h3>
+            <p>Test the proposed experience with enterprise clients through GWI’s innovation partners programme, exploring survey creation, interpretation of simulated results, and expectations around consumption, sharing and cost visibility.</p>
+          </li>
+        </ol>
+        <p class="kicker survey-flight__next">Validation focus</p>
+        <p class="survey-flight__note">Customer testing will help us understand whether people can create suitable surveys independently, interpret simulated results appropriately, and understand how consumption and access should work.</p>
+      </section>
+    </article>
+
+    <footer id="contact" class="foot">
+      <div class="foot__inner">
+        <span class="kicker">06 · End of Side A</span>
+        <h2 class="foot__title">
+          <span>Got a record </span>
+          <span class="italic">worth pressing?</span>
+        </h2>
+        <button class="nav__cta foot__cta" id="foot-copy-email" type="button" aria-label="Copy email address">
+          <svg class="nav__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+          <span class="nav__cta-label">zenazerai@gmail.com</span>
+        </button>
+
+        <div class="foot__row">
+          <div class="foot__links">
+            <a href="https://www.linkedin.com/in/zenazerai" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+          <div class="foot__meta">
+            <span class="kicker">© Zena Zerai · 2026</span>
+            <span class="kicker">London</span>
+          </div>
+        </div>
+        <div class="foot__cursor">
+          <span class="kicker">Built with</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 3px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span class="kicker">Cursor</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+  <div class="email-toast" id="email-toast" aria-live="polite">Email copied to clipboard</div>
+</body>
+</html>
