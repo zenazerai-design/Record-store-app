@@ -962,6 +962,23 @@ function mountSpotifyFab() {
     throw lastIssue instanceof Error ? lastIssue : new Error('fetch failed');
   }
 
+  /**
+   * Page-specific CSS is a <style> in <head> (GWI, Hyundai Finance, and others).
+   * SPA swaps only #spa-main, so without this the first in-app visit has no
+   * case-study layout until a full reload.
+   */
+  function syncSpaPageStyles(doc) {
+    const previous = [...document.head.querySelectorAll('style')];
+    doc.head.querySelectorAll('style').forEach(style => {
+      const clone = document.createElement('style');
+      clone.setAttribute('data-spa-page-style', '');
+      if (style.media) clone.media = style.media;
+      clone.textContent = style.textContent;
+      document.head.appendChild(clone);
+    });
+    previous.forEach(node => node.remove());
+  }
+
   async function spaNavigate(rawUrl, { replace = false } = {}) {
     if (window.location.protocol === 'file:') {
       navigateHard(rawUrl);
@@ -1023,6 +1040,11 @@ function mountSpotifyFab() {
 
     markHomeIntroSeenIfLeavingHome(url.href);
     teardownDynamicPage();
+
+    /* Case-study layout lives in each page's <head> <style>. Swapping #spa-main
+       alone leaves that CSS behind, so the first visit looks unstyled until a
+       full reload parses the new document. */
+    syncSpaPageStyles(doc);
 
     spaMain.innerHTML = next.innerHTML;
     document.title = doc.title;
