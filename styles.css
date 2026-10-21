@@ -101,7 +101,11 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-img { display: block; max-width: 100%; }
+/* height:auto beats the HTML height attribute. Without it, max-width:100%
+   shrinks the width while the attribute height stays in px, so the first
+   layout (before decode) is stretched. A reload has the image cached, so
+   the intrinsic ratio is known immediately and looks correct. */
+img { display: block; max-width: 100%; height: auto; }
 
 body {
   background: var(--bg);
@@ -10947,10 +10951,16 @@ section.pins-final-designs {
   }
 }
 
-/* Real image (swap placeholder) */
+/* Real image (swap placeholder).
+   align-self:start stops a grid/flex stretch from locking a block size
+   before the file has decoded. object-fit:contain keeps a wrong box from
+   distorting the bitmap. */
 .csd-context__image img {
   width: 100%;
   height: auto;
+  align-self: start;
+  object-fit: contain;
+  object-position: center;
   display: block;
   border-radius: var(--radius);
   border: 1px solid var(--line);

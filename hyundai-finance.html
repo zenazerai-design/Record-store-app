@@ -1406,6 +1406,9 @@
       display: block;
       width: 100%;
       height: auto;
+      /* Grid stretch must not assign a block size before the file decodes. */
+      align-self: start;
+      justify-self: stretch;
       object-fit: contain;
       object-position: center;
       border-radius: var(--radius);
