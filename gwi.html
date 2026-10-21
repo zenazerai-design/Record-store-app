@@ -275,16 +275,20 @@
     .csd-case--gwi-preview .gwi-prev-process__grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(16px, 2vw, 24px);
+      grid-template-rows: auto auto auto;
+      column-gap: clamp(16px, 2vw, 24px);
+      row-gap: 14px;
       min-width: 0;
       max-width: 100%;
+      align-items: stretch;
     }
 
     .csd-case--gwi-preview .gwi-prev-process__card {
       display: grid;
-      gap: 14px;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
       min-width: 0;
-      align-content: start;
+      height: 100%;
     }
 
     .csd-case--gwi-preview .gwi-prev-process__frame {
@@ -293,15 +297,18 @@
       border: 1px solid var(--line);
       background: var(--surface);
       min-width: 0;
+      min-height: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
     }
 
     .csd-case--gwi-preview .gwi-prev-process__frame img {
       width: 100%;
       max-width: 100%;
       height: auto;
-      align-self: start;
       object-fit: contain;
-      object-position: center;
+      object-position: center top;
       display: block;
     }
 
@@ -1513,6 +1520,15 @@
         scroll-snap-align: start;
       }
 
+      .csd-case--gwi-preview .gwi-prev-process__card {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-row: auto;
+        gap: 14px;
+        height: auto;
+        align-content: start;
+      }
+
       /* Carousel slides keep each picture's own ratio. A forced 4/3 box
          with height:100% stretches the file on a cold load, before decode. */
       .csd-case--gwi-preview .gwi-prev-process__frame {
@@ -1632,6 +1648,126 @@
         border-radius: var(--radius);
       }
     }
+
+    /* Compact invitation after the intro. The 10px offset matches the
+       shift already applied to case-study sections. */
+    @media (prefers-reduced-motion: no-preference) {
+      article.csd.csd-case--gwi-preview > .gwi-inflight {
+        transform: translateY(10px);
+      }
+    }
+
+    .csd-case--gwi-preview .gwi-inflight {
+      padding: clamp(18px, 2vw, 26px) 0 6px;
+    }
+
+    .csd-case--gwi-preview .gwi-inflight + .csd-impact {
+      padding-top: var(--csd-section-pad-tight);
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 7px;
+      width: fit-content;
+      max-width: min(38rem, 100%);
+      padding: 13px 16px;
+      color: var(--cream);
+      text-decoration: none;
+      background: color-mix(in srgb, var(--surface) 84%, var(--amber) 16%);
+      border: 1px solid color-mix(in srgb, var(--line) 58%, var(--amber) 42%);
+      border-radius: var(--radius);
+      transition:
+        background 0.2s var(--ease),
+        border-color 0.2s var(--ease);
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__label {
+      color: var(--muted);
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: clamp(16px, 1.15vw, 18px);
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--cream);
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__title > span {
+      min-width: 0;
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__arrow {
+      flex: none;
+      color: var(--amber);
+      transition: transform 0.2s var(--ease);
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__link:hover,
+    .csd-case--gwi-preview .gwi-inflight__link:focus-visible {
+      background: color-mix(in srgb, var(--surface) 68%, var(--amber) 32%);
+      border-color: color-mix(in srgb, var(--amber) 70%, var(--line));
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__link:hover .gwi-inflight__arrow,
+    .csd-case--gwi-preview .gwi-inflight__link:focus-visible .gwi-inflight__arrow {
+      transform: translateX(4px);
+    }
+
+    .csd-case--gwi-preview .gwi-inflight__link:focus-visible {
+      outline: 1px solid color-mix(in srgb, var(--amber) 75%, var(--cream));
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 720px) {
+      .csd-case--gwi-preview .gwi-inflight__link {
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 18px;
+      }
+
+      .csd-case--gwi-preview .gwi-inflight__label {
+        padding-right: 14px;
+        border-right: 1px solid color-mix(in srgb, var(--line) 45%, var(--amber) 55%);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .csd-case--gwi-preview .gwi-inflight {
+        padding-top: 16px;
+      }
+
+      .csd-case--gwi-preview .gwi-inflight__link {
+        width: 100%;
+      }
+
+      .csd-case--gwi-preview .gwi-inflight__title {
+        width: 100%;
+        font-size: 16px;
+      }
+
+      .csd-case--gwi-preview .gwi-inflight__title > span {
+        flex: 1 1 auto;
+      }
+
+      .csd-case--gwi-preview .gwi-inflight__arrow {
+        margin-left: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .csd-case--gwi-preview .gwi-inflight__link,
+      .csd-case--gwi-preview .gwi-inflight__arrow {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1748,6 +1884,13 @@
         </dl>
       </section>
     </section>
+
+    <div class="gwi-inflight">
+      <a class="gwi-inflight__link" href="ai-simulated-surveys.html">
+        <span class="kicker gwi-inflight__label">View in flight</span>
+        <span class="gwi-inflight__title"><span>Designing a self-serve AI-simulated survey product</span><svg class="gwi-inflight__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
 
     <section class="csd-impact">
       <div class="csd-impact__header">
