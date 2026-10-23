@@ -2691,6 +2691,40 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.01em;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--line);
+  text-wrap: balance;
+}
+
+/* Career background sits between the opener and the personal close */
+.about__chapters {
+  display: grid;
+  gap: 1.15em;
+}
+
+.about__copy .about__chapters p,
+.about__copy .about__closer p {
+  font-size: clamp(16px, 1.2vw, 17px);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Closing statement: quiet rule, then a line that lands the story */
+.about__closer {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.about__maker {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-semibold);
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
 }
 
 /* About page photo */
@@ -4475,6 +4509,11 @@ body.page-home .reveal.reveal--stagger.is-in {
   align-items: center;
   padding-top: calc(72px + 60px);
   padding-bottom: 80px;
+}
+
+/* Longer liner notes: keep the portrait with the opening, not the vertical middle */
+.about--page .about__grid {
+  align-items: start;
 }
 
 /* About hero: hold until entrance, then premium keyframes */
